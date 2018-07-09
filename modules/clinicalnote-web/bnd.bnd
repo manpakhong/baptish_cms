@@ -1,0 +1,4 @@
+Bundle-Name: clinicalnote-web
+Bundle-SymbolicName: hk.org.hkbh.cms.outpatient.portlet
+Bundle-Version: 1.0.0
+Export-Package: hk.org.hkbh.cms.outpatient.portlet.constants
