@@ -3,11 +3,10 @@
 
 <hibernate-mapping auto-import="false" default-lazy="false">
 	<import class="hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate" />
-	<class name="hk.org.hkbh.cms.outpatient.model.impl.ClinicalNoteTemplateImpl" table="Op_ClinicalNoteTemplate">
+	<class name="hk.org.hkbh.cms.outpatient.model.impl.ClinicalNoteTemplateImpl" table="cms.clinical_note_template">
 		<id column="id_" name="id" type="int">
-			<generator class="assigned" />
+			<generator class="increment" />
 		</id>
-		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="templateTypeCodeId" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="templateName" type="com.liferay.portal.dao.orm.hibernate.StringType" />

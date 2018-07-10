@@ -60,7 +60,6 @@ public class ClinicalNoteTemplateWrapper implements ClinicalNoteTemplate,
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
 		attributes.put("id", getId());
-		attributes.put("groupId", getGroupId());
 		attributes.put("userId", getUserId());
 		attributes.put("templateTypeCodeId", getTemplateTypeCodeId());
 		attributes.put("templateName", getTemplateName());
@@ -80,12 +79,6 @@ public class ClinicalNoteTemplateWrapper implements ClinicalNoteTemplate,
 
 		if (id != null) {
 			setId(id);
-		}
-
-		Integer groupId = (Integer)attributes.get("groupId");
-
-		if (groupId != null) {
-			setGroupId(groupId);
 		}
 
 		Integer userId = (Integer)attributes.get("userId");
@@ -178,16 +171,6 @@ public class ClinicalNoteTemplateWrapper implements ClinicalNoteTemplate,
 	@Override
 	public ExpandoBridge getExpandoBridge() {
 		return _clinicalNoteTemplate.getExpandoBridge();
-	}
-
-	/**
-	* Returns the group ID of this clinical note template.
-	*
-	* @return the group ID of this clinical note template
-	*/
-	@Override
-	public int getGroupId() {
-		return _clinicalNoteTemplate.getGroupId();
 	}
 
 	/**
@@ -349,16 +332,6 @@ public class ClinicalNoteTemplateWrapper implements ClinicalNoteTemplate,
 	@Override
 	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
 		_clinicalNoteTemplate.setExpandoBridgeAttributes(serviceContext);
-	}
-
-	/**
-	* Sets the group ID of this clinical note template.
-	*
-	* @param groupId the group ID of this clinical note template
-	*/
-	@Override
-	public void setGroupId(int groupId) {
-		_clinicalNoteTemplate.setGroupId(groupId);
 	}
 
 	/**

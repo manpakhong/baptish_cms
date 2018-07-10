@@ -35,7 +35,6 @@ public class ClinicalNoteTemplateSoap implements Serializable {
 		ClinicalNoteTemplateSoap soapModel = new ClinicalNoteTemplateSoap();
 
 		soapModel.setId(model.getId());
-		soapModel.setGroupId(model.getGroupId());
 		soapModel.setUserId(model.getUserId());
 		soapModel.setTemplateTypeCodeId(model.getTemplateTypeCodeId());
 		soapModel.setTemplateName(model.getTemplateName());
@@ -106,14 +105,6 @@ public class ClinicalNoteTemplateSoap implements Serializable {
 
 	public void setId(int id) {
 		_id = id;
-	}
-
-	public int getGroupId() {
-		return _groupId;
-	}
-
-	public void setGroupId(int groupId) {
-		_groupId = groupId;
 	}
 
 	public int getUserId() {
@@ -189,7 +180,6 @@ public class ClinicalNoteTemplateSoap implements Serializable {
 	}
 
 	private int _id;
-	private int _groupId;
 	private int _userId;
 	private int _templateTypeCodeId;
 	private String _templateName;

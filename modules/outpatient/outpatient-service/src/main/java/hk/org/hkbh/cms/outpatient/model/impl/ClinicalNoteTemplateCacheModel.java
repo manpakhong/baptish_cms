@@ -65,12 +65,10 @@ public class ClinicalNoteTemplateCacheModel implements CacheModel<ClinicalNoteTe
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(23);
+		StringBundler sb = new StringBundler(21);
 
 		sb.append("{id=");
 		sb.append(id);
-		sb.append(", groupId=");
-		sb.append(groupId);
 		sb.append(", userId=");
 		sb.append(userId);
 		sb.append(", templateTypeCodeId=");
@@ -99,7 +97,6 @@ public class ClinicalNoteTemplateCacheModel implements CacheModel<ClinicalNoteTe
 		ClinicalNoteTemplateImpl clinicalNoteTemplateImpl = new ClinicalNoteTemplateImpl();
 
 		clinicalNoteTemplateImpl.setId(id);
-		clinicalNoteTemplateImpl.setGroupId(groupId);
 		clinicalNoteTemplateImpl.setUserId(userId);
 		clinicalNoteTemplateImpl.setTemplateTypeCodeId(templateTypeCodeId);
 
@@ -161,8 +158,6 @@ public class ClinicalNoteTemplateCacheModel implements CacheModel<ClinicalNoteTe
 	public void readExternal(ObjectInput objectInput) throws IOException {
 		id = objectInput.readInt();
 
-		groupId = objectInput.readInt();
-
 		userId = objectInput.readInt();
 
 		templateTypeCodeId = objectInput.readInt();
@@ -179,8 +174,6 @@ public class ClinicalNoteTemplateCacheModel implements CacheModel<ClinicalNoteTe
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
 		objectOutput.writeInt(id);
-
-		objectOutput.writeInt(groupId);
 
 		objectOutput.writeInt(userId);
 
@@ -226,7 +219,6 @@ public class ClinicalNoteTemplateCacheModel implements CacheModel<ClinicalNoteTe
 	}
 
 	public int id;
-	public int groupId;
 	public int userId;
 	public int templateTypeCodeId;
 	public String templateName;

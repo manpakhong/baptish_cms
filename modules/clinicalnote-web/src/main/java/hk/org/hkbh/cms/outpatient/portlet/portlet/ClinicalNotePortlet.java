@@ -16,9 +16,11 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 import hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate;
 import hk.org.hkbh.cms.outpatient.portlet.constants.ClinicalNotePortletKeys;
+import hk.org.hkbh.cms.outpatient.service.ClinicalNoteTemplateLocalService;
 import hk.org.hkbh.cms.outpatient.service.ClinicalNoteTemplateLocalServiceUtil;
 
 /**
@@ -39,15 +41,21 @@ import hk.org.hkbh.cms.outpatient.service.ClinicalNoteTemplateLocalServiceUtil;
 	service = Portlet.class
 )
 public class ClinicalNotePortlet extends MVCPortlet {
-
+//    private ClinicalNoteTemplateLocalService _clinicalNoteTemplateLocalService;
 	@Override
 	public void render(RenderRequest renderRequest, RenderResponse renderResponse)
 	    throws PortletException, IOException {
 		getClinicalNote();
 	    super.render(renderRequest, renderResponse);
 	}
-	private void getClinicalNote() {
+//    @Reference(unbind = "-")
+//    protected void setClinicalNoteTemplateLocalService(ClinicalNoteTemplateLocalService clinicalNoteTemplateLocalService) {
+//    	_clinicalNoteTemplateLocalService = clinicalNoteTemplateLocalService;
+//    }
+	private void getClinicalNote() throws PortletException{
 		try {
+//			ClinicalNoteTemplate cnt = _clinicalNoteTemplateLocalService.getClinicalNoteTemplate(1);
+//			System.out.println(cnt);
 			ClinicalNoteTemplateLocalServiceUtil.getClinicalNoteTemplate(1);
 		} catch (Exception e) {
 			e.printStackTrace();

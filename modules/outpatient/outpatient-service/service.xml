@@ -5,15 +5,15 @@
 	<author>Dave Man</author>
 	<namespace>Op</namespace>
 	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
-	<entity local-service="true" name="ClinicalNoteTemplate" remote-service="false" uuid="false" data-source="cmsDataSource">
+	<entity local-service="true" name="ClinicalNoteTemplate" table="clinical_note_template" remote-service="false" uuid="false" data-source="cmsDataSource">
 
 		<!-- PK fields -->
 
-		<column name="id" primary="true" type="int" />
+		<column name="id" primary="true" type="int" id-type="increment" />
 
 		<!-- Group instance -->
 
-		<column name="groupId" type="int" />
+<!-- 		<column name="groupId" type="int" /> -->
 
 		<!-- Audit fields -->
 

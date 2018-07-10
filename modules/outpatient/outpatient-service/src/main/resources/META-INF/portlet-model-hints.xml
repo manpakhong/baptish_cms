@@ -3,7 +3,6 @@
 <model-hints>
 	<model name="hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate">
 		<field name="id" type="int" />
-		<field name="groupId" type="int" />
 		<field name="userId" type="int" />
 		<field name="templateTypeCodeId" type="int" />
 		<field name="templateName" type="String" />

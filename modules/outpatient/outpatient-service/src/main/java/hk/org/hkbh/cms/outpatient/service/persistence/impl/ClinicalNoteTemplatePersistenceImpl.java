@@ -344,7 +344,6 @@ public class ClinicalNoteTemplatePersistenceImpl extends BasePersistenceImpl<Cli
 		clinicalNoteTemplateImpl.setPrimaryKey(clinicalNoteTemplate.getPrimaryKey());
 
 		clinicalNoteTemplateImpl.setId(clinicalNoteTemplate.getId());
-		clinicalNoteTemplateImpl.setGroupId(clinicalNoteTemplate.getGroupId());
 		clinicalNoteTemplateImpl.setUserId(clinicalNoteTemplate.getUserId());
 		clinicalNoteTemplateImpl.setTemplateTypeCodeId(clinicalNoteTemplate.getTemplateTypeCodeId());
 		clinicalNoteTemplateImpl.setTemplateName(clinicalNoteTemplate.getTemplateName());

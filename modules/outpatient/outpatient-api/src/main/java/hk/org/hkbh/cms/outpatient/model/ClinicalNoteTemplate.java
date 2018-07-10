@@ -21,7 +21,7 @@ import com.liferay.portal.kernel.model.PersistedModel;
 import com.liferay.portal.kernel.util.Accessor;
 
 /**
- * The extended model interface for the ClinicalNoteTemplate service. Represents a row in the &quot;Op_ClinicalNoteTemplate&quot; database table, with each column mapped to a property of this class.
+ * The extended model interface for the ClinicalNoteTemplate service. Represents a row in the &quot;cms.clinical_note_template&quot; database table, with each column mapped to a property of this class.
  *
  * @author Dave Man
  * @see ClinicalNoteTemplateModel
