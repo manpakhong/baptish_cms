@@ -1,12 +1,25 @@
 package hk.org.hkbh.cms.outpatient.portlet.portlet;
 
-import hk.org.hkbh.cms.outpatient.portlet.constants.ClinicalNotePortletKeys;
-
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
+import javax.portlet.PortletException;
+import javax.portlet.ReadOnlyException;
+import javax.portlet.RenderRequest;
+import javax.portlet.RenderResponse;
 
 import org.osgi.service.component.annotations.Component;
+
+import hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate;
+import hk.org.hkbh.cms.outpatient.portlet.constants.ClinicalNotePortletKeys;
+import hk.org.hkbh.cms.outpatient.service.ClinicalNoteTemplateLocalServiceUtil;
 
 /**
  * @author manpakhong
@@ -26,4 +39,27 @@ import org.osgi.service.component.annotations.Component;
 	service = Portlet.class
 )
 public class ClinicalNotePortlet extends MVCPortlet {
+
+	@Override
+	public void render(RenderRequest renderRequest, RenderResponse renderResponse)
+	    throws PortletException, IOException {
+		getClinicalNote();
+	    super.render(renderRequest, renderResponse);
+	}
+	private void getClinicalNote() {
+		try {
+			ClinicalNoteTemplateLocalServiceUtil.getClinicalNoteTemplate(1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+//	private void getClinicalNote() {
+//		ClinicalNoteTemplate cnt;
+//		try {
+//			cnt = ClinicalNoteTemplateLocalServiceUtil.getClinicalNoteTemplate(1);
+//			System.out.println(cnt);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 }

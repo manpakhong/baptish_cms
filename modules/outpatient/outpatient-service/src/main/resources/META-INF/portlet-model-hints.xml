@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate">
+		<field name="id" type="int" />
+		<field name="groupId" type="int" />
+		<field name="userId" type="int" />
+		<field name="templateTypeCodeId" type="int" />
+		<field name="templateName" type="String" />
+		<field name="templateContent" type="String" />
+		<field name="templateContentHtml" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="updateDate" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedBy" type="String" />
+	</model>
+</model-hints>

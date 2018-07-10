@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<beans
+	default-destroy-method="destroy"
+	default-init-method="afterPropertiesSet"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+	<bean class="hk.org.hkbh.cms.outpatient.service.impl.ClinicalNoteTemplateLocalServiceImpl" id="hk.org.hkbh.cms.outpatient.service.ClinicalNoteTemplateLocalService" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.ClinicalNoteTemplatePersistenceImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.ClinicalNoteTemplatePersistence" parent="basePersistence">
+		<property name="dataSource" ref="cmsDataSource" />
+	</bean>
+</beans>
