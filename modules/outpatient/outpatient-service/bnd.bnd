@@ -3,3 +3,7 @@ Bundle-SymbolicName: hk.org.hkbh.cms.outpatient.service
 Bundle-Version: 1.0.0
 Liferay-Require-SchemaVersion: 1.0.0
 Liferay-Service: true
+Export-Package: \
+	hk.org.hkbh.cms.outpatient.servicehub,\
+	hk.org.hkbh.cms.outpatient.vo,\
+	hk.org.hkbh.cms.outpatient.factory

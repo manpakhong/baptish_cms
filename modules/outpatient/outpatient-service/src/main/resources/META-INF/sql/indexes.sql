@@ -1,0 +1,1 @@
+create index IX_14DB0E80 on Op_CodeDto (master_code[$COLUMN_LENGTH:75$]);

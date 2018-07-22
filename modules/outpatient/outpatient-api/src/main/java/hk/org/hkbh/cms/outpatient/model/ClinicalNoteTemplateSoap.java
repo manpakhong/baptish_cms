@@ -107,19 +107,19 @@ public class ClinicalNoteTemplateSoap implements Serializable {
 		_id = id;
 	}
 
-	public int getUserId() {
+	public Integer getUserId() {
 		return _userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		_userId = userId;
 	}
 
-	public int getTemplateTypeCodeId() {
+	public Integer getTemplateTypeCodeId() {
 		return _templateTypeCodeId;
 	}
 
-	public void setTemplateTypeCodeId(int templateTypeCodeId) {
+	public void setTemplateTypeCodeId(Integer templateTypeCodeId) {
 		_templateTypeCodeId = templateTypeCodeId;
 	}
 
@@ -180,8 +180,8 @@ public class ClinicalNoteTemplateSoap implements Serializable {
 	}
 
 	private int _id;
-	private int _userId;
-	private int _templateTypeCodeId;
+	private Integer _userId;
+	private Integer _templateTypeCodeId;
 	private String _templateName;
 	private String _templateContent;
 	private String _templateContentHtml;

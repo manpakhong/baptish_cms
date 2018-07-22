@@ -3,11 +3,57 @@
 <model-hints>
 	<model name="hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate">
 		<field name="id" type="int" />
-		<field name="userId" type="int" />
-		<field name="templateTypeCodeId" type="int" />
+		<field name="userId" type="Integer" />
+		<field name="templateTypeCodeId" type="Integer" />
 		<field name="templateName" type="String" />
 		<field name="templateContent" type="String" />
 		<field name="templateContentHtml" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="updateDate" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="hk.org.hkbh.cms.outpatient.model.Code">
+		<field name="id" type="int" />
+		<field name="masterCode" type="String" />
+		<field name="display_text" type="Integer" />
+		<field name="active" type="Boolean" />
+		<field name="subcodeEnabled" type="Boolean" />
+		<field name="remarks" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="updateDate" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="hk.org.hkbh.cms.outpatient.model.CodeDetail">
+		<field name="id" type="int" />
+		<field name="codeId" type="String" />
+		<field name="detailCode" type="Integer" />
+		<field name="seq" type="Integer" />
+		<field name="displayText" type="String" />
+		<field name="active" type="Boolean" />
+		<field name="level" type="Integer" />
+		<field name="upLevelId" type="Integer" />
+		<field name="remarks" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="updateDate" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="hk.org.hkbh.cms.outpatient.model.CodeDto">
+		<field name="id" type="int" />
+		<field name="masterCode" type="String" />
+		<field name="codeDisplayText" type="String" />
+		<field name="codeActive" type="Boolean" />
+		<field name="subcodeEnabled" type="Boolean" />
+		<field name="codeRemarks" type="String" />
+		<field name="detailCode" type="String" />
+		<field name="seq" type="Integer" />
+		<field name="codeDetailDisplayText" type="String" />
+		<field name="codeDetailActive" type="Boolean" />
+		<field name="level" type="Integer" />
+		<field name="upLevelId" type="Integer" />
+		<field name="codeDetailRemarks" type="String" />
 		<field name="createDate" type="Date" />
 		<field name="updateDate" type="Date" />
 		<field name="createdBy" type="String" />

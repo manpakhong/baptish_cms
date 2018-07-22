@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<custom-sql>
+<!-- <sql file="custom-sql/code-detail-sql -->.xml"/>
+<sql id="hk.org.hkbh.cms.outpatient.service.persistence.impl.CodeDtoFinderImpl.getCodeDtoByMasterCode">
+	     <![CDATA[
+			select 
+			c.master_code, 
+			c.display_text as code_display_text, 
+			c.active as code_active, 
+			c.subcode_enabled, 
+			c.remarks as code_remarks, 
+			cd.id as code_detail_id, 
+			cd.detail_code, 
+			cd.seq, 
+			cd.display_text as code_detail_display_text, 
+			cd.active as code_detail_active, 
+			cd.level, 
+			cd.up_level_id, 
+			cd.remarks as code_detail_remarks, 
+			cd.create_date, 
+			cd.update_date, 
+			cd.created_by, 
+			cd.updated_by
+			from code c inner join code_detail cd 
+			on c.id = cd.code_id 
+			where c.master_code = ?
+			]]>
+	 </sql>	
+</custom-sql >
+

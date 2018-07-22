@@ -96,7 +96,15 @@ public class ClinicalNoteTemplatePersistenceImpl extends BasePersistenceImpl<Cli
 
 			Map<String, String> dbColumnNames = new HashMap<String, String>();
 
-			dbColumnNames.put("id", "id_");
+			dbColumnNames.put("userId", "user_id");
+			dbColumnNames.put("templateTypeCodeId", "template_type_code_id");
+			dbColumnNames.put("templateName", "template_name");
+			dbColumnNames.put("templateContent", "template_content");
+			dbColumnNames.put("templateContentHtml", "template_content_html");
+			dbColumnNames.put("createDate", "create_date");
+			dbColumnNames.put("updateDate", "update_date");
+			dbColumnNames.put("createdBy", "created_by");
+			dbColumnNames.put("updatedBy", "updated_by");
 
 			field.set(this, dbColumnNames);
 		}
@@ -767,12 +775,14 @@ public class ClinicalNoteTemplatePersistenceImpl extends BasePersistenceImpl<Cli
 	@ServiceReference(type = FinderCache.class)
 	protected FinderCache finderCache;
 	private static final String _SQL_SELECT_CLINICALNOTETEMPLATE = "SELECT clinicalNoteTemplate FROM ClinicalNoteTemplate clinicalNoteTemplate";
-	private static final String _SQL_SELECT_CLINICALNOTETEMPLATE_WHERE_PKS_IN = "SELECT clinicalNoteTemplate FROM ClinicalNoteTemplate clinicalNoteTemplate WHERE id_ IN (";
+	private static final String _SQL_SELECT_CLINICALNOTETEMPLATE_WHERE_PKS_IN = "SELECT clinicalNoteTemplate FROM ClinicalNoteTemplate clinicalNoteTemplate WHERE id IN (";
 	private static final String _SQL_COUNT_CLINICALNOTETEMPLATE = "SELECT COUNT(clinicalNoteTemplate) FROM ClinicalNoteTemplate clinicalNoteTemplate";
 	private static final String _ORDER_BY_ENTITY_ALIAS = "clinicalNoteTemplate.";
 	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No ClinicalNoteTemplate exists with the primary key ";
 	private static final Log _log = LogFactoryUtil.getLog(ClinicalNoteTemplatePersistenceImpl.class);
 	private static final Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
-				"id"
+				"userId", "templateTypeCodeId", "templateName",
+				"templateContent", "templateContentHtml", "createDate",
+				"updateDate", "createdBy", "updatedBy"
 			});
 }
