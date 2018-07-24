@@ -29,9 +29,12 @@ function pageLoadPostExtJs(){
         url: GLOBAL_AJAX_PATH + PORTLET_NAMESPACE,
         success: function(resp) {
             var result = Ext.decode(resp.responseText);
-            clinicalNoteTypeStore.getProxy().data = result;
-            clinicalNoteTypeStore.load();
+//            clinicalNoteTypeStore.getProxy().data = result;
+//            clinicalNoteTypeStore.load();
             console.log("pageLoadPostExtJs: " + resp.responseText);
+            clinicalNoteTypeStore.loadRawData(result,false);
+//            var tempData = [[1,'op','op long']];
+//            clinicalNoteTypeStore.loadData(tempData);
         },
     });
 }
@@ -47,7 +50,8 @@ function pageLoadPost(){
 		  success : function(data) {
 			  clinicalNoteTypeListJson = Ext.encode(data.clinicalNoteTypeList);
 			  vo = data;
-			  clinicalNoteTypeStore.loadData(clinicalNoteTypeListJson);
+			  var tempData = [];
+			  clinicalNoteTypeStore.loadRawData(clinicalNoteTypeListJson,false);
 		  }
 		});
 }
@@ -66,23 +70,39 @@ Ext.define('ClinicalNoteTypeModel', {
         {name: 'codeDetailDisplayText',  type: 'string'}
     ]
 });
+//var clinicalNoteTypeStore = Ext.create('Ext.data.Store', {
+////    model: 'ClinicalNoteTypeModel',
+//    fields: [
+//    	{name: 'id', type: 'int'},
+//        {name: 'detailCode', type: 'string'},
+//        {name: 'codeDetailDisplayText',  type: 'string'}
+//    ],
+//    autoLoad: true,
+//    proxy: {
+//        type: 'ajax',
+////        url: GLOBAL_AJAX_PATH + PORTLET_NAMESPACE,
+//        reader: {
+//            type: 'json',
+//            root: 'clinicalNoteTypeList'
+//        }
+//    },
+////    data: clinicalNoteTypeListJson
+//});
 var clinicalNoteTypeStore = Ext.create('Ext.data.Store', {
-//    model: 'ClinicalNoteTypeModel',
-    fields: [
-    	{name: 'id', type: 'int'},
-        {name: 'detailCode', type: 'string'},
-        {name: 'codeDetailDisplayText',  type: 'string'}
-    ],
-    autoLoad: true,
-    proxy: {
-        type: 'ajax',
-//        url: GLOBAL_AJAX_PATH + PORTLET_NAMESPACE,
-        reader: {
-            type: 'json',
-            root: 'clinicalNoteTypeList'
-        }
-    },
-//    data: clinicalNoteTypeListJson
+//  model: 'ClinicalNoteTypeModel',
+  fields: [
+  	{name: 'id', type: 'int'},
+      {name: 'detailCode', type: 'string'},
+      {name: 'codeDetailDisplayText',  type: 'string'}
+  ],
+  autoLoad: true,
+  proxy: {
+	    type: 'ajax',
+	    reader: {
+	        type: 'json',
+	        root: 'clinicalNoteTypeList'
+	    }
+	}
 });
 
 Ext.onReady(function() {

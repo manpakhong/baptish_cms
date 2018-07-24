@@ -23,11 +23,11 @@ var PORTLET_NAMESPACE = "<portlet:namespace/>";
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
 
 	<c:if test="${scriptVersion eq true}"  >
-		<script type="text/javascript" src="<%=request.getContextPath()%>/js/app.js?ver=${verNo}"></script>
+<%-- 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/app.js?ver=${verNo}"></script> --%>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/clinicalnote.js?ver=${verNo}"></script>
 	</c:if>
 	<c:if test="${scriptVersion eq false}">
-		<script type="text/javascript" src="<%=request.getContextPath()%>/js/app.js"></script>
+<%-- 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/app.js"></script> --%>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/clinicalnote.js"></script>
 	</c:if>
 
