@@ -35,13 +35,15 @@ public class CodeDtoSoap implements Serializable {
 
 		soapModel.setId(model.getId());
 		soapModel.setMasterCode(model.getMasterCode());
-		soapModel.setCodeDisplayText(model.getCodeDisplayText());
+		soapModel.setCodeDisplayTextEn(model.getCodeDisplayTextEn());
+		soapModel.setCodeDisplayTextChi(model.getCodeDisplayTextChi());
 		soapModel.setCodeActive(model.getCodeActive());
 		soapModel.setSubcodeEnabled(model.getSubcodeEnabled());
 		soapModel.setCodeRemarks(model.getCodeRemarks());
 		soapModel.setDetailCode(model.getDetailCode());
 		soapModel.setSeq(model.getSeq());
-		soapModel.setCodeDetailDisplayText(model.getCodeDetailDisplayText());
+		soapModel.setCodeDetailDisplayTextEn(model.getCodeDetailDisplayTextEn());
+		soapModel.setCodeDetailDisplayTextChi(model.getCodeDetailDisplayTextChi());
 		soapModel.setCodeDetailActive(model.getCodeDetailActive());
 		soapModel.setLevel(model.getLevel());
 		soapModel.setUpLevelId(model.getUpLevelId());
@@ -94,19 +96,19 @@ public class CodeDtoSoap implements Serializable {
 	public CodeDtoSoap() {
 	}
 
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _id;
 	}
 
-	public void setPrimaryKey(int pk) {
+	public void setPrimaryKey(long pk) {
 		setId(pk);
 	}
 
-	public int getId() {
+	public long getId() {
 		return _id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		_id = id;
 	}
 
@@ -118,12 +120,20 @@ public class CodeDtoSoap implements Serializable {
 		_masterCode = masterCode;
 	}
 
-	public String getCodeDisplayText() {
-		return _codeDisplayText;
+	public String getCodeDisplayTextEn() {
+		return _codeDisplayTextEn;
 	}
 
-	public void setCodeDisplayText(String codeDisplayText) {
-		_codeDisplayText = codeDisplayText;
+	public void setCodeDisplayTextEn(String codeDisplayTextEn) {
+		_codeDisplayTextEn = codeDisplayTextEn;
+	}
+
+	public String getCodeDisplayTextChi() {
+		return _codeDisplayTextChi;
+	}
+
+	public void setCodeDisplayTextChi(String codeDisplayTextChi) {
+		_codeDisplayTextChi = codeDisplayTextChi;
 	}
 
 	public Boolean getCodeActive() {
@@ -166,12 +176,20 @@ public class CodeDtoSoap implements Serializable {
 		_seq = seq;
 	}
 
-	public String getCodeDetailDisplayText() {
-		return _codeDetailDisplayText;
+	public String getCodeDetailDisplayTextEn() {
+		return _codeDetailDisplayTextEn;
 	}
 
-	public void setCodeDetailDisplayText(String codeDetailDisplayText) {
-		_codeDetailDisplayText = codeDetailDisplayText;
+	public void setCodeDetailDisplayTextEn(String codeDetailDisplayTextEn) {
+		_codeDetailDisplayTextEn = codeDetailDisplayTextEn;
+	}
+
+	public String getCodeDetailDisplayTextChi() {
+		return _codeDetailDisplayTextChi;
+	}
+
+	public void setCodeDetailDisplayTextChi(String codeDetailDisplayTextChi) {
+		_codeDetailDisplayTextChi = codeDetailDisplayTextChi;
 	}
 
 	public Boolean getCodeDetailActive() {
@@ -190,11 +208,11 @@ public class CodeDtoSoap implements Serializable {
 		_level = level;
 	}
 
-	public Integer getUpLevelId() {
+	public Long getUpLevelId() {
 		return _upLevelId;
 	}
 
-	public void setUpLevelId(Integer upLevelId) {
+	public void setUpLevelId(Long upLevelId) {
 		_upLevelId = upLevelId;
 	}
 
@@ -238,18 +256,20 @@ public class CodeDtoSoap implements Serializable {
 		_updatedBy = updatedBy;
 	}
 
-	private int _id;
+	private long _id;
 	private String _masterCode;
-	private String _codeDisplayText;
+	private String _codeDisplayTextEn;
+	private String _codeDisplayTextChi;
 	private Boolean _codeActive;
 	private Boolean _subcodeEnabled;
 	private String _codeRemarks;
 	private String _detailCode;
 	private Integer _seq;
-	private String _codeDetailDisplayText;
+	private String _codeDetailDisplayTextEn;
+	private String _codeDetailDisplayTextChi;
 	private Boolean _codeDetailActive;
 	private Integer _level;
-	private Integer _upLevelId;
+	private Long _upLevelId;
 	private String _codeDetailRemarks;
 	private Date _createDate;
 	private Date _updateDate;

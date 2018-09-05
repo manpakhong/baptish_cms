@@ -98,7 +98,7 @@ public abstract class CodeDetailLocalServiceBaseImpl
 	 * @return the new code detail
 	 */
 	@Override
-	public CodeDetail createCodeDetail(int id) {
+	public CodeDetail createCodeDetail(long id) {
 		return codeDetailPersistence.create(id);
 	}
 
@@ -111,7 +111,7 @@ public abstract class CodeDetailLocalServiceBaseImpl
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public CodeDetail deleteCodeDetail(int id) throws PortalException {
+	public CodeDetail deleteCodeDetail(long id) throws PortalException {
 		return codeDetailPersistence.remove(id);
 	}
 
@@ -211,7 +211,7 @@ public abstract class CodeDetailLocalServiceBaseImpl
 	}
 
 	@Override
-	public CodeDetail fetchCodeDetail(int id) {
+	public CodeDetail fetchCodeDetail(long id) {
 		return codeDetailPersistence.fetchByPrimaryKey(id);
 	}
 
@@ -223,7 +223,7 @@ public abstract class CodeDetailLocalServiceBaseImpl
 	 * @throws PortalException if a code detail with the primary key could not be found
 	 */
 	@Override
-	public CodeDetail getCodeDetail(int id) throws PortalException {
+	public CodeDetail getCodeDetail(long id) throws PortalException {
 		return codeDetailPersistence.findByPrimaryKey(id);
 	}
 

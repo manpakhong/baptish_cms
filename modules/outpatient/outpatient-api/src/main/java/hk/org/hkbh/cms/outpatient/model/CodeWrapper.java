@@ -59,7 +59,8 @@ public class CodeWrapper implements Code, ModelWrapper<Code> {
 
 		attributes.put("id", getId());
 		attributes.put("masterCode", getMasterCode());
-		attributes.put("display_text", getDisplay_text());
+		attributes.put("displayTextEn", getDisplayTextEn());
+		attributes.put("displayTextChi", getDisplayTextChi());
 		attributes.put("active", getActive());
 		attributes.put("subcodeEnabled", getSubcodeEnabled());
 		attributes.put("remarks", getRemarks());
@@ -73,7 +74,7 @@ public class CodeWrapper implements Code, ModelWrapper<Code> {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Integer id = (Integer)attributes.get("id");
+		Long id = (Long)attributes.get("id");
 
 		if (id != null) {
 			setId(id);
@@ -85,10 +86,16 @@ public class CodeWrapper implements Code, ModelWrapper<Code> {
 			setMasterCode(masterCode);
 		}
 
-		Integer display_text = (Integer)attributes.get("display_text");
+		String displayTextEn = (String)attributes.get("displayTextEn");
 
-		if (display_text != null) {
-			setDisplay_text(display_text);
+		if (displayTextEn != null) {
+			setDisplayTextEn(displayTextEn);
+		}
+
+		String displayTextChi = (String)attributes.get("displayTextChi");
+
+		if (displayTextChi != null) {
+			setDisplayTextChi(displayTextChi);
 		}
 
 		Boolean active = (Boolean)attributes.get("active");
@@ -175,13 +182,23 @@ public class CodeWrapper implements Code, ModelWrapper<Code> {
 	}
 
 	/**
-	* Returns the display_text of this code.
+	* Returns the display text chi of this code.
 	*
-	* @return the display_text of this code
+	* @return the display text chi of this code
 	*/
 	@Override
-	public java.lang.Integer getDisplay_text() {
-		return _code.getDisplay_text();
+	public java.lang.String getDisplayTextChi() {
+		return _code.getDisplayTextChi();
+	}
+
+	/**
+	* Returns the display text en of this code.
+	*
+	* @return the display text en of this code
+	*/
+	@Override
+	public java.lang.String getDisplayTextEn() {
+		return _code.getDisplayTextEn();
 	}
 
 	@Override
@@ -195,7 +212,7 @@ public class CodeWrapper implements Code, ModelWrapper<Code> {
 	* @return the ID of this code
 	*/
 	@Override
-	public int getId() {
+	public long getId() {
 		return _code.getId();
 	}
 
@@ -215,7 +232,7 @@ public class CodeWrapper implements Code, ModelWrapper<Code> {
 	* @return the primary key of this code
 	*/
 	@Override
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _code.getPrimaryKey();
 	}
 
@@ -325,13 +342,23 @@ public class CodeWrapper implements Code, ModelWrapper<Code> {
 	}
 
 	/**
-	* Sets the display_text of this code.
+	* Sets the display text chi of this code.
 	*
-	* @param display_text the display_text of this code
+	* @param displayTextChi the display text chi of this code
 	*/
 	@Override
-	public void setDisplay_text(java.lang.Integer display_text) {
-		_code.setDisplay_text(display_text);
+	public void setDisplayTextChi(java.lang.String displayTextChi) {
+		_code.setDisplayTextChi(displayTextChi);
+	}
+
+	/**
+	* Sets the display text en of this code.
+	*
+	* @param displayTextEn the display text en of this code
+	*/
+	@Override
+	public void setDisplayTextEn(java.lang.String displayTextEn) {
+		_code.setDisplayTextEn(displayTextEn);
 	}
 
 	@Override
@@ -356,7 +383,7 @@ public class CodeWrapper implements Code, ModelWrapper<Code> {
 	* @param id the ID of this code
 	*/
 	@Override
-	public void setId(int id) {
+	public void setId(long id) {
 		_code.setId(id);
 	}
 
@@ -381,7 +408,7 @@ public class CodeWrapper implements Code, ModelWrapper<Code> {
 	* @param primaryKey the primary key of this code
 	*/
 	@Override
-	public void setPrimaryKey(int primaryKey) {
+	public void setPrimaryKey(long primaryKey) {
 		_code.setPrimaryKey(primaryKey);
 	}
 

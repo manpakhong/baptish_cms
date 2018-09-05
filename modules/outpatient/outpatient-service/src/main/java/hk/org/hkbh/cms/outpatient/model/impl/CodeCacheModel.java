@@ -64,14 +64,16 @@ public class CodeCacheModel implements CacheModel<Code>, Externalizable {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{id=");
 		sb.append(id);
 		sb.append(", masterCode=");
 		sb.append(masterCode);
-		sb.append(", display_text=");
-		sb.append(display_text);
+		sb.append(", displayTextEn=");
+		sb.append(displayTextEn);
+		sb.append(", displayTextChi=");
+		sb.append(displayTextChi);
 		sb.append(", active=");
 		sb.append(active);
 		sb.append(", subcodeEnabled=");
@@ -104,7 +106,20 @@ public class CodeCacheModel implements CacheModel<Code>, Externalizable {
 			codeImpl.setMasterCode(masterCode);
 		}
 
-		codeImpl.setDisplay_text(display_text);
+		if (displayTextEn == null) {
+			codeImpl.setDisplayTextEn("");
+		}
+		else {
+			codeImpl.setDisplayTextEn(displayTextEn);
+		}
+
+		if (displayTextChi == null) {
+			codeImpl.setDisplayTextChi("");
+		}
+		else {
+			codeImpl.setDisplayTextChi(displayTextChi);
+		}
+
 		codeImpl.setActive(active);
 		codeImpl.setSubcodeEnabled(subcodeEnabled);
 
@@ -150,10 +165,10 @@ public class CodeCacheModel implements CacheModel<Code>, Externalizable {
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		id = objectInput.readInt();
+		id = objectInput.readLong();
 		masterCode = objectInput.readUTF();
-
-		display_text = objectInput.readInt();
+		displayTextEn = objectInput.readUTF();
+		displayTextChi = objectInput.readUTF();
 
 		active = objectInput.readBoolean();
 
@@ -168,7 +183,7 @@ public class CodeCacheModel implements CacheModel<Code>, Externalizable {
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeInt(id);
+		objectOutput.writeLong(id);
 
 		if (masterCode == null) {
 			objectOutput.writeUTF("");
@@ -177,7 +192,19 @@ public class CodeCacheModel implements CacheModel<Code>, Externalizable {
 			objectOutput.writeUTF(masterCode);
 		}
 
-		objectOutput.writeInt(display_text);
+		if (displayTextEn == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(displayTextEn);
+		}
+
+		if (displayTextChi == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(displayTextChi);
+		}
 
 		objectOutput.writeBoolean(active);
 
@@ -208,9 +235,10 @@ public class CodeCacheModel implements CacheModel<Code>, Externalizable {
 		}
 	}
 
-	public int id;
+	public long id;
 	public String masterCode;
-	public int display_text;
+	public String displayTextEn;
+	public String displayTextChi;
 	public boolean active;
 	public boolean subcodeEnabled;
 	public String remarks;

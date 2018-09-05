@@ -46,13 +46,16 @@ public class CodeDtoFinderBaseImpl extends BasePersistenceImpl<CodeDto> {
 
 			dbColumnNames.put("id", "code_detail_id");
 			dbColumnNames.put("masterCode", "master_code");
-			dbColumnNames.put("codeDisplayText", "code_display_text");
+			dbColumnNames.put("codeDisplayTextEn", "code_display_text_en");
+			dbColumnNames.put("codeDisplayTextChi", "code_display_text_chi");
 			dbColumnNames.put("codeActive", "code_active");
 			dbColumnNames.put("subcodeEnabled", "subcode_enabled");
 			dbColumnNames.put("codeRemarks", "code_remarks");
 			dbColumnNames.put("detailCode", "detail_code");
-			dbColumnNames.put("codeDetailDisplayText",
-				"code_detail_display_text");
+			dbColumnNames.put("codeDetailDisplayTextEn",
+				"code_detail_display_text_en");
+			dbColumnNames.put("codeDetailDisplayTextChi",
+				"code_detail_display_text_chi");
 			dbColumnNames.put("codeDetailActive", "code_detail_active");
 			dbColumnNames.put("upLevelId", "up_level_id");
 			dbColumnNames.put("codeDetailRemarks", "code_detail_remarks");

@@ -16,9 +16,13 @@ package hk.org.hkbh.cms.outpatient.model.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.expando.kernel.model.ExpandoBridge;
+import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
+
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -57,14 +61,17 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	 */
 	public static final String TABLE_NAME = "code_detail";
 	public static final Object[][] TABLE_COLUMNS = {
-			{ "id", Types.INTEGER },
+			{ "id", Types.BIGINT },
 			{ "code_id", Types.VARCHAR },
-			{ "detail_code", Types.INTEGER },
+			{ "detail_code", Types.BIGINT },
 			{ "seq", Types.INTEGER },
-			{ "display_text", Types.VARCHAR },
+			{ "display_text_en", Types.VARCHAR },
+			{ "display_text_chi", Types.VARCHAR },
+			{ "symbol", Types.VARCHAR },
+			{ "symbol_html_code", Types.VARCHAR },
 			{ "active", Types.BOOLEAN },
 			{ "level", Types.INTEGER },
-			{ "up_level_id", Types.INTEGER },
+			{ "up_level_id", Types.BIGINT },
 			{ "remarks", Types.VARCHAR },
 			{ "create_date", Types.TIMESTAMP },
 			{ "update_date", Types.TIMESTAMP },
@@ -74,14 +81,17 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP = new HashMap<String, Integer>();
 
 	static {
-		TABLE_COLUMNS_MAP.put("id", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("id", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("code_id", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("detail_code", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("detail_code", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("seq", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("display_text", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("display_text_en", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("display_text_chi", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("symbol", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("symbol_html_code", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("active", Types.BOOLEAN);
 		TABLE_COLUMNS_MAP.put("level", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("up_level_id", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("up_level_id", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("remarks", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("create_date", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("update_date", Types.TIMESTAMP);
@@ -89,7 +99,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 		TABLE_COLUMNS_MAP.put("updated_by", Types.VARCHAR);
 	}
 
-	public static final String TABLE_SQL_CREATE = "create table code_detail (id INTEGER not null primary key,code_id VARCHAR(75) null,detail_code INTEGER,seq INTEGER,display_text VARCHAR(75) null,active BOOLEAN,level INTEGER,up_level_id INTEGER,remarks VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table code_detail (id LONG not null primary key,code_id VARCHAR(75) null,detail_code LONG,seq INTEGER,display_text_en VARCHAR(75) null,display_text_chi VARCHAR(75) null,symbol VARCHAR(75) null,symbol_html_code VARCHAR(75) null,active BOOLEAN,level INTEGER,up_level_id LONG,remarks VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table code_detail";
 	public static final String ORDER_BY_JPQL = " ORDER BY codeDetail.id ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY code_detail.id ASC";
@@ -110,12 +120,12 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	}
 
 	@Override
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _id;
 	}
 
 	@Override
-	public void setPrimaryKey(int primaryKey) {
+	public void setPrimaryKey(long primaryKey) {
 		setId(primaryKey);
 	}
 
@@ -126,7 +136,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 
 	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey(((Integer)primaryKeyObj).intValue());
+		setPrimaryKey(((Long)primaryKeyObj).longValue());
 	}
 
 	@Override
@@ -147,7 +157,10 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 		attributes.put("codeId", getCodeId());
 		attributes.put("detailCode", getDetailCode());
 		attributes.put("seq", getSeq());
-		attributes.put("displayText", getDisplayText());
+		attributes.put("displayTextEn", getDisplayTextEn());
+		attributes.put("displayTextChi", getDisplayTextChi());
+		attributes.put("symbol", getSymbol());
+		attributes.put("symbol_html_code", getSymbol_html_code());
 		attributes.put("active", getActive());
 		attributes.put("level", getLevel());
 		attributes.put("upLevelId", getUpLevelId());
@@ -165,7 +178,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Integer id = (Integer)attributes.get("id");
+		Long id = (Long)attributes.get("id");
 
 		if (id != null) {
 			setId(id);
@@ -177,7 +190,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 			setCodeId(codeId);
 		}
 
-		Integer detailCode = (Integer)attributes.get("detailCode");
+		Long detailCode = (Long)attributes.get("detailCode");
 
 		if (detailCode != null) {
 			setDetailCode(detailCode);
@@ -189,10 +202,28 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 			setSeq(seq);
 		}
 
-		String displayText = (String)attributes.get("displayText");
+		String displayTextEn = (String)attributes.get("displayTextEn");
 
-		if (displayText != null) {
-			setDisplayText(displayText);
+		if (displayTextEn != null) {
+			setDisplayTextEn(displayTextEn);
+		}
+
+		String displayTextChi = (String)attributes.get("displayTextChi");
+
+		if (displayTextChi != null) {
+			setDisplayTextChi(displayTextChi);
+		}
+
+		String symbol = (String)attributes.get("symbol");
+
+		if (symbol != null) {
+			setSymbol(symbol);
+		}
+
+		String symbol_html_code = (String)attributes.get("symbol_html_code");
+
+		if (symbol_html_code != null) {
+			setSymbol_html_code(symbol_html_code);
 		}
 
 		Boolean active = (Boolean)attributes.get("active");
@@ -207,7 +238,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 			setLevel(level);
 		}
 
-		Integer upLevelId = (Integer)attributes.get("upLevelId");
+		Long upLevelId = (Long)attributes.get("upLevelId");
 
 		if (upLevelId != null) {
 			setUpLevelId(upLevelId);
@@ -245,12 +276,12 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	}
 
 	@Override
-	public int getId() {
+	public long getId() {
 		return _id;
 	}
 
 	@Override
-	public void setId(int id) {
+	public void setId(long id) {
 		_id = id;
 	}
 
@@ -270,12 +301,12 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	}
 
 	@Override
-	public Integer getDetailCode() {
+	public Long getDetailCode() {
 		return _detailCode;
 	}
 
 	@Override
-	public void setDetailCode(Integer detailCode) {
+	public void setDetailCode(Long detailCode) {
 		_detailCode = detailCode;
 	}
 
@@ -290,18 +321,63 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	}
 
 	@Override
-	public String getDisplayText() {
-		if (_displayText == null) {
+	public String getDisplayTextEn() {
+		if (_displayTextEn == null) {
 			return "";
 		}
 		else {
-			return _displayText;
+			return _displayTextEn;
 		}
 	}
 
 	@Override
-	public void setDisplayText(String displayText) {
-		_displayText = displayText;
+	public void setDisplayTextEn(String displayTextEn) {
+		_displayTextEn = displayTextEn;
+	}
+
+	@Override
+	public String getDisplayTextChi() {
+		if (_displayTextChi == null) {
+			return "";
+		}
+		else {
+			return _displayTextChi;
+		}
+	}
+
+	@Override
+	public void setDisplayTextChi(String displayTextChi) {
+		_displayTextChi = displayTextChi;
+	}
+
+	@Override
+	public String getSymbol() {
+		if (_symbol == null) {
+			return "";
+		}
+		else {
+			return _symbol;
+		}
+	}
+
+	@Override
+	public void setSymbol(String symbol) {
+		_symbol = symbol;
+	}
+
+	@Override
+	public String getSymbol_html_code() {
+		if (_symbol_html_code == null) {
+			return "";
+		}
+		else {
+			return _symbol_html_code;
+		}
+	}
+
+	@Override
+	public void setSymbol_html_code(String symbol_html_code) {
+		_symbol_html_code = symbol_html_code;
 	}
 
 	@Override
@@ -325,12 +401,12 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	}
 
 	@Override
-	public Integer getUpLevelId() {
+	public Long getUpLevelId() {
 		return _upLevelId;
 	}
 
 	@Override
-	public void setUpLevelId(Integer upLevelId) {
+	public void setUpLevelId(Long upLevelId) {
 		_upLevelId = upLevelId;
 	}
 
@@ -400,6 +476,19 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	}
 
 	@Override
+	public ExpandoBridge getExpandoBridge() {
+		return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
+			CodeDetail.class.getName(), getPrimaryKey());
+	}
+
+	@Override
+	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
+		ExpandoBridge expandoBridge = getExpandoBridge();
+
+		expandoBridge.setAttributes(serviceContext);
+	}
+
+	@Override
 	public CodeDetail toEscapedModel() {
 		if (_escapedModel == null) {
 			_escapedModel = (CodeDetail)ProxyUtil.newProxyInstance(_classLoader,
@@ -417,7 +506,10 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 		codeDetailImpl.setCodeId(getCodeId());
 		codeDetailImpl.setDetailCode(getDetailCode());
 		codeDetailImpl.setSeq(getSeq());
-		codeDetailImpl.setDisplayText(getDisplayText());
+		codeDetailImpl.setDisplayTextEn(getDisplayTextEn());
+		codeDetailImpl.setDisplayTextChi(getDisplayTextChi());
+		codeDetailImpl.setSymbol(getSymbol());
+		codeDetailImpl.setSymbol_html_code(getSymbol_html_code());
 		codeDetailImpl.setActive(getActive());
 		codeDetailImpl.setLevel(getLevel());
 		codeDetailImpl.setUpLevelId(getUpLevelId());
@@ -465,7 +557,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 
 		CodeDetail codeDetail = (CodeDetail)obj;
 
-		int primaryKey = codeDetail.getPrimaryKey();
+		long primaryKey = codeDetail.getPrimaryKey();
 
 		if (getPrimaryKey() == primaryKey) {
 			return true;
@@ -477,7 +569,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 
 	@Override
 	public int hashCode() {
-		return getPrimaryKey();
+		return (int)getPrimaryKey();
 	}
 
 	@Override
@@ -512,12 +604,36 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 
 		codeDetailCacheModel.seq = getSeq();
 
-		codeDetailCacheModel.displayText = getDisplayText();
+		codeDetailCacheModel.displayTextEn = getDisplayTextEn();
 
-		String displayText = codeDetailCacheModel.displayText;
+		String displayTextEn = codeDetailCacheModel.displayTextEn;
 
-		if ((displayText != null) && (displayText.length() == 0)) {
-			codeDetailCacheModel.displayText = null;
+		if ((displayTextEn != null) && (displayTextEn.length() == 0)) {
+			codeDetailCacheModel.displayTextEn = null;
+		}
+
+		codeDetailCacheModel.displayTextChi = getDisplayTextChi();
+
+		String displayTextChi = codeDetailCacheModel.displayTextChi;
+
+		if ((displayTextChi != null) && (displayTextChi.length() == 0)) {
+			codeDetailCacheModel.displayTextChi = null;
+		}
+
+		codeDetailCacheModel.symbol = getSymbol();
+
+		String symbol = codeDetailCacheModel.symbol;
+
+		if ((symbol != null) && (symbol.length() == 0)) {
+			codeDetailCacheModel.symbol = null;
+		}
+
+		codeDetailCacheModel.symbol_html_code = getSymbol_html_code();
+
+		String symbol_html_code = codeDetailCacheModel.symbol_html_code;
+
+		if ((symbol_html_code != null) && (symbol_html_code.length() == 0)) {
+			codeDetailCacheModel.symbol_html_code = null;
 		}
 
 		codeDetailCacheModel.active = getActive();
@@ -573,7 +689,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(27);
+		StringBundler sb = new StringBundler(33);
 
 		sb.append("{id=");
 		sb.append(getId());
@@ -583,8 +699,14 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 		sb.append(getDetailCode());
 		sb.append(", seq=");
 		sb.append(getSeq());
-		sb.append(", displayText=");
-		sb.append(getDisplayText());
+		sb.append(", displayTextEn=");
+		sb.append(getDisplayTextEn());
+		sb.append(", displayTextChi=");
+		sb.append(getDisplayTextChi());
+		sb.append(", symbol=");
+		sb.append(getSymbol());
+		sb.append(", symbol_html_code=");
+		sb.append(getSymbol_html_code());
 		sb.append(", active=");
 		sb.append(getActive());
 		sb.append(", level=");
@@ -608,7 +730,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(43);
+		StringBundler sb = new StringBundler(52);
 
 		sb.append("<model><model-name>");
 		sb.append("hk.org.hkbh.cms.outpatient.model.CodeDetail");
@@ -631,8 +753,20 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 		sb.append(getSeq());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>displayText</column-name><column-value><![CDATA[");
-		sb.append(getDisplayText());
+			"<column><column-name>displayTextEn</column-name><column-value><![CDATA[");
+		sb.append(getDisplayTextEn());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>displayTextChi</column-name><column-value><![CDATA[");
+		sb.append(getDisplayTextChi());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>symbol</column-name><column-value><![CDATA[");
+		sb.append(getSymbol());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>symbol_html_code</column-name><column-value><![CDATA[");
+		sb.append(getSymbol_html_code());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>active</column-name><column-value><![CDATA[");
@@ -676,14 +810,17 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
 			CodeDetail.class
 		};
-	private int _id;
+	private long _id;
 	private String _codeId;
-	private Integer _detailCode;
+	private Long _detailCode;
 	private Integer _seq;
-	private String _displayText;
+	private String _displayTextEn;
+	private String _displayTextChi;
+	private String _symbol;
+	private String _symbol_html_code;
 	private Boolean _active;
 	private Integer _level;
-	private Integer _upLevelId;
+	private Long _upLevelId;
 	private String _remarks;
 	private Date _createDate;
 	private Date _updateDate;

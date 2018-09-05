@@ -53,28 +53,28 @@ public interface CodeDetailModel extends BaseModel<CodeDetail> {
 	 *
 	 * @return the primary key of this code detail
 	 */
-	public int getPrimaryKey();
+	public long getPrimaryKey();
 
 	/**
 	 * Sets the primary key of this code detail.
 	 *
 	 * @param primaryKey the primary key of this code detail
 	 */
-	public void setPrimaryKey(int primaryKey);
+	public void setPrimaryKey(long primaryKey);
 
 	/**
 	 * Returns the ID of this code detail.
 	 *
 	 * @return the ID of this code detail
 	 */
-	public int getId();
+	public long getId();
 
 	/**
 	 * Sets the ID of this code detail.
 	 *
 	 * @param id the ID of this code detail
 	 */
-	public void setId(int id);
+	public void setId(long id);
 
 	/**
 	 * Returns the code ID of this code detail.
@@ -96,14 +96,14 @@ public interface CodeDetailModel extends BaseModel<CodeDetail> {
 	 *
 	 * @return the detail code of this code detail
 	 */
-	public Integer getDetailCode();
+	public Long getDetailCode();
 
 	/**
 	 * Sets the detail code of this code detail.
 	 *
 	 * @param detailCode the detail code of this code detail
 	 */
-	public void setDetailCode(Integer detailCode);
+	public void setDetailCode(Long detailCode);
 
 	/**
 	 * Returns the seq of this code detail.
@@ -120,19 +120,64 @@ public interface CodeDetailModel extends BaseModel<CodeDetail> {
 	public void setSeq(Integer seq);
 
 	/**
-	 * Returns the display text of this code detail.
+	 * Returns the display text en of this code detail.
 	 *
-	 * @return the display text of this code detail
+	 * @return the display text en of this code detail
 	 */
 	@AutoEscape
-	public String getDisplayText();
+	public String getDisplayTextEn();
 
 	/**
-	 * Sets the display text of this code detail.
+	 * Sets the display text en of this code detail.
 	 *
-	 * @param displayText the display text of this code detail
+	 * @param displayTextEn the display text en of this code detail
 	 */
-	public void setDisplayText(String displayText);
+	public void setDisplayTextEn(String displayTextEn);
+
+	/**
+	 * Returns the display text chi of this code detail.
+	 *
+	 * @return the display text chi of this code detail
+	 */
+	@AutoEscape
+	public String getDisplayTextChi();
+
+	/**
+	 * Sets the display text chi of this code detail.
+	 *
+	 * @param displayTextChi the display text chi of this code detail
+	 */
+	public void setDisplayTextChi(String displayTextChi);
+
+	/**
+	 * Returns the symbol of this code detail.
+	 *
+	 * @return the symbol of this code detail
+	 */
+	@AutoEscape
+	public String getSymbol();
+
+	/**
+	 * Sets the symbol of this code detail.
+	 *
+	 * @param symbol the symbol of this code detail
+	 */
+	public void setSymbol(String symbol);
+
+	/**
+	 * Returns the symbol_html_code of this code detail.
+	 *
+	 * @return the symbol_html_code of this code detail
+	 */
+	@AutoEscape
+	public String getSymbol_html_code();
+
+	/**
+	 * Sets the symbol_html_code of this code detail.
+	 *
+	 * @param symbol_html_code the symbol_html_code of this code detail
+	 */
+	public void setSymbol_html_code(String symbol_html_code);
 
 	/**
 	 * Returns the active of this code detail.
@@ -167,14 +212,14 @@ public interface CodeDetailModel extends BaseModel<CodeDetail> {
 	 *
 	 * @return the up level ID of this code detail
 	 */
-	public Integer getUpLevelId();
+	public Long getUpLevelId();
 
 	/**
 	 * Sets the up level ID of this code detail.
 	 *
 	 * @param upLevelId the up level ID of this code detail
 	 */
-	public void setUpLevelId(Integer upLevelId);
+	public void setUpLevelId(Long upLevelId);
 
 	/**
 	 * Returns the remarks of this code detail.

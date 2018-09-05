@@ -59,13 +59,15 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 
 		attributes.put("id", getId());
 		attributes.put("masterCode", getMasterCode());
-		attributes.put("codeDisplayText", getCodeDisplayText());
+		attributes.put("codeDisplayTextEn", getCodeDisplayTextEn());
+		attributes.put("codeDisplayTextChi", getCodeDisplayTextChi());
 		attributes.put("codeActive", getCodeActive());
 		attributes.put("subcodeEnabled", getSubcodeEnabled());
 		attributes.put("codeRemarks", getCodeRemarks());
 		attributes.put("detailCode", getDetailCode());
 		attributes.put("seq", getSeq());
-		attributes.put("codeDetailDisplayText", getCodeDetailDisplayText());
+		attributes.put("codeDetailDisplayTextEn", getCodeDetailDisplayTextEn());
+		attributes.put("codeDetailDisplayTextChi", getCodeDetailDisplayTextChi());
 		attributes.put("codeDetailActive", getCodeDetailActive());
 		attributes.put("level", getLevel());
 		attributes.put("upLevelId", getUpLevelId());
@@ -80,7 +82,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Integer id = (Integer)attributes.get("id");
+		Long id = (Long)attributes.get("id");
 
 		if (id != null) {
 			setId(id);
@@ -92,10 +94,16 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 			setMasterCode(masterCode);
 		}
 
-		String codeDisplayText = (String)attributes.get("codeDisplayText");
+		String codeDisplayTextEn = (String)attributes.get("codeDisplayTextEn");
 
-		if (codeDisplayText != null) {
-			setCodeDisplayText(codeDisplayText);
+		if (codeDisplayTextEn != null) {
+			setCodeDisplayTextEn(codeDisplayTextEn);
+		}
+
+		String codeDisplayTextChi = (String)attributes.get("codeDisplayTextChi");
+
+		if (codeDisplayTextChi != null) {
+			setCodeDisplayTextChi(codeDisplayTextChi);
 		}
 
 		Boolean codeActive = (Boolean)attributes.get("codeActive");
@@ -128,11 +136,18 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 			setSeq(seq);
 		}
 
-		String codeDetailDisplayText = (String)attributes.get(
-				"codeDetailDisplayText");
+		String codeDetailDisplayTextEn = (String)attributes.get(
+				"codeDetailDisplayTextEn");
 
-		if (codeDetailDisplayText != null) {
-			setCodeDetailDisplayText(codeDetailDisplayText);
+		if (codeDetailDisplayTextEn != null) {
+			setCodeDetailDisplayTextEn(codeDetailDisplayTextEn);
+		}
+
+		String codeDetailDisplayTextChi = (String)attributes.get(
+				"codeDetailDisplayTextChi");
+
+		if (codeDetailDisplayTextChi != null) {
+			setCodeDetailDisplayTextChi(codeDetailDisplayTextChi);
 		}
 
 		Boolean codeDetailActive = (Boolean)attributes.get("codeDetailActive");
@@ -147,7 +162,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 			setLevel(level);
 		}
 
-		Integer upLevelId = (Integer)attributes.get("upLevelId");
+		Long upLevelId = (Long)attributes.get("upLevelId");
 
 		if (upLevelId != null) {
 			setUpLevelId(upLevelId);
@@ -215,13 +230,23 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	}
 
 	/**
-	* Returns the code detail display text of this code dto.
+	* Returns the code detail display text chi of this code dto.
 	*
-	* @return the code detail display text of this code dto
+	* @return the code detail display text chi of this code dto
 	*/
 	@Override
-	public java.lang.String getCodeDetailDisplayText() {
-		return _codeDto.getCodeDetailDisplayText();
+	public java.lang.String getCodeDetailDisplayTextChi() {
+		return _codeDto.getCodeDetailDisplayTextChi();
+	}
+
+	/**
+	* Returns the code detail display text en of this code dto.
+	*
+	* @return the code detail display text en of this code dto
+	*/
+	@Override
+	public java.lang.String getCodeDetailDisplayTextEn() {
+		return _codeDto.getCodeDetailDisplayTextEn();
 	}
 
 	/**
@@ -235,13 +260,23 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	}
 
 	/**
-	* Returns the code display text of this code dto.
+	* Returns the code display text chi of this code dto.
 	*
-	* @return the code display text of this code dto
+	* @return the code display text chi of this code dto
 	*/
 	@Override
-	public java.lang.String getCodeDisplayText() {
-		return _codeDto.getCodeDisplayText();
+	public java.lang.String getCodeDisplayTextChi() {
+		return _codeDto.getCodeDisplayTextChi();
+	}
+
+	/**
+	* Returns the code display text en of this code dto.
+	*
+	* @return the code display text en of this code dto
+	*/
+	@Override
+	public java.lang.String getCodeDisplayTextEn() {
+		return _codeDto.getCodeDisplayTextEn();
 	}
 
 	/**
@@ -295,7 +330,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	* @return the ID of this code dto
 	*/
 	@Override
-	public int getId() {
+	public long getId() {
 		return _codeDto.getId();
 	}
 
@@ -325,7 +360,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	* @return the primary key of this code dto
 	*/
 	@Override
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _codeDto.getPrimaryKey();
 	}
 
@@ -380,7 +415,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	* @return the up level ID of this code dto
 	*/
 	@Override
-	public java.lang.Integer getUpLevelId() {
+	public java.lang.Long getUpLevelId() {
 		return _codeDto.getUpLevelId();
 	}
 
@@ -435,13 +470,25 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	}
 
 	/**
-	* Sets the code detail display text of this code dto.
+	* Sets the code detail display text chi of this code dto.
 	*
-	* @param codeDetailDisplayText the code detail display text of this code dto
+	* @param codeDetailDisplayTextChi the code detail display text chi of this code dto
 	*/
 	@Override
-	public void setCodeDetailDisplayText(java.lang.String codeDetailDisplayText) {
-		_codeDto.setCodeDetailDisplayText(codeDetailDisplayText);
+	public void setCodeDetailDisplayTextChi(
+		java.lang.String codeDetailDisplayTextChi) {
+		_codeDto.setCodeDetailDisplayTextChi(codeDetailDisplayTextChi);
+	}
+
+	/**
+	* Sets the code detail display text en of this code dto.
+	*
+	* @param codeDetailDisplayTextEn the code detail display text en of this code dto
+	*/
+	@Override
+	public void setCodeDetailDisplayTextEn(
+		java.lang.String codeDetailDisplayTextEn) {
+		_codeDto.setCodeDetailDisplayTextEn(codeDetailDisplayTextEn);
 	}
 
 	/**
@@ -455,13 +502,23 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	}
 
 	/**
-	* Sets the code display text of this code dto.
+	* Sets the code display text chi of this code dto.
 	*
-	* @param codeDisplayText the code display text of this code dto
+	* @param codeDisplayTextChi the code display text chi of this code dto
 	*/
 	@Override
-	public void setCodeDisplayText(java.lang.String codeDisplayText) {
-		_codeDto.setCodeDisplayText(codeDisplayText);
+	public void setCodeDisplayTextChi(java.lang.String codeDisplayTextChi) {
+		_codeDto.setCodeDisplayTextChi(codeDisplayTextChi);
+	}
+
+	/**
+	* Sets the code display text en of this code dto.
+	*
+	* @param codeDisplayTextEn the code display text en of this code dto
+	*/
+	@Override
+	public void setCodeDisplayTextEn(java.lang.String codeDisplayTextEn) {
+		_codeDto.setCodeDisplayTextEn(codeDisplayTextEn);
 	}
 
 	/**
@@ -526,7 +583,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	* @param id the ID of this code dto
 	*/
 	@Override
-	public void setId(int id) {
+	public void setId(long id) {
 		_codeDto.setId(id);
 	}
 
@@ -561,7 +618,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	* @param primaryKey the primary key of this code dto
 	*/
 	@Override
-	public void setPrimaryKey(int primaryKey) {
+	public void setPrimaryKey(long primaryKey) {
 		_codeDto.setPrimaryKey(primaryKey);
 	}
 
@@ -616,7 +673,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	* @param upLevelId the up level ID of this code dto
 	*/
 	@Override
-	public void setUpLevelId(java.lang.Integer upLevelId) {
+	public void setUpLevelId(java.lang.Long upLevelId) {
 		_codeDto.setUpLevelId(upLevelId);
 	}
 

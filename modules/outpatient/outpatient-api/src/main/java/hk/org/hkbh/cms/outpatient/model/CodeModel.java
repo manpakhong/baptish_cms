@@ -53,28 +53,28 @@ public interface CodeModel extends BaseModel<Code> {
 	 *
 	 * @return the primary key of this code
 	 */
-	public int getPrimaryKey();
+	public long getPrimaryKey();
 
 	/**
 	 * Sets the primary key of this code.
 	 *
 	 * @param primaryKey the primary key of this code
 	 */
-	public void setPrimaryKey(int primaryKey);
+	public void setPrimaryKey(long primaryKey);
 
 	/**
 	 * Returns the ID of this code.
 	 *
 	 * @return the ID of this code
 	 */
-	public int getId();
+	public long getId();
 
 	/**
 	 * Sets the ID of this code.
 	 *
 	 * @param id the ID of this code
 	 */
-	public void setId(int id);
+	public void setId(long id);
 
 	/**
 	 * Returns the master code of this code.
@@ -92,18 +92,34 @@ public interface CodeModel extends BaseModel<Code> {
 	public void setMasterCode(String masterCode);
 
 	/**
-	 * Returns the display_text of this code.
+	 * Returns the display text en of this code.
 	 *
-	 * @return the display_text of this code
+	 * @return the display text en of this code
 	 */
-	public Integer getDisplay_text();
+	@AutoEscape
+	public String getDisplayTextEn();
 
 	/**
-	 * Sets the display_text of this code.
+	 * Sets the display text en of this code.
 	 *
-	 * @param display_text the display_text of this code
+	 * @param displayTextEn the display text en of this code
 	 */
-	public void setDisplay_text(Integer display_text);
+	public void setDisplayTextEn(String displayTextEn);
+
+	/**
+	 * Returns the display text chi of this code.
+	 *
+	 * @return the display text chi of this code
+	 */
+	@AutoEscape
+	public String getDisplayTextChi();
+
+	/**
+	 * Sets the display text chi of this code.
+	 *
+	 * @param displayTextChi the display text chi of this code
+	 */
+	public void setDisplayTextChi(String displayTextChi);
 
 	/**
 	 * Returns the active of this code.

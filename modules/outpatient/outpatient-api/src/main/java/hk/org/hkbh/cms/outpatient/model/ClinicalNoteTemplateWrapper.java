@@ -75,20 +75,19 @@ public class ClinicalNoteTemplateWrapper implements ClinicalNoteTemplate,
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Integer id = (Integer)attributes.get("id");
+		Long id = (Long)attributes.get("id");
 
 		if (id != null) {
 			setId(id);
 		}
 
-		Integer userId = (Integer)attributes.get("userId");
+		Long userId = (Long)attributes.get("userId");
 
 		if (userId != null) {
 			setUserId(userId);
 		}
 
-		Integer templateTypeCodeId = (Integer)attributes.get(
-				"templateTypeCodeId");
+		Long templateTypeCodeId = (Long)attributes.get("templateTypeCodeId");
 
 		if (templateTypeCodeId != null) {
 			setTemplateTypeCodeId(templateTypeCodeId);
@@ -179,7 +178,7 @@ public class ClinicalNoteTemplateWrapper implements ClinicalNoteTemplate,
 	* @return the ID of this clinical note template
 	*/
 	@Override
-	public int getId() {
+	public long getId() {
 		return _clinicalNoteTemplate.getId();
 	}
 
@@ -189,7 +188,7 @@ public class ClinicalNoteTemplateWrapper implements ClinicalNoteTemplate,
 	* @return the primary key of this clinical note template
 	*/
 	@Override
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _clinicalNoteTemplate.getPrimaryKey();
 	}
 
@@ -234,7 +233,7 @@ public class ClinicalNoteTemplateWrapper implements ClinicalNoteTemplate,
 	* @return the template type code ID of this clinical note template
 	*/
 	@Override
-	public java.lang.Integer getTemplateTypeCodeId() {
+	public java.lang.Long getTemplateTypeCodeId() {
 		return _clinicalNoteTemplate.getTemplateTypeCodeId();
 	}
 
@@ -264,7 +263,7 @@ public class ClinicalNoteTemplateWrapper implements ClinicalNoteTemplate,
 	* @return the user ID of this clinical note template
 	*/
 	@Override
-	public java.lang.Integer getUserId() {
+	public java.lang.Long getUserId() {
 		return _clinicalNoteTemplate.getUserId();
 	}
 
@@ -340,7 +339,7 @@ public class ClinicalNoteTemplateWrapper implements ClinicalNoteTemplate,
 	* @param id the ID of this clinical note template
 	*/
 	@Override
-	public void setId(int id) {
+	public void setId(long id) {
 		_clinicalNoteTemplate.setId(id);
 	}
 
@@ -355,7 +354,7 @@ public class ClinicalNoteTemplateWrapper implements ClinicalNoteTemplate,
 	* @param primaryKey the primary key of this clinical note template
 	*/
 	@Override
-	public void setPrimaryKey(int primaryKey) {
+	public void setPrimaryKey(long primaryKey) {
 		_clinicalNoteTemplate.setPrimaryKey(primaryKey);
 	}
 
@@ -400,7 +399,7 @@ public class ClinicalNoteTemplateWrapper implements ClinicalNoteTemplate,
 	* @param templateTypeCodeId the template type code ID of this clinical note template
 	*/
 	@Override
-	public void setTemplateTypeCodeId(java.lang.Integer templateTypeCodeId) {
+	public void setTemplateTypeCodeId(java.lang.Long templateTypeCodeId) {
 		_clinicalNoteTemplate.setTemplateTypeCodeId(templateTypeCodeId);
 	}
 
@@ -430,7 +429,7 @@ public class ClinicalNoteTemplateWrapper implements ClinicalNoteTemplate,
 	* @param userId the user ID of this clinical note template
 	*/
 	@Override
-	public void setUserId(java.lang.Integer userId) {
+	public void setUserId(java.lang.Long userId) {
 		_clinicalNoteTemplate.setUserId(userId);
 	}
 

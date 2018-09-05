@@ -65,7 +65,7 @@ public class CodeDetailCacheModel implements CacheModel<CodeDetail>,
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(27);
+		StringBundler sb = new StringBundler(33);
 
 		sb.append("{id=");
 		sb.append(id);
@@ -75,8 +75,14 @@ public class CodeDetailCacheModel implements CacheModel<CodeDetail>,
 		sb.append(detailCode);
 		sb.append(", seq=");
 		sb.append(seq);
-		sb.append(", displayText=");
-		sb.append(displayText);
+		sb.append(", displayTextEn=");
+		sb.append(displayTextEn);
+		sb.append(", displayTextChi=");
+		sb.append(displayTextChi);
+		sb.append(", symbol=");
+		sb.append(symbol);
+		sb.append(", symbol_html_code=");
+		sb.append(symbol_html_code);
 		sb.append(", active=");
 		sb.append(active);
 		sb.append(", level=");
@@ -114,11 +120,32 @@ public class CodeDetailCacheModel implements CacheModel<CodeDetail>,
 		codeDetailImpl.setDetailCode(detailCode);
 		codeDetailImpl.setSeq(seq);
 
-		if (displayText == null) {
-			codeDetailImpl.setDisplayText("");
+		if (displayTextEn == null) {
+			codeDetailImpl.setDisplayTextEn("");
 		}
 		else {
-			codeDetailImpl.setDisplayText(displayText);
+			codeDetailImpl.setDisplayTextEn(displayTextEn);
+		}
+
+		if (displayTextChi == null) {
+			codeDetailImpl.setDisplayTextChi("");
+		}
+		else {
+			codeDetailImpl.setDisplayTextChi(displayTextChi);
+		}
+
+		if (symbol == null) {
+			codeDetailImpl.setSymbol("");
+		}
+		else {
+			codeDetailImpl.setSymbol(symbol);
+		}
+
+		if (symbol_html_code == null) {
+			codeDetailImpl.setSymbol_html_code("");
+		}
+		else {
+			codeDetailImpl.setSymbol_html_code(symbol_html_code);
 		}
 
 		codeDetailImpl.setActive(active);
@@ -167,19 +194,22 @@ public class CodeDetailCacheModel implements CacheModel<CodeDetail>,
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		id = objectInput.readInt();
+		id = objectInput.readLong();
 		codeId = objectInput.readUTF();
 
-		detailCode = objectInput.readInt();
+		detailCode = objectInput.readLong();
 
 		seq = objectInput.readInt();
-		displayText = objectInput.readUTF();
+		displayTextEn = objectInput.readUTF();
+		displayTextChi = objectInput.readUTF();
+		symbol = objectInput.readUTF();
+		symbol_html_code = objectInput.readUTF();
 
 		active = objectInput.readBoolean();
 
 		level = objectInput.readInt();
 
-		upLevelId = objectInput.readInt();
+		upLevelId = objectInput.readLong();
 		remarks = objectInput.readUTF();
 		createDate = objectInput.readLong();
 		updateDate = objectInput.readLong();
@@ -190,7 +220,7 @@ public class CodeDetailCacheModel implements CacheModel<CodeDetail>,
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeInt(id);
+		objectOutput.writeLong(id);
 
 		if (codeId == null) {
 			objectOutput.writeUTF("");
@@ -199,22 +229,43 @@ public class CodeDetailCacheModel implements CacheModel<CodeDetail>,
 			objectOutput.writeUTF(codeId);
 		}
 
-		objectOutput.writeInt(detailCode);
+		objectOutput.writeLong(detailCode);
 
 		objectOutput.writeInt(seq);
 
-		if (displayText == null) {
+		if (displayTextEn == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(displayText);
+			objectOutput.writeUTF(displayTextEn);
+		}
+
+		if (displayTextChi == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(displayTextChi);
+		}
+
+		if (symbol == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(symbol);
+		}
+
+		if (symbol_html_code == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(symbol_html_code);
 		}
 
 		objectOutput.writeBoolean(active);
 
 		objectOutput.writeInt(level);
 
-		objectOutput.writeInt(upLevelId);
+		objectOutput.writeLong(upLevelId);
 
 		if (remarks == null) {
 			objectOutput.writeUTF("");
@@ -241,14 +292,17 @@ public class CodeDetailCacheModel implements CacheModel<CodeDetail>,
 		}
 	}
 
-	public int id;
+	public long id;
 	public String codeId;
-	public int detailCode;
+	public long detailCode;
 	public int seq;
-	public String displayText;
+	public String displayTextEn;
+	public String displayTextChi;
+	public String symbol;
+	public String symbol_html_code;
 	public boolean active;
 	public int level;
-	public int upLevelId;
+	public long upLevelId;
 	public String remarks;
 	public long createDate;
 	public long updateDate;

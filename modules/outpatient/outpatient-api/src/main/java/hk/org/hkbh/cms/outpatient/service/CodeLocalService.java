@@ -76,7 +76,7 @@ public interface CodeLocalService extends BaseLocalService,
 	* @param id the primary key for the new code
 	* @return the new code
 	*/
-	public Code createCode(int id);
+	public Code createCode(long id);
 
 	/**
 	* Deletes the code from the database. Also notifies the appropriate model listeners.
@@ -95,7 +95,7 @@ public interface CodeLocalService extends BaseLocalService,
 	* @throws PortalException if a code with the primary key could not be found
 	*/
 	@Indexable(type = IndexableType.DELETE)
-	public Code deleteCode(int id) throws PortalException;
+	public Code deleteCode(long id) throws PortalException;
 
 	/**
 	* @throws PortalException
@@ -164,7 +164,7 @@ public interface CodeLocalService extends BaseLocalService,
 		Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Code fetchCode(int id);
+	public Code fetchCode(long id);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -177,7 +177,7 @@ public interface CodeLocalService extends BaseLocalService,
 	* @throws PortalException if a code with the primary key could not be found
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Code getCode(int id) throws PortalException;
+	public Code getCode(long id) throws PortalException;
 
 	/**
 	* Returns a range of all the codes.

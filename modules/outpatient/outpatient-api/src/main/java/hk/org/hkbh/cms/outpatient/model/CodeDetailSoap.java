@@ -37,7 +37,10 @@ public class CodeDetailSoap implements Serializable {
 		soapModel.setCodeId(model.getCodeId());
 		soapModel.setDetailCode(model.getDetailCode());
 		soapModel.setSeq(model.getSeq());
-		soapModel.setDisplayText(model.getDisplayText());
+		soapModel.setDisplayTextEn(model.getDisplayTextEn());
+		soapModel.setDisplayTextChi(model.getDisplayTextChi());
+		soapModel.setSymbol(model.getSymbol());
+		soapModel.setSymbol_html_code(model.getSymbol_html_code());
 		soapModel.setActive(model.getActive());
 		soapModel.setLevel(model.getLevel());
 		soapModel.setUpLevelId(model.getUpLevelId());
@@ -90,19 +93,19 @@ public class CodeDetailSoap implements Serializable {
 	public CodeDetailSoap() {
 	}
 
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _id;
 	}
 
-	public void setPrimaryKey(int pk) {
+	public void setPrimaryKey(long pk) {
 		setId(pk);
 	}
 
-	public int getId() {
+	public long getId() {
 		return _id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		_id = id;
 	}
 
@@ -114,11 +117,11 @@ public class CodeDetailSoap implements Serializable {
 		_codeId = codeId;
 	}
 
-	public Integer getDetailCode() {
+	public Long getDetailCode() {
 		return _detailCode;
 	}
 
-	public void setDetailCode(Integer detailCode) {
+	public void setDetailCode(Long detailCode) {
 		_detailCode = detailCode;
 	}
 
@@ -130,12 +133,36 @@ public class CodeDetailSoap implements Serializable {
 		_seq = seq;
 	}
 
-	public String getDisplayText() {
-		return _displayText;
+	public String getDisplayTextEn() {
+		return _displayTextEn;
 	}
 
-	public void setDisplayText(String displayText) {
-		_displayText = displayText;
+	public void setDisplayTextEn(String displayTextEn) {
+		_displayTextEn = displayTextEn;
+	}
+
+	public String getDisplayTextChi() {
+		return _displayTextChi;
+	}
+
+	public void setDisplayTextChi(String displayTextChi) {
+		_displayTextChi = displayTextChi;
+	}
+
+	public String getSymbol() {
+		return _symbol;
+	}
+
+	public void setSymbol(String symbol) {
+		_symbol = symbol;
+	}
+
+	public String getSymbol_html_code() {
+		return _symbol_html_code;
+	}
+
+	public void setSymbol_html_code(String symbol_html_code) {
+		_symbol_html_code = symbol_html_code;
 	}
 
 	public Boolean getActive() {
@@ -154,11 +181,11 @@ public class CodeDetailSoap implements Serializable {
 		_level = level;
 	}
 
-	public Integer getUpLevelId() {
+	public Long getUpLevelId() {
 		return _upLevelId;
 	}
 
-	public void setUpLevelId(Integer upLevelId) {
+	public void setUpLevelId(Long upLevelId) {
 		_upLevelId = upLevelId;
 	}
 
@@ -202,14 +229,17 @@ public class CodeDetailSoap implements Serializable {
 		_updatedBy = updatedBy;
 	}
 
-	private int _id;
+	private long _id;
 	private String _codeId;
-	private Integer _detailCode;
+	private Long _detailCode;
 	private Integer _seq;
-	private String _displayText;
+	private String _displayTextEn;
+	private String _displayTextChi;
+	private String _symbol;
+	private String _symbol_html_code;
 	private Boolean _active;
 	private Integer _level;
-	private Integer _upLevelId;
+	private Long _upLevelId;
 	private String _remarks;
 	private Date _createDate;
 	private Date _updateDate;

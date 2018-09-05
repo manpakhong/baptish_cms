@@ -52,7 +52,7 @@ public class CodeDetailLocalServiceWrapper implements CodeDetailLocalService,
 	* @return the new code detail
 	*/
 	@Override
-	public hk.org.hkbh.cms.outpatient.model.CodeDetail createCodeDetail(int id) {
+	public hk.org.hkbh.cms.outpatient.model.CodeDetail createCodeDetail(long id) {
 		return _codeDetailLocalService.createCodeDetail(id);
 	}
 
@@ -76,7 +76,7 @@ public class CodeDetailLocalServiceWrapper implements CodeDetailLocalService,
 	* @throws PortalException if a code detail with the primary key could not be found
 	*/
 	@Override
-	public hk.org.hkbh.cms.outpatient.model.CodeDetail deleteCodeDetail(int id)
+	public hk.org.hkbh.cms.outpatient.model.CodeDetail deleteCodeDetail(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return _codeDetailLocalService.deleteCodeDetail(id);
 	}
@@ -177,7 +177,7 @@ public class CodeDetailLocalServiceWrapper implements CodeDetailLocalService,
 	}
 
 	@Override
-	public hk.org.hkbh.cms.outpatient.model.CodeDetail fetchCodeDetail(int id) {
+	public hk.org.hkbh.cms.outpatient.model.CodeDetail fetchCodeDetail(long id) {
 		return _codeDetailLocalService.fetchCodeDetail(id);
 	}
 
@@ -194,7 +194,7 @@ public class CodeDetailLocalServiceWrapper implements CodeDetailLocalService,
 	* @throws PortalException if a code detail with the primary key could not be found
 	*/
 	@Override
-	public hk.org.hkbh.cms.outpatient.model.CodeDetail getCodeDetail(int id)
+	public hk.org.hkbh.cms.outpatient.model.CodeDetail getCodeDetail(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return _codeDetailLocalService.getCodeDetail(id);
 	}

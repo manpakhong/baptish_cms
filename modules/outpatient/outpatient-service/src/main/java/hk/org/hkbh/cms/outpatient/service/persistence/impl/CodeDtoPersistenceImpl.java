@@ -400,7 +400,7 @@ public class CodeDtoPersistenceImpl extends BasePersistenceImpl<CodeDto>
 	 * @throws NoSuchCodeDtoException if a code dto with the primary key could not be found
 	 */
 	@Override
-	public CodeDto[] findByMasterCode_PrevAndNext(int id, String masterCode,
+	public CodeDto[] findByMasterCode_PrevAndNext(long id, String masterCode,
 		OrderByComparator<CodeDto> orderByComparator)
 		throws NoSuchCodeDtoException {
 		CodeDto codeDto = findByPrimaryKey(id);
@@ -645,13 +645,16 @@ public class CodeDtoPersistenceImpl extends BasePersistenceImpl<CodeDto>
 
 			dbColumnNames.put("id", "code_detail_id");
 			dbColumnNames.put("masterCode", "master_code");
-			dbColumnNames.put("codeDisplayText", "code_display_text");
+			dbColumnNames.put("codeDisplayTextEn", "code_display_text_en");
+			dbColumnNames.put("codeDisplayTextChi", "code_display_text_chi");
 			dbColumnNames.put("codeActive", "code_active");
 			dbColumnNames.put("subcodeEnabled", "subcode_enabled");
 			dbColumnNames.put("codeRemarks", "code_remarks");
 			dbColumnNames.put("detailCode", "detail_code");
-			dbColumnNames.put("codeDetailDisplayText",
-				"code_detail_display_text");
+			dbColumnNames.put("codeDetailDisplayTextEn",
+				"code_detail_display_text_en");
+			dbColumnNames.put("codeDetailDisplayTextChi",
+				"code_detail_display_text_chi");
 			dbColumnNames.put("codeDetailActive", "code_detail_active");
 			dbColumnNames.put("upLevelId", "up_level_id");
 			dbColumnNames.put("codeDetailRemarks", "code_detail_remarks");
@@ -750,7 +753,7 @@ public class CodeDtoPersistenceImpl extends BasePersistenceImpl<CodeDto>
 	 * @return the new code dto
 	 */
 	@Override
-	public CodeDto create(int id) {
+	public CodeDto create(long id) {
 		CodeDto codeDto = new CodeDtoImpl();
 
 		codeDto.setNew(true);
@@ -767,7 +770,7 @@ public class CodeDtoPersistenceImpl extends BasePersistenceImpl<CodeDto>
 	 * @throws NoSuchCodeDtoException if a code dto with the primary key could not be found
 	 */
 	@Override
-	public CodeDto remove(int id) throws NoSuchCodeDtoException {
+	public CodeDto remove(long id) throws NoSuchCodeDtoException {
 		return remove((Serializable)id);
 	}
 
@@ -928,13 +931,15 @@ public class CodeDtoPersistenceImpl extends BasePersistenceImpl<CodeDto>
 
 		codeDtoImpl.setId(codeDto.getId());
 		codeDtoImpl.setMasterCode(codeDto.getMasterCode());
-		codeDtoImpl.setCodeDisplayText(codeDto.getCodeDisplayText());
+		codeDtoImpl.setCodeDisplayTextEn(codeDto.getCodeDisplayTextEn());
+		codeDtoImpl.setCodeDisplayTextChi(codeDto.getCodeDisplayTextChi());
 		codeDtoImpl.setCodeActive(codeDto.getCodeActive());
 		codeDtoImpl.setSubcodeEnabled(codeDto.getSubcodeEnabled());
 		codeDtoImpl.setCodeRemarks(codeDto.getCodeRemarks());
 		codeDtoImpl.setDetailCode(codeDto.getDetailCode());
 		codeDtoImpl.setSeq(codeDto.getSeq());
-		codeDtoImpl.setCodeDetailDisplayText(codeDto.getCodeDetailDisplayText());
+		codeDtoImpl.setCodeDetailDisplayTextEn(codeDto.getCodeDetailDisplayTextEn());
+		codeDtoImpl.setCodeDetailDisplayTextChi(codeDto.getCodeDetailDisplayTextChi());
 		codeDtoImpl.setCodeDetailActive(codeDto.getCodeDetailActive());
 		codeDtoImpl.setLevel(codeDto.getLevel());
 		codeDtoImpl.setUpLevelId(codeDto.getUpLevelId());
@@ -979,7 +984,7 @@ public class CodeDtoPersistenceImpl extends BasePersistenceImpl<CodeDto>
 	 * @throws NoSuchCodeDtoException if a code dto with the primary key could not be found
 	 */
 	@Override
-	public CodeDto findByPrimaryKey(int id) throws NoSuchCodeDtoException {
+	public CodeDto findByPrimaryKey(long id) throws NoSuchCodeDtoException {
 		return findByPrimaryKey((Serializable)id);
 	}
 
@@ -1037,7 +1042,7 @@ public class CodeDtoPersistenceImpl extends BasePersistenceImpl<CodeDto>
 	 * @return the code dto, or <code>null</code> if a code dto with the primary key could not be found
 	 */
 	@Override
-	public CodeDto fetchByPrimaryKey(int id) {
+	public CodeDto fetchByPrimaryKey(long id) {
 		return fetchByPrimaryKey((Serializable)id);
 	}
 
@@ -1094,7 +1099,7 @@ public class CodeDtoPersistenceImpl extends BasePersistenceImpl<CodeDto>
 		query.append(_SQL_SELECT_CODEDTO_WHERE_PKS_IN);
 
 		for (Serializable primaryKey : uncachedPrimaryKeys) {
-			query.append((int)primaryKey);
+			query.append((long)primaryKey);
 
 			query.append(",");
 		}
@@ -1362,10 +1367,10 @@ public class CodeDtoPersistenceImpl extends BasePersistenceImpl<CodeDto>
 	private static final String _NO_SUCH_ENTITY_WITH_KEY = "No CodeDto exists with the key {";
 	private static final Log _log = LogFactoryUtil.getLog(CodeDtoPersistenceImpl.class);
 	private static final Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
-				"id", "masterCode", "codeDisplayText", "codeActive",
-				"subcodeEnabled", "codeRemarks", "detailCode",
-				"codeDetailDisplayText", "codeDetailActive", "upLevelId",
-				"codeDetailRemarks", "createDate", "updateDate", "createdBy",
-				"updatedBy"
+				"id", "masterCode", "codeDisplayTextEn", "codeDisplayTextChi",
+				"codeActive", "subcodeEnabled", "codeRemarks", "detailCode",
+				"codeDetailDisplayTextEn", "codeDetailDisplayTextChi",
+				"codeDetailActive", "upLevelId", "codeDetailRemarks",
+				"createDate", "updateDate", "createdBy", "updatedBy"
 			});
 }

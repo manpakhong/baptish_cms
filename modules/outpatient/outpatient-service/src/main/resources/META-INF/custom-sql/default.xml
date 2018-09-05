@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <custom-sql>
-<!-- <sql file="custom-sql/code-detail-sql -->.xml"/>
+<!-- <sql file="custom-sql/code-detail-sql .xml"/> -->
 <sql id="hk.org.hkbh.cms.outpatient.service.persistence.impl.CodeDtoFinderImpl.getCodeDtoByMasterCode">
 	     <![CDATA[
 			select 
 			c.master_code, 
-			c.display_text as code_display_text, 
+			c.display_text_en as code_display_text_en, 
+            c.display_text_chi as code_display_text_chi,
 			c.active as code_active, 
 			c.subcode_enabled, 
 			c.remarks as code_remarks, 
 			cd.id as code_detail_id, 
 			cd.detail_code, 
 			cd.seq, 
-			cd.display_text as code_detail_display_text, 
+			cd.display_text_en as code_detail_display_text_en, 
+            cd.display_text_chi as code_detail_display_text_chi, 
+            cd.symbol,
+            cd.symbol_html_code,
 			cd.active as code_detail_active, 
 			cd.level, 
 			cd.up_level_id, 

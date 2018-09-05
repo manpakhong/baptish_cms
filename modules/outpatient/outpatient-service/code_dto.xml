@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <service-builder package-path="hk.org.hkbh.cms.outpatient">
 	<entity local-service="true" name="CodeDto" remote-service="false" uuid="false"  cache-enabled="false" >
-		<column name="id" db-name="code_detail_id" primary="true" type="int" id-type="increment" insert="false" update="false"/>
+		<column name="id" db-name="code_detail_id" primary="true" type="long" id-type="increment" insert="false" update="false"/>
 		
 		<column name="masterCode" db-name="master_code" type="String" />
-		<column name="codeDisplayText" db-name="code_display_text" type="String" />
+		<column name="codeDisplayTextEn" db-name="code_display_text_en" type="String" />
+		<column name="codeDisplayTextChi" db-name="code_display_text_chi" type="String" />
 		<column name="codeActive" db-name="code_active" type="Boolean" />
 		<column name="subcodeEnabled" db-name="subcode_enabled" type="Boolean" />
 		<column name="codeRemarks" db-name="code_remarks" type="String" />
 		<column name="detailCode" db-name="detail_code" type="String" />
 		<column name="seq" db-name="seq" type="Integer" />
-		<column name="codeDetailDisplayText" db-name="code_detail_display_text" type="String" />
+		<column name="codeDetailDisplayTextEn" db-name="code_detail_display_text_en" type="String" />
+		<column name="codeDetailDisplayTextChi" db-name="code_detail_display_text_chi" type="String" />
 		<column name="codeDetailActive" db-name="code_detail_active" type="Boolean" />
 		<column name="level" db-name="level" type="Integer" />
-		<column name="upLevelId" db-name="up_level_id" type="Integer" />
+		<column name="upLevelId" db-name="up_level_id" type="Long" />
 		<column name="codeDetailRemarks" db-name="code_detail_remarks" type="String" />		
 		<column name="createDate" db-name="create_date" type="Date" />
 		<column name="updateDate" db-name="update_date" type="Date" />

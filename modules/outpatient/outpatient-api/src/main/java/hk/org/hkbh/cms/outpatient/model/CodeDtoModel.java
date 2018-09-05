@@ -53,28 +53,28 @@ public interface CodeDtoModel extends BaseModel<CodeDto> {
 	 *
 	 * @return the primary key of this code dto
 	 */
-	public int getPrimaryKey();
+	public long getPrimaryKey();
 
 	/**
 	 * Sets the primary key of this code dto.
 	 *
 	 * @param primaryKey the primary key of this code dto
 	 */
-	public void setPrimaryKey(int primaryKey);
+	public void setPrimaryKey(long primaryKey);
 
 	/**
 	 * Returns the ID of this code dto.
 	 *
 	 * @return the ID of this code dto
 	 */
-	public int getId();
+	public long getId();
 
 	/**
 	 * Sets the ID of this code dto.
 	 *
 	 * @param id the ID of this code dto
 	 */
-	public void setId(int id);
+	public void setId(long id);
 
 	/**
 	 * Returns the master code of this code dto.
@@ -92,19 +92,34 @@ public interface CodeDtoModel extends BaseModel<CodeDto> {
 	public void setMasterCode(String masterCode);
 
 	/**
-	 * Returns the code display text of this code dto.
+	 * Returns the code display text en of this code dto.
 	 *
-	 * @return the code display text of this code dto
+	 * @return the code display text en of this code dto
 	 */
 	@AutoEscape
-	public String getCodeDisplayText();
+	public String getCodeDisplayTextEn();
 
 	/**
-	 * Sets the code display text of this code dto.
+	 * Sets the code display text en of this code dto.
 	 *
-	 * @param codeDisplayText the code display text of this code dto
+	 * @param codeDisplayTextEn the code display text en of this code dto
 	 */
-	public void setCodeDisplayText(String codeDisplayText);
+	public void setCodeDisplayTextEn(String codeDisplayTextEn);
+
+	/**
+	 * Returns the code display text chi of this code dto.
+	 *
+	 * @return the code display text chi of this code dto
+	 */
+	@AutoEscape
+	public String getCodeDisplayTextChi();
+
+	/**
+	 * Sets the code display text chi of this code dto.
+	 *
+	 * @param codeDisplayTextChi the code display text chi of this code dto
+	 */
+	public void setCodeDisplayTextChi(String codeDisplayTextChi);
 
 	/**
 	 * Returns the code active of this code dto.
@@ -179,19 +194,34 @@ public interface CodeDtoModel extends BaseModel<CodeDto> {
 	public void setSeq(Integer seq);
 
 	/**
-	 * Returns the code detail display text of this code dto.
+	 * Returns the code detail display text en of this code dto.
 	 *
-	 * @return the code detail display text of this code dto
+	 * @return the code detail display text en of this code dto
 	 */
 	@AutoEscape
-	public String getCodeDetailDisplayText();
+	public String getCodeDetailDisplayTextEn();
 
 	/**
-	 * Sets the code detail display text of this code dto.
+	 * Sets the code detail display text en of this code dto.
 	 *
-	 * @param codeDetailDisplayText the code detail display text of this code dto
+	 * @param codeDetailDisplayTextEn the code detail display text en of this code dto
 	 */
-	public void setCodeDetailDisplayText(String codeDetailDisplayText);
+	public void setCodeDetailDisplayTextEn(String codeDetailDisplayTextEn);
+
+	/**
+	 * Returns the code detail display text chi of this code dto.
+	 *
+	 * @return the code detail display text chi of this code dto
+	 */
+	@AutoEscape
+	public String getCodeDetailDisplayTextChi();
+
+	/**
+	 * Sets the code detail display text chi of this code dto.
+	 *
+	 * @param codeDetailDisplayTextChi the code detail display text chi of this code dto
+	 */
+	public void setCodeDetailDisplayTextChi(String codeDetailDisplayTextChi);
 
 	/**
 	 * Returns the code detail active of this code dto.
@@ -226,14 +256,14 @@ public interface CodeDtoModel extends BaseModel<CodeDto> {
 	 *
 	 * @return the up level ID of this code dto
 	 */
-	public Integer getUpLevelId();
+	public Long getUpLevelId();
 
 	/**
 	 * Sets the up level ID of this code dto.
 	 *
 	 * @param upLevelId the up level ID of this code dto
 	 */
-	public void setUpLevelId(Integer upLevelId);
+	public void setUpLevelId(Long upLevelId);
 
 	/**
 	 * Returns the code detail remarks of this code dto.

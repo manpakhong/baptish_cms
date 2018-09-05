@@ -59,7 +59,8 @@ public class CodeDtoLocalServiceUtil {
 	* @param id the primary key for the new code dto
 	* @return the new code dto
 	*/
-	public static hk.org.hkbh.cms.outpatient.model.CodeDto createCodeDto(int id) {
+	public static hk.org.hkbh.cms.outpatient.model.CodeDto createCodeDto(
+		long id) {
 		return getService().createCodeDto(id);
 	}
 
@@ -81,8 +82,8 @@ public class CodeDtoLocalServiceUtil {
 	* @return the code dto that was removed
 	* @throws PortalException if a code dto with the primary key could not be found
 	*/
-	public static hk.org.hkbh.cms.outpatient.model.CodeDto deleteCodeDto(int id)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public static hk.org.hkbh.cms.outpatient.model.CodeDto deleteCodeDto(
+		long id) throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().deleteCodeDto(id);
 	}
 
@@ -173,7 +174,7 @@ public class CodeDtoLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
-	public static hk.org.hkbh.cms.outpatient.model.CodeDto fetchCodeDto(int id) {
+	public static hk.org.hkbh.cms.outpatient.model.CodeDto fetchCodeDto(long id) {
 		return getService().fetchCodeDto(id);
 	}
 
@@ -188,7 +189,7 @@ public class CodeDtoLocalServiceUtil {
 	* @return the code dto
 	* @throws PortalException if a code dto with the primary key could not be found
 	*/
-	public static hk.org.hkbh.cms.outpatient.model.CodeDto getCodeDto(int id)
+	public static hk.org.hkbh.cms.outpatient.model.CodeDto getCodeDto(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().getCodeDto(id);
 	}

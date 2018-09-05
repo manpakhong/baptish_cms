@@ -96,7 +96,8 @@ public class CodeDetailPersistenceImpl extends BasePersistenceImpl<CodeDetail>
 
 			dbColumnNames.put("codeId", "code_id");
 			dbColumnNames.put("detailCode", "detail_code");
-			dbColumnNames.put("displayText", "display_text");
+			dbColumnNames.put("displayTextEn", "display_text_en");
+			dbColumnNames.put("displayTextChi", "display_text_chi");
 			dbColumnNames.put("upLevelId", "up_level_id");
 			dbColumnNames.put("createDate", "create_date");
 			dbColumnNames.put("updateDate", "update_date");
@@ -194,7 +195,7 @@ public class CodeDetailPersistenceImpl extends BasePersistenceImpl<CodeDetail>
 	 * @return the new code detail
 	 */
 	@Override
-	public CodeDetail create(int id) {
+	public CodeDetail create(long id) {
 		CodeDetail codeDetail = new CodeDetailImpl();
 
 		codeDetail.setNew(true);
@@ -211,7 +212,7 @@ public class CodeDetailPersistenceImpl extends BasePersistenceImpl<CodeDetail>
 	 * @throws NoSuchCodeDetailException if a code detail with the primary key could not be found
 	 */
 	@Override
-	public CodeDetail remove(int id) throws NoSuchCodeDetailException {
+	public CodeDetail remove(long id) throws NoSuchCodeDetailException {
 		return remove((Serializable)id);
 	}
 
@@ -344,7 +345,10 @@ public class CodeDetailPersistenceImpl extends BasePersistenceImpl<CodeDetail>
 		codeDetailImpl.setCodeId(codeDetail.getCodeId());
 		codeDetailImpl.setDetailCode(codeDetail.getDetailCode());
 		codeDetailImpl.setSeq(codeDetail.getSeq());
-		codeDetailImpl.setDisplayText(codeDetail.getDisplayText());
+		codeDetailImpl.setDisplayTextEn(codeDetail.getDisplayTextEn());
+		codeDetailImpl.setDisplayTextChi(codeDetail.getDisplayTextChi());
+		codeDetailImpl.setSymbol(codeDetail.getSymbol());
+		codeDetailImpl.setSymbol_html_code(codeDetail.getSymbol_html_code());
 		codeDetailImpl.setActive(codeDetail.getActive());
 		codeDetailImpl.setLevel(codeDetail.getLevel());
 		codeDetailImpl.setUpLevelId(codeDetail.getUpLevelId());
@@ -389,7 +393,8 @@ public class CodeDetailPersistenceImpl extends BasePersistenceImpl<CodeDetail>
 	 * @throws NoSuchCodeDetailException if a code detail with the primary key could not be found
 	 */
 	@Override
-	public CodeDetail findByPrimaryKey(int id) throws NoSuchCodeDetailException {
+	public CodeDetail findByPrimaryKey(long id)
+		throws NoSuchCodeDetailException {
 		return findByPrimaryKey((Serializable)id);
 	}
 
@@ -448,7 +453,7 @@ public class CodeDetailPersistenceImpl extends BasePersistenceImpl<CodeDetail>
 	 * @return the code detail, or <code>null</code> if a code detail with the primary key could not be found
 	 */
 	@Override
-	public CodeDetail fetchByPrimaryKey(int id) {
+	public CodeDetail fetchByPrimaryKey(long id) {
 		return fetchByPrimaryKey((Serializable)id);
 	}
 
@@ -505,7 +510,7 @@ public class CodeDetailPersistenceImpl extends BasePersistenceImpl<CodeDetail>
 		query.append(_SQL_SELECT_CODEDETAIL_WHERE_PKS_IN);
 
 		for (Serializable primaryKey : uncachedPrimaryKeys) {
-			query.append((int)primaryKey);
+			query.append((long)primaryKey);
 
 			query.append(",");
 		}
@@ -771,7 +776,8 @@ public class CodeDetailPersistenceImpl extends BasePersistenceImpl<CodeDetail>
 	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No CodeDetail exists with the primary key ";
 	private static final Log _log = LogFactoryUtil.getLog(CodeDetailPersistenceImpl.class);
 	private static final Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
-				"codeId", "detailCode", "displayText", "upLevelId", "createDate",
-				"updateDate", "createdBy", "updatedBy"
+				"codeId", "detailCode", "displayTextEn", "displayTextChi",
+				"upLevelId", "createDate", "updateDate", "createdBy",
+				"updatedBy"
 			});
 }

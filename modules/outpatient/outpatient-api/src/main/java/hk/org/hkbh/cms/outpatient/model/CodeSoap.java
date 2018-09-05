@@ -35,7 +35,8 @@ public class CodeSoap implements Serializable {
 
 		soapModel.setId(model.getId());
 		soapModel.setMasterCode(model.getMasterCode());
-		soapModel.setDisplay_text(model.getDisplay_text());
+		soapModel.setDisplayTextEn(model.getDisplayTextEn());
+		soapModel.setDisplayTextChi(model.getDisplayTextChi());
 		soapModel.setActive(model.getActive());
 		soapModel.setSubcodeEnabled(model.getSubcodeEnabled());
 		soapModel.setRemarks(model.getRemarks());
@@ -87,19 +88,19 @@ public class CodeSoap implements Serializable {
 	public CodeSoap() {
 	}
 
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _id;
 	}
 
-	public void setPrimaryKey(int pk) {
+	public void setPrimaryKey(long pk) {
 		setId(pk);
 	}
 
-	public int getId() {
+	public long getId() {
 		return _id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		_id = id;
 	}
 
@@ -111,12 +112,20 @@ public class CodeSoap implements Serializable {
 		_masterCode = masterCode;
 	}
 
-	public Integer getDisplay_text() {
-		return _display_text;
+	public String getDisplayTextEn() {
+		return _displayTextEn;
 	}
 
-	public void setDisplay_text(Integer display_text) {
-		_display_text = display_text;
+	public void setDisplayTextEn(String displayTextEn) {
+		_displayTextEn = displayTextEn;
+	}
+
+	public String getDisplayTextChi() {
+		return _displayTextChi;
+	}
+
+	public void setDisplayTextChi(String displayTextChi) {
+		_displayTextChi = displayTextChi;
 	}
 
 	public Boolean getActive() {
@@ -175,9 +184,10 @@ public class CodeSoap implements Serializable {
 		_updatedBy = updatedBy;
 	}
 
-	private int _id;
+	private long _id;
 	private String _masterCode;
-	private Integer _display_text;
+	private String _displayTextEn;
+	private String _displayTextChi;
 	private Boolean _active;
 	private Boolean _subcodeEnabled;
 	private String _remarks;

@@ -60,7 +60,7 @@ public class CodeDetailLocalServiceUtil {
 	* @return the new code detail
 	*/
 	public static hk.org.hkbh.cms.outpatient.model.CodeDetail createCodeDetail(
-		int id) {
+		long id) {
 		return getService().createCodeDetail(id);
 	}
 
@@ -83,7 +83,7 @@ public class CodeDetailLocalServiceUtil {
 	* @throws PortalException if a code detail with the primary key could not be found
 	*/
 	public static hk.org.hkbh.cms.outpatient.model.CodeDetail deleteCodeDetail(
-		int id) throws com.liferay.portal.kernel.exception.PortalException {
+		long id) throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().deleteCodeDetail(id);
 	}
 
@@ -175,7 +175,7 @@ public class CodeDetailLocalServiceUtil {
 	}
 
 	public static hk.org.hkbh.cms.outpatient.model.CodeDetail fetchCodeDetail(
-		int id) {
+		long id) {
 		return getService().fetchCodeDetail(id);
 	}
 
@@ -191,7 +191,7 @@ public class CodeDetailLocalServiceUtil {
 	* @throws PortalException if a code detail with the primary key could not be found
 	*/
 	public static hk.org.hkbh.cms.outpatient.model.CodeDetail getCodeDetail(
-		int id) throws com.liferay.portal.kernel.exception.PortalException {
+		long id) throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().getCodeDetail(id);
 	}
 

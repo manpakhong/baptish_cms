@@ -60,7 +60,7 @@ public class ClinicalNoteTemplateLocalServiceUtil {
 	* @return the new clinical note template
 	*/
 	public static hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate createClinicalNoteTemplate(
-		int id) {
+		long id) {
 		return getService().createClinicalNoteTemplate(id);
 	}
 
@@ -83,7 +83,7 @@ public class ClinicalNoteTemplateLocalServiceUtil {
 	* @throws PortalException if a clinical note template with the primary key could not be found
 	*/
 	public static hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate deleteClinicalNoteTemplate(
-		int id) throws com.liferay.portal.kernel.exception.PortalException {
+		long id) throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().deleteClinicalNoteTemplate(id);
 	}
 
@@ -175,7 +175,7 @@ public class ClinicalNoteTemplateLocalServiceUtil {
 	}
 
 	public static hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate fetchClinicalNoteTemplate(
-		int id) {
+		long id) {
 		return getService().fetchClinicalNoteTemplate(id);
 	}
 
@@ -191,7 +191,7 @@ public class ClinicalNoteTemplateLocalServiceUtil {
 	* @throws PortalException if a clinical note template with the primary key could not be found
 	*/
 	public static hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate getClinicalNoteTemplate(
-		int id) throws com.liferay.portal.kernel.exception.PortalException {
+		long id) throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().getClinicalNoteTemplate(id);
 	}
 

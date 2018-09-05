@@ -132,7 +132,7 @@ public class CodeUtil {
 	* @param id the primary key for the new code
 	* @return the new code
 	*/
-	public static Code create(int id) {
+	public static Code create(long id) {
 		return getPersistence().create(id);
 	}
 
@@ -143,7 +143,7 @@ public class CodeUtil {
 	* @return the code that was removed
 	* @throws NoSuchCodeException if a code with the primary key could not be found
 	*/
-	public static Code remove(int id)
+	public static Code remove(long id)
 		throws hk.org.hkbh.cms.outpatient.exception.NoSuchCodeException {
 		return getPersistence().remove(id);
 	}
@@ -159,7 +159,7 @@ public class CodeUtil {
 	* @return the code
 	* @throws NoSuchCodeException if a code with the primary key could not be found
 	*/
-	public static Code findByPrimaryKey(int id)
+	public static Code findByPrimaryKey(long id)
 		throws hk.org.hkbh.cms.outpatient.exception.NoSuchCodeException {
 		return getPersistence().findByPrimaryKey(id);
 	}
@@ -170,7 +170,7 @@ public class CodeUtil {
 	* @param id the primary key of the code
 	* @return the code, or <code>null</code> if a code with the primary key could not be found
 	*/
-	public static Code fetchByPrimaryKey(int id) {
+	public static Code fetchByPrimaryKey(long id) {
 		return getPersistence().fetchByPrimaryKey(id);
 	}
 

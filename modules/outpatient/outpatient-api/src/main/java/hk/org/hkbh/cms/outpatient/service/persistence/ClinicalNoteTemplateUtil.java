@@ -137,7 +137,7 @@ public class ClinicalNoteTemplateUtil {
 	* @param id the primary key for the new clinical note template
 	* @return the new clinical note template
 	*/
-	public static ClinicalNoteTemplate create(int id) {
+	public static ClinicalNoteTemplate create(long id) {
 		return getPersistence().create(id);
 	}
 
@@ -148,7 +148,7 @@ public class ClinicalNoteTemplateUtil {
 	* @return the clinical note template that was removed
 	* @throws NoSuchClinicalNoteTemplateException if a clinical note template with the primary key could not be found
 	*/
-	public static ClinicalNoteTemplate remove(int id)
+	public static ClinicalNoteTemplate remove(long id)
 		throws hk.org.hkbh.cms.outpatient.exception.NoSuchClinicalNoteTemplateException {
 		return getPersistence().remove(id);
 	}
@@ -165,7 +165,7 @@ public class ClinicalNoteTemplateUtil {
 	* @return the clinical note template
 	* @throws NoSuchClinicalNoteTemplateException if a clinical note template with the primary key could not be found
 	*/
-	public static ClinicalNoteTemplate findByPrimaryKey(int id)
+	public static ClinicalNoteTemplate findByPrimaryKey(long id)
 		throws hk.org.hkbh.cms.outpatient.exception.NoSuchClinicalNoteTemplateException {
 		return getPersistence().findByPrimaryKey(id);
 	}
@@ -176,7 +176,7 @@ public class ClinicalNoteTemplateUtil {
 	* @param id the primary key of the clinical note template
 	* @return the clinical note template, or <code>null</code> if a clinical note template with the primary key could not be found
 	*/
-	public static ClinicalNoteTemplate fetchByPrimaryKey(int id) {
+	public static ClinicalNoteTemplate fetchByPrimaryKey(long id) {
 		return getPersistence().fetchByPrimaryKey(id);
 	}
 

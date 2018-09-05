@@ -200,7 +200,7 @@ public class ClinicalNoteTemplatePersistenceImpl extends BasePersistenceImpl<Cli
 	 * @return the new clinical note template
 	 */
 	@Override
-	public ClinicalNoteTemplate create(int id) {
+	public ClinicalNoteTemplate create(long id) {
 		ClinicalNoteTemplate clinicalNoteTemplate = new ClinicalNoteTemplateImpl();
 
 		clinicalNoteTemplate.setNew(true);
@@ -217,7 +217,7 @@ public class ClinicalNoteTemplatePersistenceImpl extends BasePersistenceImpl<Cli
 	 * @throws NoSuchClinicalNoteTemplateException if a clinical note template with the primary key could not be found
 	 */
 	@Override
-	public ClinicalNoteTemplate remove(int id)
+	public ClinicalNoteTemplate remove(long id)
 		throws NoSuchClinicalNoteTemplateException {
 		return remove((Serializable)id);
 	}
@@ -397,7 +397,7 @@ public class ClinicalNoteTemplatePersistenceImpl extends BasePersistenceImpl<Cli
 	 * @throws NoSuchClinicalNoteTemplateException if a clinical note template with the primary key could not be found
 	 */
 	@Override
-	public ClinicalNoteTemplate findByPrimaryKey(int id)
+	public ClinicalNoteTemplate findByPrimaryKey(long id)
 		throws NoSuchClinicalNoteTemplateException {
 		return findByPrimaryKey((Serializable)id);
 	}
@@ -457,7 +457,7 @@ public class ClinicalNoteTemplatePersistenceImpl extends BasePersistenceImpl<Cli
 	 * @return the clinical note template, or <code>null</code> if a clinical note template with the primary key could not be found
 	 */
 	@Override
-	public ClinicalNoteTemplate fetchByPrimaryKey(int id) {
+	public ClinicalNoteTemplate fetchByPrimaryKey(long id) {
 		return fetchByPrimaryKey((Serializable)id);
 	}
 
@@ -514,7 +514,7 @@ public class ClinicalNoteTemplatePersistenceImpl extends BasePersistenceImpl<Cli
 		query.append(_SQL_SELECT_CLINICALNOTETEMPLATE_WHERE_PKS_IN);
 
 		for (Serializable primaryKey : uncachedPrimaryKeys) {
-			query.append((int)primaryKey);
+			query.append((long)primaryKey);
 
 			query.append(",");
 		}

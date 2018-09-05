@@ -64,14 +64,16 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(35);
+		StringBundler sb = new StringBundler(39);
 
 		sb.append("{id=");
 		sb.append(id);
 		sb.append(", masterCode=");
 		sb.append(masterCode);
-		sb.append(", codeDisplayText=");
-		sb.append(codeDisplayText);
+		sb.append(", codeDisplayTextEn=");
+		sb.append(codeDisplayTextEn);
+		sb.append(", codeDisplayTextChi=");
+		sb.append(codeDisplayTextChi);
 		sb.append(", codeActive=");
 		sb.append(codeActive);
 		sb.append(", subcodeEnabled=");
@@ -82,8 +84,10 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 		sb.append(detailCode);
 		sb.append(", seq=");
 		sb.append(seq);
-		sb.append(", codeDetailDisplayText=");
-		sb.append(codeDetailDisplayText);
+		sb.append(", codeDetailDisplayTextEn=");
+		sb.append(codeDetailDisplayTextEn);
+		sb.append(", codeDetailDisplayTextChi=");
+		sb.append(codeDetailDisplayTextChi);
 		sb.append(", codeDetailActive=");
 		sb.append(codeDetailActive);
 		sb.append(", level=");
@@ -118,11 +122,18 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 			codeDtoImpl.setMasterCode(masterCode);
 		}
 
-		if (codeDisplayText == null) {
-			codeDtoImpl.setCodeDisplayText("");
+		if (codeDisplayTextEn == null) {
+			codeDtoImpl.setCodeDisplayTextEn("");
 		}
 		else {
-			codeDtoImpl.setCodeDisplayText(codeDisplayText);
+			codeDtoImpl.setCodeDisplayTextEn(codeDisplayTextEn);
+		}
+
+		if (codeDisplayTextChi == null) {
+			codeDtoImpl.setCodeDisplayTextChi("");
+		}
+		else {
+			codeDtoImpl.setCodeDisplayTextChi(codeDisplayTextChi);
 		}
 
 		codeDtoImpl.setCodeActive(codeActive);
@@ -144,11 +155,18 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 
 		codeDtoImpl.setSeq(seq);
 
-		if (codeDetailDisplayText == null) {
-			codeDtoImpl.setCodeDetailDisplayText("");
+		if (codeDetailDisplayTextEn == null) {
+			codeDtoImpl.setCodeDetailDisplayTextEn("");
 		}
 		else {
-			codeDtoImpl.setCodeDetailDisplayText(codeDetailDisplayText);
+			codeDtoImpl.setCodeDetailDisplayTextEn(codeDetailDisplayTextEn);
+		}
+
+		if (codeDetailDisplayTextChi == null) {
+			codeDtoImpl.setCodeDetailDisplayTextChi("");
+		}
+		else {
+			codeDtoImpl.setCodeDetailDisplayTextChi(codeDetailDisplayTextChi);
 		}
 
 		codeDtoImpl.setCodeDetailActive(codeDetailActive);
@@ -197,9 +215,10 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		id = objectInput.readInt();
+		id = objectInput.readLong();
 		masterCode = objectInput.readUTF();
-		codeDisplayText = objectInput.readUTF();
+		codeDisplayTextEn = objectInput.readUTF();
+		codeDisplayTextChi = objectInput.readUTF();
 
 		codeActive = objectInput.readBoolean();
 
@@ -208,13 +227,14 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 		detailCode = objectInput.readUTF();
 
 		seq = objectInput.readInt();
-		codeDetailDisplayText = objectInput.readUTF();
+		codeDetailDisplayTextEn = objectInput.readUTF();
+		codeDetailDisplayTextChi = objectInput.readUTF();
 
 		codeDetailActive = objectInput.readBoolean();
 
 		level = objectInput.readInt();
 
-		upLevelId = objectInput.readInt();
+		upLevelId = objectInput.readLong();
 		codeDetailRemarks = objectInput.readUTF();
 		createDate = objectInput.readLong();
 		updateDate = objectInput.readLong();
@@ -225,7 +245,7 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeInt(id);
+		objectOutput.writeLong(id);
 
 		if (masterCode == null) {
 			objectOutput.writeUTF("");
@@ -234,11 +254,18 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 			objectOutput.writeUTF(masterCode);
 		}
 
-		if (codeDisplayText == null) {
+		if (codeDisplayTextEn == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(codeDisplayText);
+			objectOutput.writeUTF(codeDisplayTextEn);
+		}
+
+		if (codeDisplayTextChi == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(codeDisplayTextChi);
 		}
 
 		objectOutput.writeBoolean(codeActive);
@@ -261,18 +288,25 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 
 		objectOutput.writeInt(seq);
 
-		if (codeDetailDisplayText == null) {
+		if (codeDetailDisplayTextEn == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(codeDetailDisplayText);
+			objectOutput.writeUTF(codeDetailDisplayTextEn);
+		}
+
+		if (codeDetailDisplayTextChi == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(codeDetailDisplayTextChi);
 		}
 
 		objectOutput.writeBoolean(codeDetailActive);
 
 		objectOutput.writeInt(level);
 
-		objectOutput.writeInt(upLevelId);
+		objectOutput.writeLong(upLevelId);
 
 		if (codeDetailRemarks == null) {
 			objectOutput.writeUTF("");
@@ -299,18 +333,20 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 		}
 	}
 
-	public int id;
+	public long id;
 	public String masterCode;
-	public String codeDisplayText;
+	public String codeDisplayTextEn;
+	public String codeDisplayTextChi;
 	public boolean codeActive;
 	public boolean subcodeEnabled;
 	public String codeRemarks;
 	public String detailCode;
 	public int seq;
-	public String codeDetailDisplayText;
+	public String codeDetailDisplayTextEn;
+	public String codeDetailDisplayTextChi;
 	public boolean codeDetailActive;
 	public int level;
-	public int upLevelId;
+	public long upLevelId;
 	public String codeDetailRemarks;
 	public long createDate;
 	public long updateDate;

@@ -67,7 +67,7 @@ Ext.define('ClinicalNoteTypeModel', {
     fields: [
     	{name: 'id', type: 'int'},
         {name: 'detailCode', type: 'string'},
-        {name: 'codeDetailDisplayText',  type: 'string'}
+        {name: 'codeDetailDisplayTextEn',  type: 'string'}
     ]
 });
 //var clinicalNoteTypeStore = Ext.create('Ext.data.Store', {
@@ -93,7 +93,7 @@ var clinicalNoteTypeStore = Ext.create('Ext.data.Store', {
   fields: [
   	{name: 'id', type: 'int'},
       {name: 'detailCode', type: 'string'},
-      {name: 'codeDetailDisplayText',  type: 'string'}
+      {name: 'codeDetailDisplayTextEn',  type: 'string'}
   ],
   autoLoad: true,
   proxy: {
@@ -113,7 +113,7 @@ Ext.onReady(function() {
 	    /*fieldLabel: 'Choose Care Provider',*/
 	    store: clinicalNoteTypeStore,
 	    queryMode: 'local',
-	    displayField: 'codeDetailDisplayText',
+	    displayField: 'codeDetailDisplayTextEn',
 	    valueField: 'codeDetailId',
 	    anyMatch: true,
 	    editable:true,
@@ -128,7 +128,7 @@ Ext.onReady(function() {
 	            '<tpl for=".">',
 	            '<tr class="x-boundlist-item">',
 	                '<td>{detailCode}</td>',
-	                '<td>{codeDetailDisplayText}</td>',             
+	                '<td>{codeDetailDisplayTextEn}</td>',             
 	            '</tr>',
 	            '</tpl>',
 	       '</table>']

@@ -61,7 +61,10 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 		attributes.put("codeId", getCodeId());
 		attributes.put("detailCode", getDetailCode());
 		attributes.put("seq", getSeq());
-		attributes.put("displayText", getDisplayText());
+		attributes.put("displayTextEn", getDisplayTextEn());
+		attributes.put("displayTextChi", getDisplayTextChi());
+		attributes.put("symbol", getSymbol());
+		attributes.put("symbol_html_code", getSymbol_html_code());
 		attributes.put("active", getActive());
 		attributes.put("level", getLevel());
 		attributes.put("upLevelId", getUpLevelId());
@@ -76,7 +79,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Integer id = (Integer)attributes.get("id");
+		Long id = (Long)attributes.get("id");
 
 		if (id != null) {
 			setId(id);
@@ -88,7 +91,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 			setCodeId(codeId);
 		}
 
-		Integer detailCode = (Integer)attributes.get("detailCode");
+		Long detailCode = (Long)attributes.get("detailCode");
 
 		if (detailCode != null) {
 			setDetailCode(detailCode);
@@ -100,10 +103,28 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 			setSeq(seq);
 		}
 
-		String displayText = (String)attributes.get("displayText");
+		String displayTextEn = (String)attributes.get("displayTextEn");
 
-		if (displayText != null) {
-			setDisplayText(displayText);
+		if (displayTextEn != null) {
+			setDisplayTextEn(displayTextEn);
+		}
+
+		String displayTextChi = (String)attributes.get("displayTextChi");
+
+		if (displayTextChi != null) {
+			setDisplayTextChi(displayTextChi);
+		}
+
+		String symbol = (String)attributes.get("symbol");
+
+		if (symbol != null) {
+			setSymbol(symbol);
+		}
+
+		String symbol_html_code = (String)attributes.get("symbol_html_code");
+
+		if (symbol_html_code != null) {
+			setSymbol_html_code(symbol_html_code);
 		}
 
 		Boolean active = (Boolean)attributes.get("active");
@@ -118,7 +139,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 			setLevel(level);
 		}
 
-		Integer upLevelId = (Integer)attributes.get("upLevelId");
+		Long upLevelId = (Long)attributes.get("upLevelId");
 
 		if (upLevelId != null) {
 			setUpLevelId(upLevelId);
@@ -211,18 +232,28 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @return the detail code of this code detail
 	*/
 	@Override
-	public java.lang.Integer getDetailCode() {
+	public java.lang.Long getDetailCode() {
 		return _codeDetail.getDetailCode();
 	}
 
 	/**
-	* Returns the display text of this code detail.
+	* Returns the display text chi of this code detail.
 	*
-	* @return the display text of this code detail
+	* @return the display text chi of this code detail
 	*/
 	@Override
-	public java.lang.String getDisplayText() {
-		return _codeDetail.getDisplayText();
+	public java.lang.String getDisplayTextChi() {
+		return _codeDetail.getDisplayTextChi();
+	}
+
+	/**
+	* Returns the display text en of this code detail.
+	*
+	* @return the display text en of this code detail
+	*/
+	@Override
+	public java.lang.String getDisplayTextEn() {
+		return _codeDetail.getDisplayTextEn();
 	}
 
 	@Override
@@ -236,7 +267,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @return the ID of this code detail
 	*/
 	@Override
-	public int getId() {
+	public long getId() {
 		return _codeDetail.getId();
 	}
 
@@ -256,7 +287,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @return the primary key of this code detail
 	*/
 	@Override
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _codeDetail.getPrimaryKey();
 	}
 
@@ -286,6 +317,26 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	}
 
 	/**
+	* Returns the symbol of this code detail.
+	*
+	* @return the symbol of this code detail
+	*/
+	@Override
+	public java.lang.String getSymbol() {
+		return _codeDetail.getSymbol();
+	}
+
+	/**
+	* Returns the symbol_html_code of this code detail.
+	*
+	* @return the symbol_html_code of this code detail
+	*/
+	@Override
+	public java.lang.String getSymbol_html_code() {
+		return _codeDetail.getSymbol_html_code();
+	}
+
+	/**
 	* Returns the update date of this code detail.
 	*
 	* @return the update date of this code detail
@@ -311,7 +362,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @return the up level ID of this code detail
 	*/
 	@Override
-	public java.lang.Integer getUpLevelId() {
+	public java.lang.Long getUpLevelId() {
 		return _codeDetail.getUpLevelId();
 	}
 
@@ -391,18 +442,28 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @param detailCode the detail code of this code detail
 	*/
 	@Override
-	public void setDetailCode(java.lang.Integer detailCode) {
+	public void setDetailCode(java.lang.Long detailCode) {
 		_codeDetail.setDetailCode(detailCode);
 	}
 
 	/**
-	* Sets the display text of this code detail.
+	* Sets the display text chi of this code detail.
 	*
-	* @param displayText the display text of this code detail
+	* @param displayTextChi the display text chi of this code detail
 	*/
 	@Override
-	public void setDisplayText(java.lang.String displayText) {
-		_codeDetail.setDisplayText(displayText);
+	public void setDisplayTextChi(java.lang.String displayTextChi) {
+		_codeDetail.setDisplayTextChi(displayTextChi);
+	}
+
+	/**
+	* Sets the display text en of this code detail.
+	*
+	* @param displayTextEn the display text en of this code detail
+	*/
+	@Override
+	public void setDisplayTextEn(java.lang.String displayTextEn) {
+		_codeDetail.setDisplayTextEn(displayTextEn);
 	}
 
 	@Override
@@ -427,7 +488,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @param id the ID of this code detail
 	*/
 	@Override
-	public void setId(int id) {
+	public void setId(long id) {
 		_codeDetail.setId(id);
 	}
 
@@ -452,7 +513,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @param primaryKey the primary key of this code detail
 	*/
 	@Override
-	public void setPrimaryKey(int primaryKey) {
+	public void setPrimaryKey(long primaryKey) {
 		_codeDetail.setPrimaryKey(primaryKey);
 	}
 
@@ -482,6 +543,26 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	}
 
 	/**
+	* Sets the symbol of this code detail.
+	*
+	* @param symbol the symbol of this code detail
+	*/
+	@Override
+	public void setSymbol(java.lang.String symbol) {
+		_codeDetail.setSymbol(symbol);
+	}
+
+	/**
+	* Sets the symbol_html_code of this code detail.
+	*
+	* @param symbol_html_code the symbol_html_code of this code detail
+	*/
+	@Override
+	public void setSymbol_html_code(java.lang.String symbol_html_code) {
+		_codeDetail.setSymbol_html_code(symbol_html_code);
+	}
+
+	/**
 	* Sets the update date of this code detail.
 	*
 	* @param updateDate the update date of this code detail
@@ -507,7 +588,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @param upLevelId the up level ID of this code detail
 	*/
 	@Override
-	public void setUpLevelId(java.lang.Integer upLevelId) {
+	public void setUpLevelId(java.lang.Long upLevelId) {
 		_codeDetail.setUpLevelId(upLevelId);
 	}
 

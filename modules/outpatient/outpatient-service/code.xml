@@ -4,7 +4,7 @@
 
 		<!-- PK fields -->
 
-		<column name="id" db-name="id" primary="true" type="int" id-type="increment" />
+		<column name="id" db-name="id" primary="true" type="long" id-type="increment" />
 
 		<!-- Group instance -->
 
@@ -24,7 +24,8 @@
 		<!-- Other fields -->
 
 		<column name="masterCode" db-name="master_code" type="String" />
-		<column name="display_text" db-name="display_text" type="Integer" />
+		<column name="displayTextEn" db-name="display_text_en" type="String" />
+		<column name="displayTextChi" db-name="display_text_chi" type="String" />
 		<column name="active" db-name="active" type="Boolean" />
 		<column name="subcodeEnabled" db-name="subcode_enabled" type="Boolean" />
 		<column name="remarks" db-name="remarks" type="String" />

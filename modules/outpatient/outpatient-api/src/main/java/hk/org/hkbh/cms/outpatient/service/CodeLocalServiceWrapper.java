@@ -51,7 +51,7 @@ public class CodeLocalServiceWrapper implements CodeLocalService,
 	* @return the new code
 	*/
 	@Override
-	public hk.org.hkbh.cms.outpatient.model.Code createCode(int id) {
+	public hk.org.hkbh.cms.outpatient.model.Code createCode(long id) {
 		return _codeLocalService.createCode(id);
 	}
 
@@ -75,7 +75,7 @@ public class CodeLocalServiceWrapper implements CodeLocalService,
 	* @throws PortalException if a code with the primary key could not be found
 	*/
 	@Override
-	public hk.org.hkbh.cms.outpatient.model.Code deleteCode(int id)
+	public hk.org.hkbh.cms.outpatient.model.Code deleteCode(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return _codeLocalService.deleteCode(id);
 	}
@@ -175,7 +175,7 @@ public class CodeLocalServiceWrapper implements CodeLocalService,
 	}
 
 	@Override
-	public hk.org.hkbh.cms.outpatient.model.Code fetchCode(int id) {
+	public hk.org.hkbh.cms.outpatient.model.Code fetchCode(long id) {
 		return _codeLocalService.fetchCode(id);
 	}
 
@@ -192,7 +192,7 @@ public class CodeLocalServiceWrapper implements CodeLocalService,
 	* @throws PortalException if a code with the primary key could not be found
 	*/
 	@Override
-	public hk.org.hkbh.cms.outpatient.model.Code getCode(int id)
+	public hk.org.hkbh.cms.outpatient.model.Code getCode(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return _codeLocalService.getCode(id);
 	}

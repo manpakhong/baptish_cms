@@ -7,11 +7,11 @@
 	<import class="hk.org.hkbh.cms.outpatient.model.CodeDetail" />
 	<import class="hk.org.hkbh.cms.outpatient.model.CodeDto" />
 	<class name="hk.org.hkbh.cms.outpatient.model.impl.ClinicalNoteTemplateImpl" table="clinical_note_template">
-		<id name="id" type="int">
+		<id name="id" type="long">
 			<generator class="increment" />
 		</id>
-		<property column="user_id" name="userId" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
-		<property column="template_type_code_id" name="templateTypeCodeId" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property column="user_id" name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="template_type_code_id" name="templateTypeCodeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property column="template_name" name="templateName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property column="template_content" name="templateContent" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property column="template_content_html" name="templateContentHtml" type="com.liferay.portal.dao.orm.hibernate.StringType" />
@@ -21,11 +21,12 @@
 		<property column="updated_by" name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
 	<class name="hk.org.hkbh.cms.outpatient.model.impl.CodeImpl" table="code">
-		<id name="id" type="int">
+		<id name="id" type="long">
 			<generator class="increment" />
 		</id>
 		<property column="master_code" name="masterCode" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="display_text" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property column="display_text_en" name="displayTextEn" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="display_text_chi" name="displayTextChi" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="active" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
 		<property column="subcode_enabled" name="subcodeEnabled" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
 		<property name="remarks" type="com.liferay.portal.dao.orm.hibernate.StringType" />
@@ -35,16 +36,19 @@
 		<property column="updated_by" name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
 	<class name="hk.org.hkbh.cms.outpatient.model.impl.CodeDetailImpl" table="code_detail">
-		<id name="id" type="int">
+		<id name="id" type="long">
 			<generator class="increment" />
 		</id>
 		<property column="code_id" name="codeId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property column="detail_code" name="detailCode" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property column="detail_code" name="detailCode" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="seq" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
-		<property column="display_text" name="displayText" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="display_text_en" name="displayTextEn" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="display_text_chi" name="displayTextChi" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="symbol" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="symbol_html_code" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="active" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
 		<property name="level" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
-		<property column="up_level_id" name="upLevelId" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property column="up_level_id" name="upLevelId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="remarks" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property column="create_date" name="createDate" type="org.hibernate.type.TimestampType" />
 		<property column="update_date" name="updateDate" type="org.hibernate.type.TimestampType" />
@@ -52,20 +56,22 @@
 		<property column="updated_by" name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
 	<class name="hk.org.hkbh.cms.outpatient.model.impl.CodeDtoImpl" table="Op_CodeDto">
-		<id column="code_detail_id" name="id" type="int">
+		<id column="code_detail_id" name="id" type="long">
 			<generator class="increment" />
 		</id>
 		<property column="master_code" name="masterCode" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property column="code_display_text" name="codeDisplayText" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="code_display_text_en" name="codeDisplayTextEn" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="code_display_text_chi" name="codeDisplayTextChi" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property column="code_active" name="codeActive" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
 		<property column="subcode_enabled" name="subcodeEnabled" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
 		<property column="code_remarks" name="codeRemarks" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property column="detail_code" name="detailCode" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="seq" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
-		<property column="code_detail_display_text" name="codeDetailDisplayText" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="code_detail_display_text_en" name="codeDetailDisplayTextEn" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="code_detail_display_text_chi" name="codeDetailDisplayTextChi" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property column="code_detail_active" name="codeDetailActive" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
 		<property name="level" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
-		<property column="up_level_id" name="upLevelId" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property column="up_level_id" name="upLevelId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property column="code_detail_remarks" name="codeDetailRemarks" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property column="create_date" name="createDate" type="org.hibernate.type.TimestampType" />
 		<property column="update_date" name="updateDate" type="org.hibernate.type.TimestampType" />

@@ -4,7 +4,7 @@
 
 		<!-- PK fields -->
 
-		<column name="id" db-name="id" primary="true" type="int" id-type="increment" />
+		<column name="id" db-name="id" primary="true" type="long" id-type="increment" />
 
 		<!-- Group instance -->
 
@@ -24,12 +24,15 @@
 		<!-- Other fields -->
 
 		<column name="codeId" db-name="code_id" type="String" />
-		<column name="detailCode" db-name="detail_code" type="Integer" />
+		<column name="detailCode" db-name="detail_code" type="Long" />
 		<column name="seq" db-name="seq" type="Integer" />
-		<column name="displayText" db-name="display_text" type="String" />
+		<column name="displayTextEn" db-name="display_text_en" type="String" />
+		<column name="displayTextChi" db-name="display_text_chi" type="String" />
+		<column name="symbol" db-name="symbol" type="String" />
+		<column name="symbol_html_code" db-name="symbol_html_code" type="String" />
 		<column name="active" db-name="active" type="Boolean" />
 		<column name="level" db-name="level" type="Integer" />
-		<column name="upLevelId" db-name="up_level_id" type="Integer" />
+		<column name="upLevelId" db-name="up_level_id" type="Long" />
 		<column name="remarks" db-name="remarks" type="String" />
 		<column name="createDate" db-name="create_date" type="Date" />
 		<column name="updateDate" db-name="update_date" type="Date" />

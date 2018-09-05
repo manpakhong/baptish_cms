@@ -16,9 +16,13 @@ package hk.org.hkbh.cms.outpatient.model.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.expando.kernel.model.ExpandoBridge;
+import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
+
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -57,18 +61,20 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	 */
 	public static final String TABLE_NAME = "Op_CodeDto";
 	public static final Object[][] TABLE_COLUMNS = {
-			{ "code_detail_id", Types.INTEGER },
+			{ "code_detail_id", Types.BIGINT },
 			{ "master_code", Types.VARCHAR },
-			{ "code_display_text", Types.VARCHAR },
+			{ "code_display_text_en", Types.VARCHAR },
+			{ "code_display_text_chi", Types.VARCHAR },
 			{ "code_active", Types.BOOLEAN },
 			{ "subcode_enabled", Types.BOOLEAN },
 			{ "code_remarks", Types.VARCHAR },
 			{ "detail_code", Types.VARCHAR },
 			{ "seq", Types.INTEGER },
-			{ "code_detail_display_text", Types.VARCHAR },
+			{ "code_detail_display_text_en", Types.VARCHAR },
+			{ "code_detail_display_text_chi", Types.VARCHAR },
 			{ "code_detail_active", Types.BOOLEAN },
 			{ "level", Types.INTEGER },
-			{ "up_level_id", Types.INTEGER },
+			{ "up_level_id", Types.BIGINT },
 			{ "code_detail_remarks", Types.VARCHAR },
 			{ "create_date", Types.TIMESTAMP },
 			{ "update_date", Types.TIMESTAMP },
@@ -78,18 +84,20 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP = new HashMap<String, Integer>();
 
 	static {
-		TABLE_COLUMNS_MAP.put("code_detail_id", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("code_detail_id", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("master_code", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("code_display_text", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("code_display_text_en", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("code_display_text_chi", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("code_active", Types.BOOLEAN);
 		TABLE_COLUMNS_MAP.put("subcode_enabled", Types.BOOLEAN);
 		TABLE_COLUMNS_MAP.put("code_remarks", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("detail_code", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("seq", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("code_detail_display_text", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("code_detail_display_text_en", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("code_detail_display_text_chi", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("code_detail_active", Types.BOOLEAN);
 		TABLE_COLUMNS_MAP.put("level", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("up_level_id", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("up_level_id", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("code_detail_remarks", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("create_date", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("update_date", Types.TIMESTAMP);
@@ -97,7 +105,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 		TABLE_COLUMNS_MAP.put("updated_by", Types.VARCHAR);
 	}
 
-	public static final String TABLE_SQL_CREATE = "create table Op_CodeDto (code_detail_id INTEGER not null primary key,master_code VARCHAR(75) null,code_display_text VARCHAR(75) null,code_active BOOLEAN,subcode_enabled BOOLEAN,code_remarks VARCHAR(75) null,detail_code VARCHAR(75) null,seq INTEGER,code_detail_display_text VARCHAR(75) null,code_detail_active BOOLEAN,level INTEGER,up_level_id INTEGER,code_detail_remarks VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table Op_CodeDto (code_detail_id LONG not null primary key,master_code VARCHAR(75) null,code_display_text_en VARCHAR(75) null,code_display_text_chi VARCHAR(75) null,code_active BOOLEAN,subcode_enabled BOOLEAN,code_remarks VARCHAR(75) null,detail_code VARCHAR(75) null,seq INTEGER,code_detail_display_text_en VARCHAR(75) null,code_detail_display_text_chi VARCHAR(75) null,code_detail_active BOOLEAN,level INTEGER,up_level_id LONG,code_detail_remarks VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table Op_CodeDto";
 	public static final String ORDER_BY_JPQL = " ORDER BY codeDto.id ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY Op_CodeDto.code_detail_id ASC";
@@ -122,12 +130,12 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	}
 
 	@Override
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _id;
 	}
 
 	@Override
-	public void setPrimaryKey(int primaryKey) {
+	public void setPrimaryKey(long primaryKey) {
 		setId(primaryKey);
 	}
 
@@ -138,7 +146,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 
 	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey(((Integer)primaryKeyObj).intValue());
+		setPrimaryKey(((Long)primaryKeyObj).longValue());
 	}
 
 	@Override
@@ -157,13 +165,15 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 
 		attributes.put("id", getId());
 		attributes.put("masterCode", getMasterCode());
-		attributes.put("codeDisplayText", getCodeDisplayText());
+		attributes.put("codeDisplayTextEn", getCodeDisplayTextEn());
+		attributes.put("codeDisplayTextChi", getCodeDisplayTextChi());
 		attributes.put("codeActive", getCodeActive());
 		attributes.put("subcodeEnabled", getSubcodeEnabled());
 		attributes.put("codeRemarks", getCodeRemarks());
 		attributes.put("detailCode", getDetailCode());
 		attributes.put("seq", getSeq());
-		attributes.put("codeDetailDisplayText", getCodeDetailDisplayText());
+		attributes.put("codeDetailDisplayTextEn", getCodeDetailDisplayTextEn());
+		attributes.put("codeDetailDisplayTextChi", getCodeDetailDisplayTextChi());
 		attributes.put("codeDetailActive", getCodeDetailActive());
 		attributes.put("level", getLevel());
 		attributes.put("upLevelId", getUpLevelId());
@@ -181,7 +191,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Integer id = (Integer)attributes.get("id");
+		Long id = (Long)attributes.get("id");
 
 		if (id != null) {
 			setId(id);
@@ -193,10 +203,16 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 			setMasterCode(masterCode);
 		}
 
-		String codeDisplayText = (String)attributes.get("codeDisplayText");
+		String codeDisplayTextEn = (String)attributes.get("codeDisplayTextEn");
 
-		if (codeDisplayText != null) {
-			setCodeDisplayText(codeDisplayText);
+		if (codeDisplayTextEn != null) {
+			setCodeDisplayTextEn(codeDisplayTextEn);
+		}
+
+		String codeDisplayTextChi = (String)attributes.get("codeDisplayTextChi");
+
+		if (codeDisplayTextChi != null) {
+			setCodeDisplayTextChi(codeDisplayTextChi);
 		}
 
 		Boolean codeActive = (Boolean)attributes.get("codeActive");
@@ -229,11 +245,18 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 			setSeq(seq);
 		}
 
-		String codeDetailDisplayText = (String)attributes.get(
-				"codeDetailDisplayText");
+		String codeDetailDisplayTextEn = (String)attributes.get(
+				"codeDetailDisplayTextEn");
 
-		if (codeDetailDisplayText != null) {
-			setCodeDetailDisplayText(codeDetailDisplayText);
+		if (codeDetailDisplayTextEn != null) {
+			setCodeDetailDisplayTextEn(codeDetailDisplayTextEn);
+		}
+
+		String codeDetailDisplayTextChi = (String)attributes.get(
+				"codeDetailDisplayTextChi");
+
+		if (codeDetailDisplayTextChi != null) {
+			setCodeDetailDisplayTextChi(codeDetailDisplayTextChi);
 		}
 
 		Boolean codeDetailActive = (Boolean)attributes.get("codeDetailActive");
@@ -248,7 +271,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 			setLevel(level);
 		}
 
-		Integer upLevelId = (Integer)attributes.get("upLevelId");
+		Long upLevelId = (Long)attributes.get("upLevelId");
 
 		if (upLevelId != null) {
 			setUpLevelId(upLevelId);
@@ -286,12 +309,12 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	}
 
 	@Override
-	public int getId() {
+	public long getId() {
 		return _id;
 	}
 
 	@Override
-	public void setId(int id) {
+	public void setId(long id) {
 		_columnBitmask = -1L;
 
 		_id = id;
@@ -323,18 +346,33 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	}
 
 	@Override
-	public String getCodeDisplayText() {
-		if (_codeDisplayText == null) {
+	public String getCodeDisplayTextEn() {
+		if (_codeDisplayTextEn == null) {
 			return "";
 		}
 		else {
-			return _codeDisplayText;
+			return _codeDisplayTextEn;
 		}
 	}
 
 	@Override
-	public void setCodeDisplayText(String codeDisplayText) {
-		_codeDisplayText = codeDisplayText;
+	public void setCodeDisplayTextEn(String codeDisplayTextEn) {
+		_codeDisplayTextEn = codeDisplayTextEn;
+	}
+
+	@Override
+	public String getCodeDisplayTextChi() {
+		if (_codeDisplayTextChi == null) {
+			return "";
+		}
+		else {
+			return _codeDisplayTextChi;
+		}
+	}
+
+	@Override
+	public void setCodeDisplayTextChi(String codeDisplayTextChi) {
+		_codeDisplayTextChi = codeDisplayTextChi;
 	}
 
 	@Override
@@ -398,18 +436,33 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	}
 
 	@Override
-	public String getCodeDetailDisplayText() {
-		if (_codeDetailDisplayText == null) {
+	public String getCodeDetailDisplayTextEn() {
+		if (_codeDetailDisplayTextEn == null) {
 			return "";
 		}
 		else {
-			return _codeDetailDisplayText;
+			return _codeDetailDisplayTextEn;
 		}
 	}
 
 	@Override
-	public void setCodeDetailDisplayText(String codeDetailDisplayText) {
-		_codeDetailDisplayText = codeDetailDisplayText;
+	public void setCodeDetailDisplayTextEn(String codeDetailDisplayTextEn) {
+		_codeDetailDisplayTextEn = codeDetailDisplayTextEn;
+	}
+
+	@Override
+	public String getCodeDetailDisplayTextChi() {
+		if (_codeDetailDisplayTextChi == null) {
+			return "";
+		}
+		else {
+			return _codeDetailDisplayTextChi;
+		}
+	}
+
+	@Override
+	public void setCodeDetailDisplayTextChi(String codeDetailDisplayTextChi) {
+		_codeDetailDisplayTextChi = codeDetailDisplayTextChi;
 	}
 
 	@Override
@@ -433,12 +486,12 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	}
 
 	@Override
-	public Integer getUpLevelId() {
+	public Long getUpLevelId() {
 		return _upLevelId;
 	}
 
 	@Override
-	public void setUpLevelId(Integer upLevelId) {
+	public void setUpLevelId(Long upLevelId) {
 		_upLevelId = upLevelId;
 	}
 
@@ -512,6 +565,19 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	}
 
 	@Override
+	public ExpandoBridge getExpandoBridge() {
+		return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
+			CodeDto.class.getName(), getPrimaryKey());
+	}
+
+	@Override
+	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
+		ExpandoBridge expandoBridge = getExpandoBridge();
+
+		expandoBridge.setAttributes(serviceContext);
+	}
+
+	@Override
 	public CodeDto toEscapedModel() {
 		if (_escapedModel == null) {
 			_escapedModel = (CodeDto)ProxyUtil.newProxyInstance(_classLoader,
@@ -527,13 +593,15 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 
 		codeDtoImpl.setId(getId());
 		codeDtoImpl.setMasterCode(getMasterCode());
-		codeDtoImpl.setCodeDisplayText(getCodeDisplayText());
+		codeDtoImpl.setCodeDisplayTextEn(getCodeDisplayTextEn());
+		codeDtoImpl.setCodeDisplayTextChi(getCodeDisplayTextChi());
 		codeDtoImpl.setCodeActive(getCodeActive());
 		codeDtoImpl.setSubcodeEnabled(getSubcodeEnabled());
 		codeDtoImpl.setCodeRemarks(getCodeRemarks());
 		codeDtoImpl.setDetailCode(getDetailCode());
 		codeDtoImpl.setSeq(getSeq());
-		codeDtoImpl.setCodeDetailDisplayText(getCodeDetailDisplayText());
+		codeDtoImpl.setCodeDetailDisplayTextEn(getCodeDetailDisplayTextEn());
+		codeDtoImpl.setCodeDetailDisplayTextChi(getCodeDetailDisplayTextChi());
 		codeDtoImpl.setCodeDetailActive(getCodeDetailActive());
 		codeDtoImpl.setLevel(getLevel());
 		codeDtoImpl.setUpLevelId(getUpLevelId());
@@ -581,7 +649,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 
 		CodeDto codeDto = (CodeDto)obj;
 
-		int primaryKey = codeDto.getPrimaryKey();
+		long primaryKey = codeDto.getPrimaryKey();
 
 		if (getPrimaryKey() == primaryKey) {
 			return true;
@@ -593,7 +661,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 
 	@Override
 	public int hashCode() {
-		return getPrimaryKey();
+		return (int)getPrimaryKey();
 	}
 
 	@Override
@@ -629,12 +697,20 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 			codeDtoCacheModel.masterCode = null;
 		}
 
-		codeDtoCacheModel.codeDisplayText = getCodeDisplayText();
+		codeDtoCacheModel.codeDisplayTextEn = getCodeDisplayTextEn();
 
-		String codeDisplayText = codeDtoCacheModel.codeDisplayText;
+		String codeDisplayTextEn = codeDtoCacheModel.codeDisplayTextEn;
 
-		if ((codeDisplayText != null) && (codeDisplayText.length() == 0)) {
-			codeDtoCacheModel.codeDisplayText = null;
+		if ((codeDisplayTextEn != null) && (codeDisplayTextEn.length() == 0)) {
+			codeDtoCacheModel.codeDisplayTextEn = null;
+		}
+
+		codeDtoCacheModel.codeDisplayTextChi = getCodeDisplayTextChi();
+
+		String codeDisplayTextChi = codeDtoCacheModel.codeDisplayTextChi;
+
+		if ((codeDisplayTextChi != null) && (codeDisplayTextChi.length() == 0)) {
+			codeDtoCacheModel.codeDisplayTextChi = null;
 		}
 
 		codeDtoCacheModel.codeActive = getCodeActive();
@@ -659,13 +735,22 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 
 		codeDtoCacheModel.seq = getSeq();
 
-		codeDtoCacheModel.codeDetailDisplayText = getCodeDetailDisplayText();
+		codeDtoCacheModel.codeDetailDisplayTextEn = getCodeDetailDisplayTextEn();
 
-		String codeDetailDisplayText = codeDtoCacheModel.codeDetailDisplayText;
+		String codeDetailDisplayTextEn = codeDtoCacheModel.codeDetailDisplayTextEn;
 
-		if ((codeDetailDisplayText != null) &&
-				(codeDetailDisplayText.length() == 0)) {
-			codeDtoCacheModel.codeDetailDisplayText = null;
+		if ((codeDetailDisplayTextEn != null) &&
+				(codeDetailDisplayTextEn.length() == 0)) {
+			codeDtoCacheModel.codeDetailDisplayTextEn = null;
+		}
+
+		codeDtoCacheModel.codeDetailDisplayTextChi = getCodeDetailDisplayTextChi();
+
+		String codeDetailDisplayTextChi = codeDtoCacheModel.codeDetailDisplayTextChi;
+
+		if ((codeDetailDisplayTextChi != null) &&
+				(codeDetailDisplayTextChi.length() == 0)) {
+			codeDtoCacheModel.codeDetailDisplayTextChi = null;
 		}
 
 		codeDtoCacheModel.codeDetailActive = getCodeDetailActive();
@@ -721,14 +806,16 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(35);
+		StringBundler sb = new StringBundler(39);
 
 		sb.append("{id=");
 		sb.append(getId());
 		sb.append(", masterCode=");
 		sb.append(getMasterCode());
-		sb.append(", codeDisplayText=");
-		sb.append(getCodeDisplayText());
+		sb.append(", codeDisplayTextEn=");
+		sb.append(getCodeDisplayTextEn());
+		sb.append(", codeDisplayTextChi=");
+		sb.append(getCodeDisplayTextChi());
 		sb.append(", codeActive=");
 		sb.append(getCodeActive());
 		sb.append(", subcodeEnabled=");
@@ -739,8 +826,10 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 		sb.append(getDetailCode());
 		sb.append(", seq=");
 		sb.append(getSeq());
-		sb.append(", codeDetailDisplayText=");
-		sb.append(getCodeDetailDisplayText());
+		sb.append(", codeDetailDisplayTextEn=");
+		sb.append(getCodeDetailDisplayTextEn());
+		sb.append(", codeDetailDisplayTextChi=");
+		sb.append(getCodeDetailDisplayTextChi());
 		sb.append(", codeDetailActive=");
 		sb.append(getCodeDetailActive());
 		sb.append(", level=");
@@ -764,7 +853,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(55);
+		StringBundler sb = new StringBundler(61);
 
 		sb.append("<model><model-name>");
 		sb.append("hk.org.hkbh.cms.outpatient.model.CodeDto");
@@ -779,8 +868,12 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 		sb.append(getMasterCode());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>codeDisplayText</column-name><column-value><![CDATA[");
-		sb.append(getCodeDisplayText());
+			"<column><column-name>codeDisplayTextEn</column-name><column-value><![CDATA[");
+		sb.append(getCodeDisplayTextEn());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>codeDisplayTextChi</column-name><column-value><![CDATA[");
+		sb.append(getCodeDisplayTextChi());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>codeActive</column-name><column-value><![CDATA[");
@@ -803,8 +896,12 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 		sb.append(getSeq());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>codeDetailDisplayText</column-name><column-value><![CDATA[");
-		sb.append(getCodeDetailDisplayText());
+			"<column><column-name>codeDetailDisplayTextEn</column-name><column-value><![CDATA[");
+		sb.append(getCodeDetailDisplayTextEn());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>codeDetailDisplayTextChi</column-name><column-value><![CDATA[");
+		sb.append(getCodeDetailDisplayTextChi());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>codeDetailActive</column-name><column-value><![CDATA[");
@@ -848,19 +945,21 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
 			CodeDto.class
 		};
-	private int _id;
+	private long _id;
 	private String _masterCode;
 	private String _originalMasterCode;
-	private String _codeDisplayText;
+	private String _codeDisplayTextEn;
+	private String _codeDisplayTextChi;
 	private Boolean _codeActive;
 	private Boolean _subcodeEnabled;
 	private String _codeRemarks;
 	private String _detailCode;
 	private Integer _seq;
-	private String _codeDetailDisplayText;
+	private String _codeDetailDisplayTextEn;
+	private String _codeDetailDisplayTextChi;
 	private Boolean _codeDetailActive;
 	private Integer _level;
-	private Integer _upLevelId;
+	private Long _upLevelId;
 	private String _codeDetailRemarks;
 	private Date _createDate;
 	private Date _updateDate;
