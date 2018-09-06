@@ -19,3 +19,34 @@ create table Op_CodeDto (
 	created_by VARCHAR(75) null,
 	updated_by VARCHAR(75) null
 );
+
+create table Op_ComponentControlDto (
+	component_id LONG not null primary key,
+	component_code VARCHAR(75) null,
+	component_name VARCHAR(75) null,
+	component_type_code_id LONG,
+	detail_code LONG,
+	detail_code_display_text_en VARCHAR(75) null,
+	detail_code_display_text_chi VARCHAR(75) null,
+	component_seq INTEGER,
+	is_menu_item BOOLEAN,
+	component_desc VARCHAR(75) null,
+	url VARCHAR(75) null,
+	component_level INTEGER,
+	up_component_id LONG,
+	component_control_id LONG,
+	user_id LONG,
+	user_role_id LONG,
+	create BOOLEAN,
+	read BOOLEAN,
+	update BOOLEAN,
+	delete BOOLEAN,
+	deny BOOLEAN,
+	visible BOOLEAN,
+	enable BOOLEAN,
+	control_desc VARCHAR(75) null,
+	create_date DATE null,
+	update_date DATE null,
+	created_by VARCHAR(75) null,
+	updated_by VARCHAR(75) null
+);

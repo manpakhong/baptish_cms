@@ -8,4 +8,5 @@
 	<service-builder-import file="code.xml"></service-builder-import>
 	<service-builder-import file="code_detail.xml"></service-builder-import>
 	<service-builder-import file="code_dto.xml"></service-builder-import>
+	<service-builder-import file="component_control_dto.xml"></service-builder-import>
 </service-builder>

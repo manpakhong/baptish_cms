@@ -10,15 +10,13 @@ import hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate;
 import hk.org.hkbh.cms.outpatient.service.ClinicalNoteTemplateLocalServiceUtil;
 
 public class ClinicalNoteTemplateMgr {
-	private static Log logger = LogFactoryUtil.getLog(CodeMgr.class);
+	private static Log logger = LogFactoryUtil.getLog(ClinicalNoteTemplateMgr.class);
 	public List<ClinicalNoteTemplate> getClinicalNoteTemplateList() throws Exception{
 		List<ClinicalNoteTemplate> clinicalNoteTemplateList;
 		try {
 			clinicalNoteTemplateList = new ArrayList<ClinicalNoteTemplate>();
 			ClinicalNoteTemplate cnt =ClinicalNoteTemplateLocalServiceUtil.getClinicalNoteTemplate(1);
 			clinicalNoteTemplateList.add(cnt);
-
-
 		} catch (Exception e) {
 //			logger.error(".getCodeList() - masterCode=" + masterCode, e);
 			throw e;

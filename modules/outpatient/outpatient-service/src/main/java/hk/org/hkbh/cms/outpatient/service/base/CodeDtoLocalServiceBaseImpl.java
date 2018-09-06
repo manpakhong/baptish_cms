@@ -48,6 +48,8 @@ import hk.org.hkbh.cms.outpatient.service.persistence.CodeDetailPersistence;
 import hk.org.hkbh.cms.outpatient.service.persistence.CodeDtoFinder;
 import hk.org.hkbh.cms.outpatient.service.persistence.CodeDtoPersistence;
 import hk.org.hkbh.cms.outpatient.service.persistence.CodePersistence;
+import hk.org.hkbh.cms.outpatient.service.persistence.ComponentControlDtoFinder;
+import hk.org.hkbh.cms.outpatient.service.persistence.ComponentControlDtoPersistence;
 
 import java.io.Serializable;
 
@@ -480,6 +482,63 @@ public abstract class CodeDtoLocalServiceBaseImpl extends BaseLocalServiceImpl
 	}
 
 	/**
+	 * Returns the component control dto local service.
+	 *
+	 * @return the component control dto local service
+	 */
+	public hk.org.hkbh.cms.outpatient.service.ComponentControlDtoLocalService getComponentControlDtoLocalService() {
+		return componentControlDtoLocalService;
+	}
+
+	/**
+	 * Sets the component control dto local service.
+	 *
+	 * @param componentControlDtoLocalService the component control dto local service
+	 */
+	public void setComponentControlDtoLocalService(
+		hk.org.hkbh.cms.outpatient.service.ComponentControlDtoLocalService componentControlDtoLocalService) {
+		this.componentControlDtoLocalService = componentControlDtoLocalService;
+	}
+
+	/**
+	 * Returns the component control dto persistence.
+	 *
+	 * @return the component control dto persistence
+	 */
+	public ComponentControlDtoPersistence getComponentControlDtoPersistence() {
+		return componentControlDtoPersistence;
+	}
+
+	/**
+	 * Sets the component control dto persistence.
+	 *
+	 * @param componentControlDtoPersistence the component control dto persistence
+	 */
+	public void setComponentControlDtoPersistence(
+		ComponentControlDtoPersistence componentControlDtoPersistence) {
+		this.componentControlDtoPersistence = componentControlDtoPersistence;
+	}
+
+	/**
+	 * Returns the component control dto finder.
+	 *
+	 * @return the component control dto finder
+	 */
+	public ComponentControlDtoFinder getComponentControlDtoFinder() {
+		return componentControlDtoFinder;
+	}
+
+	/**
+	 * Sets the component control dto finder.
+	 *
+	 * @param componentControlDtoFinder the component control dto finder
+	 */
+	public void setComponentControlDtoFinder(
+		ComponentControlDtoFinder componentControlDtoFinder) {
+		this.componentControlDtoFinder = componentControlDtoFinder;
+	}
+
+	/**
 	 * Returns the counter local service.
 	 *
 	 * @return the counter local service
@@ -662,6 +721,12 @@ public abstract class CodeDtoLocalServiceBaseImpl extends BaseLocalServiceImpl
 	protected CodeDtoPersistence codeDtoPersistence;
 	@BeanReference(type = CodeDtoFinder.class)
 	protected CodeDtoFinder codeDtoFinder;
+	@BeanReference(type = hk.org.hkbh.cms.outpatient.service.ComponentControlDtoLocalService.class)
+	protected hk.org.hkbh.cms.outpatient.service.ComponentControlDtoLocalService componentControlDtoLocalService;
+	@BeanReference(type = ComponentControlDtoPersistence.class)
+	protected ComponentControlDtoPersistence componentControlDtoPersistence;
+	@BeanReference(type = ComponentControlDtoFinder.class)
+	protected ComponentControlDtoFinder componentControlDtoFinder;
 	@ServiceReference(type = com.liferay.counter.kernel.service.CounterLocalService.class)
 	protected com.liferay.counter.kernel.service.CounterLocalService counterLocalService;
 	@ServiceReference(type = com.liferay.portal.kernel.service.ClassNameLocalService.class)

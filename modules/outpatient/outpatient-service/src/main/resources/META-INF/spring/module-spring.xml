@@ -22,4 +22,7 @@
 	<bean class="hk.org.hkbh.cms.outpatient.service.impl.CodeDtoLocalServiceImpl" id="hk.org.hkbh.cms.outpatient.service.CodeDtoLocalService" />
 	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.CodeDtoPersistenceImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.CodeDtoPersistence" parent="basePersistence" />
 	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.CodeDtoFinderImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.CodeDtoFinder" parent="basePersistence" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.impl.ComponentControlDtoLocalServiceImpl" id="hk.org.hkbh.cms.outpatient.service.ComponentControlDtoLocalService" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.ComponentControlDtoPersistenceImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.ComponentControlDtoPersistence" parent="basePersistence" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.ComponentControlDtoFinderImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.ComponentControlDtoFinder" parent="basePersistence" />
 </beans>

@@ -28,8 +28,45 @@
 			cd.updated_by
 			from code c inner join code_detail cd 
 			on c.id = cd.code_id 
-			where c.master_code = ?
 			]]>
-	 </sql>	
+</sql>	
+<sql id="hk.org.hkbh.cms.outpatient.service.persistence.impl.ComponentControlFinderImpl.getComponentControlDtoList">
+	     <![CDATA[
+			select 
+			com.id as component_id, 
+			com.component_code,
+			com.component_name, 
+			com.component_type_code_id, 
+			cd.detail_code,
+			cd.display_text_en as detail_code_display_text_en,
+			cd.display_text_chi as detail_code_display_text_chi,
+			com.seq as component_seq,
+			com.is_menu_item, 
+			com.component_desc, 
+			com.url, 
+			com.component_level, 
+			com.up_component_id, 
+			comc.id as component_control_id,
+			comc.user_id, 
+			comc.user_role_id, 
+			comc.component_id,
+			comc.create, 
+			comc.read, 
+			comc.update, 
+			comc.delete, 
+			comc.deny, 
+			comc.visible,
+			comc.enable, 
+			comc.control_desc
+			from component com
+			inner join component_control comc 
+			on com.id = comc.component_id
+			inner join code_detail cd 
+			on com.component_type_code_id = cd.id
+			where user_role_id = ?
+			]]>
+</sql>	
+	 
+	 
 </custom-sql >
 

@@ -4,15 +4,20 @@ import com.liferay.portal.dao.orm.custom.sql.CustomSQLUtil;
 import com.liferay.portal.kernel.dao.orm.QueryPos;
 import com.liferay.portal.kernel.dao.orm.SQLQuery;
 import com.liferay.portal.kernel.dao.orm.Session;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import java.util.List;
 
 import hk.org.hkbh.cms.outpatient.model.CodeDto;
 import hk.org.hkbh.cms.outpatient.model.impl.CodeDtoImpl;
 import hk.org.hkbh.cms.outpatient.service.persistence.CodeDtoFinder;
+import hk.org.hkbh.cms.outpatient.servicehub.CodeMgr;
 
 public class CodeDtoFinderImpl extends CodeDtoFinderBaseImpl implements CodeDtoFinder {
 	public static final String GET_CODE_DTO_BY_MASTER_CODE = CodeDtoFinderImpl.class.getName() + ".getCodeDtoByMasterCode";
+	private static Log logger = LogFactoryUtil.getLog(CodeDtoFinderImpl.class);
+	
 	public List<CodeDto> getCodeDtoByMasterCode(String masterCode) {
 		Session session = null;
 		List<CodeDto> codeDtoList = null;

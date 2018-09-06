@@ -6,6 +6,7 @@
 	<import class="hk.org.hkbh.cms.outpatient.model.Code" />
 	<import class="hk.org.hkbh.cms.outpatient.model.CodeDetail" />
 	<import class="hk.org.hkbh.cms.outpatient.model.CodeDto" />
+	<import class="hk.org.hkbh.cms.outpatient.model.ComponentControlDto" />
 	<class name="hk.org.hkbh.cms.outpatient.model.impl.ClinicalNoteTemplateImpl" table="clinical_note_template">
 		<id name="id" type="long">
 			<generator class="increment" />
@@ -73,6 +74,38 @@
 		<property name="level" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property column="up_level_id" name="upLevelId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property column="code_detail_remarks" name="codeDetailRemarks" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="create_date" name="createDate" type="org.hibernate.type.TimestampType" />
+		<property column="update_date" name="updateDate" type="org.hibernate.type.TimestampType" />
+		<property column="created_by" name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="updated_by" name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="hk.org.hkbh.cms.outpatient.model.impl.ComponentControlDtoImpl" table="Op_ComponentControlDto">
+		<id column="component_id" name="componentId" type="long">
+			<generator class="increment" />
+		</id>
+		<property column="component_code" name="componentCode" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="component_name" name="componentName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="component_type_code_id" name="componentTypeCodeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="detail_code" name="detailCode" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="detail_code_display_text_en" name="detailCodeDisplayTextEn" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="detail_code_display_text_chi" name="detailCodeDisplayTextChi" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="component_seq" name="componentSeq" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property column="is_menu_item" name="isMenuItem" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property column="component_desc" name="componentDesc" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="url" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="component_level" name="componentLevel" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property column="up_component_id" name="upComponentId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="component_control_id" name="componentControlId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="user_id" name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="user_role_id" name="userRoleId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="create" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="read" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="update" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="delete" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="deny" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="visible" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="enable" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property column="control_desc" name="controlDesc" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property column="create_date" name="createDate" type="org.hibernate.type.TimestampType" />
 		<property column="update_date" name="updateDate" type="org.hibernate.type.TimestampType" />
 		<property column="created_by" name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />

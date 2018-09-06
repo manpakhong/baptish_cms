@@ -52,7 +52,7 @@ import hk.org.hkbh.cms.outpatient.vo.ClinicalNoteVo;
 )
 public class ClinicalNotePortlet extends MVCPortlet {
 //    private ClinicalNoteTemplateLocalService _clinicalNoteTemplateLocalService;
-	private static Log logger = LogFactoryUtil.getLog(CodeMgr.class);
+	private static Log logger = LogFactoryUtil.getLog(ClinicalNotePortlet.class);
 	private CodeMgr codeMgr;
 	private ClinicalNoteTemplateMgr clinicalNoteTemplateMgr;
 	public ClinicalNotePortlet() {
