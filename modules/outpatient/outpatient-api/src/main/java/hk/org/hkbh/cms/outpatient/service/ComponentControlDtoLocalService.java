@@ -74,10 +74,10 @@ public interface ComponentControlDtoLocalService extends BaseLocalService,
 	/**
 	* Creates a new component control dto with the primary key. Does not add the component control dto to the database.
 	*
-	* @param componentId the primary key for the new component control dto
+	* @param id the primary key for the new component control dto
 	* @return the new component control dto
 	*/
-	public ComponentControlDto createComponentControlDto(long componentId);
+	public ComponentControlDto createComponentControlDto(int id);
 
 	/**
 	* Deletes the component control dto from the database. Also notifies the appropriate model listeners.
@@ -92,12 +92,12 @@ public interface ComponentControlDtoLocalService extends BaseLocalService,
 	/**
 	* Deletes the component control dto with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param componentId the primary key of the component control dto
+	* @param id the primary key of the component control dto
 	* @return the component control dto that was removed
 	* @throws PortalException if a component control dto with the primary key could not be found
 	*/
 	@Indexable(type = IndexableType.DELETE)
-	public ComponentControlDto deleteComponentControlDto(long componentId)
+	public ComponentControlDto deleteComponentControlDto(int id)
 		throws PortalException;
 
 	/**
@@ -167,7 +167,7 @@ public interface ComponentControlDtoLocalService extends BaseLocalService,
 		Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public ComponentControlDto fetchComponentControlDto(long componentId);
+	public ComponentControlDto fetchComponentControlDto(int id);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -175,12 +175,12 @@ public interface ComponentControlDtoLocalService extends BaseLocalService,
 	/**
 	* Returns the component control dto with the primary key.
 	*
-	* @param componentId the primary key of the component control dto
+	* @param id the primary key of the component control dto
 	* @return the component control dto
 	* @throws PortalException if a component control dto with the primary key could not be found
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public ComponentControlDto getComponentControlDto(long componentId)
+	public ComponentControlDto getComponentControlDto(int id)
 		throws PortalException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)

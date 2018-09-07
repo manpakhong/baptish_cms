@@ -53,28 +53,28 @@ public interface CodeDtoModel extends BaseModel<CodeDto> {
 	 *
 	 * @return the primary key of this code dto
 	 */
-	public long getPrimaryKey();
+	public int getPrimaryKey();
 
 	/**
 	 * Sets the primary key of this code dto.
 	 *
 	 * @param primaryKey the primary key of this code dto
 	 */
-	public void setPrimaryKey(long primaryKey);
+	public void setPrimaryKey(int primaryKey);
 
 	/**
 	 * Returns the ID of this code dto.
 	 *
 	 * @return the ID of this code dto
 	 */
-	public long getId();
+	public int getId();
 
 	/**
 	 * Sets the ID of this code dto.
 	 *
 	 * @param id the ID of this code dto
 	 */
-	public void setId(long id);
+	public void setId(int id);
 
 	/**
 	 * Returns the master code of this code dto.
@@ -256,14 +256,14 @@ public interface CodeDtoModel extends BaseModel<CodeDto> {
 	 *
 	 * @return the up level ID of this code dto
 	 */
-	public Long getUpLevelId();
+	public Integer getUpLevelId();
 
 	/**
 	 * Sets the up level ID of this code dto.
 	 *
 	 * @param upLevelId the up level ID of this code dto
 	 */
-	public void setUpLevelId(Long upLevelId);
+	public void setUpLevelId(Integer upLevelId);
 
 	/**
 	 * Returns the code detail remarks of this code dto.

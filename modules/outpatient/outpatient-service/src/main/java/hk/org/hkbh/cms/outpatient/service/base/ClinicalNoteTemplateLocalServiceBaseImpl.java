@@ -101,7 +101,7 @@ public abstract class ClinicalNoteTemplateLocalServiceBaseImpl
 	 * @return the new clinical note template
 	 */
 	@Override
-	public ClinicalNoteTemplate createClinicalNoteTemplate(long id) {
+	public ClinicalNoteTemplate createClinicalNoteTemplate(int id) {
 		return clinicalNoteTemplatePersistence.create(id);
 	}
 
@@ -114,7 +114,7 @@ public abstract class ClinicalNoteTemplateLocalServiceBaseImpl
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public ClinicalNoteTemplate deleteClinicalNoteTemplate(long id)
+	public ClinicalNoteTemplate deleteClinicalNoteTemplate(int id)
 		throws PortalException {
 		return clinicalNoteTemplatePersistence.remove(id);
 	}
@@ -216,7 +216,7 @@ public abstract class ClinicalNoteTemplateLocalServiceBaseImpl
 	}
 
 	@Override
-	public ClinicalNoteTemplate fetchClinicalNoteTemplate(long id) {
+	public ClinicalNoteTemplate fetchClinicalNoteTemplate(int id) {
 		return clinicalNoteTemplatePersistence.fetchByPrimaryKey(id);
 	}
 
@@ -228,7 +228,7 @@ public abstract class ClinicalNoteTemplateLocalServiceBaseImpl
 	 * @throws PortalException if a clinical note template with the primary key could not be found
 	 */
 	@Override
-	public ClinicalNoteTemplate getClinicalNoteTemplate(long id)
+	public ClinicalNoteTemplate getClinicalNoteTemplate(int id)
 		throws PortalException {
 		return clinicalNoteTemplatePersistence.findByPrimaryKey(id);
 	}

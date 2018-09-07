@@ -113,174 +113,6 @@ public class ComponentControlDtoUtil {
 	}
 
 	/**
-	* Returns all the component control dtos where userRoleId = &#63;.
-	*
-	* @param userRoleId the user role ID
-	* @return the matching component control dtos
-	*/
-	public static List<ComponentControlDto> findByUserRoleId(
-		java.lang.Long userRoleId) {
-		return getPersistence().findByUserRoleId(userRoleId);
-	}
-
-	/**
-	* Returns a range of all the component control dtos where userRoleId = &#63;.
-	*
-	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link ComponentControlDtoModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
-	* </p>
-	*
-	* @param userRoleId the user role ID
-	* @param start the lower bound of the range of component control dtos
-	* @param end the upper bound of the range of component control dtos (not inclusive)
-	* @return the range of matching component control dtos
-	*/
-	public static List<ComponentControlDto> findByUserRoleId(
-		java.lang.Long userRoleId, int start, int end) {
-		return getPersistence().findByUserRoleId(userRoleId, start, end);
-	}
-
-	/**
-	* Returns an ordered range of all the component control dtos where userRoleId = &#63;.
-	*
-	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link ComponentControlDtoModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
-	* </p>
-	*
-	* @param userRoleId the user role ID
-	* @param start the lower bound of the range of component control dtos
-	* @param end the upper bound of the range of component control dtos (not inclusive)
-	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	* @return the ordered range of matching component control dtos
-	*/
-	public static List<ComponentControlDto> findByUserRoleId(
-		java.lang.Long userRoleId, int start, int end,
-		OrderByComparator<ComponentControlDto> orderByComparator) {
-		return getPersistence()
-				   .findByUserRoleId(userRoleId, start, end, orderByComparator);
-	}
-
-	/**
-	* Returns an ordered range of all the component control dtos where userRoleId = &#63;.
-	*
-	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link ComponentControlDtoModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
-	* </p>
-	*
-	* @param userRoleId the user role ID
-	* @param start the lower bound of the range of component control dtos
-	* @param end the upper bound of the range of component control dtos (not inclusive)
-	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	* @param retrieveFromCache whether to retrieve from the finder cache
-	* @return the ordered range of matching component control dtos
-	*/
-	public static List<ComponentControlDto> findByUserRoleId(
-		java.lang.Long userRoleId, int start, int end,
-		OrderByComparator<ComponentControlDto> orderByComparator,
-		boolean retrieveFromCache) {
-		return getPersistence()
-				   .findByUserRoleId(userRoleId, start, end, orderByComparator,
-			retrieveFromCache);
-	}
-
-	/**
-	* Returns the first component control dto in the ordered set where userRoleId = &#63;.
-	*
-	* @param userRoleId the user role ID
-	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	* @return the first matching component control dto
-	* @throws NoSuchComponentControlDtoException if a matching component control dto could not be found
-	*/
-	public static ComponentControlDto findByUserRoleId_First(
-		java.lang.Long userRoleId,
-		OrderByComparator<ComponentControlDto> orderByComparator)
-		throws hk.org.hkbh.cms.outpatient.exception.NoSuchComponentControlDtoException {
-		return getPersistence()
-				   .findByUserRoleId_First(userRoleId, orderByComparator);
-	}
-
-	/**
-	* Returns the first component control dto in the ordered set where userRoleId = &#63;.
-	*
-	* @param userRoleId the user role ID
-	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	* @return the first matching component control dto, or <code>null</code> if a matching component control dto could not be found
-	*/
-	public static ComponentControlDto fetchByUserRoleId_First(
-		java.lang.Long userRoleId,
-		OrderByComparator<ComponentControlDto> orderByComparator) {
-		return getPersistence()
-				   .fetchByUserRoleId_First(userRoleId, orderByComparator);
-	}
-
-	/**
-	* Returns the last component control dto in the ordered set where userRoleId = &#63;.
-	*
-	* @param userRoleId the user role ID
-	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	* @return the last matching component control dto
-	* @throws NoSuchComponentControlDtoException if a matching component control dto could not be found
-	*/
-	public static ComponentControlDto findByUserRoleId_Last(
-		java.lang.Long userRoleId,
-		OrderByComparator<ComponentControlDto> orderByComparator)
-		throws hk.org.hkbh.cms.outpatient.exception.NoSuchComponentControlDtoException {
-		return getPersistence()
-				   .findByUserRoleId_Last(userRoleId, orderByComparator);
-	}
-
-	/**
-	* Returns the last component control dto in the ordered set where userRoleId = &#63;.
-	*
-	* @param userRoleId the user role ID
-	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	* @return the last matching component control dto, or <code>null</code> if a matching component control dto could not be found
-	*/
-	public static ComponentControlDto fetchByUserRoleId_Last(
-		java.lang.Long userRoleId,
-		OrderByComparator<ComponentControlDto> orderByComparator) {
-		return getPersistence()
-				   .fetchByUserRoleId_Last(userRoleId, orderByComparator);
-	}
-
-	/**
-	* Returns the component control dtos before and after the current component control dto in the ordered set where userRoleId = &#63;.
-	*
-	* @param componentId the primary key of the current component control dto
-	* @param userRoleId the user role ID
-	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	* @return the previous, current, and next component control dto
-	* @throws NoSuchComponentControlDtoException if a component control dto with the primary key could not be found
-	*/
-	public static ComponentControlDto[] findByUserRoleId_PrevAndNext(
-		long componentId, java.lang.Long userRoleId,
-		OrderByComparator<ComponentControlDto> orderByComparator)
-		throws hk.org.hkbh.cms.outpatient.exception.NoSuchComponentControlDtoException {
-		return getPersistence()
-				   .findByUserRoleId_PrevAndNext(componentId, userRoleId,
-			orderByComparator);
-	}
-
-	/**
-	* Removes all the component control dtos where userRoleId = &#63; from the database.
-	*
-	* @param userRoleId the user role ID
-	*/
-	public static void removeByUserRoleId(java.lang.Long userRoleId) {
-		getPersistence().removeByUserRoleId(userRoleId);
-	}
-
-	/**
-	* Returns the number of component control dtos where userRoleId = &#63;.
-	*
-	* @param userRoleId the user role ID
-	* @return the number of matching component control dtos
-	*/
-	public static int countByUserRoleId(java.lang.Long userRoleId) {
-		return getPersistence().countByUserRoleId(userRoleId);
-	}
-
-	/**
 	* Caches the component control dto in the entity cache if it is enabled.
 	*
 	* @param componentControlDto the component control dto
@@ -302,23 +134,23 @@ public class ComponentControlDtoUtil {
 	/**
 	* Creates a new component control dto with the primary key. Does not add the component control dto to the database.
 	*
-	* @param componentId the primary key for the new component control dto
+	* @param id the primary key for the new component control dto
 	* @return the new component control dto
 	*/
-	public static ComponentControlDto create(long componentId) {
-		return getPersistence().create(componentId);
+	public static ComponentControlDto create(int id) {
+		return getPersistence().create(id);
 	}
 
 	/**
 	* Removes the component control dto with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param componentId the primary key of the component control dto
+	* @param id the primary key of the component control dto
 	* @return the component control dto that was removed
 	* @throws NoSuchComponentControlDtoException if a component control dto with the primary key could not be found
 	*/
-	public static ComponentControlDto remove(long componentId)
+	public static ComponentControlDto remove(int id)
 		throws hk.org.hkbh.cms.outpatient.exception.NoSuchComponentControlDtoException {
-		return getPersistence().remove(componentId);
+		return getPersistence().remove(id);
 	}
 
 	public static ComponentControlDto updateImpl(
@@ -329,23 +161,23 @@ public class ComponentControlDtoUtil {
 	/**
 	* Returns the component control dto with the primary key or throws a {@link NoSuchComponentControlDtoException} if it could not be found.
 	*
-	* @param componentId the primary key of the component control dto
+	* @param id the primary key of the component control dto
 	* @return the component control dto
 	* @throws NoSuchComponentControlDtoException if a component control dto with the primary key could not be found
 	*/
-	public static ComponentControlDto findByPrimaryKey(long componentId)
+	public static ComponentControlDto findByPrimaryKey(int id)
 		throws hk.org.hkbh.cms.outpatient.exception.NoSuchComponentControlDtoException {
-		return getPersistence().findByPrimaryKey(componentId);
+		return getPersistence().findByPrimaryKey(id);
 	}
 
 	/**
 	* Returns the component control dto with the primary key or returns <code>null</code> if it could not be found.
 	*
-	* @param componentId the primary key of the component control dto
+	* @param id the primary key of the component control dto
 	* @return the component control dto, or <code>null</code> if a component control dto with the primary key could not be found
 	*/
-	public static ComponentControlDto fetchByPrimaryKey(long componentId) {
-		return getPersistence().fetchByPrimaryKey(componentId);
+	public static ComponentControlDto fetchByPrimaryKey(int id) {
+		return getPersistence().fetchByPrimaryKey(id);
 	}
 
 	public static java.util.Map<java.io.Serializable, ComponentControlDto> fetchByPrimaryKeys(

@@ -2,9 +2,9 @@
 
 <model-hints>
 	<model name="hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate">
-		<field name="id" type="long" />
-		<field name="userId" type="Long" />
-		<field name="templateTypeCodeId" type="Long" />
+		<field name="id" type="int" />
+		<field name="userId" type="Integer" />
+		<field name="templateTypeCodeId" type="Integer" />
 		<field name="templateName" type="String" />
 		<field name="templateContent" type="String" />
 		<field name="templateContentHtml" type="String" />
@@ -14,7 +14,7 @@
 		<field name="updatedBy" type="String" />
 	</model>
 	<model name="hk.org.hkbh.cms.outpatient.model.Code">
-		<field name="id" type="long" />
+		<field name="id" type="int" />
 		<field name="masterCode" type="String" />
 		<field name="displayTextEn" type="String" />
 		<field name="displayTextChi" type="String" />
@@ -27,9 +27,9 @@
 		<field name="updatedBy" type="String" />
 	</model>
 	<model name="hk.org.hkbh.cms.outpatient.model.CodeDetail">
-		<field name="id" type="long" />
-		<field name="codeId" type="String" />
-		<field name="detailCode" type="Long" />
+		<field name="id" type="int" />
+		<field name="codeId" type="Integer" />
+		<field name="detailCode" type="Integer" />
 		<field name="seq" type="Integer" />
 		<field name="displayTextEn" type="String" />
 		<field name="displayTextChi" type="String" />
@@ -37,7 +37,7 @@
 		<field name="symbol_html_code" type="String" />
 		<field name="active" type="Boolean" />
 		<field name="level" type="Integer" />
-		<field name="upLevelId" type="Long" />
+		<field name="upLevelId" type="Integer" />
 		<field name="remarks" type="String" />
 		<field name="createDate" type="Date" />
 		<field name="updateDate" type="Date" />
@@ -45,7 +45,7 @@
 		<field name="updatedBy" type="String" />
 	</model>
 	<model name="hk.org.hkbh.cms.outpatient.model.CodeDto">
-		<field name="id" type="long" />
+		<field name="id" type="int" />
 		<field name="masterCode" type="String" />
 		<field name="codeDisplayTextEn" type="String" />
 		<field name="codeDisplayTextChi" type="String" />
@@ -58,7 +58,7 @@
 		<field name="codeDetailDisplayTextChi" type="String" />
 		<field name="codeDetailActive" type="Boolean" />
 		<field name="level" type="Integer" />
-		<field name="upLevelId" type="Long" />
+		<field name="upLevelId" type="Integer" />
 		<field name="codeDetailRemarks" type="String" />
 		<field name="createDate" type="Date" />
 		<field name="updateDate" type="Date" />
@@ -66,11 +66,11 @@
 		<field name="updatedBy" type="String" />
 	</model>
 	<model name="hk.org.hkbh.cms.outpatient.model.ComponentControlDto">
-		<field name="componentId" type="long" />
+		<field name="id" type="int" />
 		<field name="componentCode" type="String" />
 		<field name="componentName" type="String" />
-		<field name="componentTypeCodeId" type="Long" />
-		<field name="detailCode" type="Long" />
+		<field name="componentTypeCodeId" type="Integer" />
+		<field name="detailCode" type="Integer" />
 		<field name="detailCodeDisplayTextEn" type="String" />
 		<field name="detailCodeDisplayTextChi" type="String" />
 		<field name="componentSeq" type="Integer" />
@@ -78,10 +78,11 @@
 		<field name="componentDesc" type="String" />
 		<field name="url" type="String" />
 		<field name="componentLevel" type="Integer" />
-		<field name="upComponentId" type="Long" />
-		<field name="componentControlId" type="Long" />
-		<field name="userId" type="Long" />
-		<field name="userRoleId" type="Long" />
+		<field name="upComponentId" type="Integer" />
+		<field name="componentControlId" type="Integer" />
+		<field name="userId" type="Integer" />
+		<field name="userRoleId" type="Integer" />
+		<field name="componentId" type="Integer" />
 		<field name="create" type="Boolean" />
 		<field name="read" type="Boolean" />
 		<field name="update" type="Boolean" />

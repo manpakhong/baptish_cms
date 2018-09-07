@@ -38,16 +38,15 @@ public interface ComponentControlDto extends ComponentControlDtoModel,
 	 *
 	 * Never modify this interface directly. Add methods to {@link hk.org.hkbh.cms.outpatient.model.impl.ComponentControlDtoImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<ComponentControlDto, Long> COMPONENT_ID_ACCESSOR =
-		new Accessor<ComponentControlDto, Long>() {
+	public static final Accessor<ComponentControlDto, Integer> ID_ACCESSOR = new Accessor<ComponentControlDto, Integer>() {
 			@Override
-			public Long get(ComponentControlDto componentControlDto) {
-				return componentControlDto.getComponentId();
+			public Integer get(ComponentControlDto componentControlDto) {
+				return componentControlDto.getId();
 			}
 
 			@Override
-			public Class<Long> getAttributeClass() {
-				return Long.class;
+			public Class<Integer> getAttributeClass() {
+				return Integer.class;
 			}
 
 			@Override

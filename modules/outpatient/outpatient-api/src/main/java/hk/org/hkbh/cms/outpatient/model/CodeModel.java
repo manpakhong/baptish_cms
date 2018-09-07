@@ -53,28 +53,28 @@ public interface CodeModel extends BaseModel<Code> {
 	 *
 	 * @return the primary key of this code
 	 */
-	public long getPrimaryKey();
+	public int getPrimaryKey();
 
 	/**
 	 * Sets the primary key of this code.
 	 *
 	 * @param primaryKey the primary key of this code
 	 */
-	public void setPrimaryKey(long primaryKey);
+	public void setPrimaryKey(int primaryKey);
 
 	/**
 	 * Returns the ID of this code.
 	 *
 	 * @return the ID of this code
 	 */
-	public long getId();
+	public int getId();
 
 	/**
 	 * Sets the ID of this code.
 	 *
 	 * @param id the ID of this code
 	 */
-	public void setId(long id);
+	public void setId(int id);
 
 	/**
 	 * Returns the master code of this code.

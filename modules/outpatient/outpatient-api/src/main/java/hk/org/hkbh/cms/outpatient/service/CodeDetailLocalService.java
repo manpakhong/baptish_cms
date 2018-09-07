@@ -76,7 +76,7 @@ public interface CodeDetailLocalService extends BaseLocalService,
 	* @param id the primary key for the new code detail
 	* @return the new code detail
 	*/
-	public CodeDetail createCodeDetail(long id);
+	public CodeDetail createCodeDetail(int id);
 
 	/**
 	* Deletes the code detail from the database. Also notifies the appropriate model listeners.
@@ -95,7 +95,7 @@ public interface CodeDetailLocalService extends BaseLocalService,
 	* @throws PortalException if a code detail with the primary key could not be found
 	*/
 	@Indexable(type = IndexableType.DELETE)
-	public CodeDetail deleteCodeDetail(long id) throws PortalException;
+	public CodeDetail deleteCodeDetail(int id) throws PortalException;
 
 	/**
 	* @throws PortalException
@@ -164,7 +164,7 @@ public interface CodeDetailLocalService extends BaseLocalService,
 		Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public CodeDetail fetchCodeDetail(long id);
+	public CodeDetail fetchCodeDetail(int id);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -177,7 +177,7 @@ public interface CodeDetailLocalService extends BaseLocalService,
 	* @throws PortalException if a code detail with the primary key could not be found
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public CodeDetail getCodeDetail(long id) throws PortalException;
+	public CodeDetail getCodeDetail(int id) throws PortalException;
 
 	/**
 	* Returns a range of all the code details.

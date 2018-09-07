@@ -153,7 +153,7 @@ public interface CodeDtoPersistence extends BasePersistence<CodeDto> {
 	* @return the previous, current, and next code dto
 	* @throws NoSuchCodeDtoException if a code dto with the primary key could not be found
 	*/
-	public CodeDto[] findByMasterCode_PrevAndNext(long id,
+	public CodeDto[] findByMasterCode_PrevAndNext(int id,
 		java.lang.String masterCode,
 		com.liferay.portal.kernel.util.OrderByComparator<CodeDto> orderByComparator)
 		throws NoSuchCodeDtoException;
@@ -193,7 +193,7 @@ public interface CodeDtoPersistence extends BasePersistence<CodeDto> {
 	* @param id the primary key for the new code dto
 	* @return the new code dto
 	*/
-	public CodeDto create(long id);
+	public CodeDto create(int id);
 
 	/**
 	* Removes the code dto with the primary key from the database. Also notifies the appropriate model listeners.
@@ -202,7 +202,7 @@ public interface CodeDtoPersistence extends BasePersistence<CodeDto> {
 	* @return the code dto that was removed
 	* @throws NoSuchCodeDtoException if a code dto with the primary key could not be found
 	*/
-	public CodeDto remove(long id) throws NoSuchCodeDtoException;
+	public CodeDto remove(int id) throws NoSuchCodeDtoException;
 
 	public CodeDto updateImpl(CodeDto codeDto);
 
@@ -213,7 +213,7 @@ public interface CodeDtoPersistence extends BasePersistence<CodeDto> {
 	* @return the code dto
 	* @throws NoSuchCodeDtoException if a code dto with the primary key could not be found
 	*/
-	public CodeDto findByPrimaryKey(long id) throws NoSuchCodeDtoException;
+	public CodeDto findByPrimaryKey(int id) throws NoSuchCodeDtoException;
 
 	/**
 	* Returns the code dto with the primary key or returns <code>null</code> if it could not be found.
@@ -221,7 +221,7 @@ public interface CodeDtoPersistence extends BasePersistence<CodeDto> {
 	* @param id the primary key of the code dto
 	* @return the code dto, or <code>null</code> if a code dto with the primary key could not be found
 	*/
-	public CodeDto fetchByPrimaryKey(long id);
+	public CodeDto fetchByPrimaryKey(int id);
 
 	@Override
 	public java.util.Map<java.io.Serializable, CodeDto> fetchByPrimaryKeys(

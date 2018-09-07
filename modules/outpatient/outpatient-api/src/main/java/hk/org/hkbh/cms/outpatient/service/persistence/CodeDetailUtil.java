@@ -135,7 +135,7 @@ public class CodeDetailUtil {
 	* @param id the primary key for the new code detail
 	* @return the new code detail
 	*/
-	public static CodeDetail create(long id) {
+	public static CodeDetail create(int id) {
 		return getPersistence().create(id);
 	}
 
@@ -146,7 +146,7 @@ public class CodeDetailUtil {
 	* @return the code detail that was removed
 	* @throws NoSuchCodeDetailException if a code detail with the primary key could not be found
 	*/
-	public static CodeDetail remove(long id)
+	public static CodeDetail remove(int id)
 		throws hk.org.hkbh.cms.outpatient.exception.NoSuchCodeDetailException {
 		return getPersistence().remove(id);
 	}
@@ -162,7 +162,7 @@ public class CodeDetailUtil {
 	* @return the code detail
 	* @throws NoSuchCodeDetailException if a code detail with the primary key could not be found
 	*/
-	public static CodeDetail findByPrimaryKey(long id)
+	public static CodeDetail findByPrimaryKey(int id)
 		throws hk.org.hkbh.cms.outpatient.exception.NoSuchCodeDetailException {
 		return getPersistence().findByPrimaryKey(id);
 	}
@@ -173,7 +173,7 @@ public class CodeDetailUtil {
 	* @param id the primary key of the code detail
 	* @return the code detail, or <code>null</code> if a code detail with the primary key could not be found
 	*/
-	public static CodeDetail fetchByPrimaryKey(long id) {
+	public static CodeDetail fetchByPrimaryKey(int id) {
 		return getPersistence().fetchByPrimaryKey(id);
 	}
 

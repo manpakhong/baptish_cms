@@ -61,7 +61,7 @@ public interface CodePersistence extends BasePersistence<Code> {
 	* @param id the primary key for the new code
 	* @return the new code
 	*/
-	public Code create(long id);
+	public Code create(int id);
 
 	/**
 	* Removes the code with the primary key from the database. Also notifies the appropriate model listeners.
@@ -70,7 +70,7 @@ public interface CodePersistence extends BasePersistence<Code> {
 	* @return the code that was removed
 	* @throws NoSuchCodeException if a code with the primary key could not be found
 	*/
-	public Code remove(long id) throws NoSuchCodeException;
+	public Code remove(int id) throws NoSuchCodeException;
 
 	public Code updateImpl(Code code);
 
@@ -81,7 +81,7 @@ public interface CodePersistence extends BasePersistence<Code> {
 	* @return the code
 	* @throws NoSuchCodeException if a code with the primary key could not be found
 	*/
-	public Code findByPrimaryKey(long id) throws NoSuchCodeException;
+	public Code findByPrimaryKey(int id) throws NoSuchCodeException;
 
 	/**
 	* Returns the code with the primary key or returns <code>null</code> if it could not be found.
@@ -89,7 +89,7 @@ public interface CodePersistence extends BasePersistence<Code> {
 	* @param id the primary key of the code
 	* @return the code, or <code>null</code> if a code with the primary key could not be found
 	*/
-	public Code fetchByPrimaryKey(long id);
+	public Code fetchByPrimaryKey(int id);
 
 	@Override
 	public java.util.Map<java.io.Serializable, Code> fetchByPrimaryKeys(

@@ -92,7 +92,8 @@ public class OutpatientWebPortlet extends MVCPortlet {
 			vo = new OutpatientWebVo();
 			Long userId = null;
 			Long userRoleId = null;
-			userRoleId = 3L;
+			userId = null;
+			userRoleId = 5L;
 			List<ComponentControlDto> componentControlDtoList = componentControlMgr.getComponentControlList(userId, userRoleId);
 
 			vo.setComponentControlDtoList(componentControlDtoList);

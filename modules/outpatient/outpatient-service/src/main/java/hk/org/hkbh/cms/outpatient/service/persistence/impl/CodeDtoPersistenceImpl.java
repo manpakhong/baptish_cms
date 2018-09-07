@@ -400,7 +400,7 @@ public class CodeDtoPersistenceImpl extends BasePersistenceImpl<CodeDto>
 	 * @throws NoSuchCodeDtoException if a code dto with the primary key could not be found
 	 */
 	@Override
-	public CodeDto[] findByMasterCode_PrevAndNext(long id, String masterCode,
+	public CodeDto[] findByMasterCode_PrevAndNext(int id, String masterCode,
 		OrderByComparator<CodeDto> orderByComparator)
 		throws NoSuchCodeDtoException {
 		CodeDto codeDto = findByPrimaryKey(id);
@@ -753,7 +753,7 @@ public class CodeDtoPersistenceImpl extends BasePersistenceImpl<CodeDto>
 	 * @return the new code dto
 	 */
 	@Override
-	public CodeDto create(long id) {
+	public CodeDto create(int id) {
 		CodeDto codeDto = new CodeDtoImpl();
 
 		codeDto.setNew(true);
@@ -770,7 +770,7 @@ public class CodeDtoPersistenceImpl extends BasePersistenceImpl<CodeDto>
 	 * @throws NoSuchCodeDtoException if a code dto with the primary key could not be found
 	 */
 	@Override
-	public CodeDto remove(long id) throws NoSuchCodeDtoException {
+	public CodeDto remove(int id) throws NoSuchCodeDtoException {
 		return remove((Serializable)id);
 	}
 
@@ -984,7 +984,7 @@ public class CodeDtoPersistenceImpl extends BasePersistenceImpl<CodeDto>
 	 * @throws NoSuchCodeDtoException if a code dto with the primary key could not be found
 	 */
 	@Override
-	public CodeDto findByPrimaryKey(long id) throws NoSuchCodeDtoException {
+	public CodeDto findByPrimaryKey(int id) throws NoSuchCodeDtoException {
 		return findByPrimaryKey((Serializable)id);
 	}
 
@@ -1042,7 +1042,7 @@ public class CodeDtoPersistenceImpl extends BasePersistenceImpl<CodeDto>
 	 * @return the code dto, or <code>null</code> if a code dto with the primary key could not be found
 	 */
 	@Override
-	public CodeDto fetchByPrimaryKey(long id) {
+	public CodeDto fetchByPrimaryKey(int id) {
 		return fetchByPrimaryKey((Serializable)id);
 	}
 
@@ -1099,7 +1099,7 @@ public class CodeDtoPersistenceImpl extends BasePersistenceImpl<CodeDto>
 		query.append(_SQL_SELECT_CODEDTO_WHERE_PKS_IN);
 
 		for (Serializable primaryKey : uncachedPrimaryKeys) {
-			query.append((long)primaryKey);
+			query.append((int)primaryKey);
 
 			query.append(",");
 		}

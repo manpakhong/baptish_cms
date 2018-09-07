@@ -16,13 +16,9 @@ package hk.org.hkbh.cms.outpatient.model.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
-import com.liferay.expando.kernel.model.ExpandoBridge;
-import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
-
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
-import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -61,9 +57,9 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	 */
 	public static final String TABLE_NAME = "code_detail";
 	public static final Object[][] TABLE_COLUMNS = {
-			{ "id", Types.BIGINT },
-			{ "code_id", Types.VARCHAR },
-			{ "detail_code", Types.BIGINT },
+			{ "id", Types.INTEGER },
+			{ "code_id", Types.INTEGER },
+			{ "detail_code", Types.INTEGER },
 			{ "seq", Types.INTEGER },
 			{ "display_text_en", Types.VARCHAR },
 			{ "display_text_chi", Types.VARCHAR },
@@ -71,7 +67,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 			{ "symbol_html_code", Types.VARCHAR },
 			{ "active", Types.BOOLEAN },
 			{ "level", Types.INTEGER },
-			{ "up_level_id", Types.BIGINT },
+			{ "up_level_id", Types.INTEGER },
 			{ "remarks", Types.VARCHAR },
 			{ "create_date", Types.TIMESTAMP },
 			{ "update_date", Types.TIMESTAMP },
@@ -81,9 +77,9 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP = new HashMap<String, Integer>();
 
 	static {
-		TABLE_COLUMNS_MAP.put("id", Types.BIGINT);
-		TABLE_COLUMNS_MAP.put("code_id", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("detail_code", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("id", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("code_id", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("detail_code", Types.INTEGER);
 		TABLE_COLUMNS_MAP.put("seq", Types.INTEGER);
 		TABLE_COLUMNS_MAP.put("display_text_en", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("display_text_chi", Types.VARCHAR);
@@ -91,7 +87,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 		TABLE_COLUMNS_MAP.put("symbol_html_code", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("active", Types.BOOLEAN);
 		TABLE_COLUMNS_MAP.put("level", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("up_level_id", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("up_level_id", Types.INTEGER);
 		TABLE_COLUMNS_MAP.put("remarks", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("create_date", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("update_date", Types.TIMESTAMP);
@@ -99,7 +95,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 		TABLE_COLUMNS_MAP.put("updated_by", Types.VARCHAR);
 	}
 
-	public static final String TABLE_SQL_CREATE = "create table code_detail (id LONG not null primary key,code_id VARCHAR(75) null,detail_code LONG,seq INTEGER,display_text_en VARCHAR(75) null,display_text_chi VARCHAR(75) null,symbol VARCHAR(75) null,symbol_html_code VARCHAR(75) null,active BOOLEAN,level INTEGER,up_level_id LONG,remarks VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table code_detail (id INTEGER not null primary key,code_id INTEGER,detail_code INTEGER,seq INTEGER,display_text_en VARCHAR(75) null,display_text_chi VARCHAR(75) null,symbol VARCHAR(75) null,symbol_html_code VARCHAR(75) null,active BOOLEAN,level INTEGER,up_level_id INTEGER,remarks VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table code_detail";
 	public static final String ORDER_BY_JPQL = " ORDER BY codeDetail.id ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY code_detail.id ASC";
@@ -120,12 +116,12 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	}
 
 	@Override
-	public long getPrimaryKey() {
+	public int getPrimaryKey() {
 		return _id;
 	}
 
 	@Override
-	public void setPrimaryKey(long primaryKey) {
+	public void setPrimaryKey(int primaryKey) {
 		setId(primaryKey);
 	}
 
@@ -136,7 +132,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 
 	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey(((Long)primaryKeyObj).longValue());
+		setPrimaryKey(((Integer)primaryKeyObj).intValue());
 	}
 
 	@Override
@@ -178,19 +174,19 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
+		Integer id = (Integer)attributes.get("id");
 
 		if (id != null) {
 			setId(id);
 		}
 
-		String codeId = (String)attributes.get("codeId");
+		Integer codeId = (Integer)attributes.get("codeId");
 
 		if (codeId != null) {
 			setCodeId(codeId);
 		}
 
-		Long detailCode = (Long)attributes.get("detailCode");
+		Integer detailCode = (Integer)attributes.get("detailCode");
 
 		if (detailCode != null) {
 			setDetailCode(detailCode);
@@ -238,7 +234,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 			setLevel(level);
 		}
 
-		Long upLevelId = (Long)attributes.get("upLevelId");
+		Integer upLevelId = (Integer)attributes.get("upLevelId");
 
 		if (upLevelId != null) {
 			setUpLevelId(upLevelId);
@@ -276,37 +272,32 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	}
 
 	@Override
-	public long getId() {
+	public int getId() {
 		return _id;
 	}
 
 	@Override
-	public void setId(long id) {
+	public void setId(int id) {
 		_id = id;
 	}
 
 	@Override
-	public String getCodeId() {
-		if (_codeId == null) {
-			return "";
-		}
-		else {
-			return _codeId;
-		}
+	public Integer getCodeId() {
+		return _codeId;
 	}
 
 	@Override
-	public void setCodeId(String codeId) {
+	public void setCodeId(Integer codeId) {
 		_codeId = codeId;
 	}
 
 	@Override
-	public Long getDetailCode() {
+	public Integer getDetailCode() {
 		return _detailCode;
 	}
 
 	@Override
-	public void setDetailCode(Long detailCode) {
+	public void setDetailCode(Integer detailCode) {
 		_detailCode = detailCode;
 	}
 
@@ -401,12 +392,12 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	}
 
 	@Override
-	public Long getUpLevelId() {
+	public Integer getUpLevelId() {
 		return _upLevelId;
 	}
 
 	@Override
-	public void setUpLevelId(Long upLevelId) {
+	public void setUpLevelId(Integer upLevelId) {
 		_upLevelId = upLevelId;
 	}
 
@@ -473,19 +464,6 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	@Override
 	public void setUpdatedBy(String updatedBy) {
 		_updatedBy = updatedBy;
-	}
-
-	@Override
-	public ExpandoBridge getExpandoBridge() {
-		return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
-			CodeDetail.class.getName(), getPrimaryKey());
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
-		ExpandoBridge expandoBridge = getExpandoBridge();
-
-		expandoBridge.setAttributes(serviceContext);
 	}
 
 	@Override
@@ -557,7 +535,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 
 		CodeDetail codeDetail = (CodeDetail)obj;
 
-		long primaryKey = codeDetail.getPrimaryKey();
+		int primaryKey = codeDetail.getPrimaryKey();
 
 		if (getPrimaryKey() == primaryKey) {
 			return true;
@@ -569,7 +547,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 
 	@Override
 	public int hashCode() {
-		return (int)getPrimaryKey();
+		return getPrimaryKey();
 	}
 
 	@Override
@@ -593,12 +571,6 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 		codeDetailCacheModel.id = getId();
 
 		codeDetailCacheModel.codeId = getCodeId();
-
-		String codeId = codeDetailCacheModel.codeId;
-
-		if ((codeId != null) && (codeId.length() == 0)) {
-			codeDetailCacheModel.codeId = null;
-		}
 
 		codeDetailCacheModel.detailCode = getDetailCode();
 
@@ -810,9 +782,9 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
 			CodeDetail.class
 		};
-	private long _id;
-	private String _codeId;
-	private Long _detailCode;
+	private int _id;
+	private Integer _codeId;
+	private Integer _detailCode;
 	private Integer _seq;
 	private String _displayTextEn;
 	private String _displayTextChi;
@@ -820,7 +792,7 @@ public class CodeDetailModelImpl extends BaseModelImpl<CodeDetail>
 	private String _symbol_html_code;
 	private Boolean _active;
 	private Integer _level;
-	private Long _upLevelId;
+	private Integer _upLevelId;
 	private String _remarks;
 	private Date _createDate;
 	private Date _updateDate;

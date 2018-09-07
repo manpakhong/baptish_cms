@@ -99,7 +99,7 @@ public abstract class CodeLocalServiceBaseImpl extends BaseLocalServiceImpl
 	 * @return the new code
 	 */
 	@Override
-	public Code createCode(long id) {
+	public Code createCode(int id) {
 		return codePersistence.create(id);
 	}
 
@@ -112,7 +112,7 @@ public abstract class CodeLocalServiceBaseImpl extends BaseLocalServiceImpl
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public Code deleteCode(long id) throws PortalException {
+	public Code deleteCode(int id) throws PortalException {
 		return codePersistence.remove(id);
 	}
 
@@ -210,7 +210,7 @@ public abstract class CodeLocalServiceBaseImpl extends BaseLocalServiceImpl
 	}
 
 	@Override
-	public Code fetchCode(long id) {
+	public Code fetchCode(int id) {
 		return codePersistence.fetchByPrimaryKey(id);
 	}
 
@@ -222,7 +222,7 @@ public abstract class CodeLocalServiceBaseImpl extends BaseLocalServiceImpl
 	 * @throws PortalException if a code with the primary key could not be found
 	 */
 	@Override
-	public Code getCode(long id) throws PortalException {
+	public Code getCode(int id) throws PortalException {
 		return codePersistence.findByPrimaryKey(id);
 	}
 

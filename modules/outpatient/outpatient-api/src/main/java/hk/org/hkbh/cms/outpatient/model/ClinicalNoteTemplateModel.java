@@ -53,56 +53,56 @@ public interface ClinicalNoteTemplateModel extends BaseModel<ClinicalNoteTemplat
 	 *
 	 * @return the primary key of this clinical note template
 	 */
-	public long getPrimaryKey();
+	public int getPrimaryKey();
 
 	/**
 	 * Sets the primary key of this clinical note template.
 	 *
 	 * @param primaryKey the primary key of this clinical note template
 	 */
-	public void setPrimaryKey(long primaryKey);
+	public void setPrimaryKey(int primaryKey);
 
 	/**
 	 * Returns the ID of this clinical note template.
 	 *
 	 * @return the ID of this clinical note template
 	 */
-	public long getId();
+	public int getId();
 
 	/**
 	 * Sets the ID of this clinical note template.
 	 *
 	 * @param id the ID of this clinical note template
 	 */
-	public void setId(long id);
+	public void setId(int id);
 
 	/**
 	 * Returns the user ID of this clinical note template.
 	 *
 	 * @return the user ID of this clinical note template
 	 */
-	public Long getUserId();
+	public Integer getUserId();
 
 	/**
 	 * Sets the user ID of this clinical note template.
 	 *
 	 * @param userId the user ID of this clinical note template
 	 */
-	public void setUserId(Long userId);
+	public void setUserId(Integer userId);
 
 	/**
 	 * Returns the template type code ID of this clinical note template.
 	 *
 	 * @return the template type code ID of this clinical note template
 	 */
-	public Long getTemplateTypeCodeId();
+	public Integer getTemplateTypeCodeId();
 
 	/**
 	 * Sets the template type code ID of this clinical note template.
 	 *
 	 * @param templateTypeCodeId the template type code ID of this clinical note template
 	 */
-	public void setTemplateTypeCodeId(Long templateTypeCodeId);
+	public void setTemplateTypeCodeId(Integer templateTypeCodeId);
 
 	/**
 	 * Returns the template name of this clinical note template.

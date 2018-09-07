@@ -88,19 +88,19 @@ public class CodeSoap implements Serializable {
 	public CodeSoap() {
 	}
 
-	public long getPrimaryKey() {
+	public int getPrimaryKey() {
 		return _id;
 	}
 
-	public void setPrimaryKey(long pk) {
+	public void setPrimaryKey(int pk) {
 		setId(pk);
 	}
 
-	public long getId() {
+	public int getId() {
 		return _id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		_id = id;
 	}
 
@@ -184,7 +184,7 @@ public class CodeSoap implements Serializable {
 		_updatedBy = updatedBy;
 	}
 
-	private long _id;
+	private int _id;
 	private String _masterCode;
 	private String _displayTextEn;
 	private String _displayTextChi;

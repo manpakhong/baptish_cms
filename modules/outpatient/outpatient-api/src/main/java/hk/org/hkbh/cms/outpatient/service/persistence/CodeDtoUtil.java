@@ -242,7 +242,7 @@ public class CodeDtoUtil {
 	* @return the previous, current, and next code dto
 	* @throws NoSuchCodeDtoException if a code dto with the primary key could not be found
 	*/
-	public static CodeDto[] findByMasterCode_PrevAndNext(long id,
+	public static CodeDto[] findByMasterCode_PrevAndNext(int id,
 		java.lang.String masterCode,
 		OrderByComparator<CodeDto> orderByComparator)
 		throws hk.org.hkbh.cms.outpatient.exception.NoSuchCodeDtoException {
@@ -294,7 +294,7 @@ public class CodeDtoUtil {
 	* @param id the primary key for the new code dto
 	* @return the new code dto
 	*/
-	public static CodeDto create(long id) {
+	public static CodeDto create(int id) {
 		return getPersistence().create(id);
 	}
 
@@ -305,7 +305,7 @@ public class CodeDtoUtil {
 	* @return the code dto that was removed
 	* @throws NoSuchCodeDtoException if a code dto with the primary key could not be found
 	*/
-	public static CodeDto remove(long id)
+	public static CodeDto remove(int id)
 		throws hk.org.hkbh.cms.outpatient.exception.NoSuchCodeDtoException {
 		return getPersistence().remove(id);
 	}
@@ -321,7 +321,7 @@ public class CodeDtoUtil {
 	* @return the code dto
 	* @throws NoSuchCodeDtoException if a code dto with the primary key could not be found
 	*/
-	public static CodeDto findByPrimaryKey(long id)
+	public static CodeDto findByPrimaryKey(int id)
 		throws hk.org.hkbh.cms.outpatient.exception.NoSuchCodeDtoException {
 		return getPersistence().findByPrimaryKey(id);
 	}
@@ -332,7 +332,7 @@ public class CodeDtoUtil {
 	* @param id the primary key of the code dto
 	* @return the code dto, or <code>null</code> if a code dto with the primary key could not be found
 	*/
-	public static CodeDto fetchByPrimaryKey(long id) {
+	public static CodeDto fetchByPrimaryKey(int id) {
 		return getPersistence().fetchByPrimaryKey(id);
 	}
 

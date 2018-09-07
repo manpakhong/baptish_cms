@@ -156,11 +156,11 @@ public class ClinicalNoteTemplateCacheModel implements CacheModel<ClinicalNoteTe
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		id = objectInput.readLong();
+		id = objectInput.readInt();
 
-		userId = objectInput.readLong();
+		userId = objectInput.readInt();
 
-		templateTypeCodeId = objectInput.readLong();
+		templateTypeCodeId = objectInput.readInt();
 		templateName = objectInput.readUTF();
 		templateContent = objectInput.readUTF();
 		templateContentHtml = objectInput.readUTF();
@@ -173,11 +173,11 @@ public class ClinicalNoteTemplateCacheModel implements CacheModel<ClinicalNoteTe
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeLong(id);
+		objectOutput.writeInt(id);
 
-		objectOutput.writeLong(userId);
+		objectOutput.writeInt(userId);
 
-		objectOutput.writeLong(templateTypeCodeId);
+		objectOutput.writeInt(templateTypeCodeId);
 
 		if (templateName == null) {
 			objectOutput.writeUTF("");
@@ -218,9 +218,9 @@ public class ClinicalNoteTemplateCacheModel implements CacheModel<ClinicalNoteTe
 		}
 	}
 
-	public long id;
-	public long userId;
-	public long templateTypeCodeId;
+	public int id;
+	public int userId;
+	public int templateTypeCodeId;
 	public String templateName;
 	public String templateContent;
 	public String templateContentHtml;

@@ -82,7 +82,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
+		Integer id = (Integer)attributes.get("id");
 
 		if (id != null) {
 			setId(id);
@@ -162,7 +162,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 			setLevel(level);
 		}
 
-		Long upLevelId = (Long)attributes.get("upLevelId");
+		Integer upLevelId = (Integer)attributes.get("upLevelId");
 
 		if (upLevelId != null) {
 			setUpLevelId(upLevelId);
@@ -330,7 +330,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	* @return the ID of this code dto
 	*/
 	@Override
-	public long getId() {
+	public int getId() {
 		return _codeDto.getId();
 	}
 
@@ -360,7 +360,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	* @return the primary key of this code dto
 	*/
 	@Override
-	public long getPrimaryKey() {
+	public int getPrimaryKey() {
 		return _codeDto.getPrimaryKey();
 	}
 
@@ -415,7 +415,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	* @return the up level ID of this code dto
 	*/
 	@Override
-	public java.lang.Long getUpLevelId() {
+	public java.lang.Integer getUpLevelId() {
 		return _codeDto.getUpLevelId();
 	}
 
@@ -583,7 +583,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	* @param id the ID of this code dto
 	*/
 	@Override
-	public void setId(long id) {
+	public void setId(int id) {
 		_codeDto.setId(id);
 	}
 
@@ -618,7 +618,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	* @param primaryKey the primary key of this code dto
 	*/
 	@Override
-	public void setPrimaryKey(long primaryKey) {
+	public void setPrimaryKey(int primaryKey) {
 		_codeDto.setPrimaryKey(primaryKey);
 	}
 
@@ -673,7 +673,7 @@ public class CodeDtoWrapper implements CodeDto, ModelWrapper<CodeDto> {
 	* @param upLevelId the up level ID of this code dto
 	*/
 	@Override
-	public void setUpLevelId(java.lang.Long upLevelId) {
+	public void setUpLevelId(java.lang.Integer upLevelId) {
 		_codeDto.setUpLevelId(upLevelId);
 	}
 

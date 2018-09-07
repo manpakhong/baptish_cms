@@ -77,7 +77,7 @@ public interface ClinicalNoteTemplateLocalService extends BaseLocalService,
 	* @param id the primary key for the new clinical note template
 	* @return the new clinical note template
 	*/
-	public ClinicalNoteTemplate createClinicalNoteTemplate(long id);
+	public ClinicalNoteTemplate createClinicalNoteTemplate(int id);
 
 	/**
 	* Deletes the clinical note template from the database. Also notifies the appropriate model listeners.
@@ -97,7 +97,7 @@ public interface ClinicalNoteTemplateLocalService extends BaseLocalService,
 	* @throws PortalException if a clinical note template with the primary key could not be found
 	*/
 	@Indexable(type = IndexableType.DELETE)
-	public ClinicalNoteTemplate deleteClinicalNoteTemplate(long id)
+	public ClinicalNoteTemplate deleteClinicalNoteTemplate(int id)
 		throws PortalException;
 
 	/**
@@ -167,7 +167,7 @@ public interface ClinicalNoteTemplateLocalService extends BaseLocalService,
 		Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public ClinicalNoteTemplate fetchClinicalNoteTemplate(long id);
+	public ClinicalNoteTemplate fetchClinicalNoteTemplate(int id);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -180,7 +180,7 @@ public interface ClinicalNoteTemplateLocalService extends BaseLocalService,
 	* @throws PortalException if a clinical note template with the primary key could not be found
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public ClinicalNoteTemplate getClinicalNoteTemplate(long id)
+	public ClinicalNoteTemplate getClinicalNoteTemplate(int id)
 		throws PortalException;
 
 	/**

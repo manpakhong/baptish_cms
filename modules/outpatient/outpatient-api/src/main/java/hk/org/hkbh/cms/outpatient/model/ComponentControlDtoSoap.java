@@ -33,7 +33,7 @@ public class ComponentControlDtoSoap implements Serializable {
 	public static ComponentControlDtoSoap toSoapModel(ComponentControlDto model) {
 		ComponentControlDtoSoap soapModel = new ComponentControlDtoSoap();
 
-		soapModel.setComponentId(model.getComponentId());
+		soapModel.setId(model.getId());
 		soapModel.setComponentCode(model.getComponentCode());
 		soapModel.setComponentName(model.getComponentName());
 		soapModel.setComponentTypeCodeId(model.getComponentTypeCodeId());
@@ -49,6 +49,7 @@ public class ComponentControlDtoSoap implements Serializable {
 		soapModel.setComponentControlId(model.getComponentControlId());
 		soapModel.setUserId(model.getUserId());
 		soapModel.setUserRoleId(model.getUserRoleId());
+		soapModel.setComponentId(model.getComponentId());
 		soapModel.setCreate(model.getCreate());
 		soapModel.setRead(model.getRead());
 		soapModel.setUpdate(model.getUpdate());
@@ -108,20 +109,20 @@ public class ComponentControlDtoSoap implements Serializable {
 	public ComponentControlDtoSoap() {
 	}
 
-	public long getPrimaryKey() {
-		return _componentId;
+	public int getPrimaryKey() {
+		return _id;
 	}
 
-	public void setPrimaryKey(long pk) {
-		setComponentId(pk);
+	public void setPrimaryKey(int pk) {
+		setId(pk);
 	}
 
-	public long getComponentId() {
-		return _componentId;
+	public int getId() {
+		return _id;
 	}
 
-	public void setComponentId(long componentId) {
-		_componentId = componentId;
+	public void setId(int id) {
+		_id = id;
 	}
 
 	public String getComponentCode() {
@@ -140,19 +141,19 @@ public class ComponentControlDtoSoap implements Serializable {
 		_componentName = componentName;
 	}
 
-	public Long getComponentTypeCodeId() {
+	public Integer getComponentTypeCodeId() {
 		return _componentTypeCodeId;
 	}
 
-	public void setComponentTypeCodeId(Long componentTypeCodeId) {
+	public void setComponentTypeCodeId(Integer componentTypeCodeId) {
 		_componentTypeCodeId = componentTypeCodeId;
 	}
 
-	public Long getDetailCode() {
+	public Integer getDetailCode() {
 		return _detailCode;
 	}
 
-	public void setDetailCode(Long detailCode) {
+	public void setDetailCode(Integer detailCode) {
 		_detailCode = detailCode;
 	}
 
@@ -212,36 +213,44 @@ public class ComponentControlDtoSoap implements Serializable {
 		_componentLevel = componentLevel;
 	}
 
-	public Long getUpComponentId() {
+	public Integer getUpComponentId() {
 		return _upComponentId;
 	}
 
-	public void setUpComponentId(Long upComponentId) {
+	public void setUpComponentId(Integer upComponentId) {
 		_upComponentId = upComponentId;
 	}
 
-	public Long getComponentControlId() {
+	public Integer getComponentControlId() {
 		return _componentControlId;
 	}
 
-	public void setComponentControlId(Long componentControlId) {
+	public void setComponentControlId(Integer componentControlId) {
 		_componentControlId = componentControlId;
 	}
 
-	public Long getUserId() {
+	public Integer getUserId() {
 		return _userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(Integer userId) {
 		_userId = userId;
 	}
 
-	public Long getUserRoleId() {
+	public Integer getUserRoleId() {
 		return _userRoleId;
 	}
 
-	public void setUserRoleId(Long userRoleId) {
+	public void setUserRoleId(Integer userRoleId) {
 		_userRoleId = userRoleId;
+	}
+
+	public Integer getComponentId() {
+		return _componentId;
+	}
+
+	public void setComponentId(Integer componentId) {
+		_componentId = componentId;
 	}
 
 	public Boolean getCreate() {
@@ -340,11 +349,11 @@ public class ComponentControlDtoSoap implements Serializable {
 		_updatedBy = updatedBy;
 	}
 
-	private long _componentId;
+	private int _id;
 	private String _componentCode;
 	private String _componentName;
-	private Long _componentTypeCodeId;
-	private Long _detailCode;
+	private Integer _componentTypeCodeId;
+	private Integer _detailCode;
 	private String _detailCodeDisplayTextEn;
 	private String _detailCodeDisplayTextChi;
 	private Integer _componentSeq;
@@ -352,10 +361,11 @@ public class ComponentControlDtoSoap implements Serializable {
 	private String _componentDesc;
 	private String _url;
 	private Integer _componentLevel;
-	private Long _upComponentId;
-	private Long _componentControlId;
-	private Long _userId;
-	private Long _userRoleId;
+	private Integer _upComponentId;
+	private Integer _componentControlId;
+	private Integer _userId;
+	private Integer _userRoleId;
+	private Integer _componentId;
 	private Boolean _create;
 	private Boolean _read;
 	private Boolean _update;

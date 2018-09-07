@@ -109,14 +109,7 @@ public class CodeDetailCacheModel implements CacheModel<CodeDetail>,
 		CodeDetailImpl codeDetailImpl = new CodeDetailImpl();
 
 		codeDetailImpl.setId(id);
-
-		if (codeId == null) {
-			codeDetailImpl.setCodeId("");
-		}
-		else {
-			codeDetailImpl.setCodeId(codeId);
-		}
-
+		codeDetailImpl.setCodeId(codeId);
 		codeDetailImpl.setDetailCode(detailCode);
 		codeDetailImpl.setSeq(seq);
 
@@ -194,10 +187,11 @@ public class CodeDetailCacheModel implements CacheModel<CodeDetail>,
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		id = objectInput.readLong();
-		codeId = objectInput.readUTF();
+		id = objectInput.readInt();
 
-		detailCode = objectInput.readLong();
+		codeId = objectInput.readInt();
+
+		detailCode = objectInput.readInt();
 
 		seq = objectInput.readInt();
 		displayTextEn = objectInput.readUTF();
@@ -209,7 +203,7 @@ public class CodeDetailCacheModel implements CacheModel<CodeDetail>,
 
 		level = objectInput.readInt();
 
-		upLevelId = objectInput.readLong();
+		upLevelId = objectInput.readInt();
 		remarks = objectInput.readUTF();
 		createDate = objectInput.readLong();
 		updateDate = objectInput.readLong();
@@ -220,16 +214,11 @@ public class CodeDetailCacheModel implements CacheModel<CodeDetail>,
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeLong(id);
+		objectOutput.writeInt(id);
 
-		if (codeId == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(codeId);
-		}
+		objectOutput.writeInt(codeId);
 
-		objectOutput.writeLong(detailCode);
+		objectOutput.writeInt(detailCode);
 
 		objectOutput.writeInt(seq);
 
@@ -265,7 +254,7 @@ public class CodeDetailCacheModel implements CacheModel<CodeDetail>,
 
 		objectOutput.writeInt(level);
 
-		objectOutput.writeLong(upLevelId);
+		objectOutput.writeInt(upLevelId);
 
 		if (remarks == null) {
 			objectOutput.writeUTF("");
@@ -292,9 +281,9 @@ public class CodeDetailCacheModel implements CacheModel<CodeDetail>,
 		}
 	}
 
-	public long id;
-	public String codeId;
-	public long detailCode;
+	public int id;
+	public int codeId;
+	public int detailCode;
 	public int seq;
 	public String displayTextEn;
 	public String displayTextChi;
@@ -302,7 +291,7 @@ public class CodeDetailCacheModel implements CacheModel<CodeDetail>,
 	public String symbol_html_code;
 	public boolean active;
 	public int level;
-	public long upLevelId;
+	public int upLevelId;
 	public String remarks;
 	public long createDate;
 	public long updateDate;

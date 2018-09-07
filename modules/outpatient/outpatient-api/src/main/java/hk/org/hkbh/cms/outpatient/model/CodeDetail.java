@@ -37,15 +37,15 @@ public interface CodeDetail extends CodeDetailModel, PersistedModel {
 	 *
 	 * Never modify this interface directly. Add methods to {@link hk.org.hkbh.cms.outpatient.model.impl.CodeDetailImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<CodeDetail, Long> ID_ACCESSOR = new Accessor<CodeDetail, Long>() {
+	public static final Accessor<CodeDetail, Integer> ID_ACCESSOR = new Accessor<CodeDetail, Integer>() {
 			@Override
-			public Long get(CodeDetail codeDetail) {
+			public Integer get(CodeDetail codeDetail) {
 				return codeDetail.getId();
 			}
 
 			@Override
-			public Class<Long> getAttributeClass() {
-				return Long.class;
+			public Class<Integer> getAttributeClass() {
+				return Integer.class;
 			}
 
 			@Override

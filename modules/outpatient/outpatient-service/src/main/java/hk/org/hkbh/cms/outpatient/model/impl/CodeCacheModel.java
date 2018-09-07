@@ -165,7 +165,7 @@ public class CodeCacheModel implements CacheModel<Code>, Externalizable {
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		id = objectInput.readLong();
+		id = objectInput.readInt();
 		masterCode = objectInput.readUTF();
 		displayTextEn = objectInput.readUTF();
 		displayTextChi = objectInput.readUTF();
@@ -183,7 +183,7 @@ public class CodeCacheModel implements CacheModel<Code>, Externalizable {
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeLong(id);
+		objectOutput.writeInt(id);
 
 		if (masterCode == null) {
 			objectOutput.writeUTF("");
@@ -235,7 +235,7 @@ public class CodeCacheModel implements CacheModel<Code>, Externalizable {
 		}
 	}
 
-	public long id;
+	public int id;
 	public String masterCode;
 	public String displayTextEn;
 	public String displayTextChi;

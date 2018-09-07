@@ -4,69 +4,73 @@
 <!-- <sql file="custom-sql/code-detail-sql .xml"/> -->
 <sql id="hk.org.hkbh.cms.outpatient.service.persistence.impl.CodeDtoFinderImpl.getCodeDtoByMasterCode">
 	     <![CDATA[
-			select 
-			c.master_code, 
-			c.display_text_en as code_display_text_en, 
+			select
+			c.master_code,
+			c.display_text_en as code_display_text_en,
             c.display_text_chi as code_display_text_chi,
-			c.active as code_active, 
-			c.subcode_enabled, 
-			c.remarks as code_remarks, 
-			cd.id as code_detail_id, 
-			cd.detail_code, 
-			cd.seq, 
-			cd.display_text_en as code_detail_display_text_en, 
-            cd.display_text_chi as code_detail_display_text_chi, 
+			c.active as code_active,
+			c.subcode_enabled,
+			c.remarks as code_remarks,
+			cd.id as code_detail_id,
+			cd.detail_code,
+			cd.seq,
+			cd.display_text_en as code_detail_display_text_en,
+            cd.display_text_chi as code_detail_display_text_chi,
             cd.symbol,
             cd.symbol_html_code,
-			cd.active as code_detail_active, 
-			cd.level, 
-			cd.up_level_id, 
-			cd.remarks as code_detail_remarks, 
-			cd.create_date, 
-			cd.update_date, 
-			cd.created_by, 
+			cd.active as code_detail_active,
+			cd.level,
+			cd.up_level_id,
+			cd.remarks as code_detail_remarks,
+			cd.create_date,
+			cd.update_date,
+			cd.created_by,
 			cd.updated_by
-			from code c inner join code_detail cd 
-			on c.id = cd.code_id 
+			from code c inner join code_detail cd
+			on c.id = cd.code_id
+			where c.master_code = ?
 			]]>
-</sql>	
-<sql id="hk.org.hkbh.cms.outpatient.service.persistence.impl.ComponentControlFinderImpl.getComponentControlDtoList">
+</sql>
+<sql id="hk.org.hkbh.cms.outpatient.service.persistence.impl.ComponentControlDtoFinderImpl.getComponentControlDtoList">
 	     <![CDATA[
-			select 
-			com.id as component_id, 
+			select
+			comc.id as id,
 			com.component_code,
-			com.component_name, 
-			com.component_type_code_id, 
+			com.component_name,
+			com.component_type_code_id,
 			cd.detail_code,
 			cd.display_text_en as detail_code_display_text_en,
 			cd.display_text_chi as detail_code_display_text_chi,
 			com.seq as component_seq,
-			com.is_menu_item, 
-			com.component_desc, 
-			com.url, 
-			com.component_level, 
-			com.up_component_id, 
+			com.is_menu_item,
+			com.component_desc,
+			com.url,
+			com.component_level,
+			com.up_component_id,
 			comc.id as component_control_id,
-			comc.user_id, 
-			comc.user_role_id, 
+			comc.user_id,
+			comc.user_role_id,
 			comc.component_id,
-			comc.create, 
-			comc.read, 
-			comc.update, 
-			comc.delete, 
-			comc.deny, 
+			comc.create,
+			comc.read,
+			comc.update,
+			comc.delete,
+			comc.deny,
 			comc.visible,
-			comc.enable, 
-			comc.control_desc
+			comc.enable,
+			comc.control_desc,
+			comc.create_date,
+			comc.update_date,
+			comc.created_by,
+			comc.updated_by
 			from component com
-			inner join component_control comc 
+			inner join component_control comc
 			on com.id = comc.component_id
-			inner join code_detail cd 
+			inner join code_detail cd
 			on com.component_type_code_id = cd.id
-			where user_role_id = ?
-			]]>
-</sql>	
-	 
-	 
-</custom-sql >
 
+			]]>
+</sql>
+
+
+</custom-sql >

@@ -51,7 +51,7 @@ public class CodeDtoLocalServiceWrapper implements CodeDtoLocalService,
 	* @return the new code dto
 	*/
 	@Override
-	public hk.org.hkbh.cms.outpatient.model.CodeDto createCodeDto(long id) {
+	public hk.org.hkbh.cms.outpatient.model.CodeDto createCodeDto(int id) {
 		return _codeDtoLocalService.createCodeDto(id);
 	}
 
@@ -75,7 +75,7 @@ public class CodeDtoLocalServiceWrapper implements CodeDtoLocalService,
 	* @throws PortalException if a code dto with the primary key could not be found
 	*/
 	@Override
-	public hk.org.hkbh.cms.outpatient.model.CodeDto deleteCodeDto(long id)
+	public hk.org.hkbh.cms.outpatient.model.CodeDto deleteCodeDto(int id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return _codeDtoLocalService.deleteCodeDto(id);
 	}
@@ -175,7 +175,7 @@ public class CodeDtoLocalServiceWrapper implements CodeDtoLocalService,
 	}
 
 	@Override
-	public hk.org.hkbh.cms.outpatient.model.CodeDto fetchCodeDto(long id) {
+	public hk.org.hkbh.cms.outpatient.model.CodeDto fetchCodeDto(int id) {
 		return _codeDtoLocalService.fetchCodeDto(id);
 	}
 
@@ -192,7 +192,7 @@ public class CodeDtoLocalServiceWrapper implements CodeDtoLocalService,
 	* @throws PortalException if a code dto with the primary key could not be found
 	*/
 	@Override
-	public hk.org.hkbh.cms.outpatient.model.CodeDto getCodeDto(long id)
+	public hk.org.hkbh.cms.outpatient.model.CodeDto getCodeDto(int id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return _codeDtoLocalService.getCodeDto(id);
 	}

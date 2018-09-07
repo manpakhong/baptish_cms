@@ -79,19 +79,19 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
+		Integer id = (Integer)attributes.get("id");
 
 		if (id != null) {
 			setId(id);
 		}
 
-		String codeId = (String)attributes.get("codeId");
+		Integer codeId = (Integer)attributes.get("codeId");
 
 		if (codeId != null) {
 			setCodeId(codeId);
 		}
 
-		Long detailCode = (Long)attributes.get("detailCode");
+		Integer detailCode = (Integer)attributes.get("detailCode");
 
 		if (detailCode != null) {
 			setDetailCode(detailCode);
@@ -139,7 +139,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 			setLevel(level);
 		}
 
-		Long upLevelId = (Long)attributes.get("upLevelId");
+		Integer upLevelId = (Integer)attributes.get("upLevelId");
 
 		if (upLevelId != null) {
 			setUpLevelId(upLevelId);
@@ -202,7 +202,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @return the code ID of this code detail
 	*/
 	@Override
-	public java.lang.String getCodeId() {
+	public java.lang.Integer getCodeId() {
 		return _codeDetail.getCodeId();
 	}
 
@@ -232,7 +232,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @return the detail code of this code detail
 	*/
 	@Override
-	public java.lang.Long getDetailCode() {
+	public java.lang.Integer getDetailCode() {
 		return _codeDetail.getDetailCode();
 	}
 
@@ -267,7 +267,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @return the ID of this code detail
 	*/
 	@Override
-	public long getId() {
+	public int getId() {
 		return _codeDetail.getId();
 	}
 
@@ -287,7 +287,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @return the primary key of this code detail
 	*/
 	@Override
-	public long getPrimaryKey() {
+	public int getPrimaryKey() {
 		return _codeDetail.getPrimaryKey();
 	}
 
@@ -362,7 +362,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @return the up level ID of this code detail
 	*/
 	@Override
-	public java.lang.Long getUpLevelId() {
+	public java.lang.Integer getUpLevelId() {
 		return _codeDetail.getUpLevelId();
 	}
 
@@ -412,7 +412,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @param codeId the code ID of this code detail
 	*/
 	@Override
-	public void setCodeId(java.lang.String codeId) {
+	public void setCodeId(java.lang.Integer codeId) {
 		_codeDetail.setCodeId(codeId);
 	}
 
@@ -442,7 +442,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @param detailCode the detail code of this code detail
 	*/
 	@Override
-	public void setDetailCode(java.lang.Long detailCode) {
+	public void setDetailCode(java.lang.Integer detailCode) {
 		_codeDetail.setDetailCode(detailCode);
 	}
 
@@ -488,7 +488,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @param id the ID of this code detail
 	*/
 	@Override
-	public void setId(long id) {
+	public void setId(int id) {
 		_codeDetail.setId(id);
 	}
 
@@ -513,7 +513,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @param primaryKey the primary key of this code detail
 	*/
 	@Override
-	public void setPrimaryKey(long primaryKey) {
+	public void setPrimaryKey(int primaryKey) {
 		_codeDetail.setPrimaryKey(primaryKey);
 	}
 
@@ -588,7 +588,7 @@ public class CodeDetailWrapper implements CodeDetail, ModelWrapper<CodeDetail> {
 	* @param upLevelId the up level ID of this code detail
 	*/
 	@Override
-	public void setUpLevelId(java.lang.Long upLevelId) {
+	public void setUpLevelId(java.lang.Integer upLevelId) {
 		_codeDetail.setUpLevelId(upLevelId);
 	}
 

@@ -54,7 +54,7 @@ public class ClinicalNoteTemplateLocalServiceWrapper
 	*/
 	@Override
 	public hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate createClinicalNoteTemplate(
-		long id) {
+		int id) {
 		return _clinicalNoteTemplateLocalService.createClinicalNoteTemplate(id);
 	}
 
@@ -79,7 +79,7 @@ public class ClinicalNoteTemplateLocalServiceWrapper
 	*/
 	@Override
 	public hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate deleteClinicalNoteTemplate(
-		long id) throws com.liferay.portal.kernel.exception.PortalException {
+		int id) throws com.liferay.portal.kernel.exception.PortalException {
 		return _clinicalNoteTemplateLocalService.deleteClinicalNoteTemplate(id);
 	}
 
@@ -181,7 +181,7 @@ public class ClinicalNoteTemplateLocalServiceWrapper
 
 	@Override
 	public hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate fetchClinicalNoteTemplate(
-		long id) {
+		int id) {
 		return _clinicalNoteTemplateLocalService.fetchClinicalNoteTemplate(id);
 	}
 
@@ -199,7 +199,7 @@ public class ClinicalNoteTemplateLocalServiceWrapper
 	*/
 	@Override
 	public hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate getClinicalNoteTemplate(
-		long id) throws com.liferay.portal.kernel.exception.PortalException {
+		int id) throws com.liferay.portal.kernel.exception.PortalException {
 		return _clinicalNoteTemplateLocalService.getClinicalNoteTemplate(id);
 	}
 

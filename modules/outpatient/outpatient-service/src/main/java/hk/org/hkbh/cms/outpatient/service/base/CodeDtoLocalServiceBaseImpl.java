@@ -99,7 +99,7 @@ public abstract class CodeDtoLocalServiceBaseImpl extends BaseLocalServiceImpl
 	 * @return the new code dto
 	 */
 	@Override
-	public CodeDto createCodeDto(long id) {
+	public CodeDto createCodeDto(int id) {
 		return codeDtoPersistence.create(id);
 	}
 
@@ -112,7 +112,7 @@ public abstract class CodeDtoLocalServiceBaseImpl extends BaseLocalServiceImpl
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public CodeDto deleteCodeDto(long id) throws PortalException {
+	public CodeDto deleteCodeDto(int id) throws PortalException {
 		return codeDtoPersistence.remove(id);
 	}
 
@@ -210,7 +210,7 @@ public abstract class CodeDtoLocalServiceBaseImpl extends BaseLocalServiceImpl
 	}
 
 	@Override
-	public CodeDto fetchCodeDto(long id) {
+	public CodeDto fetchCodeDto(int id) {
 		return codeDtoPersistence.fetchByPrimaryKey(id);
 	}
 
@@ -222,7 +222,7 @@ public abstract class CodeDtoLocalServiceBaseImpl extends BaseLocalServiceImpl
 	 * @throws PortalException if a code dto with the primary key could not be found
 	 */
 	@Override
-	public CodeDto getCodeDto(long id) throws PortalException {
+	public CodeDto getCodeDto(int id) throws PortalException {
 		return codeDtoPersistence.findByPrimaryKey(id);
 	}
 

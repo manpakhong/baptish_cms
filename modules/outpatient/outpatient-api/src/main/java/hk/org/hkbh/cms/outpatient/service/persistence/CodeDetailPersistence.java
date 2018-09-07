@@ -61,7 +61,7 @@ public interface CodeDetailPersistence extends BasePersistence<CodeDetail> {
 	* @param id the primary key for the new code detail
 	* @return the new code detail
 	*/
-	public CodeDetail create(long id);
+	public CodeDetail create(int id);
 
 	/**
 	* Removes the code detail with the primary key from the database. Also notifies the appropriate model listeners.
@@ -70,7 +70,7 @@ public interface CodeDetailPersistence extends BasePersistence<CodeDetail> {
 	* @return the code detail that was removed
 	* @throws NoSuchCodeDetailException if a code detail with the primary key could not be found
 	*/
-	public CodeDetail remove(long id) throws NoSuchCodeDetailException;
+	public CodeDetail remove(int id) throws NoSuchCodeDetailException;
 
 	public CodeDetail updateImpl(CodeDetail codeDetail);
 
@@ -81,8 +81,7 @@ public interface CodeDetailPersistence extends BasePersistence<CodeDetail> {
 	* @return the code detail
 	* @throws NoSuchCodeDetailException if a code detail with the primary key could not be found
 	*/
-	public CodeDetail findByPrimaryKey(long id)
-		throws NoSuchCodeDetailException;
+	public CodeDetail findByPrimaryKey(int id) throws NoSuchCodeDetailException;
 
 	/**
 	* Returns the code detail with the primary key or returns <code>null</code> if it could not be found.
@@ -90,7 +89,7 @@ public interface CodeDetailPersistence extends BasePersistence<CodeDetail> {
 	* @param id the primary key of the code detail
 	* @return the code detail, or <code>null</code> if a code detail with the primary key could not be found
 	*/
-	public CodeDetail fetchByPrimaryKey(long id);
+	public CodeDetail fetchByPrimaryKey(int id);
 
 	@Override
 	public java.util.Map<java.io.Serializable, CodeDetail> fetchByPrimaryKeys(

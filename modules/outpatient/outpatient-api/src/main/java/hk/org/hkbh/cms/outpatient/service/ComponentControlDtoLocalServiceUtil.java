@@ -56,12 +56,12 @@ public class ComponentControlDtoLocalServiceUtil {
 	/**
 	* Creates a new component control dto with the primary key. Does not add the component control dto to the database.
 	*
-	* @param componentId the primary key for the new component control dto
+	* @param id the primary key for the new component control dto
 	* @return the new component control dto
 	*/
 	public static hk.org.hkbh.cms.outpatient.model.ComponentControlDto createComponentControlDto(
-		long componentId) {
-		return getService().createComponentControlDto(componentId);
+		int id) {
+		return getService().createComponentControlDto(id);
 	}
 
 	/**
@@ -78,14 +78,13 @@ public class ComponentControlDtoLocalServiceUtil {
 	/**
 	* Deletes the component control dto with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param componentId the primary key of the component control dto
+	* @param id the primary key of the component control dto
 	* @return the component control dto that was removed
 	* @throws PortalException if a component control dto with the primary key could not be found
 	*/
 	public static hk.org.hkbh.cms.outpatient.model.ComponentControlDto deleteComponentControlDto(
-		long componentId)
-		throws com.liferay.portal.kernel.exception.PortalException {
-		return getService().deleteComponentControlDto(componentId);
+		int id) throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().deleteComponentControlDto(id);
 	}
 
 	/**
@@ -176,8 +175,8 @@ public class ComponentControlDtoLocalServiceUtil {
 	}
 
 	public static hk.org.hkbh.cms.outpatient.model.ComponentControlDto fetchComponentControlDto(
-		long componentId) {
-		return getService().fetchComponentControlDto(componentId);
+		int id) {
+		return getService().fetchComponentControlDto(id);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery getActionableDynamicQuery() {
@@ -187,14 +186,13 @@ public class ComponentControlDtoLocalServiceUtil {
 	/**
 	* Returns the component control dto with the primary key.
 	*
-	* @param componentId the primary key of the component control dto
+	* @param id the primary key of the component control dto
 	* @return the component control dto
 	* @throws PortalException if a component control dto with the primary key could not be found
 	*/
 	public static hk.org.hkbh.cms.outpatient.model.ComponentControlDto getComponentControlDto(
-		long componentId)
-		throws com.liferay.portal.kernel.exception.PortalException {
-		return getService().getComponentControlDto(componentId);
+		int id) throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().getComponentControlDto(id);
 	}
 
 	public static java.util.List<hk.org.hkbh.cms.outpatient.model.ComponentControlDto> getComponentControlDtoList(
