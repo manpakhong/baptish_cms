@@ -53,28 +53,28 @@ public interface ComponentControlDtoModel extends BaseModel<ComponentControlDto>
 	 *
 	 * @return the primary key of this component control dto
 	 */
-	public int getPrimaryKey();
+	public long getPrimaryKey();
 
 	/**
 	 * Sets the primary key of this component control dto.
 	 *
 	 * @param primaryKey the primary key of this component control dto
 	 */
-	public void setPrimaryKey(int primaryKey);
+	public void setPrimaryKey(long primaryKey);
 
 	/**
 	 * Returns the ID of this component control dto.
 	 *
 	 * @return the ID of this component control dto
 	 */
-	public int getId();
+	public long getId();
 
 	/**
 	 * Sets the ID of this component control dto.
 	 *
 	 * @param id the ID of this component control dto
 	 */
-	public void setId(int id);
+	public void setId(long id);
 
 	/**
 	 * Returns the component code of this component control dto.
@@ -111,28 +111,29 @@ public interface ComponentControlDtoModel extends BaseModel<ComponentControlDto>
 	 *
 	 * @return the component type code ID of this component control dto
 	 */
-	public Integer getComponentTypeCodeId();
+	public Long getComponentTypeCodeId();
 
 	/**
 	 * Sets the component type code ID of this component control dto.
 	 *
 	 * @param componentTypeCodeId the component type code ID of this component control dto
 	 */
-	public void setComponentTypeCodeId(Integer componentTypeCodeId);
+	public void setComponentTypeCodeId(Long componentTypeCodeId);
 
 	/**
 	 * Returns the detail code of this component control dto.
 	 *
 	 * @return the detail code of this component control dto
 	 */
-	public Integer getDetailCode();
+	@AutoEscape
+	public String getDetailCode();
 
 	/**
 	 * Sets the detail code of this component control dto.
 	 *
 	 * @param detailCode the detail code of this component control dto
 	 */
-	public void setDetailCode(Integer detailCode);
+	public void setDetailCode(String detailCode);
 
 	/**
 	 * Returns the detail code display text en of this component control dto.
@@ -241,70 +242,70 @@ public interface ComponentControlDtoModel extends BaseModel<ComponentControlDto>
 	 *
 	 * @return the up component ID of this component control dto
 	 */
-	public Integer getUpComponentId();
+	public Long getUpComponentId();
 
 	/**
 	 * Sets the up component ID of this component control dto.
 	 *
 	 * @param upComponentId the up component ID of this component control dto
 	 */
-	public void setUpComponentId(Integer upComponentId);
+	public void setUpComponentId(Long upComponentId);
 
 	/**
 	 * Returns the component control ID of this component control dto.
 	 *
 	 * @return the component control ID of this component control dto
 	 */
-	public Integer getComponentControlId();
+	public Long getComponentControlId();
 
 	/**
 	 * Sets the component control ID of this component control dto.
 	 *
 	 * @param componentControlId the component control ID of this component control dto
 	 */
-	public void setComponentControlId(Integer componentControlId);
+	public void setComponentControlId(Long componentControlId);
 
 	/**
 	 * Returns the user ID of this component control dto.
 	 *
 	 * @return the user ID of this component control dto
 	 */
-	public Integer getUserId();
+	public Long getUserId();
 
 	/**
 	 * Sets the user ID of this component control dto.
 	 *
 	 * @param userId the user ID of this component control dto
 	 */
-	public void setUserId(Integer userId);
+	public void setUserId(Long userId);
 
 	/**
 	 * Returns the user role ID of this component control dto.
 	 *
 	 * @return the user role ID of this component control dto
 	 */
-	public Integer getUserRoleId();
+	public Long getUserRoleId();
 
 	/**
 	 * Sets the user role ID of this component control dto.
 	 *
 	 * @param userRoleId the user role ID of this component control dto
 	 */
-	public void setUserRoleId(Integer userRoleId);
+	public void setUserRoleId(Long userRoleId);
 
 	/**
 	 * Returns the component ID of this component control dto.
 	 *
 	 * @return the component ID of this component control dto
 	 */
-	public Integer getComponentId();
+	public Long getComponentId();
 
 	/**
 	 * Sets the component ID of this component control dto.
 	 *
 	 * @param componentId the component ID of this component control dto
 	 */
-	public void setComponentId(Integer componentId);
+	public void setComponentId(Long componentId);
 
 	/**
 	 * Returns the create of this component control dto.

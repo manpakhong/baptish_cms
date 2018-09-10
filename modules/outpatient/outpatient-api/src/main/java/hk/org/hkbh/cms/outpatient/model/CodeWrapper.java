@@ -74,7 +74,7 @@ public class CodeWrapper implements Code, ModelWrapper<Code> {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Integer id = (Integer)attributes.get("id");
+		Long id = (Long)attributes.get("id");
 
 		if (id != null) {
 			setId(id);
@@ -212,7 +212,7 @@ public class CodeWrapper implements Code, ModelWrapper<Code> {
 	* @return the ID of this code
 	*/
 	@Override
-	public int getId() {
+	public long getId() {
 		return _code.getId();
 	}
 
@@ -232,7 +232,7 @@ public class CodeWrapper implements Code, ModelWrapper<Code> {
 	* @return the primary key of this code
 	*/
 	@Override
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _code.getPrimaryKey();
 	}
 
@@ -383,7 +383,7 @@ public class CodeWrapper implements Code, ModelWrapper<Code> {
 	* @param id the ID of this code
 	*/
 	@Override
-	public void setId(int id) {
+	public void setId(long id) {
 		_code.setId(id);
 	}
 
@@ -408,7 +408,7 @@ public class CodeWrapper implements Code, ModelWrapper<Code> {
 	* @param primaryKey the primary key of this code
 	*/
 	@Override
-	public void setPrimaryKey(int primaryKey) {
+	public void setPrimaryKey(long primaryKey) {
 		_code.setPrimaryKey(primaryKey);
 	}
 

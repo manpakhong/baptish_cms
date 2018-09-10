@@ -109,19 +109,19 @@ public class ComponentControlDtoSoap implements Serializable {
 	public ComponentControlDtoSoap() {
 	}
 
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _id;
 	}
 
-	public void setPrimaryKey(int pk) {
+	public void setPrimaryKey(long pk) {
 		setId(pk);
 	}
 
-	public int getId() {
+	public long getId() {
 		return _id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		_id = id;
 	}
 
@@ -141,19 +141,19 @@ public class ComponentControlDtoSoap implements Serializable {
 		_componentName = componentName;
 	}
 
-	public Integer getComponentTypeCodeId() {
+	public Long getComponentTypeCodeId() {
 		return _componentTypeCodeId;
 	}
 
-	public void setComponentTypeCodeId(Integer componentTypeCodeId) {
+	public void setComponentTypeCodeId(Long componentTypeCodeId) {
 		_componentTypeCodeId = componentTypeCodeId;
 	}
 
-	public Integer getDetailCode() {
+	public String getDetailCode() {
 		return _detailCode;
 	}
 
-	public void setDetailCode(Integer detailCode) {
+	public void setDetailCode(String detailCode) {
 		_detailCode = detailCode;
 	}
 
@@ -213,43 +213,43 @@ public class ComponentControlDtoSoap implements Serializable {
 		_componentLevel = componentLevel;
 	}
 
-	public Integer getUpComponentId() {
+	public Long getUpComponentId() {
 		return _upComponentId;
 	}
 
-	public void setUpComponentId(Integer upComponentId) {
+	public void setUpComponentId(Long upComponentId) {
 		_upComponentId = upComponentId;
 	}
 
-	public Integer getComponentControlId() {
+	public Long getComponentControlId() {
 		return _componentControlId;
 	}
 
-	public void setComponentControlId(Integer componentControlId) {
+	public void setComponentControlId(Long componentControlId) {
 		_componentControlId = componentControlId;
 	}
 
-	public Integer getUserId() {
+	public Long getUserId() {
 		return _userId;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(Long userId) {
 		_userId = userId;
 	}
 
-	public Integer getUserRoleId() {
+	public Long getUserRoleId() {
 		return _userRoleId;
 	}
 
-	public void setUserRoleId(Integer userRoleId) {
+	public void setUserRoleId(Long userRoleId) {
 		_userRoleId = userRoleId;
 	}
 
-	public Integer getComponentId() {
+	public Long getComponentId() {
 		return _componentId;
 	}
 
-	public void setComponentId(Integer componentId) {
+	public void setComponentId(Long componentId) {
 		_componentId = componentId;
 	}
 
@@ -349,11 +349,11 @@ public class ComponentControlDtoSoap implements Serializable {
 		_updatedBy = updatedBy;
 	}
 
-	private int _id;
+	private long _id;
 	private String _componentCode;
 	private String _componentName;
-	private Integer _componentTypeCodeId;
-	private Integer _detailCode;
+	private Long _componentTypeCodeId;
+	private String _detailCode;
 	private String _detailCodeDisplayTextEn;
 	private String _detailCodeDisplayTextChi;
 	private Integer _componentSeq;
@@ -361,11 +361,11 @@ public class ComponentControlDtoSoap implements Serializable {
 	private String _componentDesc;
 	private String _url;
 	private Integer _componentLevel;
-	private Integer _upComponentId;
-	private Integer _componentControlId;
-	private Integer _userId;
-	private Integer _userRoleId;
-	private Integer _componentId;
+	private Long _upComponentId;
+	private Long _componentControlId;
+	private Long _userId;
+	private Long _userRoleId;
+	private Long _componentId;
 	private Boolean _create;
 	private Boolean _read;
 	private Boolean _update;

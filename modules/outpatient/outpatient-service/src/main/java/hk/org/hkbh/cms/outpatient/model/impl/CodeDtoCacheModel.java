@@ -215,7 +215,7 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		id = objectInput.readInt();
+		id = objectInput.readLong();
 		masterCode = objectInput.readUTF();
 		codeDisplayTextEn = objectInput.readUTF();
 		codeDisplayTextChi = objectInput.readUTF();
@@ -234,7 +234,7 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 
 		level = objectInput.readInt();
 
-		upLevelId = objectInput.readInt();
+		upLevelId = objectInput.readLong();
 		codeDetailRemarks = objectInput.readUTF();
 		createDate = objectInput.readLong();
 		updateDate = objectInput.readLong();
@@ -245,7 +245,7 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeInt(id);
+		objectOutput.writeLong(id);
 
 		if (masterCode == null) {
 			objectOutput.writeUTF("");
@@ -306,7 +306,7 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 
 		objectOutput.writeInt(level);
 
-		objectOutput.writeInt(upLevelId);
+		objectOutput.writeLong(upLevelId);
 
 		if (codeDetailRemarks == null) {
 			objectOutput.writeUTF("");
@@ -333,7 +333,7 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 		}
 	}
 
-	public int id;
+	public long id;
 	public String masterCode;
 	public String codeDisplayTextEn;
 	public String codeDisplayTextChi;
@@ -346,7 +346,7 @@ public class CodeDtoCacheModel implements CacheModel<CodeDto>, Externalizable {
 	public String codeDetailDisplayTextChi;
 	public boolean codeDetailActive;
 	public int level;
-	public int upLevelId;
+	public long upLevelId;
 	public String codeDetailRemarks;
 	public long createDate;
 	public long updateDate;

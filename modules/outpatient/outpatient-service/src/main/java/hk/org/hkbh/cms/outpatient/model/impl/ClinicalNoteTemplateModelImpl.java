@@ -16,9 +16,13 @@ package hk.org.hkbh.cms.outpatient.model.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.expando.kernel.model.ExpandoBridge;
+import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
+
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -57,9 +61,9 @@ public class ClinicalNoteTemplateModelImpl extends BaseModelImpl<ClinicalNoteTem
 	 */
 	public static final String TABLE_NAME = "clinical_note_template";
 	public static final Object[][] TABLE_COLUMNS = {
-			{ "id", Types.INTEGER },
-			{ "user_id", Types.INTEGER },
-			{ "template_type_code_id", Types.INTEGER },
+			{ "id", Types.BIGINT },
+			{ "user_id", Types.BIGINT },
+			{ "template_type_code_id", Types.BIGINT },
 			{ "template_name", Types.VARCHAR },
 			{ "template_content", Types.VARCHAR },
 			{ "template_content_html", Types.VARCHAR },
@@ -71,9 +75,9 @@ public class ClinicalNoteTemplateModelImpl extends BaseModelImpl<ClinicalNoteTem
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP = new HashMap<String, Integer>();
 
 	static {
-		TABLE_COLUMNS_MAP.put("id", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("user_id", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("template_type_code_id", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("id", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("user_id", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("template_type_code_id", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("template_name", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("template_content", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("template_content_html", Types.VARCHAR);
@@ -83,7 +87,7 @@ public class ClinicalNoteTemplateModelImpl extends BaseModelImpl<ClinicalNoteTem
 		TABLE_COLUMNS_MAP.put("updated_by", Types.VARCHAR);
 	}
 
-	public static final String TABLE_SQL_CREATE = "create table clinical_note_template (id INTEGER not null primary key,user_id INTEGER,template_type_code_id INTEGER,template_name VARCHAR(75) null,template_content VARCHAR(75) null,template_content_html VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table clinical_note_template (id LONG not null primary key,user_id LONG,template_type_code_id LONG,template_name VARCHAR(75) null,template_content VARCHAR(75) null,template_content_html VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table clinical_note_template";
 	public static final String ORDER_BY_JPQL = " ORDER BY clinicalNoteTemplate.id ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY clinical_note_template.id ASC";
@@ -104,12 +108,12 @@ public class ClinicalNoteTemplateModelImpl extends BaseModelImpl<ClinicalNoteTem
 	}
 
 	@Override
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _id;
 	}
 
 	@Override
-	public void setPrimaryKey(int primaryKey) {
+	public void setPrimaryKey(long primaryKey) {
 		setId(primaryKey);
 	}
 
@@ -120,7 +124,7 @@ public class ClinicalNoteTemplateModelImpl extends BaseModelImpl<ClinicalNoteTem
 
 	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey(((Integer)primaryKeyObj).intValue());
+		setPrimaryKey(((Long)primaryKeyObj).longValue());
 	}
 
 	@Override
@@ -156,20 +160,19 @@ public class ClinicalNoteTemplateModelImpl extends BaseModelImpl<ClinicalNoteTem
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Integer id = (Integer)attributes.get("id");
+		Long id = (Long)attributes.get("id");
 
 		if (id != null) {
 			setId(id);
 		}
 
-		Integer userId = (Integer)attributes.get("userId");
+		Long userId = (Long)attributes.get("userId");
 
 		if (userId != null) {
 			setUserId(userId);
 		}
 
-		Integer templateTypeCodeId = (Integer)attributes.get(
-				"templateTypeCodeId");
+		Long templateTypeCodeId = (Long)attributes.get("templateTypeCodeId");
 
 		if (templateTypeCodeId != null) {
 			setTemplateTypeCodeId(templateTypeCodeId);
@@ -220,32 +223,32 @@ public class ClinicalNoteTemplateModelImpl extends BaseModelImpl<ClinicalNoteTem
 	}
 
 	@Override
-	public int getId() {
+	public long getId() {
 		return _id;
 	}
 
 	@Override
-	public void setId(int id) {
+	public void setId(long id) {
 		_id = id;
 	}
 
 	@Override
-	public Integer getUserId() {
+	public Long getUserId() {
 		return _userId;
 	}
 
 	@Override
-	public void setUserId(Integer userId) {
+	public void setUserId(Long userId) {
 		_userId = userId;
 	}
 
 	@Override
-	public Integer getTemplateTypeCodeId() {
+	public Long getTemplateTypeCodeId() {
 		return _templateTypeCodeId;
 	}
 
 	@Override
-	public void setTemplateTypeCodeId(Integer templateTypeCodeId) {
+	public void setTemplateTypeCodeId(Long templateTypeCodeId) {
 		_templateTypeCodeId = templateTypeCodeId;
 	}
 
@@ -345,6 +348,19 @@ public class ClinicalNoteTemplateModelImpl extends BaseModelImpl<ClinicalNoteTem
 	}
 
 	@Override
+	public ExpandoBridge getExpandoBridge() {
+		return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
+			ClinicalNoteTemplate.class.getName(), getPrimaryKey());
+	}
+
+	@Override
+	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
+		ExpandoBridge expandoBridge = getExpandoBridge();
+
+		expandoBridge.setAttributes(serviceContext);
+	}
+
+	@Override
 	public ClinicalNoteTemplate toEscapedModel() {
 		if (_escapedModel == null) {
 			_escapedModel = (ClinicalNoteTemplate)ProxyUtil.newProxyInstance(_classLoader,
@@ -407,7 +423,7 @@ public class ClinicalNoteTemplateModelImpl extends BaseModelImpl<ClinicalNoteTem
 
 		ClinicalNoteTemplate clinicalNoteTemplate = (ClinicalNoteTemplate)obj;
 
-		int primaryKey = clinicalNoteTemplate.getPrimaryKey();
+		long primaryKey = clinicalNoteTemplate.getPrimaryKey();
 
 		if (getPrimaryKey() == primaryKey) {
 			return true;
@@ -419,7 +435,7 @@ public class ClinicalNoteTemplateModelImpl extends BaseModelImpl<ClinicalNoteTem
 
 	@Override
 	public int hashCode() {
-		return getPrimaryKey();
+		return (int)getPrimaryKey();
 	}
 
 	@Override
@@ -595,9 +611,9 @@ public class ClinicalNoteTemplateModelImpl extends BaseModelImpl<ClinicalNoteTem
 	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
 			ClinicalNoteTemplate.class
 		};
-	private int _id;
-	private Integer _userId;
-	private Integer _templateTypeCodeId;
+	private long _id;
+	private Long _userId;
+	private Long _templateTypeCodeId;
 	private String _templateName;
 	private String _templateContent;
 	private String _templateContentHtml;

@@ -96,19 +96,19 @@ public class CodeDtoSoap implements Serializable {
 	public CodeDtoSoap() {
 	}
 
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _id;
 	}
 
-	public void setPrimaryKey(int pk) {
+	public void setPrimaryKey(long pk) {
 		setId(pk);
 	}
 
-	public int getId() {
+	public long getId() {
 		return _id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		_id = id;
 	}
 
@@ -208,11 +208,11 @@ public class CodeDtoSoap implements Serializable {
 		_level = level;
 	}
 
-	public Integer getUpLevelId() {
+	public Long getUpLevelId() {
 		return _upLevelId;
 	}
 
-	public void setUpLevelId(Integer upLevelId) {
+	public void setUpLevelId(Long upLevelId) {
 		_upLevelId = upLevelId;
 	}
 
@@ -256,7 +256,7 @@ public class CodeDtoSoap implements Serializable {
 		_updatedBy = updatedBy;
 	}
 
-	private int _id;
+	private long _id;
 	private String _masterCode;
 	private String _codeDisplayTextEn;
 	private String _codeDisplayTextChi;
@@ -269,7 +269,7 @@ public class CodeDtoSoap implements Serializable {
 	private String _codeDetailDisplayTextChi;
 	private Boolean _codeDetailActive;
 	private Integer _level;
-	private Integer _upLevelId;
+	private Long _upLevelId;
 	private String _codeDetailRemarks;
 	private Date _createDate;
 	private Date _updateDate;

@@ -151,7 +151,13 @@ public class ComponentControlDtoCacheModel implements CacheModel<ComponentContro
 		}
 
 		componentControlDtoImpl.setComponentTypeCodeId(componentTypeCodeId);
-		componentControlDtoImpl.setDetailCode(detailCode);
+
+		if (detailCode == null) {
+			componentControlDtoImpl.setDetailCode("");
+		}
+		else {
+			componentControlDtoImpl.setDetailCode(detailCode);
+		}
 
 		if (detailCodeDisplayTextEn == null) {
 			componentControlDtoImpl.setDetailCodeDisplayTextEn("");
@@ -240,13 +246,12 @@ public class ComponentControlDtoCacheModel implements CacheModel<ComponentContro
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		id = objectInput.readInt();
+		id = objectInput.readLong();
 		componentCode = objectInput.readUTF();
 		componentName = objectInput.readUTF();
 
-		componentTypeCodeId = objectInput.readInt();
-
-		detailCode = objectInput.readInt();
+		componentTypeCodeId = objectInput.readLong();
+		detailCode = objectInput.readUTF();
 		detailCodeDisplayTextEn = objectInput.readUTF();
 		detailCodeDisplayTextChi = objectInput.readUTF();
 
@@ -258,15 +263,15 @@ public class ComponentControlDtoCacheModel implements CacheModel<ComponentContro
 
 		componentLevel = objectInput.readInt();
 
-		upComponentId = objectInput.readInt();
+		upComponentId = objectInput.readLong();
 
-		componentControlId = objectInput.readInt();
+		componentControlId = objectInput.readLong();
 
-		userId = objectInput.readInt();
+		userId = objectInput.readLong();
 
-		userRoleId = objectInput.readInt();
+		userRoleId = objectInput.readLong();
 
-		componentId = objectInput.readInt();
+		componentId = objectInput.readLong();
 
 		create = objectInput.readBoolean();
 
@@ -291,7 +296,7 @@ public class ComponentControlDtoCacheModel implements CacheModel<ComponentContro
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeInt(id);
+		objectOutput.writeLong(id);
 
 		if (componentCode == null) {
 			objectOutput.writeUTF("");
@@ -307,9 +312,14 @@ public class ComponentControlDtoCacheModel implements CacheModel<ComponentContro
 			objectOutput.writeUTF(componentName);
 		}
 
-		objectOutput.writeInt(componentTypeCodeId);
+		objectOutput.writeLong(componentTypeCodeId);
 
-		objectOutput.writeInt(detailCode);
+		if (detailCode == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(detailCode);
+		}
 
 		if (detailCodeDisplayTextEn == null) {
 			objectOutput.writeUTF("");
@@ -345,15 +355,15 @@ public class ComponentControlDtoCacheModel implements CacheModel<ComponentContro
 
 		objectOutput.writeInt(componentLevel);
 
-		objectOutput.writeInt(upComponentId);
+		objectOutput.writeLong(upComponentId);
 
-		objectOutput.writeInt(componentControlId);
+		objectOutput.writeLong(componentControlId);
 
-		objectOutput.writeInt(userId);
+		objectOutput.writeLong(userId);
 
-		objectOutput.writeInt(userRoleId);
+		objectOutput.writeLong(userRoleId);
 
-		objectOutput.writeInt(componentId);
+		objectOutput.writeLong(componentId);
 
 		objectOutput.writeBoolean(create);
 
@@ -394,11 +404,11 @@ public class ComponentControlDtoCacheModel implements CacheModel<ComponentContro
 		}
 	}
 
-	public int id;
+	public long id;
 	public String componentCode;
 	public String componentName;
-	public int componentTypeCodeId;
-	public int detailCode;
+	public long componentTypeCodeId;
+	public String detailCode;
 	public String detailCodeDisplayTextEn;
 	public String detailCodeDisplayTextChi;
 	public int componentSeq;
@@ -406,11 +416,11 @@ public class ComponentControlDtoCacheModel implements CacheModel<ComponentContro
 	public String componentDesc;
 	public String url;
 	public int componentLevel;
-	public int upComponentId;
-	public int componentControlId;
-	public int userId;
-	public int userRoleId;
-	public int componentId;
+	public long upComponentId;
+	public long componentControlId;
+	public long userId;
+	public long userRoleId;
+	public long componentId;
 	public boolean create;
 	public boolean read;
 	public boolean update;

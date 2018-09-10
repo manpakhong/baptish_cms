@@ -38,15 +38,15 @@ public interface ClinicalNoteTemplate extends ClinicalNoteTemplateModel,
 	 *
 	 * Never modify this interface directly. Add methods to {@link hk.org.hkbh.cms.outpatient.model.impl.ClinicalNoteTemplateImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<ClinicalNoteTemplate, Integer> ID_ACCESSOR = new Accessor<ClinicalNoteTemplate, Integer>() {
+	public static final Accessor<ClinicalNoteTemplate, Long> ID_ACCESSOR = new Accessor<ClinicalNoteTemplate, Long>() {
 			@Override
-			public Integer get(ClinicalNoteTemplate clinicalNoteTemplate) {
+			public Long get(ClinicalNoteTemplate clinicalNoteTemplate) {
 				return clinicalNoteTemplate.getId();
 			}
 
 			@Override
-			public Class<Integer> getAttributeClass() {
-				return Integer.class;
+			public Class<Long> getAttributeClass() {
+				return Long.class;
 			}
 
 			@Override

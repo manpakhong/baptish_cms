@@ -60,7 +60,7 @@ public class ComponentControlDtoLocalServiceUtil {
 	* @return the new component control dto
 	*/
 	public static hk.org.hkbh.cms.outpatient.model.ComponentControlDto createComponentControlDto(
-		int id) {
+		long id) {
 		return getService().createComponentControlDto(id);
 	}
 
@@ -83,7 +83,7 @@ public class ComponentControlDtoLocalServiceUtil {
 	* @throws PortalException if a component control dto with the primary key could not be found
 	*/
 	public static hk.org.hkbh.cms.outpatient.model.ComponentControlDto deleteComponentControlDto(
-		int id) throws com.liferay.portal.kernel.exception.PortalException {
+		long id) throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().deleteComponentControlDto(id);
 	}
 
@@ -175,7 +175,7 @@ public class ComponentControlDtoLocalServiceUtil {
 	}
 
 	public static hk.org.hkbh.cms.outpatient.model.ComponentControlDto fetchComponentControlDto(
-		int id) {
+		long id) {
 		return getService().fetchComponentControlDto(id);
 	}
 
@@ -191,7 +191,7 @@ public class ComponentControlDtoLocalServiceUtil {
 	* @throws PortalException if a component control dto with the primary key could not be found
 	*/
 	public static hk.org.hkbh.cms.outpatient.model.ComponentControlDto getComponentControlDto(
-		int id) throws com.liferay.portal.kernel.exception.PortalException {
+		long id) throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().getComponentControlDto(id);
 	}
 

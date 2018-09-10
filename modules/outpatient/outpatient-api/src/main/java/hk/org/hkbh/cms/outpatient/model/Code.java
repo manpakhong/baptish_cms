@@ -37,15 +37,15 @@ public interface Code extends CodeModel, PersistedModel {
 	 *
 	 * Never modify this interface directly. Add methods to {@link hk.org.hkbh.cms.outpatient.model.impl.CodeImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<Code, Integer> ID_ACCESSOR = new Accessor<Code, Integer>() {
+	public static final Accessor<Code, Long> ID_ACCESSOR = new Accessor<Code, Long>() {
 			@Override
-			public Integer get(Code code) {
+			public Long get(Code code) {
 				return code.getId();
 			}
 
 			@Override
-			public Class<Integer> getAttributeClass() {
-				return Integer.class;
+			public Class<Long> getAttributeClass() {
+				return Long.class;
 			}
 
 			@Override

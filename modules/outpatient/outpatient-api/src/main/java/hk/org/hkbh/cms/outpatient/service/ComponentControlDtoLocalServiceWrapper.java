@@ -54,7 +54,7 @@ public class ComponentControlDtoLocalServiceWrapper
 	*/
 	@Override
 	public hk.org.hkbh.cms.outpatient.model.ComponentControlDto createComponentControlDto(
-		int id) {
+		long id) {
 		return _componentControlDtoLocalService.createComponentControlDto(id);
 	}
 
@@ -79,7 +79,7 @@ public class ComponentControlDtoLocalServiceWrapper
 	*/
 	@Override
 	public hk.org.hkbh.cms.outpatient.model.ComponentControlDto deleteComponentControlDto(
-		int id) throws com.liferay.portal.kernel.exception.PortalException {
+		long id) throws com.liferay.portal.kernel.exception.PortalException {
 		return _componentControlDtoLocalService.deleteComponentControlDto(id);
 	}
 
@@ -181,7 +181,7 @@ public class ComponentControlDtoLocalServiceWrapper
 
 	@Override
 	public hk.org.hkbh.cms.outpatient.model.ComponentControlDto fetchComponentControlDto(
-		int id) {
+		long id) {
 		return _componentControlDtoLocalService.fetchComponentControlDto(id);
 	}
 
@@ -199,7 +199,7 @@ public class ComponentControlDtoLocalServiceWrapper
 	*/
 	@Override
 	public hk.org.hkbh.cms.outpatient.model.ComponentControlDto getComponentControlDto(
-		int id) throws com.liferay.portal.kernel.exception.PortalException {
+		long id) throws com.liferay.portal.kernel.exception.PortalException {
 		return _componentControlDtoLocalService.getComponentControlDto(id);
 	}
 

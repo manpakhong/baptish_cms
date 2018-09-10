@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <service-builder package-path="hk.org.hkbh.cms.outpatient">
 	<entity local-service="true" name="ComponentControlDto" remote-service="false" uuid="false"  cache-enabled="false" >
-		<column name="id" db-name="id" primary="true" type="int" id-type="increment" insert="false" update="false"/>
+		<column name="id" db-name="id" primary="true" type="long" id-type="increment" insert="false" update="false"/>
 		
 		<column name="componentCode" db-name="component_code" type="String" />
 		<column name="componentName" db-name="component_name" type="String" />
-		<column name="componentTypeCodeId" db-name="component_type_code_id" type="Integer" />
-		<column name="detailCode" db-name="detail_code" type="Integer" />
+		<column name="componentTypeCodeId" db-name="component_type_code_id" type="Long" />
+		<column name="detailCode" db-name="detail_code" type="String" />
 		<column name="detailCodeDisplayTextEn" db-name="detail_code_display_text_en" type="String" />
 		<column name="detailCodeDisplayTextChi" db-name="detail_code_display_text_chi" type="String" />
 		<column name="componentSeq" db-name="component_seq" type="Integer" />
@@ -14,11 +14,11 @@
 		<column name="componentDesc" db-name="component_desc" type="String" />
 		<column name="url" db-name="url" type="String" />
 		<column name="componentLevel" db-name="component_level" type="Integer" />
-		<column name="upComponentId" db-name="up_component_id" type="Integer" />
-		<column name="componentControlId" db-name="component_control_id" type="Integer" />
-		<column name="userId" db-name="user_id" type="Integer" />
-		<column name="userRoleId" db-name="user_role_id" type="Integer" />	
-		<column name="componentId" db-name="component_id" type="Integer" />	
+		<column name="upComponentId" db-name="up_component_id" type="Long" />
+		<column name="componentControlId" db-name="component_control_id" type="Long" />
+		<column name="userId" db-name="user_id" type="Long" />
+		<column name="userRoleId" db-name="user_role_id" type="Long" />	
+		<column name="componentId" db-name="component_id" type="Long" />	
 		<column name="create" db-name="create" type="Boolean" />
 		<column name="read" db-name="read" type="Boolean" />
 		<column name="update" db-name="update" type="Boolean" />
@@ -31,5 +31,12 @@
 		<column name="updateDate" db-name="update_date" type="Date" />
 		<column name="createdBy" db-name="created_by" type="String" />
 		<column name="updatedBy" db-name="updated_by" type="String" />
+		
+		<order by="asc">
+			<order-column name="id" />
+		</order>
+		<finder name="Id" return-type="Collection">
+			 <finder-column name="id" />
+		 </finder>
 	</entity>
 </service-builder>

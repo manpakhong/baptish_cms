@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service-builder package-path="hk.org.hkbh.cms.outpatient">
+	<entity local-service="true" name="ComponentControl" table="component_control" remote-service="false" uuid="false" data-source="cmsDataSource" >
+
+		<!-- PK fields -->
+
+		<column name="id" db-name="id" primary="true" type="long" id-type="increment" />
+
+		<!-- Group instance -->
+
+<!-- 		<column name="groupId" type="int" /> -->
+
+		<!-- Audit fields -->
+
+<!-- 		<column name="userId" type="int" />
+		<column name="templateTypeCodeId" type="int" />
+		<column name="templateName" type="String" />
+		<column name="templateContent" type="String" />
+		<column name="templateContentHtml" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="updateDate" type="Date" />
+		<column name="createdBy" type="String" />
+		<column name="updatedBy" type="String" /> -->
+		<!-- Other fields -->
+
+		<column name="userId" db-name="user_id" type="Long" />
+		<column name="userRoleId" db-name="user_role_id" type="Long" />
+		<column name="componentId" db-name="component_id" type="Long" />
+		<column name="create" db-name="create" type="Boolean" />
+		<column name="read" db-name="read" type="Boolean" />
+		<column name="update" db-name="update" type="Boolean" />
+		<column name="delete" db-name="delete" type="Boolean" />
+		<column name="deny" db-name="deny" type="Boolean" />
+		<column name="visible" db-name="visible" type="Boolean" />
+		<column name="enable" db-name="enable" type="Boolean" />
+		<column name="control_desc" db-name="control_desc" type="String" />
+		<column name="createDate" db-name="create_date" type="Date" />
+		<column name="updateDate" db-name="update_date" type="Date" />
+		<column name="createdBy" db-name="created_by" type="String" />
+		<column name="updatedBy" db-name="updated_by" type="String" />
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="id" />
+		</order>
+			<finder name="UserId" return-type="Collection">
+			 <finder-column name="userId" />
+		 </finder>
+		 	<finder name="UserRoleId" return-type="Collection">
+			 <finder-column name="userRoleId" />
+		 </finder>
+		 	<finder name="ComponentId" return-type="Collection">
+			 <finder-column name="componentId" />
+		 </finder>
+
+		 
+	</entity>
+</service-builder>

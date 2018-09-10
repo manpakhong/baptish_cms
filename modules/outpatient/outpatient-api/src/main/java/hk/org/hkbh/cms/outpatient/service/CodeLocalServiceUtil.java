@@ -59,7 +59,7 @@ public class CodeLocalServiceUtil {
 	* @param id the primary key for the new code
 	* @return the new code
 	*/
-	public static hk.org.hkbh.cms.outpatient.model.Code createCode(int id) {
+	public static hk.org.hkbh.cms.outpatient.model.Code createCode(long id) {
 		return getService().createCode(id);
 	}
 
@@ -81,7 +81,7 @@ public class CodeLocalServiceUtil {
 	* @return the code that was removed
 	* @throws PortalException if a code with the primary key could not be found
 	*/
-	public static hk.org.hkbh.cms.outpatient.model.Code deleteCode(int id)
+	public static hk.org.hkbh.cms.outpatient.model.Code deleteCode(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().deleteCode(id);
 	}
@@ -173,7 +173,7 @@ public class CodeLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
-	public static hk.org.hkbh.cms.outpatient.model.Code fetchCode(int id) {
+	public static hk.org.hkbh.cms.outpatient.model.Code fetchCode(long id) {
 		return getService().fetchCode(id);
 	}
 
@@ -188,7 +188,7 @@ public class CodeLocalServiceUtil {
 	* @return the code
 	* @throws PortalException if a code with the primary key could not be found
 	*/
-	public static hk.org.hkbh.cms.outpatient.model.Code getCode(int id)
+	public static hk.org.hkbh.cms.outpatient.model.Code getCode(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().getCode(id);
 	}

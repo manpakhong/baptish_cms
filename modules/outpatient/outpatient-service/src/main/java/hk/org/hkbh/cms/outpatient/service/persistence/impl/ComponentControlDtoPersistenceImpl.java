@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.dao.orm.EntityCache;
 import com.liferay.portal.kernel.dao.orm.FinderCache;
 import com.liferay.portal.kernel.dao.orm.FinderPath;
 import com.liferay.portal.kernel.dao.orm.Query;
+import com.liferay.portal.kernel.dao.orm.QueryPos;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.dao.orm.Session;
 import com.liferay.portal.kernel.log.Log;
@@ -84,6 +85,363 @@ public class ComponentControlDtoPersistenceImpl extends BasePersistenceImpl<Comp
 	public static final FinderPath FINDER_PATH_COUNT_ALL = new FinderPath(ComponentControlDtoModelImpl.ENTITY_CACHE_ENABLED,
 			ComponentControlDtoModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countAll", new String[0]);
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_ID = new FinderPath(ComponentControlDtoModelImpl.ENTITY_CACHE_ENABLED,
+			ComponentControlDtoModelImpl.FINDER_CACHE_ENABLED,
+			ComponentControlDtoImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findById",
+			new String[] {
+				Long.class.getName(),
+				
+			Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_ID = new FinderPath(ComponentControlDtoModelImpl.ENTITY_CACHE_ENABLED,
+			ComponentControlDtoModelImpl.FINDER_CACHE_ENABLED,
+			ComponentControlDtoImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findById",
+			new String[] { Long.class.getName() },
+			ComponentControlDtoModelImpl.ID_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_ID = new FinderPath(ComponentControlDtoModelImpl.ENTITY_CACHE_ENABLED,
+			ComponentControlDtoModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countById",
+			new String[] { Long.class.getName() });
+
+	/**
+	 * Returns all the component control dtos where id = &#63;.
+	 *
+	 * @param id the ID
+	 * @return the matching component control dtos
+	 */
+	@Override
+	public List<ComponentControlDto> findById(long id) {
+		return findById(id, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the component control dtos where id = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link ComponentControlDtoModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param id the ID
+	 * @param start the lower bound of the range of component control dtos
+	 * @param end the upper bound of the range of component control dtos (not inclusive)
+	 * @return the range of matching component control dtos
+	 */
+	@Override
+	public List<ComponentControlDto> findById(long id, int start, int end) {
+		return findById(id, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the component control dtos where id = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link ComponentControlDtoModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param id the ID
+	 * @param start the lower bound of the range of component control dtos
+	 * @param end the upper bound of the range of component control dtos (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching component control dtos
+	 */
+	@Override
+	public List<ComponentControlDto> findById(long id, int start, int end,
+		OrderByComparator<ComponentControlDto> orderByComparator) {
+		return findById(id, start, end, orderByComparator, true);
+	}
+
+	/**
+	 * Returns an ordered range of all the component control dtos where id = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link ComponentControlDtoModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param id the ID
+	 * @param start the lower bound of the range of component control dtos
+	 * @param end the upper bound of the range of component control dtos (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param retrieveFromCache whether to retrieve from the finder cache
+	 * @return the ordered range of matching component control dtos
+	 */
+	@Override
+	public List<ComponentControlDto> findById(long id, int start, int end,
+		OrderByComparator<ComponentControlDto> orderByComparator,
+		boolean retrieveFromCache) {
+		boolean pagination = true;
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			pagination = false;
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_ID;
+			finderArgs = new Object[] { id };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_ID;
+			finderArgs = new Object[] { id, start, end, orderByComparator };
+		}
+
+		List<ComponentControlDto> list = null;
+
+		if (retrieveFromCache) {
+			list = (List<ComponentControlDto>)finderCache.getResult(finderPath,
+					finderArgs, this);
+
+			if ((list != null) && !list.isEmpty()) {
+				for (ComponentControlDto componentControlDto : list) {
+					if ((id != componentControlDto.getId())) {
+						list = null;
+
+						break;
+					}
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(3 +
+						(orderByComparator.getOrderByFields().length * 2));
+			}
+			else {
+				query = new StringBundler(3);
+			}
+
+			query.append(_SQL_SELECT_COMPONENTCONTROLDTO_WHERE);
+
+			query.append(_FINDER_COLUMN_ID_ID_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+			else
+			 if (pagination) {
+				query.append(ComponentControlDtoModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(id);
+
+				if (!pagination) {
+					list = (List<ComponentControlDto>)QueryUtil.list(q,
+							getDialect(), start, end, false);
+
+					Collections.sort(list);
+
+					list = Collections.unmodifiableList(list);
+				}
+				else {
+					list = (List<ComponentControlDto>)QueryUtil.list(q,
+							getDialect(), start, end);
+				}
+
+				cacheResult(list);
+
+				finderCache.putResult(finderPath, finderArgs, list);
+			}
+			catch (Exception e) {
+				finderCache.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first component control dto in the ordered set where id = &#63;.
+	 *
+	 * @param id the ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching component control dto
+	 * @throws NoSuchComponentControlDtoException if a matching component control dto could not be found
+	 */
+	@Override
+	public ComponentControlDto findById_First(long id,
+		OrderByComparator<ComponentControlDto> orderByComparator)
+		throws NoSuchComponentControlDtoException {
+		ComponentControlDto componentControlDto = fetchById_First(id,
+				orderByComparator);
+
+		if (componentControlDto != null) {
+			return componentControlDto;
+		}
+
+		StringBundler msg = new StringBundler(4);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("id=");
+		msg.append(id);
+
+		msg.append("}");
+
+		throw new NoSuchComponentControlDtoException(msg.toString());
+	}
+
+	/**
+	 * Returns the first component control dto in the ordered set where id = &#63;.
+	 *
+	 * @param id the ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching component control dto, or <code>null</code> if a matching component control dto could not be found
+	 */
+	@Override
+	public ComponentControlDto fetchById_First(long id,
+		OrderByComparator<ComponentControlDto> orderByComparator) {
+		List<ComponentControlDto> list = findById(id, 0, 1, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last component control dto in the ordered set where id = &#63;.
+	 *
+	 * @param id the ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching component control dto
+	 * @throws NoSuchComponentControlDtoException if a matching component control dto could not be found
+	 */
+	@Override
+	public ComponentControlDto findById_Last(long id,
+		OrderByComparator<ComponentControlDto> orderByComparator)
+		throws NoSuchComponentControlDtoException {
+		ComponentControlDto componentControlDto = fetchById_Last(id,
+				orderByComparator);
+
+		if (componentControlDto != null) {
+			return componentControlDto;
+		}
+
+		StringBundler msg = new StringBundler(4);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("id=");
+		msg.append(id);
+
+		msg.append("}");
+
+		throw new NoSuchComponentControlDtoException(msg.toString());
+	}
+
+	/**
+	 * Returns the last component control dto in the ordered set where id = &#63;.
+	 *
+	 * @param id the ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching component control dto, or <code>null</code> if a matching component control dto could not be found
+	 */
+	@Override
+	public ComponentControlDto fetchById_Last(long id,
+		OrderByComparator<ComponentControlDto> orderByComparator) {
+		int count = countById(id);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<ComponentControlDto> list = findById(id, count - 1, count,
+				orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Removes all the component control dtos where id = &#63; from the database.
+	 *
+	 * @param id the ID
+	 */
+	@Override
+	public void removeById(long id) {
+		for (ComponentControlDto componentControlDto : findById(id,
+				QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+			remove(componentControlDto);
+		}
+	}
+
+	/**
+	 * Returns the number of component control dtos where id = &#63;.
+	 *
+	 * @param id the ID
+	 * @return the number of matching component control dtos
+	 */
+	@Override
+	public int countById(long id) {
+		FinderPath finderPath = FINDER_PATH_COUNT_BY_ID;
+
+		Object[] finderArgs = new Object[] { id };
+
+		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(2);
+
+			query.append(_SQL_COUNT_COMPONENTCONTROLDTO_WHERE);
+
+			query.append(_FINDER_COLUMN_ID_ID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(id);
+
+				count = (Long)q.uniqueResult();
+
+				finderCache.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				finderCache.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_ID_ID_2 = "componentControlDto.id = ?";
 
 	public ComponentControlDtoPersistenceImpl() {
 		setModelClass(ComponentControlDto.class);
@@ -213,7 +571,7 @@ public class ComponentControlDtoPersistenceImpl extends BasePersistenceImpl<Comp
 	 * @return the new component control dto
 	 */
 	@Override
-	public ComponentControlDto create(int id) {
+	public ComponentControlDto create(long id) {
 		ComponentControlDto componentControlDto = new ComponentControlDtoImpl();
 
 		componentControlDto.setNew(true);
@@ -230,7 +588,7 @@ public class ComponentControlDtoPersistenceImpl extends BasePersistenceImpl<Comp
 	 * @throws NoSuchComponentControlDtoException if a component control dto with the primary key could not be found
 	 */
 	@Override
-	public ComponentControlDto remove(int id)
+	public ComponentControlDto remove(long id)
 		throws NoSuchComponentControlDtoException {
 		return remove((Serializable)id);
 	}
@@ -315,6 +673,8 @@ public class ComponentControlDtoPersistenceImpl extends BasePersistenceImpl<Comp
 
 		boolean isNew = componentControlDto.isNew();
 
+		ComponentControlDtoModelImpl componentControlDtoModelImpl = (ComponentControlDtoModelImpl)componentControlDto;
+
 		Session session = null;
 
 		try {
@@ -338,10 +698,39 @@ public class ComponentControlDtoPersistenceImpl extends BasePersistenceImpl<Comp
 
 		finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 
-		if (isNew) {
+		if (!ComponentControlDtoModelImpl.COLUMN_BITMASK_ENABLED) {
+			finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
+		}
+		else
+		 if (isNew) {
+			Object[] args = new Object[] { componentControlDtoModelImpl.getId() };
+
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_ID, args);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_ID,
+				args);
+
 			finderCache.removeResult(FINDER_PATH_COUNT_ALL, FINDER_ARGS_EMPTY);
 			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_ALL,
 				FINDER_ARGS_EMPTY);
+		}
+
+		else {
+			if ((componentControlDtoModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_ID.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						componentControlDtoModelImpl.getOriginalId()
+					};
+
+				finderCache.removeResult(FINDER_PATH_COUNT_BY_ID, args);
+				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_ID,
+					args);
+
+				args = new Object[] { componentControlDtoModelImpl.getId() };
+
+				finderCache.removeResult(FINDER_PATH_COUNT_BY_ID, args);
+				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_ID,
+					args);
+			}
 		}
 
 		entityCache.putResult(ComponentControlDtoModelImpl.ENTITY_CACHE_ENABLED,
@@ -429,7 +818,7 @@ public class ComponentControlDtoPersistenceImpl extends BasePersistenceImpl<Comp
 	 * @throws NoSuchComponentControlDtoException if a component control dto with the primary key could not be found
 	 */
 	@Override
-	public ComponentControlDto findByPrimaryKey(int id)
+	public ComponentControlDto findByPrimaryKey(long id)
 		throws NoSuchComponentControlDtoException {
 		return findByPrimaryKey((Serializable)id);
 	}
@@ -489,7 +878,7 @@ public class ComponentControlDtoPersistenceImpl extends BasePersistenceImpl<Comp
 	 * @return the component control dto, or <code>null</code> if a component control dto with the primary key could not be found
 	 */
 	@Override
-	public ComponentControlDto fetchByPrimaryKey(int id) {
+	public ComponentControlDto fetchByPrimaryKey(long id) {
 		return fetchByPrimaryKey((Serializable)id);
 	}
 
@@ -546,7 +935,7 @@ public class ComponentControlDtoPersistenceImpl extends BasePersistenceImpl<Comp
 		query.append(_SQL_SELECT_COMPONENTCONTROLDTO_WHERE_PKS_IN);
 
 		for (Serializable primaryKey : uncachedPrimaryKeys) {
-			query.append((int)primaryKey);
+			query.append((long)primaryKey);
 
 			query.append(",");
 		}
@@ -808,9 +1197,12 @@ public class ComponentControlDtoPersistenceImpl extends BasePersistenceImpl<Comp
 	protected FinderCache finderCache;
 	private static final String _SQL_SELECT_COMPONENTCONTROLDTO = "SELECT componentControlDto FROM ComponentControlDto componentControlDto";
 	private static final String _SQL_SELECT_COMPONENTCONTROLDTO_WHERE_PKS_IN = "SELECT componentControlDto FROM ComponentControlDto componentControlDto WHERE id IN (";
+	private static final String _SQL_SELECT_COMPONENTCONTROLDTO_WHERE = "SELECT componentControlDto FROM ComponentControlDto componentControlDto WHERE ";
 	private static final String _SQL_COUNT_COMPONENTCONTROLDTO = "SELECT COUNT(componentControlDto) FROM ComponentControlDto componentControlDto";
+	private static final String _SQL_COUNT_COMPONENTCONTROLDTO_WHERE = "SELECT COUNT(componentControlDto) FROM ComponentControlDto componentControlDto WHERE ";
 	private static final String _ORDER_BY_ENTITY_ALIAS = "componentControlDto.";
 	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No ComponentControlDto exists with the primary key ";
+	private static final String _NO_SUCH_ENTITY_WITH_KEY = "No ComponentControlDto exists with the key {";
 	private static final Log _log = LogFactoryUtil.getLog(ComponentControlDtoPersistenceImpl.class);
 	private static final Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
 				"componentCode", "componentName", "componentTypeCodeId",

@@ -16,9 +16,13 @@ package hk.org.hkbh.cms.outpatient.model.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.expando.kernel.model.ExpandoBridge;
+import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
+
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -57,11 +61,11 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 	 */
 	public static final String TABLE_NAME = "Op_ComponentControlDto";
 	public static final Object[][] TABLE_COLUMNS = {
-			{ "id", Types.INTEGER },
+			{ "id", Types.BIGINT },
 			{ "component_code", Types.VARCHAR },
 			{ "component_name", Types.VARCHAR },
-			{ "component_type_code_id", Types.INTEGER },
-			{ "detail_code", Types.INTEGER },
+			{ "component_type_code_id", Types.BIGINT },
+			{ "detail_code", Types.VARCHAR },
 			{ "detail_code_display_text_en", Types.VARCHAR },
 			{ "detail_code_display_text_chi", Types.VARCHAR },
 			{ "component_seq", Types.INTEGER },
@@ -69,11 +73,11 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 			{ "component_desc", Types.VARCHAR },
 			{ "url", Types.VARCHAR },
 			{ "component_level", Types.INTEGER },
-			{ "up_component_id", Types.INTEGER },
-			{ "component_control_id", Types.INTEGER },
-			{ "user_id", Types.INTEGER },
-			{ "user_role_id", Types.INTEGER },
-			{ "component_id", Types.INTEGER },
+			{ "up_component_id", Types.BIGINT },
+			{ "component_control_id", Types.BIGINT },
+			{ "user_id", Types.BIGINT },
+			{ "user_role_id", Types.BIGINT },
+			{ "component_id", Types.BIGINT },
 			{ "create", Types.BOOLEAN },
 			{ "read", Types.BOOLEAN },
 			{ "update", Types.BOOLEAN },
@@ -90,11 +94,11 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP = new HashMap<String, Integer>();
 
 	static {
-		TABLE_COLUMNS_MAP.put("id", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("id", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("component_code", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("component_name", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("component_type_code_id", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("detail_code", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("component_type_code_id", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("detail_code", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("detail_code_display_text_en", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("detail_code_display_text_chi", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("component_seq", Types.INTEGER);
@@ -102,11 +106,11 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 		TABLE_COLUMNS_MAP.put("component_desc", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("url", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("component_level", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("up_component_id", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("component_control_id", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("user_id", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("user_role_id", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("component_id", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("up_component_id", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("component_control_id", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("user_id", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("user_role_id", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("component_id", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("create", Types.BOOLEAN);
 		TABLE_COLUMNS_MAP.put("read", Types.BOOLEAN);
 		TABLE_COLUMNS_MAP.put("update", Types.BOOLEAN);
@@ -121,7 +125,7 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 		TABLE_COLUMNS_MAP.put("updated_by", Types.VARCHAR);
 	}
 
-	public static final String TABLE_SQL_CREATE = "create table Op_ComponentControlDto (id INTEGER not null primary key,component_code VARCHAR(75) null,component_name VARCHAR(75) null,component_type_code_id INTEGER,detail_code INTEGER,detail_code_display_text_en VARCHAR(75) null,detail_code_display_text_chi VARCHAR(75) null,component_seq INTEGER,is_menu_item BOOLEAN,component_desc VARCHAR(75) null,url VARCHAR(75) null,component_level INTEGER,up_component_id INTEGER,component_control_id INTEGER,user_id INTEGER,user_role_id INTEGER,component_id INTEGER,create BOOLEAN,read BOOLEAN,update BOOLEAN,delete BOOLEAN,deny BOOLEAN,visible BOOLEAN,enable BOOLEAN,control_desc VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table Op_ComponentControlDto (id LONG not null primary key,component_code VARCHAR(75) null,component_name VARCHAR(75) null,component_type_code_id LONG,detail_code VARCHAR(75) null,detail_code_display_text_en VARCHAR(75) null,detail_code_display_text_chi VARCHAR(75) null,component_seq INTEGER,is_menu_item BOOLEAN,component_desc VARCHAR(75) null,url VARCHAR(75) null,component_level INTEGER,up_component_id LONG,component_control_id LONG,user_id LONG,user_role_id LONG,component_id LONG,create BOOLEAN,read BOOLEAN,update BOOLEAN,delete BOOLEAN,deny BOOLEAN,visible BOOLEAN,enable BOOLEAN,control_desc VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table Op_ComponentControlDto";
 	public static final String ORDER_BY_JPQL = " ORDER BY componentControlDto.id ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY Op_ComponentControlDto.id ASC";
@@ -134,7 +138,10 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(hk.org.hkbh.cms.outpatient.service.util.ServiceProps.get(
 				"value.object.finder.cache.enabled.hk.org.hkbh.cms.outpatient.model.ComponentControlDto"),
 			false);
-	public static final boolean COLUMN_BITMASK_ENABLED = false;
+	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(hk.org.hkbh.cms.outpatient.service.util.ServiceProps.get(
+				"value.object.column.bitmask.enabled.hk.org.hkbh.cms.outpatient.model.ComponentControlDto"),
+			true);
+	public static final long ID_COLUMN_BITMASK = 1L;
 	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(hk.org.hkbh.cms.outpatient.service.util.ServiceProps.get(
 				"lock.expiration.time.hk.org.hkbh.cms.outpatient.model.ComponentControlDto"));
 
@@ -142,12 +149,12 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 	}
 
 	@Override
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _id;
 	}
 
 	@Override
-	public void setPrimaryKey(int primaryKey) {
+	public void setPrimaryKey(long primaryKey) {
 		setId(primaryKey);
 	}
 
@@ -158,7 +165,7 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 
 	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey(((Integer)primaryKeyObj).intValue());
+		setPrimaryKey(((Long)primaryKeyObj).longValue());
 	}
 
 	@Override
@@ -213,7 +220,7 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Integer id = (Integer)attributes.get("id");
+		Long id = (Long)attributes.get("id");
 
 		if (id != null) {
 			setId(id);
@@ -231,14 +238,13 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 			setComponentName(componentName);
 		}
 
-		Integer componentTypeCodeId = (Integer)attributes.get(
-				"componentTypeCodeId");
+		Long componentTypeCodeId = (Long)attributes.get("componentTypeCodeId");
 
 		if (componentTypeCodeId != null) {
 			setComponentTypeCodeId(componentTypeCodeId);
 		}
 
-		Integer detailCode = (Integer)attributes.get("detailCode");
+		String detailCode = (String)attributes.get("detailCode");
 
 		if (detailCode != null) {
 			setDetailCode(detailCode);
@@ -288,32 +294,31 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 			setComponentLevel(componentLevel);
 		}
 
-		Integer upComponentId = (Integer)attributes.get("upComponentId");
+		Long upComponentId = (Long)attributes.get("upComponentId");
 
 		if (upComponentId != null) {
 			setUpComponentId(upComponentId);
 		}
 
-		Integer componentControlId = (Integer)attributes.get(
-				"componentControlId");
+		Long componentControlId = (Long)attributes.get("componentControlId");
 
 		if (componentControlId != null) {
 			setComponentControlId(componentControlId);
 		}
 
-		Integer userId = (Integer)attributes.get("userId");
+		Long userId = (Long)attributes.get("userId");
 
 		if (userId != null) {
 			setUserId(userId);
 		}
 
-		Integer userRoleId = (Integer)attributes.get("userRoleId");
+		Long userRoleId = (Long)attributes.get("userRoleId");
 
 		if (userRoleId != null) {
 			setUserRoleId(userRoleId);
 		}
 
-		Integer componentId = (Integer)attributes.get("componentId");
+		Long componentId = (Long)attributes.get("componentId");
 
 		if (componentId != null) {
 			setComponentId(componentId);
@@ -393,13 +398,25 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 	}
 
 	@Override
-	public int getId() {
+	public long getId() {
 		return _id;
 	}
 
 	@Override
-	public void setId(int id) {
+	public void setId(long id) {
+		_columnBitmask = -1L;
+
+		if (!_setOriginalId) {
+			_setOriginalId = true;
+
+			_originalId = _id;
+		}
+
 		_id = id;
+	}
+
+	public long getOriginalId() {
+		return _originalId;
 	}
 
 	@Override
@@ -433,22 +450,27 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 	}
 
 	@Override
-	public Integer getComponentTypeCodeId() {
+	public Long getComponentTypeCodeId() {
 		return _componentTypeCodeId;
 	}
 
 	@Override
-	public void setComponentTypeCodeId(Integer componentTypeCodeId) {
+	public void setComponentTypeCodeId(Long componentTypeCodeId) {
 		_componentTypeCodeId = componentTypeCodeId;
 	}
 
 	@Override
-	public Integer getDetailCode() {
-		return _detailCode;
+	public String getDetailCode() {
+		if (_detailCode == null) {
+			return "";
+		}
+		else {
+			return _detailCode;
+		}
 	}
 
 	@Override
-	public void setDetailCode(Integer detailCode) {
+	public void setDetailCode(String detailCode) {
 		_detailCode = detailCode;
 	}
 
@@ -543,52 +565,52 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 	}
 
 	@Override
-	public Integer getUpComponentId() {
+	public Long getUpComponentId() {
 		return _upComponentId;
 	}
 
 	@Override
-	public void setUpComponentId(Integer upComponentId) {
+	public void setUpComponentId(Long upComponentId) {
 		_upComponentId = upComponentId;
 	}
 
 	@Override
-	public Integer getComponentControlId() {
+	public Long getComponentControlId() {
 		return _componentControlId;
 	}
 
 	@Override
-	public void setComponentControlId(Integer componentControlId) {
+	public void setComponentControlId(Long componentControlId) {
 		_componentControlId = componentControlId;
 	}
 
 	@Override
-	public Integer getUserId() {
+	public Long getUserId() {
 		return _userId;
 	}
 
 	@Override
-	public void setUserId(Integer userId) {
+	public void setUserId(Long userId) {
 		_userId = userId;
 	}
 
 	@Override
-	public Integer getUserRoleId() {
+	public Long getUserRoleId() {
 		return _userRoleId;
 	}
 
 	@Override
-	public void setUserRoleId(Integer userRoleId) {
+	public void setUserRoleId(Long userRoleId) {
 		_userRoleId = userRoleId;
 	}
 
 	@Override
-	public Integer getComponentId() {
+	public Long getComponentId() {
 		return _componentId;
 	}
 
 	@Override
-	public void setComponentId(Integer componentId) {
+	public void setComponentId(Long componentId) {
 		_componentId = componentId;
 	}
 
@@ -727,6 +749,23 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 		_updatedBy = updatedBy;
 	}
 
+	public long getColumnBitmask() {
+		return _columnBitmask;
+	}
+
+	@Override
+	public ExpandoBridge getExpandoBridge() {
+		return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
+			ComponentControlDto.class.getName(), getPrimaryKey());
+	}
+
+	@Override
+	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
+		ExpandoBridge expandoBridge = getExpandoBridge();
+
+		expandoBridge.setAttributes(serviceContext);
+	}
+
 	@Override
 	public ComponentControlDto toEscapedModel() {
 		if (_escapedModel == null) {
@@ -778,17 +817,23 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 
 	@Override
 	public int compareTo(ComponentControlDto componentControlDto) {
-		int primaryKey = componentControlDto.getPrimaryKey();
+		int value = 0;
 
-		if (getPrimaryKey() < primaryKey) {
-			return -1;
+		if (getId() < componentControlDto.getId()) {
+			value = -1;
 		}
-		else if (getPrimaryKey() > primaryKey) {
-			return 1;
+		else if (getId() > componentControlDto.getId()) {
+			value = 1;
 		}
 		else {
-			return 0;
+			value = 0;
 		}
+
+		if (value != 0) {
+			return value;
+		}
+
+		return 0;
 	}
 
 	@Override
@@ -803,7 +848,7 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 
 		ComponentControlDto componentControlDto = (ComponentControlDto)obj;
 
-		int primaryKey = componentControlDto.getPrimaryKey();
+		long primaryKey = componentControlDto.getPrimaryKey();
 
 		if (getPrimaryKey() == primaryKey) {
 			return true;
@@ -815,7 +860,7 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 
 	@Override
 	public int hashCode() {
-		return getPrimaryKey();
+		return (int)getPrimaryKey();
 	}
 
 	@Override
@@ -830,6 +875,13 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 
 	@Override
 	public void resetOriginalValues() {
+		ComponentControlDtoModelImpl componentControlDtoModelImpl = this;
+
+		componentControlDtoModelImpl._originalId = componentControlDtoModelImpl._id;
+
+		componentControlDtoModelImpl._setOriginalId = false;
+
+		componentControlDtoModelImpl._columnBitmask = 0;
 	}
 
 	@Override
@@ -857,6 +909,12 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 		componentControlDtoCacheModel.componentTypeCodeId = getComponentTypeCodeId();
 
 		componentControlDtoCacheModel.detailCode = getDetailCode();
+
+		String detailCode = componentControlDtoCacheModel.detailCode;
+
+		if ((detailCode != null) && (detailCode.length() == 0)) {
+			componentControlDtoCacheModel.detailCode = null;
+		}
 
 		componentControlDtoCacheModel.detailCodeDisplayTextEn = getDetailCodeDisplayTextEn();
 
@@ -1168,11 +1226,13 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
 			ComponentControlDto.class
 		};
-	private int _id;
+	private long _id;
+	private long _originalId;
+	private boolean _setOriginalId;
 	private String _componentCode;
 	private String _componentName;
-	private Integer _componentTypeCodeId;
-	private Integer _detailCode;
+	private Long _componentTypeCodeId;
+	private String _detailCode;
 	private String _detailCodeDisplayTextEn;
 	private String _detailCodeDisplayTextChi;
 	private Integer _componentSeq;
@@ -1180,11 +1240,11 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 	private String _componentDesc;
 	private String _url;
 	private Integer _componentLevel;
-	private Integer _upComponentId;
-	private Integer _componentControlId;
-	private Integer _userId;
-	private Integer _userRoleId;
-	private Integer _componentId;
+	private Long _upComponentId;
+	private Long _componentControlId;
+	private Long _userId;
+	private Long _userRoleId;
+	private Long _componentId;
 	private Boolean _create;
 	private Boolean _read;
 	private Boolean _update;
@@ -1197,5 +1257,6 @@ public class ComponentControlDtoModelImpl extends BaseModelImpl<ComponentControl
 	private Date _updateDate;
 	private String _createdBy;
 	private String _updatedBy;
+	private long _columnBitmask;
 	private ComponentControlDto _escapedModel;
 }

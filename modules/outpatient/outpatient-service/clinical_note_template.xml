@@ -6,7 +6,7 @@
 
 		<!-- PK fields -->
 
-		<column name="id" db-name="id" primary="true" type="int" id-type="increment" />
+		<column name="id" db-name="id" primary="true" type="long" id-type="increment" />
 
 		<!-- Group instance -->
 
@@ -25,8 +25,8 @@
 		<column name="updatedBy" type="String" /> -->
 		<!-- Other fields -->
 
-		<column name="userId" db-name="user_id" type="Integer" />
-		<column name="templateTypeCodeId" db-name="template_type_code_id" type="Integer" />
+		<column name="userId" db-name="user_id" type="Long" />
+		<column name="templateTypeCodeId" db-name="template_type_code_id" type="Long" />
 		<column name="templateName" db-name="template_name" type="String" />
 		<column name="templateContent" db-name="template_content" type="String" />
 		<column name="templateContentHtml" db-name="template_content_html" type="String" />

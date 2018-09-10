@@ -195,7 +195,7 @@ public class CodeDetailPersistenceImpl extends BasePersistenceImpl<CodeDetail>
 	 * @return the new code detail
 	 */
 	@Override
-	public CodeDetail create(int id) {
+	public CodeDetail create(long id) {
 		CodeDetail codeDetail = new CodeDetailImpl();
 
 		codeDetail.setNew(true);
@@ -212,7 +212,7 @@ public class CodeDetailPersistenceImpl extends BasePersistenceImpl<CodeDetail>
 	 * @throws NoSuchCodeDetailException if a code detail with the primary key could not be found
 	 */
 	@Override
-	public CodeDetail remove(int id) throws NoSuchCodeDetailException {
+	public CodeDetail remove(long id) throws NoSuchCodeDetailException {
 		return remove((Serializable)id);
 	}
 
@@ -393,7 +393,8 @@ public class CodeDetailPersistenceImpl extends BasePersistenceImpl<CodeDetail>
 	 * @throws NoSuchCodeDetailException if a code detail with the primary key could not be found
 	 */
 	@Override
-	public CodeDetail findByPrimaryKey(int id) throws NoSuchCodeDetailException {
+	public CodeDetail findByPrimaryKey(long id)
+		throws NoSuchCodeDetailException {
 		return findByPrimaryKey((Serializable)id);
 	}
 
@@ -452,7 +453,7 @@ public class CodeDetailPersistenceImpl extends BasePersistenceImpl<CodeDetail>
 	 * @return the code detail, or <code>null</code> if a code detail with the primary key could not be found
 	 */
 	@Override
-	public CodeDetail fetchByPrimaryKey(int id) {
+	public CodeDetail fetchByPrimaryKey(long id) {
 		return fetchByPrimaryKey((Serializable)id);
 	}
 
@@ -509,7 +510,7 @@ public class CodeDetailPersistenceImpl extends BasePersistenceImpl<CodeDetail>
 		query.append(_SQL_SELECT_CODEDETAIL_WHERE_PKS_IN);
 
 		for (Serializable primaryKey : uncachedPrimaryKeys) {
-			query.append((int)primaryKey);
+			query.append((long)primaryKey);
 
 			query.append(",");
 		}

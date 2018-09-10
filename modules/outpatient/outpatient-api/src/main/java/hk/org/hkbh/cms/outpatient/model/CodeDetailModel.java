@@ -53,56 +53,57 @@ public interface CodeDetailModel extends BaseModel<CodeDetail> {
 	 *
 	 * @return the primary key of this code detail
 	 */
-	public int getPrimaryKey();
+	public long getPrimaryKey();
 
 	/**
 	 * Sets the primary key of this code detail.
 	 *
 	 * @param primaryKey the primary key of this code detail
 	 */
-	public void setPrimaryKey(int primaryKey);
+	public void setPrimaryKey(long primaryKey);
 
 	/**
 	 * Returns the ID of this code detail.
 	 *
 	 * @return the ID of this code detail
 	 */
-	public int getId();
+	public long getId();
 
 	/**
 	 * Sets the ID of this code detail.
 	 *
 	 * @param id the ID of this code detail
 	 */
-	public void setId(int id);
+	public void setId(long id);
 
 	/**
 	 * Returns the code ID of this code detail.
 	 *
 	 * @return the code ID of this code detail
 	 */
-	public Integer getCodeId();
+	public Long getCodeId();
 
 	/**
 	 * Sets the code ID of this code detail.
 	 *
 	 * @param codeId the code ID of this code detail
 	 */
-	public void setCodeId(Integer codeId);
+	public void setCodeId(Long codeId);
 
 	/**
 	 * Returns the detail code of this code detail.
 	 *
 	 * @return the detail code of this code detail
 	 */
-	public Integer getDetailCode();
+	@AutoEscape
+	public String getDetailCode();
 
 	/**
 	 * Sets the detail code of this code detail.
 	 *
 	 * @param detailCode the detail code of this code detail
 	 */
-	public void setDetailCode(Integer detailCode);
+	public void setDetailCode(String detailCode);
 
 	/**
 	 * Returns the seq of this code detail.
@@ -211,14 +212,14 @@ public interface CodeDetailModel extends BaseModel<CodeDetail> {
 	 *
 	 * @return the up level ID of this code detail
 	 */
-	public Integer getUpLevelId();
+	public Long getUpLevelId();
 
 	/**
 	 * Sets the up level ID of this code detail.
 	 *
 	 * @param upLevelId the up level ID of this code detail
 	 */
-	public void setUpLevelId(Integer upLevelId);
+	public void setUpLevelId(Long upLevelId);
 
 	/**
 	 * Returns the remarks of this code detail.

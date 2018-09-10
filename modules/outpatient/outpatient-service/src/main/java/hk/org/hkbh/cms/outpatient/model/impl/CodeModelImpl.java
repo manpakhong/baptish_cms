@@ -16,9 +16,13 @@ package hk.org.hkbh.cms.outpatient.model.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.expando.kernel.model.ExpandoBridge;
+import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
+
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -56,7 +60,7 @@ public class CodeModelImpl extends BaseModelImpl<Code> implements CodeModel {
 	 */
 	public static final String TABLE_NAME = "code";
 	public static final Object[][] TABLE_COLUMNS = {
-			{ "id", Types.INTEGER },
+			{ "id", Types.BIGINT },
 			{ "master_code", Types.VARCHAR },
 			{ "display_text_en", Types.VARCHAR },
 			{ "display_text_chi", Types.VARCHAR },
@@ -71,7 +75,7 @@ public class CodeModelImpl extends BaseModelImpl<Code> implements CodeModel {
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP = new HashMap<String, Integer>();
 
 	static {
-		TABLE_COLUMNS_MAP.put("id", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("id", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("master_code", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("display_text_en", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("display_text_chi", Types.VARCHAR);
@@ -84,7 +88,7 @@ public class CodeModelImpl extends BaseModelImpl<Code> implements CodeModel {
 		TABLE_COLUMNS_MAP.put("updated_by", Types.VARCHAR);
 	}
 
-	public static final String TABLE_SQL_CREATE = "create table code (id INTEGER not null primary key,master_code VARCHAR(75) null,display_text_en VARCHAR(75) null,display_text_chi VARCHAR(75) null,active BOOLEAN,subcode_enabled BOOLEAN,remarks VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table code (id LONG not null primary key,master_code VARCHAR(75) null,display_text_en VARCHAR(75) null,display_text_chi VARCHAR(75) null,active BOOLEAN,subcode_enabled BOOLEAN,remarks VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table code";
 	public static final String ORDER_BY_JPQL = " ORDER BY code.id ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY code.id ASC";
@@ -105,12 +109,12 @@ public class CodeModelImpl extends BaseModelImpl<Code> implements CodeModel {
 	}
 
 	@Override
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _id;
 	}
 
 	@Override
-	public void setPrimaryKey(int primaryKey) {
+	public void setPrimaryKey(long primaryKey) {
 		setId(primaryKey);
 	}
 
@@ -121,7 +125,7 @@ public class CodeModelImpl extends BaseModelImpl<Code> implements CodeModel {
 
 	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey(((Integer)primaryKeyObj).intValue());
+		setPrimaryKey(((Long)primaryKeyObj).longValue());
 	}
 
 	@Override
@@ -158,7 +162,7 @@ public class CodeModelImpl extends BaseModelImpl<Code> implements CodeModel {
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Integer id = (Integer)attributes.get("id");
+		Long id = (Long)attributes.get("id");
 
 		if (id != null) {
 			setId(id);
@@ -226,12 +230,12 @@ public class CodeModelImpl extends BaseModelImpl<Code> implements CodeModel {
 	}
 
 	@Override
-	public int getId() {
+	public long getId() {
 		return _id;
 	}
 
 	@Override
-	public void setId(int id) {
+	public void setId(long id) {
 		_id = id;
 	}
 
@@ -366,6 +370,19 @@ public class CodeModelImpl extends BaseModelImpl<Code> implements CodeModel {
 	}
 
 	@Override
+	public ExpandoBridge getExpandoBridge() {
+		return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
+			Code.class.getName(), getPrimaryKey());
+	}
+
+	@Override
+	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
+		ExpandoBridge expandoBridge = getExpandoBridge();
+
+		expandoBridge.setAttributes(serviceContext);
+	}
+
+	@Override
 	public Code toEscapedModel() {
 		if (_escapedModel == null) {
 			_escapedModel = (Code)ProxyUtil.newProxyInstance(_classLoader,
@@ -429,7 +446,7 @@ public class CodeModelImpl extends BaseModelImpl<Code> implements CodeModel {
 
 		Code code = (Code)obj;
 
-		int primaryKey = code.getPrimaryKey();
+		long primaryKey = code.getPrimaryKey();
 
 		if (getPrimaryKey() == primaryKey) {
 			return true;
@@ -441,7 +458,7 @@ public class CodeModelImpl extends BaseModelImpl<Code> implements CodeModel {
 
 	@Override
 	public int hashCode() {
-		return getPrimaryKey();
+		return (int)getPrimaryKey();
 	}
 
 	@Override
@@ -630,7 +647,7 @@ public class CodeModelImpl extends BaseModelImpl<Code> implements CodeModel {
 	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
 			Code.class
 		};
-	private int _id;
+	private long _id;
 	private String _masterCode;
 	private String _displayTextEn;
 	private String _displayTextChi;

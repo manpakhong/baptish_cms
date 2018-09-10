@@ -16,9 +16,13 @@ package hk.org.hkbh.cms.outpatient.model.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.expando.kernel.model.ExpandoBridge;
+import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
+
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -57,7 +61,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	 */
 	public static final String TABLE_NAME = "Op_CodeDto";
 	public static final Object[][] TABLE_COLUMNS = {
-			{ "code_detail_id", Types.INTEGER },
+			{ "code_detail_id", Types.BIGINT },
 			{ "master_code", Types.VARCHAR },
 			{ "code_display_text_en", Types.VARCHAR },
 			{ "code_display_text_chi", Types.VARCHAR },
@@ -70,7 +74,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 			{ "code_detail_display_text_chi", Types.VARCHAR },
 			{ "code_detail_active", Types.BOOLEAN },
 			{ "level", Types.INTEGER },
-			{ "up_level_id", Types.INTEGER },
+			{ "up_level_id", Types.BIGINT },
 			{ "code_detail_remarks", Types.VARCHAR },
 			{ "create_date", Types.TIMESTAMP },
 			{ "update_date", Types.TIMESTAMP },
@@ -80,7 +84,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP = new HashMap<String, Integer>();
 
 	static {
-		TABLE_COLUMNS_MAP.put("code_detail_id", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("code_detail_id", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("master_code", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("code_display_text_en", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("code_display_text_chi", Types.VARCHAR);
@@ -93,7 +97,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 		TABLE_COLUMNS_MAP.put("code_detail_display_text_chi", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("code_detail_active", Types.BOOLEAN);
 		TABLE_COLUMNS_MAP.put("level", Types.INTEGER);
-		TABLE_COLUMNS_MAP.put("up_level_id", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("up_level_id", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("code_detail_remarks", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("create_date", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("update_date", Types.TIMESTAMP);
@@ -101,7 +105,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 		TABLE_COLUMNS_MAP.put("updated_by", Types.VARCHAR);
 	}
 
-	public static final String TABLE_SQL_CREATE = "create table Op_CodeDto (code_detail_id INTEGER not null primary key,master_code VARCHAR(75) null,code_display_text_en VARCHAR(75) null,code_display_text_chi VARCHAR(75) null,code_active BOOLEAN,subcode_enabled BOOLEAN,code_remarks VARCHAR(75) null,detail_code VARCHAR(75) null,seq INTEGER,code_detail_display_text_en VARCHAR(75) null,code_detail_display_text_chi VARCHAR(75) null,code_detail_active BOOLEAN,level INTEGER,up_level_id INTEGER,code_detail_remarks VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table Op_CodeDto (code_detail_id LONG not null primary key,master_code VARCHAR(75) null,code_display_text_en VARCHAR(75) null,code_display_text_chi VARCHAR(75) null,code_active BOOLEAN,subcode_enabled BOOLEAN,code_remarks VARCHAR(75) null,detail_code VARCHAR(75) null,seq INTEGER,code_detail_display_text_en VARCHAR(75) null,code_detail_display_text_chi VARCHAR(75) null,code_detail_active BOOLEAN,level INTEGER,up_level_id LONG,code_detail_remarks VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table Op_CodeDto";
 	public static final String ORDER_BY_JPQL = " ORDER BY codeDto.id ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY Op_CodeDto.code_detail_id ASC";
@@ -126,12 +130,12 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	}
 
 	@Override
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _id;
 	}
 
 	@Override
-	public void setPrimaryKey(int primaryKey) {
+	public void setPrimaryKey(long primaryKey) {
 		setId(primaryKey);
 	}
 
@@ -142,7 +146,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 
 	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey(((Integer)primaryKeyObj).intValue());
+		setPrimaryKey(((Long)primaryKeyObj).longValue());
 	}
 
 	@Override
@@ -187,7 +191,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Integer id = (Integer)attributes.get("id");
+		Long id = (Long)attributes.get("id");
 
 		if (id != null) {
 			setId(id);
@@ -267,7 +271,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 			setLevel(level);
 		}
 
-		Integer upLevelId = (Integer)attributes.get("upLevelId");
+		Long upLevelId = (Long)attributes.get("upLevelId");
 
 		if (upLevelId != null) {
 			setUpLevelId(upLevelId);
@@ -305,12 +309,12 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	}
 
 	@Override
-	public int getId() {
+	public long getId() {
 		return _id;
 	}
 
 	@Override
-	public void setId(int id) {
+	public void setId(long id) {
 		_columnBitmask = -1L;
 
 		_id = id;
@@ -482,12 +486,12 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	}
 
 	@Override
-	public Integer getUpLevelId() {
+	public Long getUpLevelId() {
 		return _upLevelId;
 	}
 
 	@Override
-	public void setUpLevelId(Integer upLevelId) {
+	public void setUpLevelId(Long upLevelId) {
 		_upLevelId = upLevelId;
 	}
 
@@ -558,6 +562,19 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 
 	public long getColumnBitmask() {
 		return _columnBitmask;
+	}
+
+	@Override
+	public ExpandoBridge getExpandoBridge() {
+		return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
+			CodeDto.class.getName(), getPrimaryKey());
+	}
+
+	@Override
+	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
+		ExpandoBridge expandoBridge = getExpandoBridge();
+
+		expandoBridge.setAttributes(serviceContext);
 	}
 
 	@Override
@@ -632,7 +649,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 
 		CodeDto codeDto = (CodeDto)obj;
 
-		int primaryKey = codeDto.getPrimaryKey();
+		long primaryKey = codeDto.getPrimaryKey();
 
 		if (getPrimaryKey() == primaryKey) {
 			return true;
@@ -644,7 +661,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 
 	@Override
 	public int hashCode() {
-		return getPrimaryKey();
+		return (int)getPrimaryKey();
 	}
 
 	@Override
@@ -928,7 +945,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
 			CodeDto.class
 		};
-	private int _id;
+	private long _id;
 	private String _masterCode;
 	private String _originalMasterCode;
 	private String _codeDisplayTextEn;
@@ -942,7 +959,7 @@ public class CodeDtoModelImpl extends BaseModelImpl<CodeDto>
 	private String _codeDetailDisplayTextChi;
 	private Boolean _codeDetailActive;
 	private Integer _level;
-	private Integer _upLevelId;
+	private Long _upLevelId;
 	private String _codeDetailRemarks;
 	private Date _createDate;
 	private Date _updateDate;

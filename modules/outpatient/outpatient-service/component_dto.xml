@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service-builder package-path="hk.org.hkbh.cms.outpatient">
+	<entity local-service="true" name="ComponentDto" remote-service="false" uuid="false"  cache-enabled="false" >
+		<column name="id" db-name="id" primary="true" type="long" id-type="increment" insert="false" update="false"/>
+		
+		<column name="componentCode" db-name="component_code" type="String" />
+		<column name="componentName" db-name="component_name" type="String" />
+		<column name="componentTypeCodeId" db-name="component_type_code_id" type="Long" />
+		<column name="detailCode" db-name="detail_code" type="String" />
+		<column name="codeDetailSeq" db-name="code_detail_seq" type="Integer" />
+		<column name="codeDetailDisplayTextEn" db-name="code_detail_display_text_en" type="String" />
+		<column name="codeDetailDisplayTextChi" db-name="code_detail_display_text_chi" type="String" />
+		<column name="componentSeq" db-name="component_seq" type="Integer" />
+		<column name="isMenuItem" db-name="is_menu_item" type="Boolean" />
+		<column name="componentDesc" db-name="component_desc" type="String" />
+		<column name="url" db-name="url" type="String" />
+		<column name="componentLevel" db-name="component_level" type="Integer" />
+		<column name="upComponentId" db-name="up_component_id" type="Long" />
+		<column name="createDate" db-name="create_date" type="Date" />
+		<column name="updateDate" db-name="update_date" type="Date" />
+		<column name="createdBy" db-name="created_by" type="String" />
+		<column name="updatedBy" db-name="updated_by" type="String" />
+		<order by="asc">
+			<order-column name="id" />
+		</order>
+		<finder name="Id" return-type="Collection">
+			 <finder-column name="id" />
+		 </finder>
+		 <finder name="ComponentCode" return-type="Collection">
+			 <finder-column name="componentCode" />
+		 </finder>
+		 <finder name="ComponentLevel" return-type="Collection">
+			 <finder-column name="componentLevel" />
+		 </finder>
+		 <finder name="IsMenuItem" return-type="Collection">
+			 <finder-column name="isMenuItem" />
+		 </finder>	
+	</entity>
+</service-builder>

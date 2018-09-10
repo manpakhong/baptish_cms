@@ -76,7 +76,7 @@ public interface CodeDtoLocalService extends BaseLocalService,
 	* @param id the primary key for the new code dto
 	* @return the new code dto
 	*/
-	public CodeDto createCodeDto(int id);
+	public CodeDto createCodeDto(long id);
 
 	/**
 	* Deletes the code dto from the database. Also notifies the appropriate model listeners.
@@ -95,7 +95,7 @@ public interface CodeDtoLocalService extends BaseLocalService,
 	* @throws PortalException if a code dto with the primary key could not be found
 	*/
 	@Indexable(type = IndexableType.DELETE)
-	public CodeDto deleteCodeDto(int id) throws PortalException;
+	public CodeDto deleteCodeDto(long id) throws PortalException;
 
 	/**
 	* @throws PortalException
@@ -164,7 +164,7 @@ public interface CodeDtoLocalService extends BaseLocalService,
 		Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public CodeDto fetchCodeDto(int id);
+	public CodeDto fetchCodeDto(long id);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -177,7 +177,7 @@ public interface CodeDtoLocalService extends BaseLocalService,
 	* @throws PortalException if a code dto with the primary key could not be found
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public CodeDto getCodeDto(int id) throws PortalException;
+	public CodeDto getCodeDto(long id) throws PortalException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<CodeDto> getCodeDtoByMasterCode(java.lang.String masterCode);

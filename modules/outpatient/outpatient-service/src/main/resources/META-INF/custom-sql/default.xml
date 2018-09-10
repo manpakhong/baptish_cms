@@ -71,6 +71,31 @@
 
 			]]>
 </sql>
-
+<sql id="hk.org.hkbh.cms.outpatient.service.persistence.impl.ComponentDtoFinderImpl.getComponentDtoList">
+	     <![CDATA[
+			select
+			c.id, 
+			c.component_code, 
+			c.component_name, 
+			c.component_type_code_id, 
+			cd.detail_code,
+			cd.seq as code_detail_seq,
+			cd.display_text_en as code_detail_display_text_en,
+			cd.display_text_chi as code_detail_display_text_chi,
+			c.seq as component_seq, 
+			c.is_menu_item, 
+			c.component_desc, 
+			c.url, 
+			c.component_level, 
+			c.up_component_id, 
+			c.create_date, 
+			c.update_date, 
+			c.created_by, 
+			c.updated_by
+			from component c
+			inner join code_detail cd
+			on c.component_type_code_id = cd.id
+			]]>
+</sql>
 
 </custom-sql >

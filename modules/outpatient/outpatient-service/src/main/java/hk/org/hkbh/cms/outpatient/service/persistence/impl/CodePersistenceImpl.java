@@ -193,7 +193,7 @@ public class CodePersistenceImpl extends BasePersistenceImpl<Code>
 	 * @return the new code
 	 */
 	@Override
-	public Code create(int id) {
+	public Code create(long id) {
 		Code code = new CodeImpl();
 
 		code.setNew(true);
@@ -210,7 +210,7 @@ public class CodePersistenceImpl extends BasePersistenceImpl<Code>
 	 * @throws NoSuchCodeException if a code with the primary key could not be found
 	 */
 	@Override
-	public Code remove(int id) throws NoSuchCodeException {
+	public Code remove(long id) throws NoSuchCodeException {
 		return remove((Serializable)id);
 	}
 
@@ -383,7 +383,7 @@ public class CodePersistenceImpl extends BasePersistenceImpl<Code>
 	 * @throws NoSuchCodeException if a code with the primary key could not be found
 	 */
 	@Override
-	public Code findByPrimaryKey(int id) throws NoSuchCodeException {
+	public Code findByPrimaryKey(long id) throws NoSuchCodeException {
 		return findByPrimaryKey((Serializable)id);
 	}
 
@@ -441,7 +441,7 @@ public class CodePersistenceImpl extends BasePersistenceImpl<Code>
 	 * @return the code, or <code>null</code> if a code with the primary key could not be found
 	 */
 	@Override
-	public Code fetchByPrimaryKey(int id) {
+	public Code fetchByPrimaryKey(long id) {
 		return fetchByPrimaryKey((Serializable)id);
 	}
 
@@ -498,7 +498,7 @@ public class CodePersistenceImpl extends BasePersistenceImpl<Code>
 		query.append(_SQL_SELECT_CODE_WHERE_PKS_IN);
 
 		for (Serializable primaryKey : uncachedPrimaryKeys) {
-			query.append((int)primaryKey);
+			query.append((long)primaryKey);
 
 			query.append(",");
 		}

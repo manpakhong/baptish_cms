@@ -21,10 +21,11 @@ import javax.portlet.ResourceResponse;
 
 import org.osgi.service.component.annotations.Component;
 
-import hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate;
-import hk.org.hkbh.cms.outpatient.model.CodeDto;
 import hk.org.hkbh.cms.outpatient.model.ComponentControlDto;
+import hk.org.hkbh.cms.outpatient.model.ComponentDto;
 import hk.org.hkbh.cms.outpatient.servicehub.ComponentControlMgr;
+import hk.org.hkbh.cms.outpatient.servicehub.ComponentMgr;
+import hk.org.hkbh.cms.outpatient.so.ComponentDtoSo;
 import hk.org.hkbh.cms.outpatient.vo.OutpatientWebVo;
 import hk.org.hkbh.cms.web.constants.OutpatientWebPortletKeys;
 
@@ -57,7 +58,7 @@ public class OutpatientWebPortlet extends MVCPortlet {
 	@Override
 	public void render(RenderRequest renderRequest, RenderResponse renderResponse)
 	    throws PortletException, IOException {
-		OutpatientWebVo vo = getOutpatientWebVo();
+		tester();
 	    super.render(renderRequest, renderResponse);
 	}
 	public void serveResource(ResourceRequest resourceRequest, ResourceResponse resourceResponse) throws PortletException,IOException {
@@ -104,5 +105,25 @@ public class OutpatientWebPortlet extends MVCPortlet {
 
 		}
 		return vo;
+	}
+	private void tester() {
+		try {
+
+			testComponentDto();
+		} catch (Exception e) {
+			logger.error(".tester() ", e);
+		} finally {
+
+		}
+	}
+	
+	private void testComponentDto() {
+		try {
+		ComponentMgr componentMgr = new ComponentMgr();
+		ComponentDtoSo so = new ComponentDtoSo();
+		List<ComponentDto> componentDtoList = componentMgr.getComponentDtoList(so);
+		} catch (Exception e) {
+			logger.error(".testComponentDto() ", e);
+		}
 	}
 }

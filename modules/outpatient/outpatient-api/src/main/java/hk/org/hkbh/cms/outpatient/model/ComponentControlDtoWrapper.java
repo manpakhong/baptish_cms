@@ -93,7 +93,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Integer id = (Integer)attributes.get("id");
+		Long id = (Long)attributes.get("id");
 
 		if (id != null) {
 			setId(id);
@@ -111,14 +111,13 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 			setComponentName(componentName);
 		}
 
-		Integer componentTypeCodeId = (Integer)attributes.get(
-				"componentTypeCodeId");
+		Long componentTypeCodeId = (Long)attributes.get("componentTypeCodeId");
 
 		if (componentTypeCodeId != null) {
 			setComponentTypeCodeId(componentTypeCodeId);
 		}
 
-		Integer detailCode = (Integer)attributes.get("detailCode");
+		String detailCode = (String)attributes.get("detailCode");
 
 		if (detailCode != null) {
 			setDetailCode(detailCode);
@@ -168,32 +167,31 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 			setComponentLevel(componentLevel);
 		}
 
-		Integer upComponentId = (Integer)attributes.get("upComponentId");
+		Long upComponentId = (Long)attributes.get("upComponentId");
 
 		if (upComponentId != null) {
 			setUpComponentId(upComponentId);
 		}
 
-		Integer componentControlId = (Integer)attributes.get(
-				"componentControlId");
+		Long componentControlId = (Long)attributes.get("componentControlId");
 
 		if (componentControlId != null) {
 			setComponentControlId(componentControlId);
 		}
 
-		Integer userId = (Integer)attributes.get("userId");
+		Long userId = (Long)attributes.get("userId");
 
 		if (userId != null) {
 			setUserId(userId);
 		}
 
-		Integer userRoleId = (Integer)attributes.get("userRoleId");
+		Long userRoleId = (Long)attributes.get("userRoleId");
 
 		if (userRoleId != null) {
 			setUserRoleId(userRoleId);
 		}
 
-		Integer componentId = (Integer)attributes.get("componentId");
+		Long componentId = (Long)attributes.get("componentId");
 
 		if (componentId != null) {
 			setComponentId(componentId);
@@ -298,7 +296,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @return the component control ID of this component control dto
 	*/
 	@Override
-	public java.lang.Integer getComponentControlId() {
+	public java.lang.Long getComponentControlId() {
 		return _componentControlDto.getComponentControlId();
 	}
 
@@ -318,7 +316,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @return the component ID of this component control dto
 	*/
 	@Override
-	public java.lang.Integer getComponentId() {
+	public java.lang.Long getComponentId() {
 		return _componentControlDto.getComponentId();
 	}
 
@@ -358,7 +356,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @return the component type code ID of this component control dto
 	*/
 	@Override
-	public java.lang.Integer getComponentTypeCodeId() {
+	public java.lang.Long getComponentTypeCodeId() {
 		return _componentControlDto.getComponentTypeCodeId();
 	}
 
@@ -428,7 +426,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @return the detail code of this component control dto
 	*/
 	@Override
-	public java.lang.Integer getDetailCode() {
+	public java.lang.String getDetailCode() {
 		return _componentControlDto.getDetailCode();
 	}
 
@@ -473,7 +471,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @return the ID of this component control dto
 	*/
 	@Override
-	public int getId() {
+	public long getId() {
 		return _componentControlDto.getId();
 	}
 
@@ -493,7 +491,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @return the primary key of this component control dto
 	*/
 	@Override
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _componentControlDto.getPrimaryKey();
 	}
 
@@ -518,7 +516,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @return the up component ID of this component control dto
 	*/
 	@Override
-	public java.lang.Integer getUpComponentId() {
+	public java.lang.Long getUpComponentId() {
 		return _componentControlDto.getUpComponentId();
 	}
 
@@ -568,7 +566,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @return the user ID of this component control dto
 	*/
 	@Override
-	public java.lang.Integer getUserId() {
+	public java.lang.Long getUserId() {
 		return _componentControlDto.getUserId();
 	}
 
@@ -578,7 +576,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @return the user role ID of this component control dto
 	*/
 	@Override
-	public java.lang.Integer getUserRoleId() {
+	public java.lang.Long getUserRoleId() {
 		return _componentControlDto.getUserRoleId();
 	}
 
@@ -638,7 +636,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @param componentControlId the component control ID of this component control dto
 	*/
 	@Override
-	public void setComponentControlId(java.lang.Integer componentControlId) {
+	public void setComponentControlId(java.lang.Long componentControlId) {
 		_componentControlDto.setComponentControlId(componentControlId);
 	}
 
@@ -658,7 +656,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @param componentId the component ID of this component control dto
 	*/
 	@Override
-	public void setComponentId(java.lang.Integer componentId) {
+	public void setComponentId(java.lang.Long componentId) {
 		_componentControlDto.setComponentId(componentId);
 	}
 
@@ -698,7 +696,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @param componentTypeCodeId the component type code ID of this component control dto
 	*/
 	@Override
-	public void setComponentTypeCodeId(java.lang.Integer componentTypeCodeId) {
+	public void setComponentTypeCodeId(java.lang.Long componentTypeCodeId) {
 		_componentControlDto.setComponentTypeCodeId(componentTypeCodeId);
 	}
 
@@ -768,7 +766,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @param detailCode the detail code of this component control dto
 	*/
 	@Override
-	public void setDetailCode(java.lang.Integer detailCode) {
+	public void setDetailCode(java.lang.String detailCode) {
 		_componentControlDto.setDetailCode(detailCode);
 	}
 
@@ -826,7 +824,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @param id the ID of this component control dto
 	*/
 	@Override
-	public void setId(int id) {
+	public void setId(long id) {
 		_componentControlDto.setId(id);
 	}
 
@@ -851,7 +849,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @param primaryKey the primary key of this component control dto
 	*/
 	@Override
-	public void setPrimaryKey(int primaryKey) {
+	public void setPrimaryKey(long primaryKey) {
 		_componentControlDto.setPrimaryKey(primaryKey);
 	}
 
@@ -876,7 +874,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @param upComponentId the up component ID of this component control dto
 	*/
 	@Override
-	public void setUpComponentId(java.lang.Integer upComponentId) {
+	public void setUpComponentId(java.lang.Long upComponentId) {
 		_componentControlDto.setUpComponentId(upComponentId);
 	}
 
@@ -926,7 +924,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @param userId the user ID of this component control dto
 	*/
 	@Override
-	public void setUserId(java.lang.Integer userId) {
+	public void setUserId(java.lang.Long userId) {
 		_componentControlDto.setUserId(userId);
 	}
 
@@ -936,7 +934,7 @@ public class ComponentControlDtoWrapper implements ComponentControlDto,
 	* @param userRoleId the user role ID of this component control dto
 	*/
 	@Override
-	public void setUserRoleId(java.lang.Integer userRoleId) {
+	public void setUserRoleId(java.lang.Long userRoleId) {
 		_componentControlDto.setUserRoleId(userRoleId);
 	}
 

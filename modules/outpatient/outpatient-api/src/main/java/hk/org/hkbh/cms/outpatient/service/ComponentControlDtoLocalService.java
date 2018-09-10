@@ -77,7 +77,7 @@ public interface ComponentControlDtoLocalService extends BaseLocalService,
 	* @param id the primary key for the new component control dto
 	* @return the new component control dto
 	*/
-	public ComponentControlDto createComponentControlDto(int id);
+	public ComponentControlDto createComponentControlDto(long id);
 
 	/**
 	* Deletes the component control dto from the database. Also notifies the appropriate model listeners.
@@ -97,7 +97,7 @@ public interface ComponentControlDtoLocalService extends BaseLocalService,
 	* @throws PortalException if a component control dto with the primary key could not be found
 	*/
 	@Indexable(type = IndexableType.DELETE)
-	public ComponentControlDto deleteComponentControlDto(int id)
+	public ComponentControlDto deleteComponentControlDto(long id)
 		throws PortalException;
 
 	/**
@@ -167,7 +167,7 @@ public interface ComponentControlDtoLocalService extends BaseLocalService,
 		Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public ComponentControlDto fetchComponentControlDto(int id);
+	public ComponentControlDto fetchComponentControlDto(long id);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -180,7 +180,7 @@ public interface ComponentControlDtoLocalService extends BaseLocalService,
 	* @throws PortalException if a component control dto with the primary key could not be found
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public ComponentControlDto getComponentControlDto(int id)
+	public ComponentControlDto getComponentControlDto(long id)
 		throws PortalException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)

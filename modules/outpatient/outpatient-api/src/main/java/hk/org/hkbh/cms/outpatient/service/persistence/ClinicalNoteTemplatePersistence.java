@@ -62,7 +62,7 @@ public interface ClinicalNoteTemplatePersistence extends BasePersistence<Clinica
 	* @param id the primary key for the new clinical note template
 	* @return the new clinical note template
 	*/
-	public ClinicalNoteTemplate create(int id);
+	public ClinicalNoteTemplate create(long id);
 
 	/**
 	* Removes the clinical note template with the primary key from the database. Also notifies the appropriate model listeners.
@@ -71,7 +71,7 @@ public interface ClinicalNoteTemplatePersistence extends BasePersistence<Clinica
 	* @return the clinical note template that was removed
 	* @throws NoSuchClinicalNoteTemplateException if a clinical note template with the primary key could not be found
 	*/
-	public ClinicalNoteTemplate remove(int id)
+	public ClinicalNoteTemplate remove(long id)
 		throws NoSuchClinicalNoteTemplateException;
 
 	public ClinicalNoteTemplate updateImpl(
@@ -84,7 +84,7 @@ public interface ClinicalNoteTemplatePersistence extends BasePersistence<Clinica
 	* @return the clinical note template
 	* @throws NoSuchClinicalNoteTemplateException if a clinical note template with the primary key could not be found
 	*/
-	public ClinicalNoteTemplate findByPrimaryKey(int id)
+	public ClinicalNoteTemplate findByPrimaryKey(long id)
 		throws NoSuchClinicalNoteTemplateException;
 
 	/**
@@ -93,7 +93,7 @@ public interface ClinicalNoteTemplatePersistence extends BasePersistence<Clinica
 	* @param id the primary key of the clinical note template
 	* @return the clinical note template, or <code>null</code> if a clinical note template with the primary key could not be found
 	*/
-	public ClinicalNoteTemplate fetchByPrimaryKey(int id);
+	public ClinicalNoteTemplate fetchByPrimaryKey(long id);
 
 	@Override
 	public java.util.Map<java.io.Serializable, ClinicalNoteTemplate> fetchByPrimaryKeys(

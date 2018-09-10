@@ -93,35 +93,35 @@ public class CodeDetailSoap implements Serializable {
 	public CodeDetailSoap() {
 	}
 
-	public int getPrimaryKey() {
+	public long getPrimaryKey() {
 		return _id;
 	}
 
-	public void setPrimaryKey(int pk) {
+	public void setPrimaryKey(long pk) {
 		setId(pk);
 	}
 
-	public int getId() {
+	public long getId() {
 		return _id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		_id = id;
 	}
 
-	public Integer getCodeId() {
+	public Long getCodeId() {
 		return _codeId;
 	}
 
-	public void setCodeId(Integer codeId) {
+	public void setCodeId(Long codeId) {
 		_codeId = codeId;
 	}
 
-	public Integer getDetailCode() {
+	public String getDetailCode() {
 		return _detailCode;
 	}
 
-	public void setDetailCode(Integer detailCode) {
+	public void setDetailCode(String detailCode) {
 		_detailCode = detailCode;
 	}
 
@@ -181,11 +181,11 @@ public class CodeDetailSoap implements Serializable {
 		_level = level;
 	}
 
-	public Integer getUpLevelId() {
+	public Long getUpLevelId() {
 		return _upLevelId;
 	}
 
-	public void setUpLevelId(Integer upLevelId) {
+	public void setUpLevelId(Long upLevelId) {
 		_upLevelId = upLevelId;
 	}
 
@@ -229,9 +229,9 @@ public class CodeDetailSoap implements Serializable {
 		_updatedBy = updatedBy;
 	}
 
-	private int _id;
-	private Integer _codeId;
-	private Integer _detailCode;
+	private long _id;
+	private Long _codeId;
+	private String _detailCode;
 	private Integer _seq;
 	private String _displayTextEn;
 	private String _displayTextChi;
@@ -239,7 +239,7 @@ public class CodeDetailSoap implements Serializable {
 	private String _symbol_html_code;
 	private Boolean _active;
 	private Integer _level;
-	private Integer _upLevelId;
+	private Long _upLevelId;
 	private String _remarks;
 	private Date _createDate;
 	private Date _updateDate;

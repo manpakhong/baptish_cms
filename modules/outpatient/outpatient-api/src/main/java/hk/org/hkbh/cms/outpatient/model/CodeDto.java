@@ -37,15 +37,15 @@ public interface CodeDto extends CodeDtoModel, PersistedModel {
 	 *
 	 * Never modify this interface directly. Add methods to {@link hk.org.hkbh.cms.outpatient.model.impl.CodeDtoImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<CodeDto, Integer> ID_ACCESSOR = new Accessor<CodeDto, Integer>() {
+	public static final Accessor<CodeDto, Long> ID_ACCESSOR = new Accessor<CodeDto, Long>() {
 			@Override
-			public Integer get(CodeDto codeDto) {
+			public Long get(CodeDto codeDto) {
 				return codeDto.getId();
 			}
 
 			@Override
-			public Class<Integer> getAttributeClass() {
-				return Integer.class;
+			public Class<Long> getAttributeClass() {
+				return Long.class;
 			}
 
 			@Override
