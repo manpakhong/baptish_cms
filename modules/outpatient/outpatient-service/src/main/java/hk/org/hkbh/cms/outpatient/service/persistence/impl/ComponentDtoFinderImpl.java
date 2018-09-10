@@ -60,7 +60,7 @@ public class ComponentDtoFinderImpl extends ComponentDtoFinderBaseImpl implement
 				count++;
 			}
 			
-	        SQLQuery queryObject = session.createSQLQuery(sql);
+	        SQLQuery queryObject = session.createSQLQuery(sb.toString());
 	        queryObject.setCacheable(false);
 	        queryObject.addEntity("ComponentDto", ComponentDtoImpl.class);
 

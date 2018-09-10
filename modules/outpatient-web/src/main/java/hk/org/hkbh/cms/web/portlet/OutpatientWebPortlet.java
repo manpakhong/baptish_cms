@@ -28,6 +28,7 @@ import hk.org.hkbh.cms.outpatient.servicehub.ComponentMgr;
 import hk.org.hkbh.cms.outpatient.so.ComponentDtoSo;
 import hk.org.hkbh.cms.outpatient.vo.OutpatientWebVo;
 import hk.org.hkbh.cms.web.constants.OutpatientWebPortletKeys;
+import hk.org.hkbh.cms.web.helpers.OutpatientWebPortletHelper;
 
 /**
  * @author manpakhong
@@ -52,8 +53,10 @@ public class OutpatientWebPortlet extends MVCPortlet {
 //  private ClinicalNoteTemplateLocalService _clinicalNoteTemplateLocalService;
 	private static Log logger = LogFactoryUtil.getLog(OutpatientWebPortlet.class);
 	private ComponentControlMgr componentControlMgr;
+	private OutpatientWebPortletHelper helper;
 	public OutpatientWebPortlet() {
 		componentControlMgr = new ComponentControlMgr();
+		helper = new OutpatientWebPortletHelper();
 	}
 	@Override
 	public void render(RenderRequest renderRequest, RenderResponse renderResponse)
@@ -96,7 +99,7 @@ public class OutpatientWebPortlet extends MVCPortlet {
 			userId = null;
 			userRoleId = 5L;
 			List<ComponentControlDto> componentControlDtoList = componentControlMgr.getComponentControlList(userId, userRoleId);
-
+			
 			vo.setComponentControlDtoList(componentControlDtoList);
 			logger.info("vo info:" + vo);
 		} catch (Exception e) {
@@ -121,7 +124,9 @@ public class OutpatientWebPortlet extends MVCPortlet {
 		try {
 		ComponentMgr componentMgr = new ComponentMgr();
 		ComponentDtoSo so = new ComponentDtoSo();
+		so.setIsMenuItem(true);
 		List<ComponentDto> componentDtoList = componentMgr.getComponentDtoList(so);
+		helper.createMenu(componentDtoList);
 		} catch (Exception e) {
 			logger.error(".testComponentDto() ", e);
 		}
