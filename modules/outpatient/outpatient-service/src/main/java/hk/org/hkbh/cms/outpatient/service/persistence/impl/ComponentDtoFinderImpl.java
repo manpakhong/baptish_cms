@@ -35,31 +35,31 @@ public class ComponentDtoFinderImpl extends ComponentDtoFinderBaseImpl implement
 				if (count == 0) {
 					sb.append(" " + "where" + " ");
 				}
-				sb.append("id = ? ");
+				sb.append("c.id = ? ");
 				count++;
 			} 
 			if (componentCode != null) {
 				if (count == 0) {
 					sb.append(" " + "where" + " ");
 				}
-				sb.append("component_code = ? ");
+				sb.append("c.component_code = ? ");
 				count++;
 			}
 			if (isMenuItem != null) {
 				if (count == 0) {
 					sb.append(" " + "where" + " ");
 				}
-				sb.append("is_menu_item = ? ");
+				sb.append("c.is_menu_item = ? ");
 				count++;
 			}
 			if (componentLevel != null) {
 				if (count == 0) {
 					sb.append(" " + "where" + " ");
 				}
-				sb.append("component_level = ? ");
+				sb.append("c.component_level = ? ");
 				count++;
 			}
-			
+			sb.append("order by c.component_level, c.seq ");
 	        SQLQuery queryObject = session.createSQLQuery(sb.toString());
 	        queryObject.setCacheable(false);
 	        queryObject.addEntity("ComponentDto", ComponentDtoImpl.class);

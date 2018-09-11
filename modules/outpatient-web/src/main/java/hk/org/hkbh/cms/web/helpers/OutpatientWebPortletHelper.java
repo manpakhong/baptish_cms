@@ -6,35 +6,65 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import hk.org.hkbh.cms.outpatient.model.ComponentDto;
 
 public class OutpatientWebPortletHelper {
 	private static Log logger = LogFactoryUtil.getLog(OutpatientWebPortletHelper.class);
 	private Map<Long, ComponentDto> map;
+	private List<ComponentDto> componentDtoList;
 	private int maxLevel;
-	public void createMenu( List<ComponentDto> componentDtoList) {
+	private StringBuilder sb;
+	public StringBuilder createMenu( List<ComponentDto> componentDtoList) {
 		try {
+			sb = new StringBuilder();
 			maxLevel = findTheMaxLevel(componentDtoList);
 			map = transferListToMap(componentDtoList);
+			this.componentDtoList = componentDtoList;
+			sb.append("<div id='jqxWidget' style='height: 300px;'>");
+			sb.append("<div id='jqxMenu' style='visibility: hidden; margin-left: 20px;'>");
+			sb.append("<ul>");
 			for (ComponentDto componentDto: componentDtoList) {
-				marshellListToMenuHtml(componentDto);
+//				logger.info("id: " + componentDto.getId() + ", upLevelId: " + componentDto.getUpComponentId());
+				if (componentDto.getComponentLevel().equals(1)) {
+					marshellListToMenuHtml(componentDto);
+				}
 			}
+			sb.append("</ul>");
+			sb.append("</div>");
+			sb.append("</div>");
+
+			logger.info(sb.toString());
 		}catch (Exception e) {
 			logger.error(".createMenu() - componentDtoList=" + componentDtoList, e);
 			throw e;
 		}
+		return sb;
 	}
 	public StringBuilder marshellListToMenuHtml(ComponentDto componentDto) {
-		StringBuilder sb = null;
 		try {
-
-			if (componentDto.getComponentLevel().intValue() == 1) {
-				logger.info("id: " + componentDto.getId() + ", upLevelId: " + componentDto.getUpComponentId());
+			if (componentDto.getComponentLevel().intValue() == maxLevel) {
+				sb.append("<li><a href=\"");
+				sb.append(componentDto.getUrl() + "\">");
+				sb.append(componentDto.getComponentName());
+				sb.append("</a></li>");
+				logger.info("id: " + componentDto.getId() + ", level: " + componentDto.getComponentLevel() + ", upLevelId: " + componentDto.getUpComponentId());
 			} else {
-				ComponentDto upComponentDto = map.get(componentDto.getUpComponentId());
-				logger.info("id: " + upComponentDto.getId() + ", upLevelId: " + upComponentDto.getUpComponentId());
-				marshellListToMenuHtml(upComponentDto);
+				logger.info("id: " + componentDto.getId() + ", level: " + componentDto.getComponentLevel() + ", upLevelId: " + componentDto.getUpComponentId());
+				List<ComponentDto> componentDtoList = findComponentDtoListByUpLevelComponentId(this.componentDtoList, componentDto.getId());
+
+				sb.append("<li><a href='" + componentDto.getUrl() + "'>" + componentDto.getComponentName() + "</a>");
+				if (componentDtoList != null && componentDtoList.size() > 0) {
+
+					sb.append("<ul style='width: 300'>");
+					for (ComponentDto c: componentDtoList) {
+						marshellListToMenuHtml(c);
+					}
+					sb.append("</ul>");
+				}
+				sb.append("</li>");
 			}
 
 		}catch (Exception e) {
@@ -43,6 +73,9 @@ public class OutpatientWebPortletHelper {
 		}
 		return sb;
 		
+	}
+	private List<ComponentDto> findComponentDtoListByUpLevelComponentId(final List<ComponentDto> list, final Long upLevelComponentId){
+		return list.stream().filter(p -> p.getUpComponentId().equals(upLevelComponentId)).collect(Collectors.toList());
 	}
 	public int findTheMaxLevel(List<ComponentDto> componentDtoList) {
 		int maxLevel = 0;
