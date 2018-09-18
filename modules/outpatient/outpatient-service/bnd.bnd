@@ -5,4 +5,6 @@ Liferay-Require-SchemaVersion: 1.0.0
 Liferay-Service: true
 Export-Package: \
 	hk.org.hkbh.cms.outpatient.servicehub,\
-	hk.org.hkbh.cms.outpatient.factory
+	hk.org.hkbh.cms.outpatient.factory,\
+	hk.org.hkbh.cms.outpatient.listener,\
+	hk.org.hkbh.cms.outpatient.scheduler

@@ -19,8 +19,8 @@
         catch (error) {
         }
         // Create a jqxMenu
-        $("#jqxMenu").jqxMenu({ width:1024, height: '30px', autoOpen: true, autoCloseOnMouseLeave: false, showTopLevelArrows: true});
+        $("#jqxMenu").jqxMenu({ width:1300, height: '30px', autoOpen: true, autoCloseOnMouseLeave: false, showTopLevelArrows: true});
         $("#jqxMenu").css('visibility', 'visible');
-        $(".buyonline").jqxLinkButton({ width: 150, height: 25});
-        $(".jqx-menu-search").jqxButton({ width: 60, height: 18});
+//        $(".buyonline").jqxLinkButton({ width: 150, height: 25});
+//        $(".jqx-menu-search").jqxButton({ width: 60, height: 18});
     });

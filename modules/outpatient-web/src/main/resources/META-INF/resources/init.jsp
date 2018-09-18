@@ -17,21 +17,22 @@ var PORTLET_NAMESPACE = "<portlet:namespace/>";
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/jqwidgets/styles/jqx.base.css"/>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/jqwidgets/styles/jqx.dark.css"/>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css?ver=${verNo}"/>
-
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/doctorWorkbench.css?ver=${verNo}"/>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jqwidgets/jqxcore.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jqwidgets/jqxmenu.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jqwidgets/jqxbuttons.js"></script>
-
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jqwidgets/jqx-all.js"></script>
 	<c:if test="${scriptVersion eq true}"  >
 <%-- 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/app.js?ver=${verNo}"></script> --%>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/menu.js?ver=${verNo}"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/js/doctorWorkbench.js?ver=${verNo}"></script>
 	</c:if>
 	<c:if test="${scriptVersion eq false}">
 <%-- 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/app.js"></script> --%>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/menu.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/js/doctorWorkbench.js"></script>
 	</c:if>
-
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/json3.min.js"></script>
 <liferay-theme:defineObjects />
 

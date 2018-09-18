@@ -23,7 +23,7 @@ public class OutpatientWebPortletHelper {
 			maxLevel = findTheMaxLevel(componentDtoList);
 			map = transferListToMap(componentDtoList);
 			this.componentDtoList = componentDtoList;
-			sb.append("<div id='jqxWidget' style='height: 300px;'>");
+			sb.append("<div id='jqxWidget' class='topDropDownMenu'>");
 			sb.append("<div id='jqxMenu' style='visibility: hidden; margin-left: 20px;'>");
 			sb.append("<ul>");
 			for (ComponentDto componentDto: componentDtoList) {
