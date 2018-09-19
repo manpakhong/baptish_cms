@@ -43,6 +43,14 @@ import com.liferay.portal.spring.extender.service.ServiceReference;
 
 import hk.org.hkbh.cms.outpatient.model.ComponentDto;
 import hk.org.hkbh.cms.outpatient.service.ComponentDtoLocalService;
+import hk.org.hkbh.cms.outpatient.service.persistence.ClinicalNoteTemplatePersistence;
+import hk.org.hkbh.cms.outpatient.service.persistence.CodeDetailPersistence;
+import hk.org.hkbh.cms.outpatient.service.persistence.CodeDtoFinder;
+import hk.org.hkbh.cms.outpatient.service.persistence.CodeDtoPersistence;
+import hk.org.hkbh.cms.outpatient.service.persistence.CodePersistence;
+import hk.org.hkbh.cms.outpatient.service.persistence.ComponentControlDtoFinder;
+import hk.org.hkbh.cms.outpatient.service.persistence.ComponentControlDtoPersistence;
+import hk.org.hkbh.cms.outpatient.service.persistence.ComponentControlPersistence;
 import hk.org.hkbh.cms.outpatient.service.persistence.ComponentDtoFinder;
 import hk.org.hkbh.cms.outpatient.service.persistence.ComponentDtoPersistence;
 
@@ -313,6 +321,269 @@ public abstract class ComponentDtoLocalServiceBaseImpl
 	}
 
 	/**
+	 * Returns the clinical note template local service.
+	 *
+	 * @return the clinical note template local service
+	 */
+	public hk.org.hkbh.cms.outpatient.service.ClinicalNoteTemplateLocalService getClinicalNoteTemplateLocalService() {
+		return clinicalNoteTemplateLocalService;
+	}
+
+	/**
+	 * Sets the clinical note template local service.
+	 *
+	 * @param clinicalNoteTemplateLocalService the clinical note template local service
+	 */
+	public void setClinicalNoteTemplateLocalService(
+		hk.org.hkbh.cms.outpatient.service.ClinicalNoteTemplateLocalService clinicalNoteTemplateLocalService) {
+		this.clinicalNoteTemplateLocalService = clinicalNoteTemplateLocalService;
+	}
+
+	/**
+	 * Returns the clinical note template persistence.
+	 *
+	 * @return the clinical note template persistence
+	 */
+	public ClinicalNoteTemplatePersistence getClinicalNoteTemplatePersistence() {
+		return clinicalNoteTemplatePersistence;
+	}
+
+	/**
+	 * Sets the clinical note template persistence.
+	 *
+	 * @param clinicalNoteTemplatePersistence the clinical note template persistence
+	 */
+	public void setClinicalNoteTemplatePersistence(
+		ClinicalNoteTemplatePersistence clinicalNoteTemplatePersistence) {
+		this.clinicalNoteTemplatePersistence = clinicalNoteTemplatePersistence;
+	}
+
+	/**
+	 * Returns the code local service.
+	 *
+	 * @return the code local service
+	 */
+	public hk.org.hkbh.cms.outpatient.service.CodeLocalService getCodeLocalService() {
+		return codeLocalService;
+	}
+
+	/**
+	 * Sets the code local service.
+	 *
+	 * @param codeLocalService the code local service
+	 */
+	public void setCodeLocalService(
+		hk.org.hkbh.cms.outpatient.service.CodeLocalService codeLocalService) {
+		this.codeLocalService = codeLocalService;
+	}
+
+	/**
+	 * Returns the code persistence.
+	 *
+	 * @return the code persistence
+	 */
+	public CodePersistence getCodePersistence() {
+		return codePersistence;
+	}
+
+	/**
+	 * Sets the code persistence.
+	 *
+	 * @param codePersistence the code persistence
+	 */
+	public void setCodePersistence(CodePersistence codePersistence) {
+		this.codePersistence = codePersistence;
+	}
+
+	/**
+	 * Returns the code detail local service.
+	 *
+	 * @return the code detail local service
+	 */
+	public hk.org.hkbh.cms.outpatient.service.CodeDetailLocalService getCodeDetailLocalService() {
+		return codeDetailLocalService;
+	}
+
+	/**
+	 * Sets the code detail local service.
+	 *
+	 * @param codeDetailLocalService the code detail local service
+	 */
+	public void setCodeDetailLocalService(
+		hk.org.hkbh.cms.outpatient.service.CodeDetailLocalService codeDetailLocalService) {
+		this.codeDetailLocalService = codeDetailLocalService;
+	}
+
+	/**
+	 * Returns the code detail persistence.
+	 *
+	 * @return the code detail persistence
+	 */
+	public CodeDetailPersistence getCodeDetailPersistence() {
+		return codeDetailPersistence;
+	}
+
+	/**
+	 * Sets the code detail persistence.
+	 *
+	 * @param codeDetailPersistence the code detail persistence
+	 */
+	public void setCodeDetailPersistence(
+		CodeDetailPersistence codeDetailPersistence) {
+		this.codeDetailPersistence = codeDetailPersistence;
+	}
+
+	/**
+	 * Returns the code dto local service.
+	 *
+	 * @return the code dto local service
+	 */
+	public hk.org.hkbh.cms.outpatient.service.CodeDtoLocalService getCodeDtoLocalService() {
+		return codeDtoLocalService;
+	}
+
+	/**
+	 * Sets the code dto local service.
+	 *
+	 * @param codeDtoLocalService the code dto local service
+	 */
+	public void setCodeDtoLocalService(
+		hk.org.hkbh.cms.outpatient.service.CodeDtoLocalService codeDtoLocalService) {
+		this.codeDtoLocalService = codeDtoLocalService;
+	}
+
+	/**
+	 * Returns the code dto persistence.
+	 *
+	 * @return the code dto persistence
+	 */
+	public CodeDtoPersistence getCodeDtoPersistence() {
+		return codeDtoPersistence;
+	}
+
+	/**
+	 * Sets the code dto persistence.
+	 *
+	 * @param codeDtoPersistence the code dto persistence
+	 */
+	public void setCodeDtoPersistence(CodeDtoPersistence codeDtoPersistence) {
+		this.codeDtoPersistence = codeDtoPersistence;
+	}
+
+	/**
+	 * Returns the code dto finder.
+	 *
+	 * @return the code dto finder
+	 */
+	public CodeDtoFinder getCodeDtoFinder() {
+		return codeDtoFinder;
+	}
+
+	/**
+	 * Sets the code dto finder.
+	 *
+	 * @param codeDtoFinder the code dto finder
+	 */
+	public void setCodeDtoFinder(CodeDtoFinder codeDtoFinder) {
+		this.codeDtoFinder = codeDtoFinder;
+	}
+
+	/**
+	 * Returns the component control local service.
+	 *
+	 * @return the component control local service
+	 */
+	public hk.org.hkbh.cms.outpatient.service.ComponentControlLocalService getComponentControlLocalService() {
+		return componentControlLocalService;
+	}
+
+	/**
+	 * Sets the component control local service.
+	 *
+	 * @param componentControlLocalService the component control local service
+	 */
+	public void setComponentControlLocalService(
+		hk.org.hkbh.cms.outpatient.service.ComponentControlLocalService componentControlLocalService) {
+		this.componentControlLocalService = componentControlLocalService;
+	}
+
+	/**
+	 * Returns the component control persistence.
+	 *
+	 * @return the component control persistence
+	 */
+	public ComponentControlPersistence getComponentControlPersistence() {
+		return componentControlPersistence;
+	}
+
+	/**
+	 * Sets the component control persistence.
+	 *
+	 * @param componentControlPersistence the component control persistence
+	 */
+	public void setComponentControlPersistence(
+		ComponentControlPersistence componentControlPersistence) {
+		this.componentControlPersistence = componentControlPersistence;
+	}
+
+	/**
+	 * Returns the component control dto local service.
+	 *
+	 * @return the component control dto local service
+	 */
+	public hk.org.hkbh.cms.outpatient.service.ComponentControlDtoLocalService getComponentControlDtoLocalService() {
+		return componentControlDtoLocalService;
+	}
+
+	/**
+	 * Sets the component control dto local service.
+	 *
+	 * @param componentControlDtoLocalService the component control dto local service
+	 */
+	public void setComponentControlDtoLocalService(
+		hk.org.hkbh.cms.outpatient.service.ComponentControlDtoLocalService componentControlDtoLocalService) {
+		this.componentControlDtoLocalService = componentControlDtoLocalService;
+	}
+
+	/**
+	 * Returns the component control dto persistence.
+	 *
+	 * @return the component control dto persistence
+	 */
+	public ComponentControlDtoPersistence getComponentControlDtoPersistence() {
+		return componentControlDtoPersistence;
+	}
+
+	/**
+	 * Sets the component control dto persistence.
+	 *
+	 * @param componentControlDtoPersistence the component control dto persistence
+	 */
+	public void setComponentControlDtoPersistence(
+		ComponentControlDtoPersistence componentControlDtoPersistence) {
+		this.componentControlDtoPersistence = componentControlDtoPersistence;
+	}
+
+	/**
+	 * Returns the component control dto finder.
+	 *
+	 * @return the component control dto finder
+	 */
+	public ComponentControlDtoFinder getComponentControlDtoFinder() {
+		return componentControlDtoFinder;
+	}
+
+	/**
+	 * Sets the component control dto finder.
+	 *
+	 * @param componentControlDtoFinder the component control dto finder
+	 */
+	public void setComponentControlDtoFinder(
+		ComponentControlDtoFinder componentControlDtoFinder) {
+		this.componentControlDtoFinder = componentControlDtoFinder;
+	}
+
+	/**
 	 * Returns the component dto local service.
 	 *
 	 * @return the component dto local service
@@ -533,6 +804,34 @@ public abstract class ComponentDtoLocalServiceBaseImpl
 		}
 	}
 
+	@BeanReference(type = hk.org.hkbh.cms.outpatient.service.ClinicalNoteTemplateLocalService.class)
+	protected hk.org.hkbh.cms.outpatient.service.ClinicalNoteTemplateLocalService clinicalNoteTemplateLocalService;
+	@BeanReference(type = ClinicalNoteTemplatePersistence.class)
+	protected ClinicalNoteTemplatePersistence clinicalNoteTemplatePersistence;
+	@BeanReference(type = hk.org.hkbh.cms.outpatient.service.CodeLocalService.class)
+	protected hk.org.hkbh.cms.outpatient.service.CodeLocalService codeLocalService;
+	@BeanReference(type = CodePersistence.class)
+	protected CodePersistence codePersistence;
+	@BeanReference(type = hk.org.hkbh.cms.outpatient.service.CodeDetailLocalService.class)
+	protected hk.org.hkbh.cms.outpatient.service.CodeDetailLocalService codeDetailLocalService;
+	@BeanReference(type = CodeDetailPersistence.class)
+	protected CodeDetailPersistence codeDetailPersistence;
+	@BeanReference(type = hk.org.hkbh.cms.outpatient.service.CodeDtoLocalService.class)
+	protected hk.org.hkbh.cms.outpatient.service.CodeDtoLocalService codeDtoLocalService;
+	@BeanReference(type = CodeDtoPersistence.class)
+	protected CodeDtoPersistence codeDtoPersistence;
+	@BeanReference(type = CodeDtoFinder.class)
+	protected CodeDtoFinder codeDtoFinder;
+	@BeanReference(type = hk.org.hkbh.cms.outpatient.service.ComponentControlLocalService.class)
+	protected hk.org.hkbh.cms.outpatient.service.ComponentControlLocalService componentControlLocalService;
+	@BeanReference(type = ComponentControlPersistence.class)
+	protected ComponentControlPersistence componentControlPersistence;
+	@BeanReference(type = hk.org.hkbh.cms.outpatient.service.ComponentControlDtoLocalService.class)
+	protected hk.org.hkbh.cms.outpatient.service.ComponentControlDtoLocalService componentControlDtoLocalService;
+	@BeanReference(type = ComponentControlDtoPersistence.class)
+	protected ComponentControlDtoPersistence componentControlDtoPersistence;
+	@BeanReference(type = ComponentControlDtoFinder.class)
+	protected ComponentControlDtoFinder componentControlDtoFinder;
 	@BeanReference(type = ComponentDtoLocalService.class)
 	protected ComponentDtoLocalService componentDtoLocalService;
 	@BeanReference(type = ComponentDtoPersistence.class)

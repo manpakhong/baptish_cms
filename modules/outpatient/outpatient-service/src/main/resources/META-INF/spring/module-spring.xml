@@ -7,6 +7,28 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
 >
+	<bean class="hk.org.hkbh.cms.outpatient.service.impl.ClinicalNoteTemplateLocalServiceImpl" id="hk.org.hkbh.cms.outpatient.service.ClinicalNoteTemplateLocalService" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.ClinicalNoteTemplatePersistenceImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.ClinicalNoteTemplatePersistence" parent="basePersistence">
+		<property name="dataSource" ref="cmsDataSource" />
+	</bean>
+	<bean class="hk.org.hkbh.cms.outpatient.service.impl.CodeLocalServiceImpl" id="hk.org.hkbh.cms.outpatient.service.CodeLocalService" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.CodePersistenceImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.CodePersistence" parent="basePersistence">
+		<property name="dataSource" ref="cmsDataSource" />
+	</bean>
+	<bean class="hk.org.hkbh.cms.outpatient.service.impl.CodeDetailLocalServiceImpl" id="hk.org.hkbh.cms.outpatient.service.CodeDetailLocalService" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.CodeDetailPersistenceImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.CodeDetailPersistence" parent="basePersistence">
+		<property name="dataSource" ref="cmsDataSource" />
+	</bean>
+	<bean class="hk.org.hkbh.cms.outpatient.service.impl.CodeDtoLocalServiceImpl" id="hk.org.hkbh.cms.outpatient.service.CodeDtoLocalService" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.CodeDtoPersistenceImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.CodeDtoPersistence" parent="basePersistence" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.CodeDtoFinderImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.CodeDtoFinder" parent="basePersistence" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.impl.ComponentControlLocalServiceImpl" id="hk.org.hkbh.cms.outpatient.service.ComponentControlLocalService" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.ComponentControlPersistenceImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.ComponentControlPersistence" parent="basePersistence">
+		<property name="dataSource" ref="cmsDataSource" />
+	</bean>
+	<bean class="hk.org.hkbh.cms.outpatient.service.impl.ComponentControlDtoLocalServiceImpl" id="hk.org.hkbh.cms.outpatient.service.ComponentControlDtoLocalService" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.ComponentControlDtoPersistenceImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.ComponentControlDtoPersistence" parent="basePersistence" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.ComponentControlDtoFinderImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.ComponentControlDtoFinder" parent="basePersistence" />
 	<bean class="hk.org.hkbh.cms.outpatient.service.impl.ComponentDtoLocalServiceImpl" id="hk.org.hkbh.cms.outpatient.service.ComponentDtoLocalService" />
 	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.ComponentDtoPersistenceImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.ComponentDtoPersistence" parent="basePersistence" />
 	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.ComponentDtoFinderImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.ComponentDtoFinder" parent="basePersistence" />

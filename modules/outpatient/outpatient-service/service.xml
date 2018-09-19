@@ -4,11 +4,11 @@
 <service-builder package-path="hk.org.hkbh.cms.outpatient">
 	<author>Dave Man</author>
 	<namespace>Op</namespace>
-<!-- <service-builder-import file="clinical_note_template.xml"></service-builder-import>
+    <service-builder-import file="clinical_note_template.xml"></service-builder-import>
 	<service-builder-import file="code.xml"></service-builder-import>
 	<service-builder-import file="code_detail.xml"></service-builder-import>
 	<service-builder-import file="code_dto.xml"></service-builder-import>
 	<service-builder-import file="component_control.xml"></service-builder-import>
-	<service-builder-import file="component_control_dto.xml"></service-builder-import> -->
+	<service-builder-import file="component_control_dto.xml"></service-builder-import>
 	<service-builder-import file="component_dto.xml"></service-builder-import>
 </service-builder>
