@@ -5,6 +5,7 @@
 <!-- 	<liferay-ui:message key="outpatient-web.caption"/> -->
 	</b>
 </p>
+<div class="informationDiv">11</div>
 <div class="menuDiv">
 	<jsp:scriptlet>
 		CommonController controller = new CommonController();

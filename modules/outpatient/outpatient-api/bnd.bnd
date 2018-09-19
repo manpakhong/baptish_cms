@@ -1,11 +1,7 @@
 Bundle-Name: outpatient-api
 Bundle-SymbolicName: hk.org.hkbh.cms.outpatient.api
 Bundle-Version: 1.0.0
+-includeresource: META-INF/service.xml=../outpatient-service/service.xml
 Export-Package: \
-	hk.org.hkbh.cms.outpatient.exception,\
-	hk.org.hkbh.cms.outpatient.model,\
-	hk.org.hkbh.cms.outpatient.service,\
-	hk.org.hkbh.cms.outpatient.service.persistence,\
 	hk.org.hkbh.cms.outpatient.vo,\
 	hk.org.hkbh.cms.outpatient.so
--includeresource: META-INF/service.xml=../outpatient-service/service.xml
