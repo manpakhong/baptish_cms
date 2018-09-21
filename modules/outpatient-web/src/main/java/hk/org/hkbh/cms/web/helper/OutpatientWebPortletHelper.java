@@ -1,4 +1,4 @@
-package hk.org.hkbh.cms.web.helpers;
+package hk.org.hkbh.cms.web.helper;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;

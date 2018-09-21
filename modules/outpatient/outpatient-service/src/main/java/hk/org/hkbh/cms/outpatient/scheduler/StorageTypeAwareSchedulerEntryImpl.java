@@ -6,13 +6,13 @@ import com.liferay.portal.kernel.scheduler.StorageType;
 import com.liferay.portal.kernel.scheduler.StorageTypeAware;
 import com.liferay.portal.kernel.scheduler.Trigger;
 
-public class QuartzMessageAwareSchedulerEntryImpl extends SchedulerEntryImpl implements SchedulerEntry, StorageTypeAware {
+public class StorageTypeAwareSchedulerEntryImpl extends SchedulerEntryImpl implements SchedulerEntry, StorageTypeAware {
 
 	  /**
-	   * StorageTypeAwareSchedulerEntryImpl: Constructor for the class.
+	   * QuartzMessageAwareSchedulerEntryImpl: Constructor for the class.
 	   * @param schedulerEntry
 	   */
-	  public QuartzMessageAwareSchedulerEntryImpl(final SchedulerEntryImpl schedulerEntry) {
+	  public StorageTypeAwareSchedulerEntryImpl(final SchedulerEntryImpl schedulerEntry) {
 	    super();
 
 	    _schedulerEntry = schedulerEntry;
@@ -22,11 +22,11 @@ public class QuartzMessageAwareSchedulerEntryImpl extends SchedulerEntryImpl imp
 	  }
 
 	  /**
-	   * StorageTypeAwareSchedulerEntryImpl: Constructor for the class.
+	   * QuartzMessageAwareSchedulerEntryImpl: Constructor for the class.
 	   * @param schedulerEntry
 	   * @param storageType
 	   */
-	  public QuartzMessageAwareSchedulerEntryImpl(final SchedulerEntryImpl schedulerEntry, final StorageType storageType) {
+	  public StorageTypeAwareSchedulerEntryImpl(final SchedulerEntryImpl schedulerEntry, final StorageType storageType) {
 	    super();
 
 	    _schedulerEntry = schedulerEntry;

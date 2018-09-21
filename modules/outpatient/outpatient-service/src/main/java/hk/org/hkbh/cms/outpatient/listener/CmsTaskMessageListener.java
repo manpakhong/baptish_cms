@@ -25,7 +25,7 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
-import hk.org.hkbh.cms.outpatient.scheduler.QuartzMessageAwareSchedulerEntryImpl;
+import hk.org.hkbh.cms.outpatient.scheduler.StorageTypeAwareSchedulerEntryImpl;
 
 @Component(immediate = true, property = { "cron.expression=0 0 0 * * ?" }, service = CmsTaskMessageListener.class)
 public class CmsTaskMessageListener extends BaseMessageListener {
@@ -73,7 +73,7 @@ public class CmsTaskMessageListener extends BaseMessageListener {
 		// use the persisted storaget type and set the wrapper back to the class field.
 		
 		_schedulerEntryImpl = new SchedulerEntryImpl();
-		_schedulerEntryImpl = new QuartzMessageAwareSchedulerEntryImpl(_schedulerEntryImpl, StorageType.PERSISTED);
+		_schedulerEntryImpl = new StorageTypeAwareSchedulerEntryImpl(_schedulerEntryImpl, StorageType.PERSISTED);
 
 		// update the trigger for the scheduled job.
 		_schedulerEntryImpl.setTrigger(jobTrigger);

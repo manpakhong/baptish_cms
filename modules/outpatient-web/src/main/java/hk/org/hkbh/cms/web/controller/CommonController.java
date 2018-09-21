@@ -1,4 +1,4 @@
-package hk.org.hkbh.cms.web.controllers;
+package hk.org.hkbh.cms.web.controller;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -8,7 +8,7 @@ import java.util.List;
 import hk.org.hkbh.cms.outpatient.model.ComponentDto;
 import hk.org.hkbh.cms.outpatient.servicehub.ComponentMgr;
 import hk.org.hkbh.cms.outpatient.so.ComponentDtoSo;
-import hk.org.hkbh.cms.web.helpers.OutpatientWebPortletHelper;
+import hk.org.hkbh.cms.web.helper.OutpatientWebPortletHelper;
 public class CommonController {
 	private static Log logger = LogFactoryUtil.getLog(CommonController.class);
 	private ComponentMgr componentMgr;
