@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hk.org.hkbh.cms.outpatient.eo.MessageEo;
-import hk.org.hkbh.cms.outpatient.message.EndoscopeMessageHandlerImpl;
-import hk.org.hkbh.cms.outpatient.message.ImagingMessageHandlerImpl;
-import hk.org.hkbh.cms.outpatient.message.LabMessageHandlerImpl;
-import hk.org.hkbh.cms.outpatient.message.MessageHandler;
+import hk.org.hkbh.cms.outpatient.messagehandler.EndoscopeMessageHandlerImpl;
+import hk.org.hkbh.cms.outpatient.messagehandler.ImagingMessageHandlerImpl;
+import hk.org.hkbh.cms.outpatient.messagehandler.LabMessageHandlerImpl;
+import hk.org.hkbh.cms.outpatient.messagehandler.MessageHandler;
 
 public class MessageJobMgr {
 	private static Log logger = LogFactoryUtil.getLog(MessageJobMgr.class);

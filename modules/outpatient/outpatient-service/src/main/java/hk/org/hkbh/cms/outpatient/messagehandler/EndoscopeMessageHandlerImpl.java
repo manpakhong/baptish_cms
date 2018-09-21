@@ -1,4 +1,4 @@
-package hk.org.hkbh.cms.outpatient.message;
+package hk.org.hkbh.cms.outpatient.messagehandler;
 
 import hk.org.hkbh.cms.outpatient.eo.MessageEo;
 
