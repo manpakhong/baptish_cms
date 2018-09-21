@@ -134,4 +134,34 @@
 		<field name="createdBy" type="String" />
 		<field name="updatedBy" type="String" />
 	</model>
+	<model name="hk.org.hkbh.cms.outpatient.model.ImagingResult">
+		<field name="id" type="long" />
+		<field name="patientId" type="Long" />
+		<field name="episodeId" type="Long" />
+		<field name="orderId" type="Long" />
+		<field name="labName" type="Boolean" />
+		<field name="reportName" type="Boolean" />
+		<field name="labResultTypeCodeId" type="Long" />
+		<field name="severityCodeId" type="Long" />
+		<field name="remarks" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="updateDate" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="hk.org.hkbh.cms.outpatient.model.LabResult">
+		<field name="id" type="long" />
+		<field name="patientId" type="Long" />
+		<field name="episodeId" type="Long" />
+		<field name="orderId" type="Long" />
+		<field name="labName" type="Boolean" />
+		<field name="reportName" type="Boolean" />
+		<field name="labResultTypeCodeId" type="Long" />
+		<field name="severityCodeId" type="Long" />
+		<field name="remarks" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="updateDate" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedBy" type="String" />
+	</model>
 </model-hints>

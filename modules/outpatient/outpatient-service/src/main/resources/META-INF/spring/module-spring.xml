@@ -32,4 +32,12 @@
 	<bean class="hk.org.hkbh.cms.outpatient.service.impl.ComponentDtoLocalServiceImpl" id="hk.org.hkbh.cms.outpatient.service.ComponentDtoLocalService" />
 	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.ComponentDtoPersistenceImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.ComponentDtoPersistence" parent="basePersistence" />
 	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.ComponentDtoFinderImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.ComponentDtoFinder" parent="basePersistence" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.impl.ImagingResultLocalServiceImpl" id="hk.org.hkbh.cms.outpatient.service.ImagingResultLocalService" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.ImagingResultPersistenceImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.ImagingResultPersistence" parent="basePersistence">
+		<property name="dataSource" ref="cmsDataSource" />
+	</bean>
+	<bean class="hk.org.hkbh.cms.outpatient.service.impl.LabResultLocalServiceImpl" id="hk.org.hkbh.cms.outpatient.service.LabResultLocalService" />
+	<bean class="hk.org.hkbh.cms.outpatient.service.persistence.impl.LabResultPersistenceImpl" id="hk.org.hkbh.cms.outpatient.service.persistence.LabResultPersistence" parent="basePersistence">
+		<property name="dataSource" ref="cmsDataSource" />
+	</bean>
 </beans>

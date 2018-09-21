@@ -7,11 +7,6 @@ Liferay-Service: true
 Export-Package: \
 	hk.org.hkbh.cms.outpatient.listener,\
 	hk.org.hkbh.cms.outpatient.servicehub,\
-	hk.org.hkbh.cms.outpatient.vo,\
-	hk.org.hkbh.cms.outpatient.so,\
 	hk.org.hkbh.cms.outpatient.scheduler,\
 	hk.org.hkbh.cms.outpatient.factory,\
-	hk.org.hkbh.cms.outpatient.service.persistence,\
-	hk.org.hkbh.cms.outpatient.service,\
-	hk.org.hkbh.cms.outpatient.model,\
-	hk.org.hkbh.cms.outpatient.exception
+	hk.org.hkbh.cms.outpatient.message

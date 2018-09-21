@@ -53,6 +53,8 @@ import hk.org.hkbh.cms.outpatient.service.persistence.ComponentControlDtoPersist
 import hk.org.hkbh.cms.outpatient.service.persistence.ComponentControlPersistence;
 import hk.org.hkbh.cms.outpatient.service.persistence.ComponentDtoFinder;
 import hk.org.hkbh.cms.outpatient.service.persistence.ComponentDtoPersistence;
+import hk.org.hkbh.cms.outpatient.service.persistence.ImagingResultPersistence;
+import hk.org.hkbh.cms.outpatient.service.persistence.LabResultPersistence;
 
 import java.io.Serializable;
 
@@ -636,6 +638,82 @@ public abstract class CodeLocalServiceBaseImpl extends BaseLocalServiceImpl
 	}
 
 	/**
+	 * Returns the imaging result local service.
+	 *
+	 * @return the imaging result local service
+	 */
+	public hk.org.hkbh.cms.outpatient.service.ImagingResultLocalService getImagingResultLocalService() {
+		return imagingResultLocalService;
+	}
+
+	/**
+	 * Sets the imaging result local service.
+	 *
+	 * @param imagingResultLocalService the imaging result local service
+	 */
+	public void setImagingResultLocalService(
+		hk.org.hkbh.cms.outpatient.service.ImagingResultLocalService imagingResultLocalService) {
+		this.imagingResultLocalService = imagingResultLocalService;
+	}
+
+	/**
+	 * Returns the imaging result persistence.
+	 *
+	 * @return the imaging result persistence
+	 */
+	public ImagingResultPersistence getImagingResultPersistence() {
+		return imagingResultPersistence;
+	}
+
+	/**
+	 * Sets the imaging result persistence.
+	 *
+	 * @param imagingResultPersistence the imaging result persistence
+	 */
+	public void setImagingResultPersistence(
+		ImagingResultPersistence imagingResultPersistence) {
+		this.imagingResultPersistence = imagingResultPersistence;
+	}
+
+	/**
+	 * Returns the lab result local service.
+	 *
+	 * @return the lab result local service
+	 */
+	public hk.org.hkbh.cms.outpatient.service.LabResultLocalService getLabResultLocalService() {
+		return labResultLocalService;
+	}
+
+	/**
+	 * Sets the lab result local service.
+	 *
+	 * @param labResultLocalService the lab result local service
+	 */
+	public void setLabResultLocalService(
+		hk.org.hkbh.cms.outpatient.service.LabResultLocalService labResultLocalService) {
+		this.labResultLocalService = labResultLocalService;
+	}
+
+	/**
+	 * Returns the lab result persistence.
+	 *
+	 * @return the lab result persistence
+	 */
+	public LabResultPersistence getLabResultPersistence() {
+		return labResultPersistence;
+	}
+
+	/**
+	 * Sets the lab result persistence.
+	 *
+	 * @param labResultPersistence the lab result persistence
+	 */
+	public void setLabResultPersistence(
+		LabResultPersistence labResultPersistence) {
+		this.labResultPersistence = labResultPersistence;
+	}
+
+	/**
 	 * Returns the counter local service.
 	 *
 	 * @return the counter local service
@@ -834,6 +912,14 @@ public abstract class CodeLocalServiceBaseImpl extends BaseLocalServiceImpl
 	protected ComponentDtoPersistence componentDtoPersistence;
 	@BeanReference(type = ComponentDtoFinder.class)
 	protected ComponentDtoFinder componentDtoFinder;
+	@BeanReference(type = hk.org.hkbh.cms.outpatient.service.ImagingResultLocalService.class)
+	protected hk.org.hkbh.cms.outpatient.service.ImagingResultLocalService imagingResultLocalService;
+	@BeanReference(type = ImagingResultPersistence.class)
+	protected ImagingResultPersistence imagingResultPersistence;
+	@BeanReference(type = hk.org.hkbh.cms.outpatient.service.LabResultLocalService.class)
+	protected hk.org.hkbh.cms.outpatient.service.LabResultLocalService labResultLocalService;
+	@BeanReference(type = LabResultPersistence.class)
+	protected LabResultPersistence labResultPersistence;
 	@ServiceReference(type = com.liferay.counter.kernel.service.CounterLocalService.class)
 	protected com.liferay.counter.kernel.service.CounterLocalService counterLocalService;
 	@ServiceReference(type = com.liferay.portal.kernel.service.ClassNameLocalService.class)

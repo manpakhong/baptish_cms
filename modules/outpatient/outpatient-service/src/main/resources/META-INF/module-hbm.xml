@@ -9,6 +9,8 @@
 	<import class="hk.org.hkbh.cms.outpatient.model.ComponentControl" />
 	<import class="hk.org.hkbh.cms.outpatient.model.ComponentControlDto" />
 	<import class="hk.org.hkbh.cms.outpatient.model.ComponentDto" />
+	<import class="hk.org.hkbh.cms.outpatient.model.ImagingResult" />
+	<import class="hk.org.hkbh.cms.outpatient.model.LabResult" />
 	<class name="hk.org.hkbh.cms.outpatient.model.impl.ClinicalNoteTemplateImpl" table="clinical_note_template">
 		<id name="id" type="long">
 			<generator class="increment" />
@@ -151,6 +153,40 @@
 		<property name="url" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property column="component_level" name="componentLevel" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property column="up_component_id" name="upComponentId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="create_date" name="createDate" type="org.hibernate.type.TimestampType" />
+		<property column="update_date" name="updateDate" type="org.hibernate.type.TimestampType" />
+		<property column="created_by" name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="updated_by" name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="hk.org.hkbh.cms.outpatient.model.impl.ImagingResultImpl" table="imaging_result">
+		<id name="id" type="long">
+			<generator class="increment" />
+		</id>
+		<property column="patient_id" name="patientId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="episode_id" name="episodeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="order_id" name="orderId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="lab_name" name="labName" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property column="report_name" name="reportName" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property column="lab_result_type_code_id" name="labResultTypeCodeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="severity_code_id" name="severityCodeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="remarks" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="create_date" name="createDate" type="org.hibernate.type.TimestampType" />
+		<property column="update_date" name="updateDate" type="org.hibernate.type.TimestampType" />
+		<property column="created_by" name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="updated_by" name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="hk.org.hkbh.cms.outpatient.model.impl.LabResultImpl" table="lab_result">
+		<id name="id" type="long">
+			<generator class="increment" />
+		</id>
+		<property column="patient_id" name="patientId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="episode_id" name="episodeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="order_id" name="orderId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="lab_name" name="labName" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property column="report_name" name="reportName" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property column="lab_result_type_code_id" name="labResultTypeCodeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="severity_code_id" name="severityCodeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="remarks" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property column="create_date" name="createDate" type="org.hibernate.type.TimestampType" />
 		<property column="update_date" name="updateDate" type="org.hibernate.type.TimestampType" />
 		<property column="created_by" name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
