@@ -1,5 +1,5 @@
 <%@ include file="/init.jsp" %>
-<%@ page import = "java.io.*,java.util.*,hk.org.hkbh.cms.web.controllers.CommonController" %>
+<%@ page import = "java.io.*,java.util.*,hk.org.hkbh.cms.web.controller.CommonController" %>
 <p>
 	<b>
 <!-- 	<liferay-ui:message key="outpatient-web.caption"/> -->

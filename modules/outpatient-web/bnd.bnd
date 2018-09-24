@@ -1,4 +1,6 @@
 Bundle-Name: outpatient-web
 Bundle-SymbolicName: hk.org.hkbh.cms.web
 Bundle-Version: 1.0.0
-Export-Package: hk.org.hkbh.cms.web.constants
+Export-Package: \
+	hk.org.hkbh.cms.web.constants,\
+	hk.org.hkbh.cms.web.helper

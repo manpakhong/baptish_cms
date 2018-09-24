@@ -26,6 +26,7 @@ import hk.org.hkbh.cms.outpatient.model.ComponentDto;
 import hk.org.hkbh.cms.outpatient.servicehub.ComponentControlMgr;
 import hk.org.hkbh.cms.outpatient.servicehub.ComponentMgr;
 import hk.org.hkbh.cms.outpatient.so.ComponentDtoSo;
+import hk.org.hkbh.cms.outpatient.util.BundleUtils;
 import hk.org.hkbh.cms.outpatient.vo.OutpatientWebVo;
 import hk.org.hkbh.cms.web.constants.OutpatientWebPortletKeys;
 import hk.org.hkbh.cms.web.helper.OutpatientWebPortletHelper;
@@ -111,7 +112,8 @@ public class OutpatientWebPortlet extends MVCPortlet {
 	}
 	private void tester() {
 		try {
-
+			BundleUtils bundleUtils = BundleUtils.getInstance();
+			bundleUtils.getConfiguration("portlet");
 			testComponentDto();
 		} catch (Exception e) {
 			logger.error(".tester() ", e);

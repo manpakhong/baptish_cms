@@ -27,7 +27,7 @@ import org.osgi.service.component.annotations.Reference;
 
 import hk.org.hkbh.cms.outpatient.scheduler.StorageTypeAwareSchedulerEntryImpl;
 
-@Component(immediate = true, property = { "cron.expression=0 0 0 * * ?" }, service = CmsTaskMessageListener.class)
+@Component(immediate = true, property = { "cron.expression=0 0 0 * * ?","value=1","unit=MINUTE" }, service = CmsTaskMessageListener.class)
 public class CmsTaskMessageListener extends BaseMessageListener {
 
 	/**
@@ -61,13 +61,14 @@ public class CmsTaskMessageListener extends BaseMessageListener {
 
 		// extract the cron expression from the properties
 		String cronExpression = GetterUtil.getString(properties.get("cron.expression"), _DEFAULT_CRON_EXPRESSION);
-
+		Integer value = GetterUtil.getInteger(properties.get("value"));
+		String unit = GetterUtil.getString(properties.get("unit"));
 		// create a new trigger definition for the job.
 		String listenerClass = getClass().getName();
 //		Trigger jobTrigger = _triggerFactory.createTrigger(listenerClass, listenerClass, new Date(), null,
 //				cronExpression);
 
-		Trigger jobTrigger = _triggerFactory.createTrigger(listenerClass, listenerClass, new Date(), null, 1, TimeUnit.MINUTE);
+		Trigger jobTrigger = _triggerFactory.createTrigger(listenerClass, listenerClass, new Date(), null, value, TimeUnit.MINUTE);
 		
 		// wrap the current scheduler entry in our new wrapper.
 		// use the persisted storaget type and set the wrapper back to the class field.
