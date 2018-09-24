@@ -112,8 +112,8 @@ public class OutpatientWebPortlet extends MVCPortlet {
 	}
 	private void tester() {
 		try {
-			BundleUtils bundleUtils = BundleUtils.getInstance();
-			bundleUtils.getConfiguration("portlet");
+//			BundleUtils bundleUtils = BundleUtils.getInstance();
+//			bundleUtils.getConfiguration("portlet");
 			testComponentDto();
 		} catch (Exception e) {
 			logger.error(".tester() ", e);

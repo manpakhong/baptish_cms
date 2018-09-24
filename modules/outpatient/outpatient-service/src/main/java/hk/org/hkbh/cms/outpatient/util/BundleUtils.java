@@ -6,32 +6,33 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.PortalClassLoaderUtil;
 
+import java.util.Properties;
+
 import hk.org.hkbh.cms.outpatient.helper.CmsTaskMessageListenerHelper;
 
-public class BundleUtils {
+public abstract class BundleUtils<T> {
 	private static Log log = LogFactoryUtil.getLog(BundleUtils.class);
-	private static BundleUtils bundleUtils;
-	private BundleUtils() {
+	private Properties properties;
+	private String fileName;
+	public BundleUtils() {
 	}
-	public static BundleUtils getInstance() {
-		if (bundleUtils == null) {
-			bundleUtils = new BundleUtils();
-		}
-		return bundleUtils;
-	}
+	
 	private String getClassName() {
 		return BundleUtils.class.getName();
 	}
-	public Configuration getConfiguration(String fileNameWithoutSuffix) throws Exception{
-		Configuration configuration = null;
+	protected String getPropValues(String paramName) throws Exception{
+		String result = null;
 		try {
-			configuration  = ConfigurationFactoryUtil.getConfiguration(PortalClassLoaderUtil.getClassLoader(),  fileNameWithoutSuffix);
-			String url = configuration.get("custom.liferay.base.url");
-			log.info(url);
+			if (properties != null){
+				result = properties.getProperty(paramName);
+			}
 		} catch (Exception e) {
-			log.error(getClassName() + ".getConfiguration() - fileNameWithoutSuffix=" + fileNameWithoutSuffix, e);
+			log.error(getClassName() + ".getPropValues() - paramName=" + paramName, e);
 			throw e;
+		} finally {
 		}
-		return configuration;
+		return result;
 	}
+	abstract public T getProperties() throws Exception;
+
 }
