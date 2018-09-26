@@ -1,6 +1,6 @@
 package hk.org.hkbh.cms.outpatient.eo;
 
-public class PortletBundlesEo {
+public class SysServiceBundlesEo {
 	private String sample;
 
 	public String getSample() {

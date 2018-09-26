@@ -6,14 +6,16 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.PortalClassLoaderUtil;
 
-import hk.org.hkbh.cms.outpatient.eo.ServiceBundlesEo;
+import hk.org.hkbh.cms.outpatient.eo.PortletBundlesEo;
+import hk.org.hkbh.cms.outpatient.eo.SysServiceBundlesEo;
 
-public class ServiceBundlesUtils extends BundleUtils<ServiceBundlesEo> {
-	private static Log log = LogFactoryUtil.getLog(ServiceBundlesUtils.class);
-	public ServiceBundlesUtils() {
-		super();
+public class SysServiceBundlesUtils extends BundlesUtils<SysServiceBundlesEo> {
+	private static Log log = LogFactoryUtil.getLog(SysServiceBundlesUtils.class);
+	public SysServiceBundlesUtils(String fileName) throws Exception {
+		super(fileName);
+
 	}
-	public Configuration getConfiguration(String fileNameWithoutSuffix) throws Exception{
+	private Configuration getConfiguration(String fileNameWithoutSuffix) throws Exception{
 		Configuration configuration = null;
 		try {
 			configuration  = ConfigurationFactoryUtil.getConfiguration(PortalClassLoaderUtil.getClassLoader(),  fileNameWithoutSuffix);
@@ -29,8 +31,18 @@ public class ServiceBundlesUtils extends BundleUtils<ServiceBundlesEo> {
 		return this.getClass().getName();
 	}
 	@Override
-	public ServiceBundlesEo getProperties() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public SysServiceBundlesEo getProperties() throws Exception {
+		SysServiceBundlesEo eo = null;
+		try{
+			
+			eo = new SysServiceBundlesEo();
+			Configuration configuration = getConfiguration(this.fileName);
+			String xxx = getPropValues("xxx");
+			eo.setSample(xxx);
+		} catch (Exception e){
+			log.error(getClassName() + ".getSysProperties()", e);
+			throw e;
+		}
+		return eo;
 	}
 }
