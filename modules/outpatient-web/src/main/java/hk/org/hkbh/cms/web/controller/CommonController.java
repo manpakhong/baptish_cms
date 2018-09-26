@@ -5,6 +5,8 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import hk.org.hkbh.cms.outpatient.model.ComponentDto;
 import hk.org.hkbh.cms.outpatient.servicehub.ComponentMgr;
 import hk.org.hkbh.cms.outpatient.so.ComponentDtoSo;
@@ -39,6 +41,17 @@ public class CommonController {
 			html = sb.toString();
 		} catch (Exception e) {
 			logger.error(".renderNotification()", e);
+		}
+		return html;
+	}
+	public String renderProcessingOverlay(HttpServletRequest request) {
+		String html = null;
+		try {
+			StringBuilder sb = new StringBuilder();
+			sb.append("<div class=\"commonOverlayDiv\"><div class=\"commonOverlayTextDiv\"><img src=\"" + request.getContextPath() + "/image/processing.gif\" alt=\"processingGif\"></div></div>");
+			html = sb.toString();
+		}catch (Exception e) {
+			logger.error(".renderProcessingOverlay()", e);
 		}
 		return html;
 	}

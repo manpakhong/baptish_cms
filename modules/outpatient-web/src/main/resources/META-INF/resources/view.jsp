@@ -5,10 +5,16 @@
 <!-- 	<liferay-ui:message key="outpatient-web.caption"/> -->
 	</b>
 </p>
+<%-- <div class="commonOverlayDiv"><div class="commonOverlayTextDiv"><img src="<%=request.getContextPath()%>/image/processing.gif" alt="processingGif"></div></div> --%>
+	<jsp:scriptlet>
+		CommonController controller = new CommonController();
+		out.print(controller.renderProcessingOverlay(request));
+	</jsp:scriptlet>
+<input type="button" onClick="testOverLay()" value="overlayTest" />
 <div class="informationDiv">11</div>
 <div class="menuDiv">
 	<jsp:scriptlet>
-		CommonController controller = new CommonController();
+
 		out.print(controller.renderMenu());
 	</jsp:scriptlet>
 </div>

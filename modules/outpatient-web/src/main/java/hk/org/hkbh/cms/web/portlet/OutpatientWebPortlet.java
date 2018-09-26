@@ -104,11 +104,14 @@ public class OutpatientWebPortlet extends MVCPortlet {
 			vo.setComponentControlDtoList(componentControlDtoList);
 			logger.info("vo info:" + vo);
 		} catch (Exception e) {
-			logger.error(".getOutpatientWebVo() - vo=" + vo, e);
+			logger.error(getClassName() + ".getOutpatientWebVo() - vo=" + vo, e);
 		} finally {
 
 		}
 		return vo;
+	}
+	private String getClassName() {
+		return this.getClass().getName();
 	}
 	private void tester() {
 		try {
