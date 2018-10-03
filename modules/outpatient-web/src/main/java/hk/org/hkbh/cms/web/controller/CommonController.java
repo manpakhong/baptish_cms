@@ -55,4 +55,15 @@ public class CommonController {
 		}
 		return html;
 	}
+	public String renderAlertAndNotification() {
+		String html = null;
+		try {
+			StringBuilder sb = new StringBuilder();
+			sb.append("<div class=\"alertDiv\">11</div>");
+			html = sb.toString();
+		}catch (Exception e) {
+			logger.error(".renderAlertAndNotification()", e);
+		}
+		return html;
+	}
 }

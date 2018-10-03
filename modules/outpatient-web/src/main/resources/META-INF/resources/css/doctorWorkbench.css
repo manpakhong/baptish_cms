@@ -9,10 +9,3 @@
 .contentDiv{
 	margin-left: 20px;
 }
-.informationDiv{
-	height: 40px;
-	background-color: white;
-	background-image: url("../image/notification_32.png");
-	background-repeat: no-repeat;
-	padding: 7px;
-}

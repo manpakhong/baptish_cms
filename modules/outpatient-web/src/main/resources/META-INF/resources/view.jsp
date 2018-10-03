@@ -11,10 +11,11 @@
 		out.print(controller.renderProcessingOverlay(request));
 	</jsp:scriptlet>
 <input type="button" onClick="testOverLay()" value="overlayTest" />
-<div class="informationDiv">11</div>
+<jsp:scriptlet>
+	out.print(controller.renderAlertAndNotification());
+</jsp:scriptlet>
 <div class="menuDiv">
 	<jsp:scriptlet>
-
 		out.print(controller.renderMenu());
 	</jsp:scriptlet>
 </div>

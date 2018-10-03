@@ -1,11 +1,11 @@
-package hk.org.hkbh.cms.outpatient.messagehandler;
+package hk.org.hkbh.cms.outpatient.messagechain;
 
 import hk.org.hkbh.cms.outpatient.eo.MessageEo;
 
-public class EndoscopeMessageHandlerImpl implements MessageHandler {
-	private MessageHandler chain;
+public class EndoscopeMessageChainElementImpl implements MessageChain {
+	private MessageChain chain;
 	@Override
-	public void setNextChain(MessageHandler nextChain) {
+	public void setNextChain(MessageChain nextChain) {
 		this.chain=nextChain;
 
 	}

@@ -1,11 +1,11 @@
-package hk.org.hkbh.cms.outpatient.messagehandler;
+package hk.org.hkbh.cms.outpatient.messagechain;
 
 import hk.org.hkbh.cms.outpatient.eo.MessageEo;
 
-public interface MessageHandler {
+public interface MessageChain {
 	public static final String MESSAGE_TYPE_LAB_RECORD_CHECKING ="MESSAGE_TYPE_LAB_RECORD_CHECKING";
 	public static final String MESSAGE_TYPE_ENDOSCOPE_RECORD_CHECKING = "MESSAGE_TYPE_ENDOSCOPE_RECORD_CHECKING";
 	public static final String MESSAGE_TYPE_IMAGING_RECORD_CHECKING = "MESSAGE_TYPE_IMAGING_RECORD_CHECKING";
-	public void setNextChain(MessageHandler nextChain);
+	public void setNextChain(MessageChain nextChain);
 	public void handleMessage(MessageEo messageEo);
 }

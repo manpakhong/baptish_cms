@@ -1,11 +1,11 @@
-package hk.org.hkbh.cms.outpatient.messagehandler;
+package hk.org.hkbh.cms.outpatient.messagechain;
 
 import hk.org.hkbh.cms.outpatient.eo.MessageEo;
 
-public class ImagingMessageHandlerImpl implements MessageHandler {
-	private MessageHandler chain;
+public class ImagingMessageChainElementImpl implements MessageChain {
+	private MessageChain chain;
 	@Override
-	public void setNextChain(MessageHandler nextChain) {
+	public void setNextChain(MessageChain nextChain) {
 		this.chain=nextChain;
 
 	}

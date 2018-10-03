@@ -7,19 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hk.org.hkbh.cms.outpatient.eo.MessageEo;
-import hk.org.hkbh.cms.outpatient.messagehandler.EndoscopeMessageHandlerImpl;
-import hk.org.hkbh.cms.outpatient.messagehandler.ImagingMessageHandlerImpl;
-import hk.org.hkbh.cms.outpatient.messagehandler.LabMessageHandlerImpl;
-import hk.org.hkbh.cms.outpatient.messagehandler.MessageHandler;
+import hk.org.hkbh.cms.outpatient.messagechain.EndoscopeMessageChainElementImpl;
+import hk.org.hkbh.cms.outpatient.messagechain.ImagingMessageChainElementImpl;
+import hk.org.hkbh.cms.outpatient.messagechain.LabMessageChainElementImpl;
+import hk.org.hkbh.cms.outpatient.messagechain.MessageChain;
 
 public class MessageJobMgr {
 	private static Log logger = LogFactoryUtil.getLog(MessageJobMgr.class);
-	private List<MessageHandler> messageHandlerList;
+	private List<MessageChain> messageHandlerList;
 	public MessageJobMgr() {
-		messageHandlerList = new ArrayList<MessageHandler>();
-		messageHandlerList.add(new LabMessageHandlerImpl());
-		messageHandlerList.add(new ImagingMessageHandlerImpl());
-		messageHandlerList.add(new EndoscopeMessageHandlerImpl());
+		messageHandlerList = new ArrayList<MessageChain>();
+		messageHandlerList.add(new LabMessageChainElementImpl());
+		messageHandlerList.add(new ImagingMessageChainElementImpl());
+		messageHandlerList.add(new EndoscopeMessageChainElementImpl());
 		for (int i=0; i < messageHandlerList.size() - 1; i++) {
 			messageHandlerList.get(i).setNextChain(messageHandlerList.get(i+1));
 		}

@@ -10,4 +10,7 @@ Export-Package: \
 	hk.org.hkbh.cms.outpatient.scheduler,\
 	hk.org.hkbh.cms.outpatient.factory,\
 	hk.org.hkbh.cms.outpatient.message,\
-	hk.org.hkbh.cms.outpatient.util
+	hk.org.hkbh.cms.outpatient.util,\
+	hk.org.hkbh.cms.outpatient.messagechain,\
+	hk.org.hkbh.cms.outpatient.publisher,\
+	hk.org.hkbh.cms.outpatient.subscriber

@@ -1,4 +1,4 @@
-package hk.org.hkbh.cms.outpatient.helper;
+package hk.org.hkbh.cms.outpatient.listener.helper;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;

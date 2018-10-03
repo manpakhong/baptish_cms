@@ -23,3 +23,10 @@
     -ms-transform: translate(-50%,-50%);
     margin: 0 auto;	
 }
+.alertDiv{
+	height: 40px;
+	background-color: white;
+	background-image: url("../image/notification_32.png");
+	background-repeat: no-repeat;
+	padding: 7px;
+}
