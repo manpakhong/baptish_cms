@@ -9,4 +9,5 @@ Export-Package: \
 	hk.org.hkbh.cms.outpatient.service,\
 	hk.org.hkbh.cms.outpatient.model,\
 	hk.org.hkbh.cms.outpatient.exception,\
-	hk.org.hkbh.cms.outpatient.eo
+	hk.org.hkbh.cms.outpatient.eo,\
+	hk.org.hkbh.cms.outpatient.dto

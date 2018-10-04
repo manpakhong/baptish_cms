@@ -15,15 +15,27 @@ var PORTLET_NAMESPACE = "<portlet:namespace/>";
 //var vo = "${bigSmallEoList}";
 </script>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/jqwidgets/styles/jqx.base.css"/>
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/jqwidgets/styles/jqx.dark.css"/>
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/jqwidgets/styles/jqx.classic.css"/>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/menu.css?ver=${verNo}"/>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/common.css?ver=${verNo}"/>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/doctorWorkbench.css?ver=${verNo}"/>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-3.3.1.js"></script>
+
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jqwidgets/jqxcore.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jqwidgets/jqxdata.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jqwidgets/jqxmenu.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jqwidgets/jqxbuttons.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jqwidgets/jqx-all.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jqwidgets/jqxwindow.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jqwidgets/jqxscrollbar.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jqwidgets/jqxexpander.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jqwidgets/jqxlistbox.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jqwidgets/jqxlayout.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jqwidgets/jqxribbon.js"></script>
+<script type="text/javascript">
+	var GLOBAL_AJAX_PATH = "<portlet:resourceURL/>";
+	var PORTLET_NAMESPACE = "<portlet:namespace/>";
+	var CONTEXT_PATH = "<%=request.getContextPath()%>";
+</script>
 	<c:if test="${scriptVersion eq true}"  >
 <%-- 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/app.js?ver=${verNo}"></script> --%>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/menu.js?ver=${verNo}"></script>

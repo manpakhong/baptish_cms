@@ -66,4 +66,27 @@ public class CommonController {
 		}
 		return html;
 	}
+	public String renderSystemMessageDialog(HttpServletRequest request) {
+		String html = null;
+		try {
+			StringBuilder sb = new StringBuilder();
+			sb.append("<div class=\"systemMessageWindowDiv\">");
+				sb.append("<div class=\"systemMessageWindowHeader\">");
+					sb.append("<span>");
+						sb.append("<img class=\"systemMessageWindowTitleImage\" src=\"" + request.getContextPath() + "/image/if_Error_16.png\" alt=\"system error image\" style=\"margin-right: 15px\" /><span class=\"systemMessageSpan\">System Error</span>");
+					sb.append("</span>");
+				sb.append("</div>");
+				sb.append("<div style=\"overflow: hidden;\" id=\"systemMessageWindowContent\" style=\"text-align: center;\">");
+					sb.append("<div style=\"padding-left: 10px;position:relative;top:30%;\">");
+						sb.append("<img class=\"systemMessageWindowContentImage\" src=\"" + request.getContextPath() + "/image/if_Error_24.png\" alt=\"system error image\" style=\"margin-right: 15px\" />");
+						sb.append("<span style=\"font-size: large\" class=\"systemMessageDisplaySpan\">System Error!</span>");
+					sb.append("</div>");
+				sb.append("</div>");
+			sb.append("</div>");
+			html = sb.toString();
+		}catch (Exception e) {
+			logger.error(".renderSystemMessageDialog()", e);
+		}
+		return html;
+	}
 }

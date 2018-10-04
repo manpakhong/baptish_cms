@@ -31,6 +31,5 @@ public class MessageJobMgr {
 			logger.error(".process() - eo=" + eo, e);
 			throw e;
 		}
-
 	}
 }

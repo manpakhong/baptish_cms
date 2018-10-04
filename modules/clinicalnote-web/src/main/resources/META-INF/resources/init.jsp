@@ -13,6 +13,8 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <script>
 var GLOBAL_AJAX_PATH = "<portlet:resourceURL/>";
 var PORTLET_NAMESPACE = "<portlet:namespace/>";
+var CONTEXT_PATH = "<%=request.getContextPath()%>";
+
 //var vo = "${bigSmallEoList}";
 </script>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/js/extjs/6.2.0/classic/theme-neptune-touch/resources/theme-neptune-touch-all.css"/>

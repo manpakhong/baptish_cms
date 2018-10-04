@@ -13,6 +13,7 @@
 <input type="button" onClick="testOverLay()" value="overlayTest" />
 <jsp:scriptlet>
 	out.print(controller.renderAlertAndNotification());
+	out.print(controller.renderSystemMessageDialog(request));
 </jsp:scriptlet>
 <div class="menuDiv">
 	<jsp:scriptlet>

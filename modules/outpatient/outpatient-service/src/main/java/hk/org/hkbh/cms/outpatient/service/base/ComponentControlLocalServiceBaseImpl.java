@@ -43,6 +43,7 @@ import com.liferay.portal.spring.extender.service.ServiceReference;
 
 import hk.org.hkbh.cms.outpatient.model.ComponentControl;
 import hk.org.hkbh.cms.outpatient.service.ComponentControlLocalService;
+import hk.org.hkbh.cms.outpatient.service.persistence.AuditTrailPersistence;
 import hk.org.hkbh.cms.outpatient.service.persistence.ClinicalNoteTemplatePersistence;
 import hk.org.hkbh.cms.outpatient.service.persistence.CodeDetailPersistence;
 import hk.org.hkbh.cms.outpatient.service.persistence.CodeDtoFinder;
@@ -325,6 +326,44 @@ public abstract class ComponentControlLocalServiceBaseImpl
 	public ComponentControl updateComponentControl(
 		ComponentControl componentControl) {
 		return componentControlPersistence.update(componentControl);
+	}
+
+	/**
+	 * Returns the audit trail local service.
+	 *
+	 * @return the audit trail local service
+	 */
+	public hk.org.hkbh.cms.outpatient.service.AuditTrailLocalService getAuditTrailLocalService() {
+		return auditTrailLocalService;
+	}
+
+	/**
+	 * Sets the audit trail local service.
+	 *
+	 * @param auditTrailLocalService the audit trail local service
+	 */
+	public void setAuditTrailLocalService(
+		hk.org.hkbh.cms.outpatient.service.AuditTrailLocalService auditTrailLocalService) {
+		this.auditTrailLocalService = auditTrailLocalService;
+	}
+
+	/**
+	 * Returns the audit trail persistence.
+	 *
+	 * @return the audit trail persistence
+	 */
+	public AuditTrailPersistence getAuditTrailPersistence() {
+		return auditTrailPersistence;
+	}
+
+	/**
+	 * Sets the audit trail persistence.
+	 *
+	 * @param auditTrailPersistence the audit trail persistence
+	 */
+	public void setAuditTrailPersistence(
+		AuditTrailPersistence auditTrailPersistence) {
+		this.auditTrailPersistence = auditTrailPersistence;
 	}
 
 	/**
@@ -887,6 +926,10 @@ public abstract class ComponentControlLocalServiceBaseImpl
 		}
 	}
 
+	@BeanReference(type = hk.org.hkbh.cms.outpatient.service.AuditTrailLocalService.class)
+	protected hk.org.hkbh.cms.outpatient.service.AuditTrailLocalService auditTrailLocalService;
+	@BeanReference(type = AuditTrailPersistence.class)
+	protected AuditTrailPersistence auditTrailPersistence;
 	@BeanReference(type = hk.org.hkbh.cms.outpatient.service.ClinicalNoteTemplateLocalService.class)
 	protected hk.org.hkbh.cms.outpatient.service.ClinicalNoteTemplateLocalService clinicalNoteTemplateLocalService;
 	@BeanReference(type = ClinicalNoteTemplatePersistence.class)

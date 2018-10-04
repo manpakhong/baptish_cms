@@ -2,6 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping auto-import="false" default-lazy="false">
+	<import class="hk.org.hkbh.cms.outpatient.model.AuditTrail" />
 	<import class="hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate" />
 	<import class="hk.org.hkbh.cms.outpatient.model.Code" />
 	<import class="hk.org.hkbh.cms.outpatient.model.CodeDetail" />
@@ -11,6 +12,21 @@
 	<import class="hk.org.hkbh.cms.outpatient.model.ComponentDto" />
 	<import class="hk.org.hkbh.cms.outpatient.model.ImagingResult" />
 	<import class="hk.org.hkbh.cms.outpatient.model.LabResult" />
+	<class name="hk.org.hkbh.cms.outpatient.model.impl.AuditTrailImpl" table="audit_trail">
+		<id name="id" type="long">
+			<generator class="increment" />
+		</id>
+		<property column="function_id" name="functionId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="class_name" name="className" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="user_action" name="userAction" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="before_image_in_json" name="beforeImageInJson" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="after_image_in_json" name="afterImageInJson" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="is_deleted" name="isDeleted" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="create_date" name="createDate" type="org.hibernate.type.TimestampType" />
+		<property column="update_date" name="updateDate" type="org.hibernate.type.TimestampType" />
+		<property column="created_by" name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property column="updated_by" name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
 	<class name="hk.org.hkbh.cms.outpatient.model.impl.ClinicalNoteTemplateImpl" table="clinical_note_template">
 		<id name="id" type="long">
 			<generator class="increment" />

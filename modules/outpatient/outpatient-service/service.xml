@@ -13,4 +13,5 @@
 	<service-builder-import file="component_dto.xml"></service-builder-import>
 	<service-builder-import file="imaging_result.xml"></service-builder-import>
 	<service-builder-import file="lab_result.xml"></service-builder-import>
+	<service-builder-import file="audit_trail.xml"></service-builder-import>
 </service-builder>

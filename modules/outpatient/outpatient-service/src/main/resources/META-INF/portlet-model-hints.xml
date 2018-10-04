@@ -1,6 +1,19 @@
 <?xml version="1.0"?>
 
 <model-hints>
+	<model name="hk.org.hkbh.cms.outpatient.model.AuditTrail">
+		<field name="id" type="long" />
+		<field name="functionId" type="Long" />
+		<field name="className" type="String" />
+		<field name="userAction" type="String" />
+		<field name="beforeImageInJson" type="String" />
+		<field name="afterImageInJson" type="String" />
+		<field name="isDeleted" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="updateDate" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedBy" type="String" />
+	</model>
 	<model name="hk.org.hkbh.cms.outpatient.model.ClinicalNoteTemplate">
 		<field name="id" type="long" />
 		<field name="userId" type="Long" />
