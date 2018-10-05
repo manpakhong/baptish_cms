@@ -62,7 +62,10 @@ public class AuditTrailModelImpl extends BaseModelImpl<AuditTrail>
 	public static final String TABLE_NAME = "audit_trail";
 	public static final Object[][] TABLE_COLUMNS = {
 			{ "id", Types.BIGINT },
+			{ "user_id", Types.BIGINT },
 			{ "function_id", Types.BIGINT },
+			{ "patient_id", Types.BIGINT },
+			{ "episode_id", Types.BIGINT },
 			{ "class_name", Types.VARCHAR },
 			{ "user_action", Types.VARCHAR },
 			{ "before_image_in_json", Types.VARCHAR },
@@ -77,7 +80,10 @@ public class AuditTrailModelImpl extends BaseModelImpl<AuditTrail>
 
 	static {
 		TABLE_COLUMNS_MAP.put("id", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("user_id", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("function_id", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("patient_id", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("episode_id", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("class_name", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("user_action", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("before_image_in_json", Types.VARCHAR);
@@ -89,7 +95,7 @@ public class AuditTrailModelImpl extends BaseModelImpl<AuditTrail>
 		TABLE_COLUMNS_MAP.put("updated_by", Types.VARCHAR);
 	}
 
-	public static final String TABLE_SQL_CREATE = "create table audit_trail (id LONG not null primary key,function_id LONG,class_name VARCHAR(75) null,user_action VARCHAR(75) null,before_image_in_json VARCHAR(75) null,after_image_in_json VARCHAR(75) null,is_deleted VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table audit_trail (id LONG not null primary key,user_id LONG,function_id LONG,patient_id LONG,episode_id LONG,class_name VARCHAR(75) null,user_action VARCHAR(75) null,before_image_in_json VARCHAR(75) null,after_image_in_json VARCHAR(75) null,is_deleted VARCHAR(75) null,create_date DATE null,update_date DATE null,created_by VARCHAR(75) null,updated_by VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table audit_trail";
 	public static final String ORDER_BY_JPQL = " ORDER BY auditTrail.id ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY audit_trail.id ASC";
@@ -144,7 +150,10 @@ public class AuditTrailModelImpl extends BaseModelImpl<AuditTrail>
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
 		attributes.put("id", getId());
+		attributes.put("userId", getUserId());
 		attributes.put("functionId", getFunctionId());
+		attributes.put("patientId", getPatientId());
+		attributes.put("episodeId", getEpisodeId());
 		attributes.put("className", getClassName());
 		attributes.put("userAction", getUserAction());
 		attributes.put("beforeImageInJson", getBeforeImageInJson());
@@ -169,10 +178,28 @@ public class AuditTrailModelImpl extends BaseModelImpl<AuditTrail>
 			setId(id);
 		}
 
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
 		Long functionId = (Long)attributes.get("functionId");
 
 		if (functionId != null) {
 			setFunctionId(functionId);
+		}
+
+		Long patientId = (Long)attributes.get("patientId");
+
+		if (patientId != null) {
+			setPatientId(patientId);
+		}
+
+		Long episodeId = (Long)attributes.get("episodeId");
+
+		if (episodeId != null) {
+			setEpisodeId(episodeId);
 		}
 
 		String className = (String)attributes.get("className");
@@ -241,6 +268,16 @@ public class AuditTrailModelImpl extends BaseModelImpl<AuditTrail>
 	}
 
 	@Override
+	public Long getUserId() {
+		return _userId;
+	}
+
+	@Override
+	public void setUserId(Long userId) {
+		_userId = userId;
+	}
+
+	@Override
 	public Long getFunctionId() {
 		return _functionId;
 	}
@@ -248,6 +285,26 @@ public class AuditTrailModelImpl extends BaseModelImpl<AuditTrail>
 	@Override
 	public void setFunctionId(Long functionId) {
 		_functionId = functionId;
+	}
+
+	@Override
+	public Long getPatientId() {
+		return _patientId;
+	}
+
+	@Override
+	public void setPatientId(Long patientId) {
+		_patientId = patientId;
+	}
+
+	@Override
+	public Long getEpisodeId() {
+		return _episodeId;
+	}
+
+	@Override
+	public void setEpisodeId(Long episodeId) {
+		_episodeId = episodeId;
 	}
 
 	@Override
@@ -403,7 +460,10 @@ public class AuditTrailModelImpl extends BaseModelImpl<AuditTrail>
 		AuditTrailImpl auditTrailImpl = new AuditTrailImpl();
 
 		auditTrailImpl.setId(getId());
+		auditTrailImpl.setUserId(getUserId());
 		auditTrailImpl.setFunctionId(getFunctionId());
+		auditTrailImpl.setPatientId(getPatientId());
+		auditTrailImpl.setEpisodeId(getEpisodeId());
 		auditTrailImpl.setClassName(getClassName());
 		auditTrailImpl.setUserAction(getUserAction());
 		auditTrailImpl.setBeforeImageInJson(getBeforeImageInJson());
@@ -487,7 +547,13 @@ public class AuditTrailModelImpl extends BaseModelImpl<AuditTrail>
 
 		auditTrailCacheModel.id = getId();
 
+		auditTrailCacheModel.userId = getUserId();
+
 		auditTrailCacheModel.functionId = getFunctionId();
+
+		auditTrailCacheModel.patientId = getPatientId();
+
+		auditTrailCacheModel.episodeId = getEpisodeId();
 
 		auditTrailCacheModel.className = getClassName();
 
@@ -568,12 +634,18 @@ public class AuditTrailModelImpl extends BaseModelImpl<AuditTrail>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(23);
+		StringBundler sb = new StringBundler(29);
 
 		sb.append("{id=");
 		sb.append(getId());
+		sb.append(", userId=");
+		sb.append(getUserId());
 		sb.append(", functionId=");
 		sb.append(getFunctionId());
+		sb.append(", patientId=");
+		sb.append(getPatientId());
+		sb.append(", episodeId=");
+		sb.append(getEpisodeId());
 		sb.append(", className=");
 		sb.append(getClassName());
 		sb.append(", userAction=");
@@ -599,7 +671,7 @@ public class AuditTrailModelImpl extends BaseModelImpl<AuditTrail>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(46);
 
 		sb.append("<model><model-name>");
 		sb.append("hk.org.hkbh.cms.outpatient.model.AuditTrail");
@@ -610,8 +682,20 @@ public class AuditTrailModelImpl extends BaseModelImpl<AuditTrail>
 		sb.append(getId());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>userId</column-name><column-value><![CDATA[");
+		sb.append(getUserId());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>functionId</column-name><column-value><![CDATA[");
 		sb.append(getFunctionId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>patientId</column-name><column-value><![CDATA[");
+		sb.append(getPatientId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>episodeId</column-name><column-value><![CDATA[");
+		sb.append(getEpisodeId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>className</column-name><column-value><![CDATA[");
@@ -660,7 +744,10 @@ public class AuditTrailModelImpl extends BaseModelImpl<AuditTrail>
 			AuditTrail.class
 		};
 	private long _id;
+	private Long _userId;
 	private Long _functionId;
+	private Long _patientId;
+	private Long _episodeId;
 	private String _className;
 	private String _userAction;
 	private String _beforeImageInJson;

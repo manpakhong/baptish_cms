@@ -12,18 +12,19 @@ import hk.org.hkbh.cms.outpatient.util.GsonUtils;
 
 public abstract class AuditTrailMgrBase {
 	private static Log logger = LogFactoryUtil.getLog(ClinicalNoteTemplateMgr.class);
-	protected void createAuditImage(AuditTrailImageDto dto) throws Exception {
+	protected void createAuditImage(AuditTrailImageDto auditTrailImageDto) throws Exception {
 		try {
-			Object beforePersistImage = dto.getBeforePersistImage();
-			Object afterPersistImage = dto.getAfterPersistImage();
-			Integer functionId = dto.getFunctionId();
-			Integer userId = dto.getUserId();
+			
+			Object beforePersistImage = auditTrailImageDto.getBeforePersistImage();
+			Object afterPersistImage = auditTrailImageDto.getAfterPersistImage();
+			Integer functionId = auditTrailImageDto.getFunctionId();
+			Integer userId = auditTrailImageDto.getUserId();
 			// for testing only
 			AuditTrail auditTrail = AuditTrailLocalServiceUtil.getAuditTrail(1);
 			String json = GsonUtils.getInstance().convertObjectToGson(auditTrail);
 			auditTrail = AuditTrailLocalServiceUtil.updateAuditTrail(auditTrail);
 		} catch (PortalException e) {
-			logger.error(getClassName() + ".saveAuditImage() - dto=" +  dto, e);
+			logger.error(getClassName() + ".saveAuditImage() - auditTrailImageDto=" +  auditTrailImageDto, e);
 			throw e;
 		}
 	}

@@ -22,7 +22,10 @@
 		<column name="createdBy" type="String" />
 		<column name="updatedBy" type="String" /> -->
 		<!-- Other fields -->
+		<column name="userId" db-name="user_id" type="Long" />
 		<column name="functionId" db-name="function_id" type="Long" />
+		<column name="patientId" db-name="patient_id" type="Long" />
+		<column name="episodeId" db-name="episode_id" type="Long" />
 		<column name="className" db-name="class_name" type="String" />
 		<column name="userAction" db-name="user_action" type="String" />
 		<column name="beforeImageInJson" db-name="before_image_in_json" type="String" />

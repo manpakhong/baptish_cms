@@ -65,12 +65,18 @@ public class AuditTrailCacheModel implements CacheModel<AuditTrail>,
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(23);
+		StringBundler sb = new StringBundler(29);
 
 		sb.append("{id=");
 		sb.append(id);
+		sb.append(", userId=");
+		sb.append(userId);
 		sb.append(", functionId=");
 		sb.append(functionId);
+		sb.append(", patientId=");
+		sb.append(patientId);
+		sb.append(", episodeId=");
+		sb.append(episodeId);
 		sb.append(", className=");
 		sb.append(className);
 		sb.append(", userAction=");
@@ -99,7 +105,10 @@ public class AuditTrailCacheModel implements CacheModel<AuditTrail>,
 		AuditTrailImpl auditTrailImpl = new AuditTrailImpl();
 
 		auditTrailImpl.setId(id);
+		auditTrailImpl.setUserId(userId);
 		auditTrailImpl.setFunctionId(functionId);
+		auditTrailImpl.setPatientId(patientId);
+		auditTrailImpl.setEpisodeId(episodeId);
 
 		if (className == null) {
 			auditTrailImpl.setClassName("");
@@ -173,7 +182,13 @@ public class AuditTrailCacheModel implements CacheModel<AuditTrail>,
 	public void readExternal(ObjectInput objectInput) throws IOException {
 		id = objectInput.readLong();
 
+		userId = objectInput.readLong();
+
 		functionId = objectInput.readLong();
+
+		patientId = objectInput.readLong();
+
+		episodeId = objectInput.readLong();
 		className = objectInput.readUTF();
 		userAction = objectInput.readUTF();
 		beforeImageInJson = objectInput.readUTF();
@@ -190,7 +205,13 @@ public class AuditTrailCacheModel implements CacheModel<AuditTrail>,
 		throws IOException {
 		objectOutput.writeLong(id);
 
+		objectOutput.writeLong(userId);
+
 		objectOutput.writeLong(functionId);
+
+		objectOutput.writeLong(patientId);
+
+		objectOutput.writeLong(episodeId);
 
 		if (className == null) {
 			objectOutput.writeUTF("");
@@ -246,7 +267,10 @@ public class AuditTrailCacheModel implements CacheModel<AuditTrail>,
 	}
 
 	public long id;
+	public long userId;
 	public long functionId;
+	public long patientId;
+	public long episodeId;
 	public String className;
 	public String userAction;
 	public String beforeImageInJson;

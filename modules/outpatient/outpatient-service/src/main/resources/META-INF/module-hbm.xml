@@ -16,7 +16,10 @@
 		<id name="id" type="long">
 			<generator class="increment" />
 		</id>
+		<property column="user_id" name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property column="function_id" name="functionId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="patient_id" name="patientId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property column="episode_id" name="episodeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property column="class_name" name="className" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property column="user_action" name="userAction" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property column="before_image_in_json" name="beforeImageInJson" type="com.liferay.portal.dao.orm.hibernate.StringType" />

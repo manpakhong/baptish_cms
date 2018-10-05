@@ -58,7 +58,10 @@ public class AuditTrailWrapper implements AuditTrail, ModelWrapper<AuditTrail> {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
 		attributes.put("id", getId());
+		attributes.put("userId", getUserId());
 		attributes.put("functionId", getFunctionId());
+		attributes.put("patientId", getPatientId());
+		attributes.put("episodeId", getEpisodeId());
 		attributes.put("className", getClassName());
 		attributes.put("userAction", getUserAction());
 		attributes.put("beforeImageInJson", getBeforeImageInJson());
@@ -80,10 +83,28 @@ public class AuditTrailWrapper implements AuditTrail, ModelWrapper<AuditTrail> {
 			setId(id);
 		}
 
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
 		Long functionId = (Long)attributes.get("functionId");
 
 		if (functionId != null) {
 			setFunctionId(functionId);
+		}
+
+		Long patientId = (Long)attributes.get("patientId");
+
+		if (patientId != null) {
+			setPatientId(patientId);
+		}
+
+		Long episodeId = (Long)attributes.get("episodeId");
+
+		if (episodeId != null) {
+			setEpisodeId(episodeId);
 		}
 
 		String className = (String)attributes.get("className");
@@ -201,6 +222,16 @@ public class AuditTrailWrapper implements AuditTrail, ModelWrapper<AuditTrail> {
 		return _auditTrail.getCreatedBy();
 	}
 
+	/**
+	* Returns the episode ID of this audit trail.
+	*
+	* @return the episode ID of this audit trail
+	*/
+	@Override
+	public java.lang.Long getEpisodeId() {
+		return _auditTrail.getEpisodeId();
+	}
+
 	@Override
 	public ExpandoBridge getExpandoBridge() {
 		return _auditTrail.getExpandoBridge();
@@ -234,6 +265,16 @@ public class AuditTrailWrapper implements AuditTrail, ModelWrapper<AuditTrail> {
 	@Override
 	public java.lang.String getIsDeleted() {
 		return _auditTrail.getIsDeleted();
+	}
+
+	/**
+	* Returns the patient ID of this audit trail.
+	*
+	* @return the patient ID of this audit trail
+	*/
+	@Override
+	public java.lang.Long getPatientId() {
+		return _auditTrail.getPatientId();
 	}
 
 	/**
@@ -279,6 +320,16 @@ public class AuditTrailWrapper implements AuditTrail, ModelWrapper<AuditTrail> {
 	@Override
 	public java.lang.String getUserAction() {
 		return _auditTrail.getUserAction();
+	}
+
+	/**
+	* Returns the user ID of this audit trail.
+	*
+	* @return the user ID of this audit trail
+	*/
+	@Override
+	public java.lang.Long getUserId() {
+		return _auditTrail.getUserId();
 	}
 
 	@Override
@@ -361,6 +412,16 @@ public class AuditTrailWrapper implements AuditTrail, ModelWrapper<AuditTrail> {
 		_auditTrail.setCreatedBy(createdBy);
 	}
 
+	/**
+	* Sets the episode ID of this audit trail.
+	*
+	* @param episodeId the episode ID of this audit trail
+	*/
+	@Override
+	public void setEpisodeId(java.lang.Long episodeId) {
+		_auditTrail.setEpisodeId(episodeId);
+	}
+
 	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portal.kernel.model.BaseModel<?> baseModel) {
@@ -413,6 +474,16 @@ public class AuditTrailWrapper implements AuditTrail, ModelWrapper<AuditTrail> {
 	}
 
 	/**
+	* Sets the patient ID of this audit trail.
+	*
+	* @param patientId the patient ID of this audit trail
+	*/
+	@Override
+	public void setPatientId(java.lang.Long patientId) {
+		_auditTrail.setPatientId(patientId);
+	}
+
+	/**
 	* Sets the primary key of this audit trail.
 	*
 	* @param primaryKey the primary key of this audit trail
@@ -455,6 +526,16 @@ public class AuditTrailWrapper implements AuditTrail, ModelWrapper<AuditTrail> {
 	@Override
 	public void setUserAction(java.lang.String userAction) {
 		_auditTrail.setUserAction(userAction);
+	}
+
+	/**
+	* Sets the user ID of this audit trail.
+	*
+	* @param userId the user ID of this audit trail
+	*/
+	@Override
+	public void setUserId(java.lang.Long userId) {
+		_auditTrail.setUserId(userId);
 	}
 
 	@Override

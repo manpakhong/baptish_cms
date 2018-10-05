@@ -34,7 +34,10 @@ public class AuditTrailSoap implements Serializable {
 		AuditTrailSoap soapModel = new AuditTrailSoap();
 
 		soapModel.setId(model.getId());
+		soapModel.setUserId(model.getUserId());
 		soapModel.setFunctionId(model.getFunctionId());
+		soapModel.setPatientId(model.getPatientId());
+		soapModel.setEpisodeId(model.getEpisodeId());
 		soapModel.setClassName(model.getClassName());
 		soapModel.setUserAction(model.getUserAction());
 		soapModel.setBeforeImageInJson(model.getBeforeImageInJson());
@@ -104,12 +107,36 @@ public class AuditTrailSoap implements Serializable {
 		_id = id;
 	}
 
+	public Long getUserId() {
+		return _userId;
+	}
+
+	public void setUserId(Long userId) {
+		_userId = userId;
+	}
+
 	public Long getFunctionId() {
 		return _functionId;
 	}
 
 	public void setFunctionId(Long functionId) {
 		_functionId = functionId;
+	}
+
+	public Long getPatientId() {
+		return _patientId;
+	}
+
+	public void setPatientId(Long patientId) {
+		_patientId = patientId;
+	}
+
+	public Long getEpisodeId() {
+		return _episodeId;
+	}
+
+	public void setEpisodeId(Long episodeId) {
+		_episodeId = episodeId;
 	}
 
 	public String getClassName() {
@@ -185,7 +212,10 @@ public class AuditTrailSoap implements Serializable {
 	}
 
 	private long _id;
+	private Long _userId;
 	private Long _functionId;
+	private Long _patientId;
+	private Long _episodeId;
 	private String _className;
 	private String _userAction;
 	private String _beforeImageInJson;

@@ -77,6 +77,20 @@ public interface AuditTrailModel extends BaseModel<AuditTrail> {
 	public void setId(long id);
 
 	/**
+	 * Returns the user ID of this audit trail.
+	 *
+	 * @return the user ID of this audit trail
+	 */
+	public Long getUserId();
+
+	/**
+	 * Sets the user ID of this audit trail.
+	 *
+	 * @param userId the user ID of this audit trail
+	 */
+	public void setUserId(Long userId);
+
+	/**
 	 * Returns the function ID of this audit trail.
 	 *
 	 * @return the function ID of this audit trail
@@ -89,6 +103,34 @@ public interface AuditTrailModel extends BaseModel<AuditTrail> {
 	 * @param functionId the function ID of this audit trail
 	 */
 	public void setFunctionId(Long functionId);
+
+	/**
+	 * Returns the patient ID of this audit trail.
+	 *
+	 * @return the patient ID of this audit trail
+	 */
+	public Long getPatientId();
+
+	/**
+	 * Sets the patient ID of this audit trail.
+	 *
+	 * @param patientId the patient ID of this audit trail
+	 */
+	public void setPatientId(Long patientId);
+
+	/**
+	 * Returns the episode ID of this audit trail.
+	 *
+	 * @return the episode ID of this audit trail
+	 */
+	public Long getEpisodeId();
+
+	/**
+	 * Sets the episode ID of this audit trail.
+	 *
+	 * @param episodeId the episode ID of this audit trail
+	 */
+	public void setEpisodeId(Long episodeId);
 
 	/**
 	 * Returns the class name of this audit trail.

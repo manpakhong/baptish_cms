@@ -3,7 +3,10 @@
 <model-hints>
 	<model name="hk.org.hkbh.cms.outpatient.model.AuditTrail">
 		<field name="id" type="long" />
+		<field name="userId" type="Long" />
 		<field name="functionId" type="Long" />
+		<field name="patientId" type="Long" />
+		<field name="episodeId" type="Long" />
 		<field name="className" type="String" />
 		<field name="userAction" type="String" />
 		<field name="beforeImageInJson" type="String" />

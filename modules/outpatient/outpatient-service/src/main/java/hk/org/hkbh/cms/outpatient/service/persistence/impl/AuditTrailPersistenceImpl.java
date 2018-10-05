@@ -94,7 +94,10 @@ public class AuditTrailPersistenceImpl extends BasePersistenceImpl<AuditTrail>
 
 			Map<String, String> dbColumnNames = new HashMap<String, String>();
 
+			dbColumnNames.put("userId", "user_id");
 			dbColumnNames.put("functionId", "function_id");
+			dbColumnNames.put("patientId", "patient_id");
+			dbColumnNames.put("episodeId", "episode_id");
 			dbColumnNames.put("className", "class_name");
 			dbColumnNames.put("userAction", "user_action");
 			dbColumnNames.put("beforeImageInJson", "before_image_in_json");
@@ -343,7 +346,10 @@ public class AuditTrailPersistenceImpl extends BasePersistenceImpl<AuditTrail>
 		auditTrailImpl.setPrimaryKey(auditTrail.getPrimaryKey());
 
 		auditTrailImpl.setId(auditTrail.getId());
+		auditTrailImpl.setUserId(auditTrail.getUserId());
 		auditTrailImpl.setFunctionId(auditTrail.getFunctionId());
+		auditTrailImpl.setPatientId(auditTrail.getPatientId());
+		auditTrailImpl.setEpisodeId(auditTrail.getEpisodeId());
 		auditTrailImpl.setClassName(auditTrail.getClassName());
 		auditTrailImpl.setUserAction(auditTrail.getUserAction());
 		auditTrailImpl.setBeforeImageInJson(auditTrail.getBeforeImageInJson());
@@ -772,8 +778,9 @@ public class AuditTrailPersistenceImpl extends BasePersistenceImpl<AuditTrail>
 	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No AuditTrail exists with the primary key ";
 	private static final Log _log = LogFactoryUtil.getLog(AuditTrailPersistenceImpl.class);
 	private static final Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
-				"functionId", "className", "userAction", "beforeImageInJson",
-				"afterImageInJson", "isDeleted", "createDate", "updateDate",
-				"createdBy", "updatedBy"
+				"userId", "functionId", "patientId", "episodeId", "className",
+				"userAction", "beforeImageInJson", "afterImageInJson",
+				"isDeleted", "createDate", "updateDate", "createdBy",
+				"updatedBy"
 			});
 }
